@@ -1,0 +1,9 @@
+Location section is all done.
+Start working on new patient Registration Add, View, edit and Add Anointment date from selected location
+
+
+include header and sidebar just before form tag for header('Location: ....') to work
+
+reformat Location and session classes before adding more methods.
+
+Go through workflow

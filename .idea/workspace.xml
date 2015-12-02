@@ -1,0 +1,626 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="0ae9e9fa-acf0-4190-bb68-6e59912eb1a2" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/Screens/Acuities.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/Screens/Binocularity.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/Screens/Exam Window.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/Screens/External-Slit Lamp.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/Screens/History.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/Screens/Internal.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/Screens/Notes Finding and recomondation.docx" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/Screens/Notes.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/Screens/Patient Window.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/Screens/RXs.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/Screens/Retinoscopy-Sujbective.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/Screens/Summary-Diagnosis-Referral-Treatment.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/Screens/Tonometry-Fields.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/Screens/_docx..docx" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/autocomplete_textbox_jquery_php_myql.zip" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/bootstrap-calendar-master.zip" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/bootstrap-calendar-master/img/dark_wood.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/bootstrap-calendar-master/img/slide-bg.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/bootstrap-calendar-master/img/tick.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/startbootstrap-sb-admin-2-1.0.7.zip" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/theme/bower_components/bootstrap/dist/fonts/glyphicons-halflings-regular.eot" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/theme/bower_components/bootstrap/dist/fonts/glyphicons-halflings-regular.ttf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/theme/bower_components/bootstrap/dist/fonts/glyphicons-halflings-regular.woff" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/theme/bower_components/bootstrap/dist/fonts/glyphicons-halflings-regular.woff2" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/theme/bower_components/bootstrap/fonts/glyphicons-halflings-regular.eot" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/theme/bower_components/bootstrap/fonts/glyphicons-halflings-regular.ttf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/theme/bower_components/bootstrap/fonts/glyphicons-halflings-regular.woff" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/theme/bower_components/bootstrap/fonts/glyphicons-halflings-regular.woff2" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/autocomplete/autocomplete.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/autocomplete/index.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/autocomplete/jquery.autocomplete.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/autocomplete/jquery.autocomplete.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/autocomplete/jquery.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/autocomplete/sql.sql" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/bootstrap-calendar-master/.bowerrc" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/bootstrap-calendar-master/.gitignore" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/bootstrap-calendar-master/CONTRIBUTING.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/bootstrap-calendar-master/Gruntfile.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/bootstrap-calendar-master/LICENSE" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/bootstrap-calendar-master/README.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/bootstrap-calendar-master/bower.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/bootstrap-calendar-master/composer.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/bootstrap-calendar-master/css/calendar.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/bootstrap-calendar-master/css/calendar.min.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/bootstrap-calendar-master/events.json.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/bootstrap-calendar-master/index-bs3.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/bootstrap-calendar-master/index.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/bootstrap-calendar-master/js/app.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/bootstrap-calendar-master/js/calendar.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/bootstrap-calendar-master/js/calendar.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/bootstrap-calendar-master/js/language/ar-SA.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/bootstrap-calendar-master/js/language/bg-BG.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/bootstrap-calendar-master/js/language/bs-BA.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/bootstrap-calendar-master/js/language/cs-CZ.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/bootstrap-calendar-master/js/language/da-DK.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/bootstrap-calendar-master/js/language/de-AT.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/bootstrap-calendar-master/js/language/de-DE.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/bootstrap-calendar-master/js/language/el-GR.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/bootstrap-calendar-master/js/language/es-CO.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/bootstrap-calendar-master/js/language/es-ES.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/bootstrap-calendar-master/js/language/es-MX.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/bootstrap-calendar-master/js/language/fi-FI.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/bootstrap-calendar-master/js/language/fr-FR.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/bootstrap-calendar-master/js/language/hr-HR.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/bootstrap-calendar-master/js/language/hu-HU.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/bootstrap-calendar-master/js/language/id-ID.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/bootstrap-calendar-master/js/language/it-IT.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/bootstrap-calendar-master/js/language/ja-JP.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/bootstrap-calendar-master/js/language/ko-KR.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/bootstrap-calendar-master/js/language/ms-MY.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/bootstrap-calendar-master/js/language/nl-NL.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/bootstrap-calendar-master/js/language/no-NO.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/bootstrap-calendar-master/js/language/pl-PL.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/bootstrap-calendar-master/js/language/pt-BR.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/bootstrap-calendar-master/js/language/ro-RO.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/bootstrap-calendar-master/js/language/ru-RU.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/bootstrap-calendar-master/js/language/sk-SR.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/bootstrap-calendar-master/js/language/sl-SL.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/bootstrap-calendar-master/js/language/sv-SE.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/bootstrap-calendar-master/js/language/template.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/bootstrap-calendar-master/js/language/th-TH.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/bootstrap-calendar-master/js/language/tr-TR.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/bootstrap-calendar-master/js/language/zh-CN.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/bootstrap-calendar-master/js/language/zh-TW.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/bootstrap-calendar-master/less/calendar.less" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/bootstrap-calendar-master/less/day.less" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/bootstrap-calendar-master/less/events.less" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/bootstrap-calendar-master/less/grid.less" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/bootstrap-calendar-master/less/month.less" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/bootstrap-calendar-master/less/theme.less" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/bootstrap-calendar-master/less/variables.less" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/bootstrap-calendar-master/less/week.less" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/bootstrap-calendar-master/package.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/bootstrap-calendar-master/tmpls/day.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/bootstrap-calendar-master/tmpls/events-list.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/bootstrap-calendar-master/tmpls/modal.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/bootstrap-calendar-master/tmpls/month-day.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/bootstrap-calendar-master/tmpls/month.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/bootstrap-calendar-master/tmpls/week-days.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/bootstrap-calendar-master/tmpls/week.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/bootstrap-calendar-master/tmpls/year-month.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/bootstrap-calendar-master/tmpls/year.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/bootstrap-calendar-master/web.config" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/fileImport/connection.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/fileImport/index.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/school data/All students.csv" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/school data/Patient Info Bishop MacDonnell School.csv" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/school data/Patient Info Cambridge St. School.csv" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/school data/Patient Info Charles Hulse School.csv" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/school data/Patient Info Pinecrest Public School.csv" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/school data/Patient Info Queen Elizabeth School.csv" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/school data/Patient Info Ridgemont High School.csv" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/school data/Patient Info Robert E. Wilson.csv" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/school data/Patient Info Russell High School.csv" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/school data/Patient Info Sacred Heart.csv" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/school data/Patient Info St. Joseph.csv" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/school data/Patient Info St. Jude Catholic School.csv" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/school data/Patient info Connaught.csv" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/theme/bower.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/theme/bower_components/bootstrap-social/README.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/theme/bower_components/bootstrap-social/_bower.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/theme/bower_components/bootstrap-social/_editorconfig" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/theme/bower_components/bootstrap-social/_gitignore" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/theme/bower_components/bootstrap-social/bootstrap-social.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/theme/bower_components/bootstrap-social/bootstrap-social.less" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/theme/bower_components/bootstrap-social/bootstrap-social.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/theme/bower_components/bootstrap-social/bower.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/theme/bower_components/bootstrap/Gruntfile.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/theme/bower_components/bootstrap/LICENSE" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/theme/bower_components/bootstrap/README.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/theme/bower_components/bootstrap/_bower.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/theme/bower_components/bootstrap/bower.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/theme/bower_components/bootstrap/dist/css/bootstrap-theme.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/theme/bower_components/bootstrap/dist/css/bootstrap-theme.css.map" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/theme/bower_components/bootstrap/dist/css/bootstrap-theme.min.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/theme/bower_components/bootstrap/dist/css/bootstrap.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/theme/bower_components/bootstrap/dist/css/bootstrap.css.map" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/theme/bower_components/bootstrap/dist/css/bootstrap.min.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/theme/bower_components/bootstrap/dist/fonts/glyphicons-halflings-regular.svg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/theme/bower_components/bootstrap/dist/js/bootstrap.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/theme/bower_components/bootstrap/dist/js/bootstrap.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/theme/bower_components/bootstrap/dist/js/npm.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/theme/bower_components/bootstrap/fonts/glyphicons-halflings-regular.svg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/theme/bower_components/bootstrap/grunt/_jshintrc" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/theme/bower_components/bootstrap/grunt/bs-commonjs-generator.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/theme/bower_components/bootstrap/grunt/bs-glyphicons-data-generator.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/theme/bower_components/bootstrap/grunt/bs-lessdoc-parser.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/theme/bower_components/bootstrap/grunt/bs-raw-files-generator.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/theme/bower_components/bootstrap/grunt/configBridge.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/theme/bower_components/bootstrap/grunt/sauce_browsers.yml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/theme/bower_components/bootstrap/js/_jscsrc" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/theme/bower_components/bootstrap/js/_jshintrc" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/theme/bower_components/bootstrap/js/affix.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/theme/bower_components/bootstrap/js/alert.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/theme/bower_components/bootstrap/js/button.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/theme/bower_components/bootstrap/js/carousel.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/theme/bower_components/bootstrap/js/collapse.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/theme/bower_components/bootstrap/js/dropdown.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/theme/bower_components/bootstrap/js/modal.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/theme/bower_components/bootstrap/js/popover.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/theme/bower_components/bootstrap/js/scrollspy.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/theme/bower_components/bootstrap/js/tab.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/theme/bower_components/bootstrap/js/tooltip.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/theme/bower_components/bootstrap/js/transition.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/theme/bower_components/bootstrap/less/_csscomb.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/theme/bower_components/bootstrap/less/_csslintrc" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/theme/bower_components/bootstrap/less/alerts.less" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/theme/bower_components/bootstrap/less/badges.less" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/theme/bower_components/bootstrap/less/bootstrap.less" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/theme/bower_components/bootstrap/less/breadcrumbs.less" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/theme/bower_components/bootstrap/less/button-groups.less" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/theme/bower_components/bootstrap/less/buttons.less" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/theme/bower_components/bootstrap/less/carousel.less" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/theme/bower_components/bootstrap/less/close.less" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/theme/bower_components/bootstrap/less/code.less" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/theme/bower_components/bootstrap/less/component-animations.less" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/theme/bower_components/bootstrap/less/dropdowns.less" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/theme/bower_components/bootstrap/less/forms.less" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/theme/bower_components/bootstrap/less/glyphicons.less" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/theme/bower_components/bootstrap/less/grid.less" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/theme/bower_components/bootstrap/less/input-groups.less" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/theme/bower_components/bootstrap/less/jumbotron.less" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/theme/bower_components/bootstrap/less/labels.less" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/theme/bower_components/bootstrap/less/list-group.less" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/theme/bower_components/bootstrap/less/media.less" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/theme/bower_components/bootstrap/less/mixins.less" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/theme/bower_components/bootstrap/less/mixins/alerts.less" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/theme/bower_components/bootstrap/less/mixins/background-variant.less" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/theme/bower_components/bootstrap/less/mixins/border-radius.less" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/theme/bower_components/bootstrap/less/mixins/buttons.less" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/theme/bower_components/bootstrap/less/mixins/center-block.less" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/theme/bower_components/bootstrap/less/mixins/clearfix.less" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/theme/bower_components/bootstrap/less/mixins/forms.less" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/theme/bower_components/bootstrap/less/mixins/gradients.less" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/theme/bower_components/bootstrap/less/mixins/grid-framework.less" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/theme/bower_components/bootstrap/less/mixins/grid.less" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/theme/bower_components/bootstrap/less/mixins/hide-text.less" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/theme/bower_components/bootstrap/less/mixins/image.less" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/theme/bower_components/bootstrap/less/mixins/labels.less" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/theme/bower_components/bootstrap/less/mixins/list-group.less" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/theme/bower_components/bootstrap/less/mixins/nav-divider.less" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/theme/bower_components/bootstrap/less/mixins/nav-vertical-align.less" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/theme/bower_components/bootstrap/less/mixins/opacity.less" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/theme/bower_components/bootstrap/less/mixins/pagination.less" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/theme/bower_components/bootstrap/less/mixins/panels.less" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/theme/bower_components/bootstrap/less/mixins/progress-bar.less" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/theme/bower_components/bootstrap/less/mixins/reset-filter.less" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/theme/bower_components/bootstrap/less/mixins/resize.less" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/theme/bower_components/bootstrap/less/mixins/responsive-visibility.less" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/theme/bower_components/bootstrap/less/mixins/size.less" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/theme/bower_components/bootstrap/less/mixins/tab-focus.less" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/theme/bower_components/bootstrap/less/mixins/table-row.less" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/theme/bower_components/bootstrap/less/mixins/text-emphasis.less" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/theme/bower_components/bootstrap/less/mixins/text-overflow.less" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/theme/bower_components/bootstrap/less/mixins/vendor-prefixes.less" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/theme/bower_components/bootstrap/less/modals.less" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/theme/bower_components/bootstrap/less/navbar.less" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/theme/bower_components/bootstrap/less/navs.less" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/theme/bower_components/bootstrap/less/normalize.less" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/theme/bower_components/bootstrap/less/pager.less" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/theme/bower_components/bootstrap/less/pagination.less" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/theme/bower_components/bootstrap/less/panels.less" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/theme/bower_components/bootstrap/less/popovers.less" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/theme/bower_components/bootstrap/less/print.less" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/theme/bower_components/bootstrap/less/progress-bars.less" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/theme/bower_components/bootstrap/less/responsive-embed.less" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/theme/bower_components/bootstrap/less/responsive-utilities.less" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/theme/bower_components/bootstrap/less/scaffolding.less" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/theme/bower_components/bootstrap/less/tables.less" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/theme/bower_components/bootstrap/less/theme.less" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/theme/bower_components/bootstrap/less/thumbnails.less" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/theme/bower_components/bootstrap/less/tooltip.less" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/theme/bower_components/bootstrap/less/type.less" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/theme/bower_components/bootstrap/less/utilities.less" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/theme/bower_components/bootstrap/less/variables.less" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/theme/bower_components/bootstrap/less/wells.less" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/theme/bower_components/bootstrap/package.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/theme/bower_components/bootstrap/package.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/theme/bower_components/datatables-plugins/api/average().js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/theme/bower_components/datatables-plugins/api/column().title().js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/theme/bower_components/datatables-plugins/api/columns().order().js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/theme/bower_components/datatables-plugins/api/fnAddDataAndDisplay.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/theme/bower_components/datatables-plugins/api/fnAddTr.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/theme/bower_components/datatables-plugins/api/fnColumnIndexToVisible.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/theme/bower_components/datatables-plugins/api/fnDataUpdate.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/theme/bower_components/datatables-plugins/api/fnDisplayRow.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/theme/bower_components/datatables-plugins/api/fnDisplayStart.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/theme/bower_components/datatables-plugins/api/fnFakeRowspan.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/theme/bower_components/datatables-plugins/api/fnFilterAll.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/theme/bower_components/datatables-plugins/api/fnFilterClear.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/theme/bower_components/datatables-plugins/api/fnFilterOnReturn.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/theme/bower_components/datatables-plugins/api/fnFindCellRowIndexes.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/theme/bower_components/datatables-plugins/api/fnFindCellRowNodes.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/theme/bower_components/datatables-plugins/api/fnGetAdjacentTr.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/theme/bower_components/datatables-plugins/api/fnGetColumnData.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/theme/bower_components/datatables-plugins/api/fnGetColumnIndex.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/theme/bower_components/datatables-plugins/api/fnGetHiddenNodes.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/theme/bower_components/datatables-plugins/api/fnGetTd.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/theme/bower_components/datatables-plugins/api/fnGetTds.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/theme/bower_components/datatables-plugins/api/fnLengthChange.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/theme/bower_components/datatables-plugins/api/fnMultiFilter.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/theme/bower_components/datatables-plugins/api/fnPagingInfo.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/theme/bower_components/datatables-plugins/api/fnProcessingIndicator.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/theme/bower_components/datatables-plugins/api/fnReloadAjax.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/theme/bower_components/datatables-plugins/api/fnSetFilteringDelay.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/theme/bower_components/datatables-plugins/api/fnSortNeutral.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/theme/bower_components/datatables-plugins/api/fnStandingRedraw.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/theme/bower_components/datatables-plugins/api/fnVisibleToColumnIndex.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/theme/bower_components/datatables-plugins/api/index.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/theme/bower_components/datatables-plugins/api/page.jumpToData().js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/theme/bower_components/datatables-plugins/api/sum().js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/theme/bower_components/datatables-plugins/features/alphabetSearch/dataTables.alphabetSearch.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/theme/bower_components/datatables-plugins/features/alphabetSearch/dataTables.alphabetSearch.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/theme/bower_components/datatables-plugins/features/alphabetSearch/dataTables.alphabetSearch.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/theme/bower_components/datatables-plugins/features/lengthLinks/dataTables.lengthLinks.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/theme/bower_components/datatables-plugins/features/lengthLinks/dataTables.lengthLinks.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/theme/bower_components/datatables-plugins/features/lengthLinks/dataTables.lengthLinks.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/theme/bower_components/datatables-plugins/features/searchHighlight/dataTables.searchHighlight.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/theme/bower_components/datatables-plugins/features/searchHighlight/dataTables.searchHighlight.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/theme/bower_components/datatables-plugins/features/searchHighlight/dataTables.searchHighlight.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/theme/bower_components/datatables-plugins/filtering/index.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/theme/bower_components/datatables-plugins/filtering/row-based/TableTools.ShowSelectedOnly.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/theme/bower_components/datatables-plugins/filtering/row-based/range_dates.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/theme/bower_components/datatables-plugins/filtering/row-based/range_numbers.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/theme/bower_components/datatables-plugins/filtering/type-based/accent-neutralise.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/theme/bower_components/datatables-plugins/filtering/type-based/html.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/theme/bower_components/datatables-plugins/filtering/type-based/phoneNumber.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/theme/bower_components/datatables-plugins/i18n/Afrikaans.lang" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/theme/bower_components/datatables-plugins/i18n/Albanian.lang" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/theme/bower_components/datatables-plugins/i18n/Arabic.lang" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/theme/bower_components/datatables-plugins/i18n/Azerbaijan.lang" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/theme/bower_components/datatables-plugins/i18n/Bangla.lang" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/theme/bower_components/datatables-plugins/i18n/Belarusian.lang" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/theme/bower_components/datatables-plugins/i18n/Bulgarian.lang" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/theme/bower_components/datatables-plugins/i18n/Catalan.lang" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/theme/bower_components/datatables-plugins/i18n/Chinese-traditional.lang" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/theme/bower_components/datatables-plugins/i18n/Chinese.lang" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/theme/bower_components/datatables-plugins/i18n/Croatian.lang" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/theme/bower_components/datatables-plugins/i18n/Czech.lang" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/theme/bower_components/datatables-plugins/i18n/Danish.lang" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/theme/bower_components/datatables-plugins/i18n/Dutch.lang" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/theme/bower_components/datatables-plugins/i18n/English.lang" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/theme/bower_components/datatables-plugins/i18n/Estonian.lang" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/theme/bower_components/datatables-plugins/i18n/Filipino.lang" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/theme/bower_components/datatables-plugins/i18n/Finnish.lang" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/theme/bower_components/datatables-plugins/i18n/French.lang" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/theme/bower_components/datatables-plugins/i18n/Galician.lang" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/theme/bower_components/datatables-plugins/i18n/Georgian.lang" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/theme/bower_components/datatables-plugins/i18n/German.lang" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/theme/bower_components/datatables-plugins/i18n/Greek.lang" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/theme/bower_components/datatables-plugins/i18n/Gujarati.lang" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/theme/bower_components/datatables-plugins/i18n/Hebrew.lang" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/theme/bower_components/datatables-plugins/i18n/Hindi.lang" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/theme/bower_components/datatables-plugins/i18n/Hungarian.lang" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/theme/bower_components/datatables-plugins/i18n/Icelandic.lang" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/theme/bower_components/datatables-plugins/i18n/Indonesian-Alternative.lang" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/theme/bower_components/datatables-plugins/i18n/Indonesian.lang" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/theme/bower_components/datatables-plugins/i18n/Irish.lang" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/theme/bower_components/datatables-plugins/i18n/Italian.lang" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/theme/bower_components/datatables-plugins/i18n/Japanese.lang" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore/Resources/theme/bower_components/datatables-plugins/i18n/index.html" />
+    </list>
+    <ignored path="Vision_EHR.iws" />
+    <ignored path=".idea/workspace.xml" />
+    <ignored path=".idea/dataSources.local.xml" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="TRACKING_ENABLED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ChangesViewManager" flattened_view="true" show_ignored="false" />
+  <component name="CreatePatchCommitExecutor">
+    <option name="PATCH_PATH" value="" />
+  </component>
+  <component name="FavoritesManager">
+    <favorites_list name="Vision_EHR" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="flot-data.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/.gitignore/Resources/theme/js/flot-data.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="login.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Browser/login.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-0.0">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding>
+                <marker date="1448902594083" expanded="true" signature="3199:3286" placeholder="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="registerNewPatient.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Browser/Admin/registerNewPatient.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.03219697">
+              <caret line="2" column="23" selection-start-line="2" selection-start-column="23" selection-end-line="2" selection-end-column="23" />
+              <folding>
+                <marker date="1448911574950" expanded="true" signature="3315:3608" placeholder="..." />
+                <marker date="1448911574950" expanded="true" signature="3394:3577" placeholder="..." />
+                <marker date="1448911574950" expanded="true" signature="3776:4078" placeholder="..." />
+                <marker date="1448911574950" expanded="true" signature="3856:4047" placeholder="..." />
+                <marker date="1448911574950" expanded="true" signature="4244:4552" placeholder="..." />
+                <marker date="1448911574950" expanded="true" signature="4327:4517" placeholder="..." />
+                <marker date="1448911574950" expanded="true" signature="4718:5019" placeholder="..." />
+                <marker date="1448911574950" expanded="true" signature="4798:4988" placeholder="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" />
+  <component name="JsBuildToolPackageJson" detection-done="true" />
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+  </component>
+  <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" interpreter_name="PHP 5.5" />
+  <component name="ProjectFrameBounds">
+    <option name="x" value="-8" />
+    <option name="y" value="-8" />
+    <option name="width" value="1616" />
+    <option name="height" value="1216" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="false">
+    <OptionsSetting value="true" id="Add" />
+    <OptionsSetting value="true" id="Remove" />
+    <OptionsSetting value="true" id="Checkout" />
+    <OptionsSetting value="true" id="Update" />
+    <OptionsSetting value="true" id="Status" />
+    <OptionsSetting value="true" id="Edit" />
+    <ConfirmationsSetting value="2" id="Add" />
+    <ConfirmationsSetting value="0" id="Remove" />
+  </component>
+  <component name="ProjectView">
+    <navigator currentView="ProjectPane" proportions="" version="1">
+      <flattenPackages />
+      <showMembers />
+      <showModules />
+      <showLibraryContents />
+      <hideEmptyPackages />
+      <abbreviatePackageNames />
+      <autoscrollToSource />
+      <autoscrollFromSource />
+      <sortByType />
+      <manualOrder />
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="Scope">
+        <subPane subId="Problems" />
+        <subPane subId="Project Files" />
+      </pane>
+      <pane id="Scratches" />
+      <pane id="ProjectPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Vision_EHR" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Vision_EHR" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Vision_EHR" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Vision_EHR" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Vision_EHR" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Browser" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Vision_EHR" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Vision_EHR" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Browser" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Admin" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Vision_EHR" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Vision_EHR" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value=".gitignore" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="last_opened_file_path" value="C:/Bitnami/apache2/htdocs/Vision_EHR(Dec 02 2015)" />
+    <property name="WebServerToolWindowFactoryState" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Dushyant\Documents\GitHub\Vision_EHR" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug">
+      <method />
+    </configuration>
+    <configuration default="true" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
+      <TestRunner />
+      <method />
+    </configuration>
+    <configuration default="true" type="PhpBehatConfigurationType" factoryName="Behat">
+      <BehatRunner />
+      <method />
+    </configuration>
+    <configuration default="true" type="PhpLocalRunConfigurationType" factoryName="PHP Console">
+      <method />
+    </configuration>
+    <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
+      <node-options />
+      <gulpfile />
+      <tasks />
+      <arguments />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="js.build_tools.npm" factoryName="npm">
+      <command value="run-script" />
+      <scripts />
+      <envs />
+      <method />
+    </configuration>
+  </component>
+  <component name="ShelveChangesManager" show_recycled="false" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="0ae9e9fa-acf0-4190-bb68-6e59912eb1a2" name="Default" comment="" />
+      <created>1449092261287</created>
+      <option name="number" value="Default" />
+      <updated>1449092261287</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-8" y="-8" width="1616" height="1216" extended-state="6" />
+    <editor active="true" />
+    <layout>
+      <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25642672" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="PHP-CGI Server" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="File Transfer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32972974" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+    </layout>
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <ignored-roots>
+      <path value="$PROJECT_DIR$/ehr" />
+    </ignored-roots>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager />
+    <watches-manager />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/.gitignore/Resources/theme/js/flot-data.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Browser/login.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <marker date="1448902594083" expanded="true" signature="3199:3286" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Browser/Admin/registerNewPatient.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.03219697">
+          <caret line="2" column="23" selection-start-line="2" selection-start-column="23" selection-end-line="2" selection-end-column="23" />
+          <folding>
+            <marker date="1448911574950" expanded="true" signature="3315:3608" placeholder="..." />
+            <marker date="1448911574950" expanded="true" signature="3394:3577" placeholder="..." />
+            <marker date="1448911574950" expanded="true" signature="3776:4078" placeholder="..." />
+            <marker date="1448911574950" expanded="true" signature="3856:4047" placeholder="..." />
+            <marker date="1448911574950" expanded="true" signature="4244:4552" placeholder="..." />
+            <marker date="1448911574950" expanded="true" signature="4327:4517" placeholder="..." />
+            <marker date="1448911574950" expanded="true" signature="4718:5019" placeholder="..." />
+            <marker date="1448911574950" expanded="true" signature="4798:4988" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>
