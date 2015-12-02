@@ -26,7 +26,7 @@ if(isset($btnSubmit)){
         //Set login user session
        if($session->createUserSession($loginUser['user_id'],$loginUser['first_name'],$loginUser['user_role'])){
            //todo redirect doctors to Doctor's dashboard
-           header('Location: Doctor/patientList.php');
+           header('Location: Doctor/dashboard.php');
        }
     }
     elseif($loginUser['user_role'] == 'Admin'){
@@ -96,7 +96,7 @@ if(isset($btnSubmit)){
             <!--Login panel-->
             <div class="login-panel panel panel-default">
                 <div class="panel-heading">
-                    <h3 class="panel-title">Please Log in to <i><?php echo NAME." ".VERSION; ?></i></h3>
+                    <h3 class="panel-title">Please Log in to <i><?php echo NAME." ".VERSION; ?> New</i></h3>
                 </div>
                 <div class="panel-body">
 

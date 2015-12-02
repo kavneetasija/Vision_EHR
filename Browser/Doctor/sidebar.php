@@ -16,18 +16,8 @@
         </div>
         <div class="sidebar-nav navbar-collapse">
             <ul class="nav" id="side-menu">
-
-                <!--Location-->
                 <li>
-                    <a href="#"><i class="fa fa-building fa-fw"></i>Locations</a>
-                    <ul>
-                        <li>
-                            <a href="#"><i class="fa fa-list-alt fa-fw"></i>Location list</a>
-                        </li>
-                        <li>
-                            <a href="#"><i class="fa fa-hospital-o fa-fw"></i>Add new location</a>
-                        </li>
-                    </ul>
+                    <a href="#"><i class="fa fa-dashboard fa-fw"></i>Deshboard</a>
                 </li>
                 <li>
                     <a href="#"><i class="fa  fa-medkit fa-fw"></i>Patient</a>
