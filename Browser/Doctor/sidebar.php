@@ -23,7 +23,7 @@
                     <a href="#"><i class="fa  fa-medkit fa-fw"></i>Patient</a>
                     <ul>
                         <li>
-                            <a href="patientList.php"><i class="fa fa-list-alt fa-fw"></i>Patient list</a>
+                            <a href="#"><i class="fa fa-list-alt fa-fw"></i>Patient list</a>
                         </li>
                         <li>
                             <a href="#"><i class="fa  fa-plus-square fa-fw"></i>Register new patient</a>

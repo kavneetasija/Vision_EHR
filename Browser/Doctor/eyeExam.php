@@ -529,7 +529,7 @@ include("sidebar.php");
                                     </div>
                                 </div>
                                 <!--Retinoscopy tab2-->
-                                <div class="tab-pane fade" id="tab2">
+                                <div class="tab-pane fade active in" id="tab2">
                                     <h4>Retinoscopy</h4>
                                     <!--1st Panel-->
                                     <div class="panel panel-info">
@@ -595,7 +595,7 @@ include("sidebar.php");
                                                         <div class="col-sm-2" style="padding-left: 0">
                                                             <input type="number" step="1" min="0" class="form-control">
                                                         </div>
-                                                        <div class="col-sm-2" style="padding: 0; text-align: center;">
+                                                        <div class="col-sm-1" style="padding: 0; text-align: center;">
                                                             /
                                                         </div>
                                                         <div class="col-sm-2" style="padding-left: 0">
@@ -616,7 +616,7 @@ include("sidebar.php");
                                                         <div class="col-sm-2" style="padding-left: 0">
                                                             <input type="number" step="1" min="0" class="form-control">
                                                         </div>
-                                                        <div class="col-sm-2" style="padding: 0; text-align: center;">
+                                                        <div class="col-sm-1" style="padding: 0; text-align: center;">
                                                             /
                                                         </div>
                                                         <div class="col-sm-2" style="padding-left: 0">
@@ -637,7 +637,7 @@ include("sidebar.php");
                                                         <div class="col-sm-2" style="padding-left: 0">
                                                             <input type="number" step="1" min="0" class="form-control">
                                                         </div>
-                                                        <div class="col-sm-2" style="padding: 0; text-align: center;">
+                                                        <div class="col-sm-1" style="padding: 0; text-align: center;">
                                                             /
                                                         </div>
                                                         <div class="col-sm-2" style="padding-left: 0">
@@ -693,7 +693,7 @@ include("sidebar.php");
                                                         <div class="col-sm-2" style="padding-left: 0">
                                                             <input type="number" step="1" min="0" class="form-control">
                                                         </div>
-                                                        <div class="col-sm-2" style="padding: 0; text-align: center;">
+                                                        <div class="col-sm-1" style="padding: 0; text-align: center;">
                                                             /
                                                         </div>
                                                         <div class="col-sm-2" style="padding-left: 0">
@@ -711,7 +711,7 @@ include("sidebar.php");
                                                         <div class="col-sm-2" style="padding-left: 0">
                                                             <input type="number" step="1" min="0" class="form-control">
                                                         </div>
-                                                        <div class="col-sm-2" style="padding: 0; text-align: center;">
+                                                        <div class="col-sm-1" style="padding: 0; text-align: center;">
                                                             /
                                                         </div>
                                                         <div class="col-sm-2" style="padding-left: 0">
@@ -729,13 +729,22 @@ include("sidebar.php");
                                                         <div class="col-sm-2" style="padding-left: 0">
                                                             <input type="number" step="1" min="0" class="form-control">
                                                         </div>
-                                                        <div class="col-sm-2" style="padding: 0; text-align: center;">
+                                                        <div class="col-sm-1" style="padding: 0; text-align: center;">
                                                             /
                                                         </div>
                                                         <div class="col-sm-2" style="padding-left: 0">
                                                             <input type="text" class="form-control">
                                                         </div>
                                                     </div><br>
+                                                </div>
+                                            </div><br/>
+                                            <!--Rx Notes-->
+                                            <div class="row">
+                                                <div class="col-md-1">
+                                                    <label>Rx Notes</label>
+                                                </div>
+                                                <div class="col-md-10">
+                                                    <input type="text" class="form-control">
                                                 </div>
                                             </div><br>
                                             <!--pnl Adds-->
@@ -845,8 +854,7 @@ include("sidebar.php");
                                     <div class="panel panel-default">
                                         <div class="panel-heading"><label>Notes...</label></div>
                                         <div class="panel-body">
-                                            <textarea class="form-control" data-gramm="" data-txt_gramm_id="273721a4-5742-939d-7377-4fbe576814a0">
-                                            </textarea>
+                                            <textarea class="form-control" data-gramm="" data-txt_gramm_id="273721a4-5742-939d-7377-4fbe576814a0">                                            </textarea>
                                         </div>
                                     </div>
                                 </div>

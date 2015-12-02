@@ -96,7 +96,7 @@ if(isset($btnSubmit)){
             <!--Login panel-->
             <div class="login-panel panel panel-default">
                 <div class="panel-heading">
-                    <h3 class="panel-title">Please Log in to <i><?php echo NAME." ".VERSION; ?> New</i></h3>
+                    <h3 class="panel-title">Please Log in to <i><?php echo NAME." ".VERSION; ?></i></h3>
                 </div>
                 <div class="panel-body">
 

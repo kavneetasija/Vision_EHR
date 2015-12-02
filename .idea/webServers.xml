@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="9c2a9a20-2335-4767-af80-6fd8405128f8" name="GoogleDrive" url="http://localhost">
+        <fileTransfer mountedRoot="C:\Users\Dushyant\Google Drive\Profesional\CCB\VisionEHR" accessType="MOUNT" />
+      </webServer>
+    </option>
+  </component>
+</project>
