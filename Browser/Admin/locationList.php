@@ -14,16 +14,23 @@ require_once('../../Local/Classes/class.Location.inc');
 extract($_GET);
 //on load populate table with list of locations
 $location = new Location();
+//if delete is requested
+if($action == 'delete'){
+    $result = $location->deleteLocationByID($LocationID);
+    unset($action);
+}
+//get data to populate dataTable
 $schoolLocations = $location->getAllLocationsByType('School');
 $seniorLocations = $location->getAllLocationsByType('Senior home');
 
-if($action == 'delete'){
-    //todo delete record on request
-    echo "Data deleted";
-     unset($action);
-}
-if(isset($btnSubmit)){
 
+if(isset($editLocation)){
+    if($editLocation){
+        $notifications['editLocationSuccess'] = "Location successfully edited";
+    }
+    else{
+        $notifications['editLocationError'] = "Sorry! There was error in updating location value. Please check if location name already exist in system";
+    }
 }
 ?>
 <?php
@@ -34,6 +41,23 @@ include("sidebar.php");
     <form role="form" id="frm" method="get" action="<?php echo $_SERVER['PHP_SELF'];?>">
         <div class="form-group">
             <div id="page-wrapper">
+                <!--Notifications-->
+                <?php
+                if(isset($editLocation) && $editLocation){
+                    echo "<div class='row'>
+                        <div class='alert alert-success alert-dismissable'>
+                            <button type='button' class='close' data-dismiss='alert' aria-hidden='true'>×</button>$notifications[editLocationSuccess]
+                        </div>
+                      </div>";
+                }
+                if(isset($editLocation) && !$editLocation){
+                    echo "<div class='row'>
+                        <div class='alert alert-danger alert-dismissable'>
+                            <button type='button' class='close' data-dismiss='alert' aria-hidden='true'>×</button>$notifications[editLocationError]
+                        </div>
+                      </div>";
+                }
+                ?>
                 <div class="row">
                     <div class="col-lg-12">
                         <h1 class="page-header">Locations</h1>

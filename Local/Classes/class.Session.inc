@@ -26,7 +26,7 @@ class Session extends Location
             }
         }
         catch(Exception $e){
-            return $e->getMessage();
+            return false;
         }
 
     }
@@ -45,7 +45,13 @@ class Session extends Location
     //Update session by session id
     function updateAllSessionBySessionId($sessionId,$newDate){
         $sqlDeleteSession = "UPDATE tbl_sessions   SET tbl_sessions.date = '$newDate' WHERE tbl_sessions.session_id = '$sessionId'";
-        return ($this->queryDatabase($sqlDeleteSession));
+        $result = ($this->queryDatabase($sqlDeleteSession));
+        if($result){
+            return true;
+        }
+        else{
+            return false;
+        }
     }
 }
 ?>

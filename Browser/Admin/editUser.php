@@ -11,8 +11,8 @@ require_once("../../Local/Classes/class.User.inc");
 
 extract($_GET);
 $user = new User();
-if(isset($userID)){
-    $_SESSION['editUserID'] = $userID;
+if(isset($UserID)){
+    $_SESSION['editUserID'] = $UserID;
     //get query result
     $result = $user->readUserById($_SESSION['editUserID']);
     //fetch result data to fill in form

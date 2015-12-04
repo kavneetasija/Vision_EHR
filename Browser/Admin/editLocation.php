@@ -5,24 +5,28 @@
  * Date: 2015-10-28
  * Time: 4:16 PM
  */
-/*
- * Add header and side bar*/
-include("header.php");
-include("sidebar.php");
+
 //Required class
 require_once("../../Local/Classes/class.Location.inc");
 require_once("../../Local/Classes/class.Session.inc");
 extract($_GET);
-//set session variable
-if(isset($LocationID)){
-}
+
 //Location Object
 $location = new Location();
+//set session variable
+if(isset($LocationID)){
+    $_SESSION['editLocationID'] = $LocationID;
+}
+elseif(!isset($LocationID) && !isset($_SESSION['editLocationID'])){
+    header('location: locationList.php');
+}
+
+//Lode information for location
+$selectedLocation = $location->getAllLocationsById($_SESSION['editLocationID'] );
+$selectedLocation = mysqli_fetch_assoc($selectedLocation);
 //Load Doctors list
 $doctors = $location->getDoctorsList();
-//Lode information for location
-$selectedLocation = $location->getAllLocationsById($LocationID);
-$selectedLocation = mysqli_fetch_assoc($selectedLocation);
+
 //get all scheduled dates for selected location
 $session = new Session();
 //Check for delete request
@@ -34,22 +38,36 @@ $sessions = $session->getSessionByLocationId($selectedLocation['location_id']);
 
 //Update information on save
 if(isset($btnSubmit)){
-    //query to update location by id
-    $result = $location->updateLocationById($selectedLocation['location_id'],$txtLocationName,$drpLocationType,$txtReferenceName,$txtEmail,$txtPhone,$txtAddress,$txtCity,$drpProvince,$txtPostelCode,$drpDoctor);
-    //create new sessions if any added
+    //create new sessions if any added first
     foreach($txtSessionDate as $key => $date){
         if($date != null){
             //query to set session date
-            $sessions = $session->setSessionDateByLocation($selectedLocation['location_id'],$txtSessionDate[$key]);
-
+           $result = $session->setSessionDateByLocation($btnSubmit,$txtSessionDate[$key]);
         }
     }
-    //unset session variable
-    unset($_SESSION['LocationID']);
+    //if there is session value and it is true then update location info
+    if($result && isset($result)){
+        // then query to update location by id
+        $result = $location->updateLocationById($btnSubmit,$txtLocationName,$drpLocationType,$txtReferenceName,$txtEmail,$txtPhone,$txtAddress,$txtCity,$drpProvince,$txtPostelCode,$drpDoctor);
+    }
+    elseif(!isset($result)){
+        // then query to update location by id
+        $result = $location->updateLocationById($btnSubmit,$txtLocationName,$drpLocationType,$txtReferenceName,$txtEmail,$txtPhone,$txtAddress,$txtCity,$drpProvince,$txtPostelCode,$drpDoctor);
+    }
+    //if result is true then redirect to location list with token true or error message.
+    if(isset($result)){
+        //unset session variable
+        unset($_SESSION['LocationID']);
+        //redirect
+        header('location: locationList.php?editLocation='.$result);
+    }
 }
 ?>
 <?php
-
+/*
+ * Add header and side bar*/
+include("header.php");
+include("sidebar.php");
 ?>
 
 <form role="form" id="frm" method="get" action="<?php echo $_SERVER['PHP_SELF'];?>">
@@ -217,7 +235,7 @@ if(isset($btnSubmit)){
                         <!--Sve, Close-->
                         <div class="row">
                             <div class="col-md-offset-10  col-md-2">
-                                <button type="submit" name="btnSubmit" value="Submit" class="btn btn-primary">Save</button>
+                                <button type="submit" name="btnSubmit" value="<?php echo $selectedLocation['location_id'];?>" class="btn btn-primary">Save</button>
                                 <a class="btn btn-danger" href="locationList.php">Close</a>
                             </div>
                         </div>
@@ -230,7 +248,7 @@ if(isset($btnSubmit)){
 </form>
 <script>
     function warningDelete(locationId,sessionId) {
-        var response = confirm("Deleting session will remove appointment booked for the session");
+        var response = confirm("Deleting session  will remove appointment booked for the session");
         if (response == true) {
            window.location = "editLocation.php?Delete=true&LocationID="+locationId+"&SessionID="+sessionId;
         }

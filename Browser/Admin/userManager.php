@@ -12,7 +12,7 @@ extract($_GET);
 $user = new User();
 //Check if action = delete is requested then delete data.
 if($action == 'delete'){
-    $user->deleteUserById($userID);
+    $user->deleteUserById($UserID);
     //todo add message on delete.
 }
 //get query result to populate table
@@ -25,7 +25,6 @@ if(isset($userEdit)){
         $notifications['editUserError'] = $userEdit;
     }
 }
-
 ?>
 <?php
 include("header.php");
@@ -96,8 +95,8 @@ include("sidebar.php");
                                                 <td>$row[email]</td>
                                                 <td><b>Work</b> ($row[work_phone]) | <b>Cell</b> ($row[cell_phone])</td>
                                                 <td>$row[user_role]</td>
-                                                <td><a href='editUser.php?userID=$row[user_id]'><button type='button' class='btn btn-success btn-circle'><i class='fa fa-edit'></i></button></a></td>
-                                                <td><a href='userManager.php?action=delete&userID=$row[user_id]'><button type='button' class='btn btn-danger btn-circle'><i class='fa fa-times'></i></button></a></td>
+                                                <td><a href='editUser.php?UserID=$row[user_id]'><button type='button' class='btn btn-success btn-circle'><i class='fa fa-edit'></i></button></a></td>
+                                                <td><a href='userManager.php?action=delete&UserID=$row[user_id]'><button type='button' class='btn btn-danger btn-circle'><i class='fa fa-times'></i></button></a></td>
                                           </tr>";
                                 }
                                 ?>

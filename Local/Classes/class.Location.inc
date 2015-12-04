@@ -165,7 +165,18 @@ private $locationAddress;
                                                        assigned_doctor = '$assignedDoctor'
                                                         WHERE location_id = '$locationId'";
 
-        return $this->queryDatabase($sqlUpdateLocation);
+        $result =  $this->queryDatabase($sqlUpdateLocation);
+        if($result){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+    //Delete location by location_id
+    function deleteLocationByID($locationID){
+        $sqlDeleteLocation = "DELETE FROM tbl_locations WHERE location_id = '$locationID'";
+        return $this->queryDatabase($sqlDeleteLocation);
     }
 }
 ?>
