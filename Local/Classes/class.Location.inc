@@ -128,7 +128,7 @@ private $locationAddress;
 
     //get registered patients with no appointment date for location
     function getRegisteredPatients($locationId){
-        $sqlSelectPatients = "SELECT tbl_patients.patient_id, tbl_patients.first_name,tbl_patients.last_name,tbl_patients.birth_date,tbl_patients.OHIP_number,tbl_patients.gender,tbl_sessions.date,tbl_appointments.time FROM tbl_appointments
+        $sqlSelectPatients = "SELECT tbl_patients.patient_id, tbl_patients.first_name,tbl_patients.last_name,tbl_patients.birth_date,tbl_patients.OHIP_number,tbl_patients.gender,tbl_patients.type,tbl_sessions.date,tbl_appointments.time FROM tbl_appointments
                               right JOIN tbl_patients ON tbl_patients.patient_id = tbl_appointments.patient_id
                               left join tbl_sessions ON tbl_appointments.session_id = tbl_sessions.session_id
                               where tbl_patients.location_id = '$locationId';";

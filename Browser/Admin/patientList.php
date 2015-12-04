@@ -56,7 +56,8 @@ include("sidebar.php");
                                     <th>Date of birth</th>
                                     <th>OHIP #</th>
                                     <th>OHIP VC</th>
-                                    <th class="warning">Edit</th>
+                                    <th>Date</th>
+                                    <th>Time</th>
                                     <th class="warning">Edit</th>
                                 </tr>
                                 </thead>
@@ -70,8 +71,9 @@ include("sidebar.php");
                                                 <td>$student[birth_date]</td>
                                                 <td>$student[OHIP_number]</td>
                                                 <td>$student[OHIP_virsion]</td>
-                                                <td><button type='button' onclick='openWindowToBookAppointment($student[patient_id])' class='btn btn-circle btn-primary'><i class='fa fa-clock-o'></i></button> </td>
-                                                <td><a href='editPatient.php?type=Student&patientId=$student[patient_id]'><button type='button' class='btn btn-success btn-circle'><i class='fa fa-edit'></i></button></a></td>
+                                                <td>$student[date]</td>
+                                                <td>$student[time]</td>
+                                                <td><a href='editPatient.php?type=Student&PatientId=$student[patient_id]'><button type='button' class='btn btn-success btn-circle'><i class='fa fa-edit'></i></button></a></td>
                                             </tr>";
                                     }
                                 ?>
@@ -91,6 +93,8 @@ include("sidebar.php");
                                     <th>Date of birth</th>
                                     <th>OHIP #</th>
                                     <th>OHIP VC</th>
+                                    <th>Date</th>
+                                    <th>Time</th>
                                     <th class="warning">Edit</th>
                                 </tr>
                                 </thead>
@@ -104,7 +108,9 @@ include("sidebar.php");
                                               <td>$senior[birth_date]</td>
                                               <td>$senior[OHIP_number]</td>
                                               <td>$senior[OHIP_virsion]</td>
-                                              <td><a href='editPatient.php?type=Senior&patientId=$senior[patient_id]'><button type='button' class='btn btn-success btn-circle'><i class='fa fa-edit'></i></button></a></td>
+                                              <td>$senior[date]</td>
+                                              <td>$senior[time]</td>
+                                              <td><a href='editPatient.php?type=Senior&PatientId=$senior[patient_id]'><button type='button' class='btn btn-success btn-circle'><i class='fa fa-edit'></i></button></a></td>
                                          </tr>";
                                 }
                                 ?>

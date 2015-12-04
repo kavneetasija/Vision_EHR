@@ -152,7 +152,7 @@ include("sidebar.php");
                                         while($patientList = mysqli_fetch_assoc($registeredPatients)){
                                             $count++;
                                             echo "<tr>
-                                                    <td>$count</td>
+                                                    <td><a href='editPatient.php?type=$patientList[type]&PatientId=$patientList[patient_id]' class='btn btn-circle btn-primary' target='_blank'>$count</a></td>
                                                     <td>$patientList[first_name]</td>
                                                     <td>$patientList[last_name]</td>
                                                     <td>$patientList[birth_date]</td>

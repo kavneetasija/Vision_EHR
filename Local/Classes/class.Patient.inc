@@ -144,7 +144,10 @@ class Patient extends MySQLDatabase
 
     //Get All students to display
     function getAllPatientsByType($type){
-        $sqlSelectPatient = "SELECT * FROM tbl_patients WHERE type = '$type'";
+        $sqlSelectPatient = "SELECT tbl_patients.*,tbl_sessions.date,tbl_appointments.time FROM tbl_appointments
+                              right JOIN tbl_patients ON tbl_patients.patient_id = tbl_appointments.patient_id
+                              left join tbl_sessions ON tbl_appointments.session_id = tbl_sessions.session_id
+                              WHERE type = '$type'";
         $result = $this->queryDatabase($sqlSelectPatient);
         return $result;
     }
@@ -175,7 +178,6 @@ class Patient extends MySQLDatabase
     }
     //Insert Appointment data in tbl_appointments table.
     function bookAppointment($sessionId,$patientId,$time){
-        echo $patientId."P_ID";
         $sqlInsertAppointmentTime = "INSERT INTO tbl_appointments(session_id,patient_id,time)
                                       VALUES ('$sessionId','$patientId','$time')";
         $result = $this->queryDatabase($sqlInsertAppointmentTime);

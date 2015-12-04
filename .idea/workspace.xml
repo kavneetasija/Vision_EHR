@@ -2,17 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0ae9e9fa-acf0-4190-bb68-6e59912eb1a2" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Browser/Admin/editSession.php" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Browser/Admin/addNewLocation.php" afterPath="$PROJECT_DIR$/Browser/Admin/addNewLocation.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Browser/Admin/editLocation.php" afterPath="$PROJECT_DIR$/Browser/Admin/editLocation.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Browser/Admin/editUser.php" afterPath="$PROJECT_DIR$/Browser/Admin/editUser.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Browser/Admin/locationList.php" afterPath="$PROJECT_DIR$/Browser/Admin/locationList.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Browser/Admin/userManager.php" afterPath="$PROJECT_DIR$/Browser/Admin/userManager.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Browser/Admin/appointmentSchedule.php" afterPath="$PROJECT_DIR$/Browser/Admin/appointmentSchedule.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Browser/Admin/editPatient.php" afterPath="$PROJECT_DIR$/Browser/Admin/editPatient.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Browser/Admin/patientList.php" afterPath="$PROJECT_DIR$/Browser/Admin/patientList.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Local/Classes/class.Location.inc" afterPath="$PROJECT_DIR$/Local/Classes/class.Location.inc" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Local/Classes/class.Session.inc" afterPath="$PROJECT_DIR$/Local/Classes/class.Session.inc" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/notes" afterPath="$PROJECT_DIR$/notes" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Local/Classes/class.Patient.inc" afterPath="$PROJECT_DIR$/Local/Classes/class.Patient.inc" />
     </list>
     <ignored path="Vision_EHR.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -46,66 +40,74 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="addNewLocation.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Browser/Admin/addNewLocation.php">
+      <file leaf-file-name="patientList.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Browser/Admin/patientList.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.46685606">
-              <caret line="29" column="103" selection-start-line="29" selection-start-column="103" selection-end-line="29" selection-end-column="103" />
+            <state vertical-scroll-proportion="-30.538462">
+              <caret line="106" column="70" selection-start-line="106" selection-start-column="70" selection-end-line="106" selection-end-column="70" />
               <folding>
-                <element signature="e#3199#3233#0#HTML" expanded="true" />
-                <marker date="1449261752481" expanded="true" signature="2190:2467" placeholder="..." />
-                <marker date="1449261752481" expanded="true" signature="2265:2438" placeholder="..." />
+                <marker date="1449267114280" expanded="true" signature="2892:3776" placeholder="..." />
+                <marker date="1449267114280" expanded="true" signature="5128:5981" placeholder="..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="locationList.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Browser/Admin/locationList.php">
+      <file leaf-file-name="editPatient.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Browser/Admin/editPatient.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-10.461538">
-              <caret line="21" column="32" selection-start-line="21" selection-start-column="32" selection-end-line="21" selection-end-column="32" />
+            <state vertical-scroll-proportion="-4.576923">
+              <caret line="7" column="20" selection-start-line="7" selection-start-column="20" selection-end-line="7" selection-end-column="20" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="appointmentSchedule.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Browser/Admin/appointmentSchedule.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.6600379">
+              <caret line="154" column="191" selection-start-line="154" selection-start-column="191" selection-end-line="154" selection-end-column="191" />
               <folding>
-                <marker date="1449261042649" expanded="true" signature="1398:1684" placeholder="..." />
-                <marker date="1449261042649" expanded="true" signature="1474:1655" placeholder="..." />
-                <marker date="1449261042649" expanded="true" signature="1808:2091" placeholder="..." />
-                <marker date="1449261042649" expanded="true" signature="1883:2062" placeholder="..." />
-                <marker date="1449261042649" expanded="true" signature="4788:5996" placeholder="..." />
-                <marker date="1449261042649" expanded="true" signature="7550:8801" placeholder="..." />
+                <marker date="1449267826598" expanded="true" signature="3183:3757" placeholder="..." />
+                <marker date="1449267826598" expanded="true" signature="5091:5699" placeholder="..." />
+                <marker date="1449267826598" expanded="true" signature="8429:8517" placeholder="..." />
+                <marker date="1449267826598" expanded="true" signature="8429:9500" placeholder="..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="class.Session.inc" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Local/Classes/class.Session.inc">
+      <file leaf-file-name="patient.Edit.Student.inc" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Browser/Admin/patient.Edit.Student.inc">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-15.038462">
-              <caret line="28" column="24" selection-start-line="28" selection-start-column="24" selection-end-line="28" selection-end-column="24" />
-              <folding>
-                <marker date="1449259975682" expanded="true" signature="311:393" placeholder="INSERT INTO tbl_sessions..." />
-                <marker date="1449259975682" expanded="true" signature="924:1011" placeholder="SELECT sessi..." />
-                <marker date="1449259975682" expanded="true" signature="1195:1264" placeholder="DELETE FROM ..." />
-                <marker date="1449259975682" expanded="true" signature="1458:1559" placeholder="UPDATE tbl_s..." />
-              </folding>
+            <state vertical-scroll-proportion="-0.0">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="class.Location.inc" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Local/Classes/class.Location.inc">
+      <file leaf-file-name="class.Patient.inc" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Local/Classes/class.Patient.inc">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-38.0">
-              <caret line="178" column="15" selection-start-line="178" selection-start-column="15" selection-end-line="178" selection-end-column="15" />
+            <state vertical-scroll-proportion="-59.923077">
+              <caret line="155" column="27" selection-start-line="155" selection-start-column="13" selection-end-line="155" selection-end-column="27" />
               <folding>
-                <marker date="1449260651641" expanded="true" signature="505:770" placeholder="SELECT tbl_l..tbl_locations..." />
-                <marker date="1449260651641" expanded="true" signature="1358:1440" placeholder="INSERT INTO tbl_sessions..." />
-                <marker date="1449260651641" expanded="true" signature="3141:3406" placeholder="INSERT INTO tbl_locations..." />
-                <marker date="1449260651641" expanded="true" signature="4070:4132" placeholder="SELECT * FRO..tbl_locations..." />
-                <marker date="1449260651641" expanded="true" signature="4639:5146" placeholder="SELECT tbl_p..tbl_appointments..." />
-                <marker date="1449260651641" expanded="true" signature="5330:5407" placeholder="SELECT user_..tbl_users..." />
-                <marker date="1449260651641" expanded="true" signature="6490:7328" placeholder="UPDATE tbl_l..." />
-                <marker date="1449260651641" expanded="true" signature="7618:7677" placeholder="DELETE FROM ..." />
+                <marker date="1449266454475" expanded="true" signature="1709:1771" placeholder="SELECT locat..tbl_locations..." />
+                <marker date="1449266454475" expanded="true" signature="1940:2275" placeholder="INSERT INTO tbl_patients..." />
+                <marker date="1449266454475" expanded="true" signature="3703:3962" placeholder="INSERT INTO tbl_student_relations..." />
+                <marker date="1449266454475" expanded="true" signature="6065:6586" placeholder="INSERT INTO tbl_student_health..." />
+                <marker date="1449266454475" expanded="true" signature="7441:7675" placeholder="INSERT INTO tbl_senior_relations..." />
+                <marker date="1449266454475" expanded="true" signature="7877:7884" placeholder="SELECT tbl_p..tbl_appointments..." />
+                <marker date="1449266454475" expanded="true" signature="7877:8181" placeholder="SELECT tbl_p..tbl_appointments..." />
+                <marker date="1449266454475" expanded="true" signature="7877:8212" placeholder="SELECT tbl_p..tbl_appointments..." />
+                <marker date="1449266454475" expanded="true" signature="7877:8232" placeholder="SELECT * FRO..tbl_patients..." />
+                <marker date="1449266454475" expanded="true" signature="8419:8477" placeholder="SELECT * FRO..tbl_patients..." />
+                <marker date="1449266454475" expanded="true" signature="8688:8699" placeholder="SELECT tbl_l..tbl_patients..." />
+                <marker date="1449266454475" expanded="true" signature="8688:8916" placeholder="SELECT tbl_l..tbl_patients..." />
+                <marker date="1449266454475" expanded="true" signature="9171:9267" placeholder="SELECT * FRO..tbl_sessions..." />
+                <marker date="1449266454475" expanded="true" signature="9519:9656" placeholder="INSERT INTO tbl_appointments..." />
               </folding>
             </state>
           </provider>
@@ -126,10 +128,14 @@
         <option value="$PROJECT_DIR$/Browser/Admin/userManager.php" />
         <option value="$PROJECT_DIR$/Browser/Admin/editLocation.php" />
         <option value="$PROJECT_DIR$/Local/Classes/class.Session.inc" />
-        <option value="$PROJECT_DIR$/Local/Classes/class.Location.inc" />
         <option value="$PROJECT_DIR$/Browser/Admin/locationList.php" />
         <option value="$PROJECT_DIR$/Browser/Admin/addNewLocation.php" />
         <option value="$PROJECT_DIR$/notes" />
+        <option value="$PROJECT_DIR$/Local/Classes/class.Patient.inc" />
+        <option value="$PROJECT_DIR$/Browser/Admin/patientList.php" />
+        <option value="$PROJECT_DIR$/Browser/Admin/editPatient.php" />
+        <option value="$PROJECT_DIR$/Local/Classes/class.Location.inc" />
+        <option value="$PROJECT_DIR$/Browser/Admin/appointmentSchedule.php" />
       </list>
     </option>
   </component>
@@ -350,7 +356,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1616" height="1216" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.117609255" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -623,19 +629,22 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Local/Classes/class.Location.inc">
+    <entry file="file://$PROJECT_DIR$/notes">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-38.0">
-          <caret line="178" column="15" selection-start-line="178" selection-start-column="15" selection-end-line="178" selection-end-column="15" />
+        <state vertical-scroll-proportion="0.1728281">
+          <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Browser/Admin/addNewLocation.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-3.2692308">
+          <caret line="29" column="103" selection-start-line="29" selection-start-column="103" selection-end-line="29" selection-end-column="103" />
           <folding>
-            <marker date="1449260651641" expanded="true" signature="505:770" placeholder="SELECT tbl_l..tbl_locations..." />
-            <marker date="1449260651641" expanded="true" signature="1358:1440" placeholder="INSERT INTO tbl_sessions..." />
-            <marker date="1449260651641" expanded="true" signature="3141:3406" placeholder="INSERT INTO tbl_locations..." />
-            <marker date="1449260651641" expanded="true" signature="4070:4132" placeholder="SELECT * FRO..tbl_locations..." />
-            <marker date="1449260651641" expanded="true" signature="4639:5146" placeholder="SELECT tbl_p..tbl_appointments..." />
-            <marker date="1449260651641" expanded="true" signature="5330:5407" placeholder="SELECT user_..tbl_users..." />
-            <marker date="1449260651641" expanded="true" signature="6490:7328" placeholder="UPDATE tbl_l..." />
-            <marker date="1449260651641" expanded="true" signature="7618:7677" placeholder="DELETE FROM ..." />
+            <element signature="e#3199#3233#0#HTML" expanded="true" />
+            <marker date="1449261752481" expanded="true" signature="2190:2467" placeholder="..." />
+            <marker date="1449261752481" expanded="true" signature="2265:2438" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -655,7 +664,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Browser/Admin/locationList.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-10.461538">
+        <state vertical-scroll-proportion="0.16098484">
           <caret line="21" column="32" selection-start-line="21" selection-start-column="32" selection-end-line="21" selection-end-column="32" />
           <folding>
             <marker date="1449261042649" expanded="true" signature="1398:1684" placeholder="..." />
@@ -668,22 +677,113 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/notes">
+    <entry file="file://$PROJECT_DIR$/Browser/Admin/patient.Edit.Seniors.inc">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.1728281">
-          <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Browser/Admin/addNewLocation.php">
+    <entry file="file://$PROJECT_DIR$/Browser/Admin/patientList.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.46685606">
-          <caret line="29" column="103" selection-start-line="29" selection-start-column="103" selection-end-line="29" selection-end-column="103" />
+        <state vertical-scroll-proportion="-30.538462">
+          <caret line="106" column="70" selection-start-line="106" selection-start-column="70" selection-end-line="106" selection-end-column="70" />
           <folding>
-            <element signature="e#3199#3233#0#HTML" expanded="true" />
-            <marker date="1449261752481" expanded="true" signature="2190:2467" placeholder="..." />
-            <marker date="1449261752481" expanded="true" signature="2265:2438" placeholder="..." />
+            <marker date="1449267114280" expanded="true" signature="2892:3776" placeholder="..." />
+            <marker date="1449267114280" expanded="true" signature="5128:5981" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Local/Classes/class.Patient.inc">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-59.923077">
+          <caret line="155" column="27" selection-start-line="155" selection-start-column="13" selection-end-line="155" selection-end-column="27" />
+          <folding>
+            <marker date="1449266454475" expanded="true" signature="1709:1771" placeholder="SELECT locat..tbl_locations..." />
+            <marker date="1449266454475" expanded="true" signature="1940:2275" placeholder="INSERT INTO tbl_patients..." />
+            <marker date="1449266454475" expanded="true" signature="3703:3962" placeholder="INSERT INTO tbl_student_relations..." />
+            <marker date="1449266454475" expanded="true" signature="6065:6586" placeholder="INSERT INTO tbl_student_health..." />
+            <marker date="1449266454475" expanded="true" signature="7441:7675" placeholder="INSERT INTO tbl_senior_relations..." />
+            <marker date="1449266454475" expanded="true" signature="7877:7884" placeholder="SELECT tbl_p..tbl_appointments..." />
+            <marker date="1449266454475" expanded="true" signature="7877:8181" placeholder="SELECT tbl_p..tbl_appointments..." />
+            <marker date="1449266454475" expanded="true" signature="7877:8212" placeholder="SELECT tbl_p..tbl_appointments..." />
+            <marker date="1449266454475" expanded="true" signature="7877:8232" placeholder="SELECT * FRO..tbl_patients..." />
+            <marker date="1449266454475" expanded="true" signature="8419:8477" placeholder="SELECT * FRO..tbl_patients..." />
+            <marker date="1449266454475" expanded="true" signature="8688:8699" placeholder="SELECT tbl_l..tbl_patients..." />
+            <marker date="1449266454475" expanded="true" signature="8688:8916" placeholder="SELECT tbl_l..tbl_patients..." />
+            <marker date="1449266454475" expanded="true" signature="9171:9267" placeholder="SELECT * FRO..tbl_sessions..." />
+            <marker date="1449266454475" expanded="true" signature="9519:9656" placeholder="INSERT INTO tbl_appointments..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Browser/Admin/patient.Edit.Student.inc">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Browser/Admin/bookAppointment.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.48295453">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <marker date="1448902594299" expanded="true" signature="3073:3157" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Browser/Admin/editPatient.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-4.576923">
+          <caret line="7" column="20" selection-start-line="7" selection-start-column="20" selection-end-line="7" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Browser/Admin/addUser.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <marker date="1448902594168" expanded="true" signature="1128:1441" placeholder="..." />
+            <marker date="1448902594168" expanded="true" signature="1212:1404" placeholder="..." />
+            <marker date="1448902594168" expanded="true" signature="1576:1886" placeholder="..." />
+            <marker date="1448902594168" expanded="true" signature="1659:1849" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Local/Classes/class.Location.inc">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.35700756">
+          <caret line="130" column="195" selection-start-line="130" selection-start-column="195" selection-end-line="130" selection-end-column="195" />
+          <folding>
+            <marker date="1449267749294" expanded="true" signature="505:770" placeholder="SELECT tbl_l..tbl_locations..." />
+            <marker date="1449267749294" expanded="true" signature="1358:1440" placeholder="INSERT INTO tbl_sessions..." />
+            <marker date="1449267749294" expanded="true" signature="3141:3406" placeholder="INSERT INTO tbl_locations..." />
+            <marker date="1449267749294" expanded="true" signature="4070:4132" placeholder="SELECT * FRO..tbl_locations..." />
+            <marker date="1449267749294" expanded="true" signature="4639:5164" placeholder="SELECT tbl_p..tbl_appointments..." />
+            <marker date="1449267749294" expanded="true" signature="5348:5425" placeholder="SELECT user_..tbl_users..." />
+            <marker date="1449267749294" expanded="true" signature="6508:7346" placeholder="UPDATE tbl_l..." />
+            <marker date="1449267749294" expanded="true" signature="7636:7695" placeholder="DELETE FROM ..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Browser/Admin/appointmentSchedule.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.6600379">
+          <caret line="154" column="191" selection-start-line="154" selection-start-column="191" selection-end-line="154" selection-end-column="191" />
+          <folding>
+            <marker date="1449267826598" expanded="true" signature="3183:3757" placeholder="..." />
+            <marker date="1449267826598" expanded="true" signature="5091:5699" placeholder="..." />
+            <marker date="1449267826598" expanded="true" signature="8429:8517" placeholder="..." />
+            <marker date="1449267826598" expanded="true" signature="8429:9500" placeholder="..." />
           </folding>
         </state>
       </provider>
