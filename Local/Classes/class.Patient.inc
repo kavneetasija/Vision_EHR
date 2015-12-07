@@ -154,9 +154,18 @@ class Patient extends MySQLDatabase
 
     //get patient by ID
     function getPatientById($patientId){
-        $sqlSelectPatient = "SELECT * FROM tbl_patients WHERE patient_id = '$patientId'";
-        $result = $this->queryDatabase($sqlSelectPatient);
-        return $result;
+        $sqlSelectPatient = "SELECT tbl_patients.*,tbl_locations.name FROM tbl_patients LEFT JOIN tbl_locations ON tbl_locations.location_id = tbl_patients.location_id WHERE patient_id = '$patientId'";
+        return $result = $this->queryDatabase($sqlSelectPatient);
+    }
+    //get student relations by patient id
+    function getStudentRelationsByPatientId($patientId){
+        $sqlSelectStudentRelation = "SELECT * FROM tbl_student_relations WHERE tbl_student_relations.patient_id = '$patientId'";
+        return $result = $this->queryDatabase($sqlSelectStudentRelation);
+    }
+    //get student health history by patient id
+    function getHealthHistoryByPatientId($patientId){
+        $sqlSelectStudentHealth = "SELECT * FROM tbl_student_health WHERE tbl_student_health.patient_id = '$patientId'";
+        return $result = $this->queryDatabase($sqlSelectStudentHealth);
     }
 
     //get location name from patient id
