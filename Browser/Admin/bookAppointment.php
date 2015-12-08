@@ -11,12 +11,7 @@ extract($_GET);
 //Populate session date drop down derSession
 $patient = new Patient();
 $selectedPatient = $patient->getPatientById($patientID);
-//save patient id in session. To use at submit.
-if(!isset($_SESSION['patientID'])){
-    $_SESSION['patientID'] = $patientID;
-}
 $selectedPatient = mysqli_fetch_assoc($selectedPatient);
-
 //Registered location name
 $registeredLocation = $patient->getRegisteredLocation($selectedPatient['patient_id']);
 $registeredLocation = mysqli_fetch_assoc($registeredLocation);
@@ -25,15 +20,7 @@ $availableDates = $patient->getAvailableSessionDates($selectedPatient['location_
 //On submit insert data
 if(isset($btnSubmit)){
     if(isset($txtAppointment)){
-       $result = $patient->bookAppointment($drpSession,$_SESSION['patientID'],$txtAppointment);
-        print_r($result);
-        if($result){
-            unset($_SESSION['patientID']);
-            echo "<script>window.close();</script>";
-        }
-        else{
-            $notification['error'] = $result;
-        }
+       $result = $patient->bookAppointment($drpSession,$btnSubmit,$txtAppointment);
     }
 }
 ?>
@@ -105,7 +92,7 @@ if(isset($btnSubmit)){
                                 <input type="time"  name="txtAppointment">
                             </div>
                             <div class="form-group">
-                                <button id="btnSubmit" name="btnSubmit" value="submit" type="submit" class="btn btn-success">Book</button>
+                                <button id="btnSubmit" name="btnSubmit" value="<?php echo $patientID;?>" type="submit" class="btn btn-success">Book</button>
                                 <button id="btnClose" type="button" class="btn btn-danger" onclick="window.close();">Close</button>
                             </div>
                         </fieldset>

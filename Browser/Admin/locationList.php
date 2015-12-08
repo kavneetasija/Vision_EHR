@@ -108,7 +108,7 @@ include("sidebar.php");
                                                             <td>$school[phone]</td>
                                                             <td>$school[email]</td>
                                                             <td>$school[first_name] $school[last_name]</td>
-                                                            <td><a href='registerNewPatient.php?LocationName=$school[name]&Type=Student'><button type='button' class='btn btn-info btn-circle'><i class='fa fa-user'></i></button></a></td>
+                                                            <td><a href='registerNewPatient.php?LocationName=$urlSchoolName&Type=Student'><button type='button' class='btn btn-info btn-circle'><i class='fa fa-user'></i></button></a></td>
                                                             <td><a href='editLocation.php?LocationID=$school[location_id]'><button type='button' class='btn btn-success btn-circle'><i class='fa fa-edit'></i></button></a></td>
                                                             <td><a href='locationList.php?action=delete&LocationID=$school[location_id]'><button type='button' class='btn btn-danger btn-circle'><i class='fa fa-times'></i></button></a></td>
                                                   </tr>";

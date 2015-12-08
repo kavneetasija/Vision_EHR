@@ -8,7 +8,7 @@
 require_once('../../Local/Classes/config.inc');
 require_once('../../Local/Classes/class.SessionManager.inc');
 session_start();
-//Don't allow user to access this page with out logging in and if user role != "Admin"
+//Don't allow user to access this page with out logging in and if user role != "Doctor"
 //Check if user is login or redirect to log in page.
 if(isset($_SESSION['loginUserId'])){
     $userSession = new SessionManager();

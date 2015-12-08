@@ -7,10 +7,6 @@
  */
 require_once('../../Local/Classes/class.Patient.inc');
 extract($_GET);
-//check for patient id
-if(isset($PatientId)){
-
-}
 ?>
 <?php
 //Include header and sidebar
