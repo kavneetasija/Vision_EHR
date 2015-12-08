@@ -8,7 +8,7 @@ reformat Location and session classes before adding more methods.
 
 Go through workflow
 
-Query Update user
+Query Update patient
 UPDATE `vision_ehr`.`tbl_patients` SET `address`='1 Overlake Dr.', `city`='Ottawa', `province`='ON' WHERE `patient_id`='270';
 
 query for geting appointments by date

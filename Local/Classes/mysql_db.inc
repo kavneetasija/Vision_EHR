@@ -43,7 +43,7 @@ protected  $connection;
             }
         }
         catch(Exception $e){
-            return $e->getMessage();
+            return 'error message: '.$e->getMessage().' error code: '.$e->getCode();
         }
     }
 

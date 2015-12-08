@@ -7,6 +7,30 @@
  */
 //patient object
 $patient = new Patient();
+//check if form is submitted
+if(isset($btnSubmit)){
+    $PatientId = $btnSubmit;
+    //change basic info
+    $result['basic_info'] = $patient->updatePatientInfoById($PatientId,$txtStdLocation,$txtStdFirstName,$txtStdLastName,$txtStdOhipNumber,
+                                    $txtStdOhipVirsion,$txtStdBirthDate,$rdbStdGender,$txtStdAddress,$txtStdCity,
+                                    $drpStdProvince,$txtStdPostalCode);
+    //change relational info
+       $result['relations'] = $patient->updateStudentRelationInfoByPatientId($PatientId,$txtStdParentFirstName,$txtStdParentLastName,
+            $txtStdParentContact,$txtStdParentOptionalContact,$txtStdParentEmail,
+            $txtStdTeacherName,$txtStdGrade,$txtStdClass);
+    //Make single string of eye condition
+    if(isset($chkEyeCondition)){
+        if(isset($chkEyeCondition['0'])){$eyeConditions .= $chkEyeCondition['0'].",";}
+        if(isset($chkEyeCondition['1'])){$eyeConditions .= $chkEyeCondition['1'].",";}
+        if(isset($chkEyeCondition['2'])){$eyeConditions .= $chkEyeCondition['2'].",";}
+        if(isset($chkEyeCondition['3'])){$eyeConditions .=  $chkEyeCondition['3'].",";}
+        if(isset($chkEyeCondition['4'])){$eyeConditions .= $chkEyeCondition['4'];}
+    }
+    //change health history
+    $result['health'] = $patient->updateStudentHealthByPatientId($PatientId,$rdbShareInfo,$rdbFirstExam,$textFirstExam,$eyeConditions,$rdbMedicalCondition,
+        $txtMedicalCondition,$rdbMedication,$txtMedication,$rdbAllergies,$txtAllergies,$rdbRelative,$txtRelative,$txtOther);
+
+}
 //check for patient id
 if(isset($PatientId)){
     //get patient info by id
@@ -19,12 +43,43 @@ if(isset($PatientId)){
     $studentHealthHistory = $patient->getHealthHistoryByPatientId($patientInfo['patient_id']);
     $studentHealthHistory = mysqli_fetch_assoc($studentHealthHistory);
 }
+
 ?>
 <div class="row">
+    <div class="row">
+        <div class="col-md-12">
+            <?php
+                if(isset($result)){
+
+                    if($result['basic_info'] != 1){
+                        echo "<div class='alert alert-danger alert-dismissable'>
+                                <button type='button' class='close' data-dismiss='alert' aria-hidden='true'>×</button>$result[basic_info]
+                            </div>";
+                    }
+                    elseif($result['relations'] != 1){
+                        echo "<div class='alert alert-danger alert-dismissable'>
+                                <button type='button' class='close' data-dismiss='alert' aria-hidden='true'>×</button>$result[relations]
+                            </div>";
+                    }
+                    elseif($result['health'] != 1){
+                        echo "<div class='alert alert-danger alert-dismissable'>
+                                <button type='button' class='close' data-dismiss='alert' aria-hidden='true'>×</button>$result[health]
+                            </div>";
+                    }
+                    else{
+                        echo "<div class='alert alert-success alert-dismissable'>
+                                <button type='button' class='close' data-dismiss='alert' aria-hidden='true'>×</button>Patient info successfully edited
+                            </div>";
+                    }
+
+                }
+            ?>
+        </div>
+    </div>
     <div class="panel panel-primary">
         <div class="panel-heading">
             Patient Type:
-                <label>Student</label>
+            <input type="text" name="type" value="Student" style="color: black; display: none;">Student
         </div>
         <div class="panel panel-body">
             <!--Set location-->
@@ -318,16 +373,6 @@ if(isset($PatientId)){
                     </div>
                 </div>
             </div>
-            <!--Save info-->
-            <div class="row" style="text-align: center;">
-                <div class="col-md-6">
-                    <button type="submit" name="btnSubmit" class="btn btn-primary" value="<?php echo $patientInfo['patient_id']?>">Save</button>
-                </div>
-                <div class="col-md-6">
-                    <button type="button" class="btn btn-danger" onclick="window.close();" value="Reset">Close</button>
-                </div>
-            </div>
-        </div>
 
     </div>
 </div>

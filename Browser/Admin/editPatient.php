@@ -32,8 +32,19 @@ include("sidebar.php");
                     include('patient.Edit.Seniors.inc');
                 }
             ?>
-
+            <!--Save info-->
+            <div class="row" style="text-align: center;">
+                <div class="col-md-6">
+                    <button type="submit" name="btnSubmit" class="btn btn-primary" value="<?php echo $patientInfo['patient_id']?>">Save</button>
+                </div>
+                <div class="col-md-6">
+                    <button type="button" name="btnClose" class="btn btn-danger" onclick='window.open("patientList.php","_self");'>Close</button>
+                </div>
+            </div>
         </div>
+
+
+    </div>
     </div>
 </form>
 <?php  include("footer.php"); ?>
