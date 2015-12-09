@@ -7,7 +7,6 @@
  * Time: 7:18 PM
  */
 
-//todo move this method to location class
 ?>
 <?php
 class Session extends Location

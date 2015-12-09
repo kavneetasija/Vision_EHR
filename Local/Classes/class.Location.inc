@@ -126,7 +126,7 @@ private $locationAddress;
     }
 
 
-    //get registered patients with no appointment date for location
+    //get registered patients for location @ Appointment booking
     function getRegisteredPatients($locationId){
         $sqlSelectPatients = "SELECT tbl_patients.patient_id, tbl_patients.first_name,tbl_patients.last_name,tbl_patients.birth_date,tbl_patients.OHIP_number,tbl_patients.gender,tbl_patients.type,tbl_sessions.date,tbl_appointments.time FROM tbl_appointments
                               right JOIN tbl_patients ON tbl_patients.patient_id = tbl_appointments.patient_id
@@ -177,6 +177,27 @@ private $locationAddress;
     function deleteLocationByID($locationID){
         $sqlDeleteLocation = "DELETE FROM tbl_locations WHERE location_id = '$locationID'";
         return $this->queryDatabase($sqlDeleteLocation);
+    }
+
+
+    //Get all assigned location to a doctor for session Date
+    function getLocationForDoctorDashboard($doctorID){
+        $sqlSelectLocation = "SELECT tbl_locations.*,tbl_sessions.date,tbl_sessions.session_id,(select count(*) from tbl_appointments where tbl_appointments.session_id = tbl_sessions.session_id) as appointments
+                              FROM tbl_locations
+                              RIGHT JOIN tbl_sessions ON tbl_locations.location_id = tbl_sessions.location_id
+                              WHERE tbl_locations.assigned_doctor = '$doctorID' ORDER BY tbl_sessions.date";
+
+        return $this->queryDatabase($sqlSelectLocation);
+    }
+
+    //Get all appointments for session
+    function getAppointmentsBySessionId($sessionId){
+        $sqlSelectAppointments = "SELECT tbl_patients.*, tbl_sessions.date,tbl_appointments.time FROM tbl_appointments
+                                  LEFT JOIN tbl_patients ON tbl_appointments.patient_id = tbl_patients.patient_id
+                                  RIGHT JOIN tbl_sessions ON tbl_appointments.session_id = tbl_sessions.session_id
+                                  WHERE tbl_sessions.session_id = '$sessionId'";
+
+        return $this->queryDatabase($sqlSelectAppointments);
     }
 }
 ?>

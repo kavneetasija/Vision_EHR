@@ -4,7 +4,8 @@
  * User: Dushyant
  * Date: 2015-07-26
  * Time: 8:53 PM
- */?>
+ */
+?>
 
 
 <?php
@@ -12,6 +13,15 @@ include("header.php");
 //add css
 echo "<link href='../../Local/dist/css/eyeExam.css' rel='stylesheet'>";
 include("sidebar.php");
+?>
+
+<?php
+require_once('../../Local/Classes/class.Exam.php');
+$exam = new Exam();
+//get all patient basic inf
+$patientInfo = $exam->getPatientById($_SESSION['patientID_eyeExam']);
+$patientInfo = mysqli_fetch_assoc($patientInfo);
+
 ?>
 <form role="form" method="post" id="frm">
     <div class="form-group">
@@ -29,7 +39,7 @@ include("sidebar.php");
                 <div class="col-lg-12">
                     <div class="panel panel-primary">
                         <div class="panel-heading">
-                            <label> Billy Rubin</label>
+                            <label><?php echo "$patientInfo[first_name] $patientInfo[last_name]";?></label>
                         </div>
                         <!-- /.panel-heading -->
                         <div class="panel-body">
@@ -61,23 +71,27 @@ include("sidebar.php");
                                                     <div class="row">
                                                         <div class="col-md-6">
                                                             <label>Name</label>
-                                                            <p class="form-control-static">Billy Rubin</p>
+                                                            <p class="form-control-static">
+                                                                <?php echo "$patientInfo[first_name] $patientInfo[last_name]";?>
+                                                            </p>
                                                         </div>
                                                         <div class="col-md-6">
                                                             <label>Address</label>
-                                                            <p class="form-control-static">1791 Arastradero Rd,
-                                                                Palo Alto, CA 94304,
-                                                                United States</p>
+                                                            <p class="form-control-static">
+                                                                <?php
+                                                                    echo "$patientInfo[address]<br/>$patientInfo[city], $patientInfo[province]<br/>$patientInfo[postal_code]";
+                                                                ?>
+                                                            </p>
                                                         </div>
                                                     </div>
                                                     <div class="row">
                                                         <div class="col-md-6">
                                                             <label>Birth date</label>
-                                                            <p class="form-control-static">28 Feb 2000 (Age 15)</p>
+                                                            <p class="form-control-static"><?php echo"$patientInfo[birth_date]";?></p>
                                                         </div>
                                                         <div class="col-md-6">
                                                             <label>Health Card #</label>
-                                                            <p class="form-control-static">1234567890AD</p>
+                                                            <p class="form-control-static"><?php echo strtoupper("$patientInfo[OHIP_number]-$patientInfo[OHIP_virsion]");?></p>
                                                         </div>
                                                     </div>
                                                     <div class="row">
@@ -529,7 +543,7 @@ include("sidebar.php");
                                     </div>
                                 </div>
                                 <!--Retinoscopy tab2-->
-                                <div class="tab-pane fade active in" id="tab2">
+                                <div class="tab-pane fade" id="tab2">
                                     <h4>Retinoscopy</h4>
                                     <!--1st Panel-->
                                     <div class="panel panel-info">
@@ -1718,7 +1732,7 @@ include("sidebar.php");
                                 </div>
                                 <div class="col-md-4">
                                     <label>Doctor ID</label>
-                                    <i>######</i>
+                                    <i><?php echo $_SESSION['loginUserId'];?></i>
                                 </div>
                             </div>
                         </div>
