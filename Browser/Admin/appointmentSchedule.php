@@ -127,7 +127,7 @@ include("sidebar.php");
                         <div class="panel-body" id="pnlSchool">
                             <!--Responsive Data Table with pagination load table with ready information-->
                             <div class="dataTable_wrapper">
-                                <table class="table table-striped table-bordered table-hover">
+                                <table class="table table-striped table-bordered table-hover" id="dataTableStdPatient">
                                     <thead>
                                     <tr>
                                         <th>#</th>

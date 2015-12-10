@@ -57,7 +57,7 @@ include("sidebar.php");
                                                             <td>$location[type]</td>
                                                             <td>$location[date]</td>
                                                             <td>$location[appointments]</td>
-                                                            <td><a href='patientList.php?LocationID=$location[session_id]&Date=$location[date]'><button type='button' class='btn btn-info btn-circle'><i class='fa fa-stethoscope'></i></button></a></td>
+                                                            <td><a href='patientList.php?SessionID=$location[session_id]&Date=$location[date]'><button type='button' class='btn btn-info btn-circle'><i class='fa fa-stethoscope'></i></button></a></td>
                                                   </tr>";
                                         }
                                         else{

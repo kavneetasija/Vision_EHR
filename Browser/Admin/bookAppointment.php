@@ -21,6 +21,12 @@ $availableDates = $patient->getAvailableSessionDates($selectedPatient['location_
 if(isset($btnSubmit)){
     if(isset($txtAppointment)){
        $result = $patient->bookAppointment($drpSession,$btnSubmit,$txtAppointment);
+        if($result){
+            echo"<script>window.close()</script>";
+        }
+        else{
+            $notification['error'] = $result;
+        }
     }
 }
 ?>
