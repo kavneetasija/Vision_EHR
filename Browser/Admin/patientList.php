@@ -50,6 +50,7 @@ include("sidebar.php");
                             <table class="table table-striped table-bordered table-hover" id="dataTableStdPatient">
                                 <thead>
                                 <tr>
+                                    <th>#</th>
                                     <th>First Name</th>
                                     <th>Last Name</th>
                                     <th>Gender</th>
@@ -63,8 +64,10 @@ include("sidebar.php");
                                 </thead>
                                 <tbody>
                                 <?php
+                                $count = 1;
                                     foreach($studentList as $student){
                                         echo"<tr>
+                                                <td>$count</td>
                                                 <td>$student[first_name]</td>
                                                 <td>$student[last_name]</td>
                                                 <td>$student[gender]</td>
@@ -75,6 +78,7 @@ include("sidebar.php");
                                                 <td>$student[time]</td>
                                                 <td><a href='editPatient.php?type=Student&PatientId=$student[patient_id]'><button type='button' class='btn btn-success btn-circle'><i class='fa fa-edit'></i></button></a></td>
                                             </tr>";
+                                        $count++;
                                     }
                                 ?>
                                 </tbody>
@@ -87,6 +91,7 @@ include("sidebar.php");
                             <table class="table table-striped table-bordered table-hover" id="dataTableSerPatient">
                                 <thead>
                                 <tr>
+                                    <th>#</th>
                                     <th>First Name</th>
                                     <th>Last Name</th>
                                     <th>Gender</th>
@@ -100,8 +105,10 @@ include("sidebar.php");
                                 </thead>
                                 <tbody>
                                 <?php
+                                $count = 1;
                                 foreach($seniorList as $senior){
                                     echo"<tr>
+                                             <td>$count</td>
                                               <td>$senior[first_name]</td>
                                               <td>$senior[last_name]</td>
                                               <td>$senior[gender]</td>
@@ -112,6 +119,7 @@ include("sidebar.php");
                                               <td>$senior[time]</td>
                                               <td><a href='editPatient.php?type=Senior&PatientId=$senior[patient_id]'><button type='button' class='btn btn-success btn-circle'><i class='fa fa-edit'></i></button></a></td>
                                          </tr>";
+                                    $count++;
                                 }
                                 ?>
                                 </tbody>

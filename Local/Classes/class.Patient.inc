@@ -159,7 +159,7 @@ class Patient extends MySQLDatabase
         $sqlSelectPatient = "SELECT tbl_patients.*,tbl_sessions.date,tbl_appointments.time FROM tbl_appointments
                               right JOIN tbl_patients ON tbl_patients.patient_id = tbl_appointments.patient_id
                               left join tbl_sessions ON tbl_appointments.session_id = tbl_sessions.session_id
-                              WHERE type = '$type'";
+                              WHERE type = '$type' ORDER BY tbl_patients.patient_id DESC";
         $result = $this->queryDatabase($sqlSelectPatient);
         return $result;
     }
