@@ -16,6 +16,13 @@
           </mappings>
         </serverdata>
       </paths>
+      <paths name="pateldushyant.com">
+        <serverdata>
+          <mappings>
+            <mapping deploy="/ehr" local="$PROJECT_DIR$" web="/ehr/ehr" />
+          </mappings>
+        </serverdata>
+      </paths>
     </serverData>
     <option name="myAutoUpload" value="ALWAYS" />
   </component>

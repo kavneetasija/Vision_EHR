@@ -36,7 +36,7 @@ if(isset($btnSubmit)){
     elseif($drpPatientType == "Senior"){
         $patient = new Patient();
         //create new patient and get sql result, inserted id or error on fail.
-        $result = $patient->createPatient($txtSerLocation,$txtSerFirstName,$txtSerLastName,$txtSerOhipNumber,$txtSerOhipVirsion,$txtSerBirthDate,$rdbSerGender,$txtSerAddress,$txtSerCity,$drpSerProvince,$txtSerPostalCode,$drpPatientTy);
+        $result = $patient->createPatient($txtSerLocation,$txtSerFirstName,$txtSerLastName,$txtSerOhipNumber,$txtSerOhipVirsion,$txtSerBirthDate,$rdbSerGender,$txtSerAddress,$txtSerCity,$drpSerProvince,$txtSerPostalCode,$drpPatientType);
         //notify when patent is registered.
         $notifications['createSenior'] = $result['sqlResult'];
         if($result['sqlResult']){

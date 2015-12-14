@@ -21,6 +21,9 @@ $exam = new Exam();
 //get all patient basic inf
 $patientInfo = $exam->getPatientById($_SESSION['patientID_eyeExam']);
 $patientInfo = mysqli_fetch_assoc($patientInfo);
+//get student health info
+$studentHealthHistory = $exam->getHealthHistoryByPatientId($_SESSION['patientID_eyeExam']);
+$studentHealthHistory = mysqli_fetch_assoc($studentHealthHistory);
 
 ?>
 <form role="form" method="post" id="frm">
@@ -39,7 +42,14 @@ $patientInfo = mysqli_fetch_assoc($patientInfo);
                 <div class="col-lg-12">
                     <div class="panel panel-primary">
                         <div class="panel-heading">
-                            <label><?php echo "$patientInfo[first_name] $patientInfo[last_name]";?></label>
+                            <div class="row">
+                                <div class="col-md-11">
+                                    <label><?php echo "$patientInfo[first_name] $patientInfo[last_name]";?></label>
+                                </div>
+                                <div class="col-md-1">
+                                    <button class="btn btn-success" type="submit" value="updateExam">Save</button>
+                                </div>
+                            </div>
                         </div>
                         <!-- /.panel-heading -->
                         <div class="panel-body">
@@ -113,65 +123,147 @@ $patientInfo = mysqli_fetch_assoc($patientInfo);
                                         </div>
                                     </div>
                                     <!--Health History-->
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <div class="panel panel-info">
-                                                <div class="panel-heading">
-                                                    <label>Health History</label>
+                                    <div class="panel panel-info" <?php if($patientInfo['type'] == 'Senior'){echo "style = 'display: none;'";}?>>
+                                        <div class="panel-heading">
+                                            <label>Health History</label>
+                                        </div>
+                                        <div class="panel-body">
+                                            <!--1Share info-->
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <label>1. Give permission to share information with school's principal. </label>
+                                                    <div class="radio-inline">
+                                                        <label><input type="radio" name="rdbShareInfo"  value="No" <?php if($studentHealthHistory['share_info']==='No'){echo 'checked';}?>>No</label>
+                                                    </div>
+                                                    <div class="radio-inline">
+                                                        <label><input type="radio" name="rdbShareInfo"  value="Yes" <?php if($studentHealthHistory['share_info']==='Yes'){echo 'checked';}?>>Yes</label>
+                                                    </div>
                                                 </div>
-                                                <div class="panel-body">
-                                                    <div class="row">
-                                                        <div class="col-md-12">
-                                                            <label>Already see an eye doctor ?</label>
-                                                            <p class="form-control-static">No</p>
+                                            </div>
+
+                                            <!--2is 1st eye exam-->
+                                            <div class="row">
+                                                <div class="col-md-7">
+                                                    <label>2.This is the 1<sup>st</sup> eye exam for my child with an eye doctor (optometrist).</label>
+                                                    <div class="radio-inline">
+                                                        <label><input type="radio" name="rdbFirstExam" value="No" <?php if($studentHealthHistory['first_exam']==='No'){echo 'checked';}?>>No</label>
+                                                    </div>
+                                                    <div class="radio-inline">
+                                                        <label><input type="radio" name="rdbFirstExam" value="Yes" <?php if($studentHealthHistory['first_exam']==='Yes'){echo 'checked';}?>>Yes</label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-5">
+                                                    <label>If no when was his/her last exam (Year)</label>
+                                                    <input type="text" name="textFirstExam" value="<?php echo $studentHealthHistory['last_exam_year'];?>">
+                                                </div>
+                                            </div>
+
+                                            <!--3Eye Condition-->
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="form-group">
+                                                        <label>3. Please check off any of the following eye conditions your child currently has or has had in the past:</label>
+                                                        <div class="checkbox">
+                                                            <label><input type="checkbox" name="chkEyeCondition[]" value="Turned Eye"<?php if(strpos($studentHealthHistory['eye_condition'],'Turned Eye')!== false){echo 'checked';}?>> Turned Eye</label>
+                                                        </div>
+                                                        <div class="checkbox">
+                                                            <label><input type="checkbox" name="chkEyeCondition[]" value="Eye Surgery"<?php if(strpos($studentHealthHistory['eye_condition'],'Eye Surgery')!== false){echo 'checked';}?>> Eye Surgery</label>
+                                                        </div>
+                                                        <div class="checkbox">
+                                                            <label><input type="checkbox" name="chkEyeCondition[]" value="Color Vision Defect" <?php if(strpos($studentHealthHistory['eye_condition'],'Color Vision Defect')!== false){echo 'checked';}?>> Color Vision Defect</label>
+                                                        </div>
+                                                        <div class="checkbox">
+                                                            <label><input type="checkbox" name="chkEyeCondition[]" value="Patching Therapy" <?php if(strpos($studentHealthHistory['eye_condition'],'Patching Therapy')!== false){echo 'checked';}?>> Patching Therapy</label>
+                                                        </div>
+                                                        <div class="checkbox">
+                                                            <label><input type="checkbox" name="chkEyeCondition[]" value="Uses/Used glasses" <?php if(strpos($studentHealthHistory['eye_condition'],'Uses/Used glasses')!== false){echo 'checked';}?>>Uses/Used glasses</label>
                                                         </div>
                                                     </div>
-                                                    <div class="row">
-                                                        <div class="col-md-12">
-                                                            <label>This is 1<sup>st</sup> Eye Exam with an optometrist ?</label>
-                                                            <p class="form-control-static">No</p>
+                                                </div>
+                                            </div>
+
+                                            <!--4medical conditions-->
+                                            <div class="row">
+                                                <div class="col-lg-12">
+                                                    <div class="form-group">
+                                                        <label>4. List any medical conditions.</label>
+                                                        <div class="radio-inline">
+                                                            <label><input type="radio" name="rdbMedicalCondition" value="No" <?php if($studentHealthHistory['medical_condition']==='No'){echo 'checked';}?>>No</label>
+                                                        </div>
+                                                        <div class="radio-inline">
+                                                            <label><input type="radio" name="rdbMedicalCondition" value="Yes" <?php if($studentHealthHistory['medical_condition']==='Yes'){echo 'checked';}?>>Yes</label>
+                                                        </div>
+                                                        <div id="txtRelative">
+                                                            <label>Please specify</label><textarea class="form-control" name="txtMedicalCondition" rows="3"><?php echo $studentHealthHistory['medical_condition_text'];?></textarea>
                                                         </div>
                                                     </div>
-                                                    <div class="row">
-                                                        <div class="col-md-12">
-                                                            <label>Date of last eye exam?</label>
-                                                            <p class="form-control-static">2013</p>
+                                                </div>
+                                            </div>
+
+                                            <!--5Medications-->
+                                            <div class="row">
+                                                <!--Medication-->
+                                                <div class="col-lg-12">
+                                                    <div class="form-group">
+                                                        <label>5. Is your child currently taking any MEDICATION?</label>
+                                                        <div class="radio-inline">
+                                                            <label><input type="radio" name="rdbMedication" value="No" <?php if($studentHealthHistory['medication']==='No'){echo 'checked';}?>>No</label>
+                                                        </div>
+                                                        <div class="radio-inline">
+                                                            <label><input type="radio" name="rdbMedication" value="Yes" <?php if($studentHealthHistory['medication']==='Yes'){echo 'checked';}?>>Yes</label>
+                                                        </div>
+                                                        <div id="txtMedication">
+                                                            <label>Please specify</label><textarea class="form-control" name="txtMedication" rows="3"><?php echo $studentHealthHistory['medication_text'];?></textarea>
                                                         </div>
                                                     </div>
-                                                    <div class="row">
-                                                        <div class="col-md-12">
-                                                            <label>Ocular history</label>
-                                                            <p class="form-control-static">Color Vision Defect</p>
+                                                </div>
+                                            </div>
+
+                                            <!--6Allergies-->
+                                            <div class="row">
+                                                <div class="col-lg-12">
+                                                    <div class="form-group">
+                                                        <label>6. Does your child have any known ALLERGIES?</label>
+                                                        <div class="radio-inline">
+                                                            <label><input type="radio" name="rdbAllergies" value="No" <?php if($studentHealthHistory['allergies']==='No'){echo 'checked';}?>>No</label>
+                                                        </div>
+                                                        <div class="radio-inline">
+                                                            <label><input type="radio" name="rdbAllergies" value="Yes" <?php if($studentHealthHistory['allergies']==='Yes'){echo 'checked';}?>>Yes</label>
+                                                        </div>
+                                                        <div id="txtAllergies">
+                                                            <label>Please specify</label><textarea class="form-control" name="txtAllergies" rows="3"><?php echo $studentHealthHistory['allergies_text'];?></textarea>
                                                         </div>
                                                     </div>
-                                                    <div class="row">
-                                                        <div class="col-md-12">
-                                                            <label>Medical condition</label>
-                                                            <p class="form-control-static">N/A</p>
+                                                </div>
+                                            </div>
+
+                                            <!--7Relatives have Eye disease-->
+                                            <div class="row">
+                                                <div class="col-lg-12">
+                                                    <div class="form-group">
+                                                        <label>7. Do any of your child's relatives have an eye disease ?</label>
+                                                        <div class="radio-inline">
+                                                            <label><input type="radio" name="rdbRelative" value="No" <?php if($studentHealthHistory['relative_eye_condition']==='No'){echo 'checked';}?>>No</label>
+                                                        </div>
+                                                        <div class="radio-inline">
+                                                            <label><input type="radio" name="rdbRelative" value="Yes" <?php if($studentHealthHistory['relative_eye_condition']==='Yes'){echo 'checked';}?>>Yes</label>
+                                                        </div>
+                                                        <div id="txtRelative">
+                                                            <label>Please specify</label><textarea class="form-control" name="txtRelative" rows="3"><?php echo $studentHealthHistory['relative_eye_condition_text'];?></textarea>
                                                         </div>
                                                     </div>
-                                                    <div class="row">
-                                                        <div class="col-md-12">
-                                                            <label>Family history</label>
-                                                            <p class="form-control-static">N/A</p>
-                                                        </div>
-                                                    </div>
-                                                    <div class="row">
-                                                        <div class="col-md-6">
-                                                            <label>ALLERGIES</label>
-                                                            <p class="form-control-static">N/A</p>
-                                                        </div>
-                                                        <div class="col-md-6">
-                                                            <label>MEDICATION</label>
-                                                            <p class="form-control-static">Anti inflammatory.</p>
-                                                        </div>
-                                                    </div>
-                                                    <div class="row">
-                                                        <div class="col-md-12">
-                                                            <label>Other symptoms</label>
-                                                            <p class="form-control-static">N/A</p>
-                                                        </div>
-                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <!--8Other symptoms-->
+                                            <div class="row">
+                                                <div class="col-lg-12">
+                                                    <label>8. Please list any symptoms your child has in regards to his/her vision and/or eye
+                                                        health including eye strain and headaches and any triggers for these symptoms such as
+                                                        reading, TV, etc. Also list any concerns regarding your child's performance in school,
+                                                        sports, or other activities:
+                                                        <textarea class="form-control" name="txtOther" rows="3"><?php echo $studentHealthHistory['other_text'];?></textarea>
+                                                    </label>
                                                 </div>
                                             </div>
                                         </div>
@@ -1724,11 +1816,11 @@ $patientInfo = mysqli_fetch_assoc($patientInfo);
                             <div class="row">
                                 <div class="col-md-4">
                                     <label>Patient ID:</label>
-                                    <i>##########</i>
+                                    <i><?php echo "$patientInfo[patient_id]";?></i>
                                 </div>
                                 <div class="col-md-4">
                                     <label>Location Name:</label>
-                                    <i>Name of location</i>
+                                    <i><?php echo "$patientInfo[name]";?></i>
                                 </div>
                                 <div class="col-md-4">
                                     <label>Doctor ID</label>

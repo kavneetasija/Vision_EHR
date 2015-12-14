@@ -5,6 +5,13 @@
       <webServer id="9c2a9a20-2335-4767-af80-6fd8405128f8" name="GoogleDrive" url="http://localhost">
         <fileTransfer mountedRoot="C:\Users\Dushyant\Google Drive\Profesional\CCB\VisionEHR" accessType="MOUNT" />
       </webServer>
+      <webServer id="2b8db4b7-51c2-44df-b367-5f71f2fd12f7" name="pateldushyant.com" url="http://pateldushyant.com">
+        <fileTransfer host="ftp.pateldushyant.com" port="21" rootFolder="/public_html/ehr" password="dfe1dfcbdfcfdfc3dfc5dfdfdfe1df9bdf99df99df9bdf89df89df8e" username="patel095">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
     </option>
   </component>
 </project>
