@@ -43,7 +43,8 @@ else{
 
     <!-- Custom CSS -->
     <link href="../../Local/dist/css/sb-admin-2.css" rel="stylesheet">
-
+    <!--CKEDITOR CDN-->
+    <script src="../../Local/Resources/ckeditor/ckeditor.js"></script>
 
     <!-- DataTables CSS -->
     <link href="https://cdn.datatables.net/1.10.9/css/dataTables.bootstrap.min.css" rel="stylesheet">

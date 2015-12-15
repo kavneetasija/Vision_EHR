@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="DataSourceManagerImpl" format="xml" hash="2557556349">
+  <component name="DataSourceManagerImpl" format="xml" hash="1543465929">
     <data-source source="LOCAL" name="MySQL - vision_ehr@localhost" uuid="76b809f5-9980-4d06-8683-582355a904d2">
       <driver-ref>mysql</driver-ref>
       <synchronize>true</synchronize>

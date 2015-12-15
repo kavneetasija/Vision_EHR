@@ -36,42 +36,4 @@ function GetPage($URL)
     return $source;
 }
 
-function SaveToDB($source)
-{
-    #Connect to the DB
-    $db = mysqli_connect('localhost', 'root', 'dp1991dp');
-
-    #Select the DB name
-    mysqli_select_db('vision_ehr');
-
-    #Ask for UTF-8 encoding
-    mysqli_query("SET NAMES 'utf8'");
-
-    #Escape special chars
-    $source = mysqli_real_escape_string($source);
-
-    #Set the Query
-    $query = "INSERT INTO website (source) VALUES ('$source')"; //Save it in a text row, that's it...
-
-    #Run the query
-    mysqli_query($query);
-
-    #Close the connection
-    mysqli_close($db);
-}
-
-if(isset($btnSubmit)){
-   echo $this->GetPage($txtUrl);
-}
 ?>
-<html>
-<head>
-    <title>Title</title>
-</head>
-<body>
-<form method="get">
-    <input type="text" name="txtUrl">
-    <button type="submit" value="submit" name="btnSubmit" >Submit</button>
-</form>
-</body>
-</html>

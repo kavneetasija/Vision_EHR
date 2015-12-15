@@ -17,6 +17,7 @@ include("sidebar.php");
 
 <?php
 require_once('../../Local/Classes/class.Exam.php');
+extract($_POST);
 $exam = new Exam();
 //get all patient basic inf
 $patientInfo = $exam->getPatientById($_SESSION['patientID_eyeExam']);
@@ -47,22 +48,25 @@ $studentHealthHistory = mysqli_fetch_assoc($studentHealthHistory);
                                     <label><?php echo "$patientInfo[first_name] $patientInfo[last_name]";?></label>
                                 </div>
                                 <div class="col-md-1">
-                                    <button class="btn btn-success" type="submit" value="updateExam">Save</button>
+                                    <button class="btn btn-success" id="btnSave" name = "btnSave" type="submit" value="updateExam" style="display: none;">Save</button>
                                 </div>
                             </div>
+                        </div>
+                        <div id="temp">
+
                         </div>
                         <!-- /.panel-heading -->
                         <div class="panel-body">
                             <!-- Nav tabs -->
                             <ul class="nav nav-tabs">
                                 <li class="active"><a href="#tab0" data-toggle="tab" aria-expanded="true">Patient Info.</a></li>
-                                <li class=""><a href="#tab1" data-toggle="tab" aria-expanded="false">Acuities</a></li>
-                                <li class=""><a href="#tab2" data-toggle="tab" aria-expanded="false">Retinoscopy</a></li>
-                                <li class=""><a href="#tab3" data-toggle="tab" aria-expanded="false">External</a></li>
-                                <li class=""><a href="#tab4" data-toggle="tab" aria-expanded="false">Internal</a></li>
-                                <li class=""><a href="#tab5" data-toggle="tab" aria-expanded="false">Tonometry</a></li>
-                                <li class=""><a href="#tab6" data-toggle="tab" aria-expanded="false">Diagnosis &amp; Summary</a></li>
-                                <li class=""><a href="#tab7" data-toggle="tab" aria-expanded="false">Billing info</a></li>
+                                <li class="" onclick="setElementName('tab1','Acuities')"><a href="#tab1" data-toggle="tab" aria-expanded="false">Acuities</a></li>
+                                <li class="" onclick="setElementName('tab2','Retinoscopy')"><a href="#tab2" data-toggle="tab" aria-expanded="false">Retinoscopy</a></li>
+                                <li class="" onclick="setElementName('tab3','External')"><a href="#tab3" data-toggle="tab" aria-expanded="false">External</a></li>
+                                <li class="" onclick="setElementName('tab4','Internal')"><a href="#tab4" data-toggle="tab" aria-expanded="false">Internal</a></li>
+                                <li class="" onclick="setElementName('tab5','Tonometry')"><a href="#tab5" data-toggle="tab" aria-expanded="false">Tonometry</a></li>
+                                <li class="" onclick="setElementName('tab6','Diagnosis')"><a href="#tab6" data-toggle="tab" aria-expanded="false">Diagnosis &amp; Summary</a></li>
+                                <li class="" onclick="setElementName('tab7','Billing')"><a href="#tab7" data-toggle="tab" aria-expanded="false">Billing info</a></li>
                             </ul>
 
                             <!--Eye exam Tab panes -->
@@ -278,13 +282,13 @@ $studentHealthHistory = mysqli_fetch_assoc($studentHealthHistory);
                                     </div>
                                 </div>
                                 <!--Acuities tab1-->
-                                <div class="tab-pane fade" id="tab1">
+                                <div class="tab-pane fade"  id="tab1">
                                     <h4>Acuities</h4>
                                     <!--row 1 Recorded as-->
                                     <div class="row">
                                         <div class="col-lg-12">
                                             <label>Recorded as:</label>
-                                            <select name="drpAcuitiesRecordedAs" class="form-control mediumText"><!--todo ask for options to set values type-->
+                                            <select class="form-control mediumText"><!--todo ask for options to set values type-->
                                                 <option>Select one......</option>
                                                 <option>Snellen</option>
                                                 <!--<option>Letters</option>
@@ -635,7 +639,7 @@ $studentHealthHistory = mysqli_fetch_assoc($studentHealthHistory);
                                     </div>
                                 </div>
                                 <!--Retinoscopy tab2-->
-                                <div class="tab-pane fade" id="tab2">
+                                <div class="tab-pane fade"  id="tab2">
                                     <h4>Retinoscopy</h4>
                                     <!--1st Panel-->
                                     <div class="panel panel-info">
@@ -965,7 +969,7 @@ $studentHealthHistory = mysqli_fetch_assoc($studentHealthHistory);
                                     </div>
                                 </div>
                                 <!--External tab3-->
-                                <div class="tab-pane fade" id="tab3">
+                                <div class="tab-pane fade"  id="tab3">
                                     <h4>External</h4>
                                     <div class="row">
                                         <div class="col-md-12">
@@ -1815,12 +1819,16 @@ $studentHealthHistory = mysqli_fetch_assoc($studentHealthHistory);
                         <div class="panel-footer">
                             <div class="row">
                                 <div class="col-md-4">
+                                    <label>Location Name:</label>
+                                    <i><?php echo "$patientInfo[name]";?></i>
+                                </div>
+                                <div class="col-md-2">
                                     <label>Patient ID:</label>
                                     <i><?php echo "$patientInfo[patient_id]";?></i>
                                 </div>
-                                <div class="col-md-4">
-                                    <label>Location Name:</label>
-                                    <i><?php echo "$patientInfo[name]";?></i>
+                                <div class="col-md-2">
+                                    <label>Exam ID:</label>
+                                    <i><?php echo $_SESSION['examID_eyeExam'];?></i>
                                 </div>
                                 <div class="col-md-4">
                                     <label>Doctor ID</label>
@@ -1834,25 +1842,7 @@ $studentHealthHistory = mysqli_fetch_assoc($studentHealthHistory);
         </div><!--#Wrapper-->
 
 
-        <script>
 
-            /*add gtts in gttsList.xml file*/
-            /*Set curent time function*/
-            function setCurentTime(txtID){
-                var txtNow = document.getElementById(txtID);
-                var now = new Date();
-                var min = ("0"+ now.getMinutes()).slice(-2);
-                var hr = ("0"+ now.getHours()).slice(-2);
-                txtNow.value = hr +":"+ min;
-            }
-            /*Generate rx from retinoscopy to Diagnosis and summary displaying prescription*/
-            //    var btnRx = document.getElementById("btnRx");
-            //    btnRx.onclick = function(){
-            //        var pnlRx = document.getElementById("pnlRx");
-            //            pnlRx.style.display = 'block';
-            //    };
-
-        </script>
 
 
         <!-- jQuery -->
@@ -1875,7 +1865,43 @@ $studentHealthHistory = mysqli_fetch_assoc($studentHealthHistory);
 
 
 
-    </div></form>
+    </div></form></body>
+
+<script>
+
+  /*  //replace text area with ckedit
+    CKEDITOR.replace( 'txtPatientInfoNotes' );*/
+
+    //submit data via ajax
+    var saveForm = function(){
+        var data = $('#frm').serialize();
+        console.log(data);
+        $.post('eyeExam.php', data);
+    };
+
+    //Assign name attribute to elements in each tab todo filter testing strings
+    function setElementName(id,pnlName){
+
+        if(id == 'tab6'){
+            document.getElementById('btnSave').style.display = 'block';
+        }
+        var searchText = document.getElementById(id).getElementsByTagName('input');
+        var searchSelect = document.getElementById(id).getElementsByTagName('select');
+        //loop through inputs
+        for(var i = 0; i < searchText.length; i++){
+            searchText[i].setAttribute('name',pnlName+'_'+searchText[i].tagName+'_'+i);
+            document.getElementById('temp').innerHTML +=(searchText[i].name)+'<br/>';
+        }
+        //loop through selects
+        for(var j = 0; j < searchSelect.length; j++){
+            searchSelect[j].setAttribute('name',pnlName+'_'+searchSelect[j].tagName+'_'+j);
+            document.getElementById('temp').innerHTML +=(searchSelect[j].name)+'<br/>';
+
+        }
+    }
+
+  // setInterval(saveForm, 15000);
+</script>
 <script>
 
     /*add gtts in gttsList.xml file*/
@@ -1895,5 +1921,3 @@ $studentHealthHistory = mysqli_fetch_assoc($studentHealthHistory);
 //    };
 
 </script>
-
-<?php  include("footer.php"); ?>
