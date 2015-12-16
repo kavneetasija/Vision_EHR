@@ -10,7 +10,7 @@ include('class.Patient.inc');
 class Exam extends Patient
 {
     //create new exam
-   function createExamByPatientId($patientId){
+   function createExamByPatientId($patientId,$doctorId){
        //timestamp
        $examTime =  date('Y-m-d H:i:s');
        //get location id
@@ -19,9 +19,14 @@ class Exam extends Patient
        $location = mysqli_fetch_assoc($location);
        $location = $location['location_id'];
        //Insert Exam
-       $sqlInsertExam = "INSERT INTO tbl_exam (patient_id,location_id,time) VALUES ('$patientId','$location','$examTime')";
+       $sqlInsertExam = "INSERT INTO tbl_exam (patient_id,location_id,doctor_id,time) VALUES ('$patientId','$location','$doctorId','$examTime')";
        $this->queryDatabase($sqlInsertExam);
-           return mysqli_insert_id($this->connection);
+          return $examID =  mysqli_insert_id($this->connection);
    }
+    //select all gtts from table
+    function getAllGtts(){
+        $sqlSelectGtts = "SELECT gtts_name FROM tbl_gtts";
+        return $gtts = $this->queryDatabase($sqlSelectGtts);
+    }
 
 }

@@ -14,6 +14,15 @@ $location = new Location();
 <?php
 include("header.php");
 include("sidebar.php");
+//todo at the end of exam return to this page with acurate info
+/*if(isset($Date) && isset($SessionID)){
+    $_SESSION['now_exam_Date'] = $Date;
+    $_SESSION['now_exam_Session']= $SessionID;
+}
+if(isset($_SESSION['now_exam_Date']) && isset($_SESSION['now_exam_Session'])){
+    $Date =  $_SESSION['now_exam_Date'];
+    $SessionID = $_SESSION['now_exam_Session'];
+}*/
 ?>
 <form role="form" id="frm">
     <div class="form-group">
@@ -57,7 +66,7 @@ include("sidebar.php");
                                                 <td>$appointment[last_name]</td>
                                                 <td>$appointment[OHIP_number]</td>
                                                 <td>$appointment[gender]</td>
-                                                <td><a href='stagingEyeExam.php?PatientID=$appointment[patient_id]' target='_blank' class='btn btn-info'><i class='fa fa-user-md fa-2x'></i></a></td>
+                                                <td><a href='stagingEyeExam.php?PatientID=$appointment[patient_id]&DoctorID=$_SESSION[loginUserId]' class='btn btn-info'><i class='fa fa-user-md fa-2x'></i></a></td>
                                              </tr>";
                                     }
                                     ?>

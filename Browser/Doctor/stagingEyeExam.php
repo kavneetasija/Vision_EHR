@@ -8,11 +8,11 @@
 require_once('../../Local/Classes/class.Exam.php');
 require_once('../../Local/Classes/class.SessionManager.inc');
 extract($_GET);
-if(isset($PatientID))
+if(isset($PatientID) && isset($DoctorID))
 {
     //create new exam
     $exam = new Exam();
-    $examId = $exam->createExamByPatientId($PatientID);
+    $examId = $exam->createExamByPatientId($PatientID,$DoctorID);
         //set patient session variables todo paa exam id in method call
         $sessionExam = new SessionManager();
         $session = $sessionExam->createPatientSessionInExam($PatientID,$examId);

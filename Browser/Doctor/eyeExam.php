@@ -25,9 +25,12 @@ $patientInfo = mysqli_fetch_assoc($patientInfo);
 //get student health info
 $studentHealthHistory = $exam->getHealthHistoryByPatientId($_SESSION['patientID_eyeExam']);
 $studentHealthHistory = mysqli_fetch_assoc($studentHealthHistory);
+//get all gtts names and populate select info
+$gtts = $exam->getAllGtts();
+
 
 ?>
-<form role="form" method="post" id="frm">
+<form role="form" method="get" id="frm">
     <div class="form-group">
         <div id="page-wrapper" style="min-height: 649px;">
             <div class="row">
@@ -44,36 +47,53 @@ $studentHealthHistory = mysqli_fetch_assoc($studentHealthHistory);
                     <div class="panel panel-primary">
                         <div class="panel-heading">
                             <div class="row">
-                                <div class="col-md-11">
-                                    <label><?php echo "$patientInfo[first_name] $patientInfo[last_name]";?></label>
+                                <div class="col-md-8">
+                                    <label><?php echo $patientInfo['first_name']." ".$patientInfo['last_name']?></label>
                                 </div>
-                                <div class="col-md-1">
-                                    <button class="btn btn-success" id="btnSave" name = "btnSave" type="submit" value="updateExam" style="display: none;">Save</button>
+                                <div id="saveInfo" style="display: none;color:black;">
+                                    <div class="col-md-3">
+                                        <select class="form-control">
+                                            <option value="404">404 - Full service(Child)</option>
+                                            <option value="404">406 - Full service(Senior)</option>
+                                            <option value="404">402 - Partial service</option>
+                                        </select><br/>
+                                    </div>
+                                    <div class="col-md-1">
+                                        <button class="btn btn-success" id="btnSave" name="btnSave" type="submit" value="updateExam">Save</button>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div id="temp">
-
                         </div>
                         <!-- /.panel-heading -->
                         <div class="panel-body">
                             <!-- Nav tabs -->
                             <ul class="nav nav-tabs">
-                                <li class="active"><a href="#tab0" data-toggle="tab" aria-expanded="true">Patient Info.</a></li>
-                                <li class="" onclick="setElementName('tab1','Acuities')"><a href="#tab1" data-toggle="tab" aria-expanded="false">Acuities</a></li>
-                                <li class="" onclick="setElementName('tab2','Retinoscopy')"><a href="#tab2" data-toggle="tab" aria-expanded="false">Retinoscopy</a></li>
-                                <li class="" onclick="setElementName('tab3','External')"><a href="#tab3" data-toggle="tab" aria-expanded="false">External</a></li>
-                                <li class="" onclick="setElementName('tab4','Internal')"><a href="#tab4" data-toggle="tab" aria-expanded="false">Internal</a></li>
-                                <li class="" onclick="setElementName('tab5','Tonometry')"><a href="#tab5" data-toggle="tab" aria-expanded="false">Tonometry</a></li>
-                                <li class="" onclick="setElementName('tab6','Diagnosis')"><a href="#tab6" data-toggle="tab" aria-expanded="false">Diagnosis &amp; Summary</a></li>
-                                <li class="" onclick="setElementName('tab7','Billing')"><a href="#tab7" data-toggle="tab" aria-expanded="false">Billing info</a></li>
+                                <li class="active"><a href="#tab0" data-toggle="tab" aria-expanded="false">Patient Info.</a></li>
+                                <li class=""> <a href="#tab1" data-toggle="tab" aria-expanded="true">Acuities</a></li>
+                                <li class=""> <a href="#tab2" data-toggle="tab" aria-expanded="false">Retinoscopy</a></li>
+                                <li class=""> <a href="#tab3" data-toggle="tab" aria-expanded="false">External</a></li>
+                                <li class=""> <a href="#tab4" data-toggle="tab" aria-expanded="false">Internal</a></li>
+                                <li class=""> <a href="#tab5" data-toggle="tab" aria-expanded="false">Tonometry</a></li>
+                                <li class="" onclick="document.getElementById('saveInfo').style.display='block'"> <a href="#tab6" data-toggle="tab" aria-expanded="false">Diagnosis &amp; Summary</a></li>
                             </ul>
 
                             <!--Eye exam Tab panes -->
                             <div class="tab-content">
                                 <!--Patient info tab0-->
                                 <div class="tab-pane fade active in" id="tab0">
-                                    <h4>Patient Info. <span style="color: red">Don't share</span></h4>
+                                    <h4>Patient Info.
+                                        <?php
+                                        if($studentHealthHistory['share_info']==='No'){
+                                            echo "<span style='color: red'>Don\'t share</span>";
+                                        }
+                                        elseif($studentHealthHistory['share_info']==='Yes'){
+                                            echo "<span style='color: green'>Can share</span>";
+                                        }
+                                        else{
+                                            echo "<span style='color: blue'>Not provides by patient</span>";
+                                        }
+                                        ?>
+                                    </h4>
                                     <!--General Information-->
                                     <div class="row">
                                         <div class="col-md-12">
@@ -93,7 +113,7 @@ $studentHealthHistory = mysqli_fetch_assoc($studentHealthHistory);
                                                             <label>Address</label>
                                                             <p class="form-control-static">
                                                                 <?php
-                                                                    echo "$patientInfo[address]<br/>$patientInfo[city], $patientInfo[province]<br/>$patientInfo[postal_code]";
+                                                                echo "$patientInfo[address]<br/>$patientInfo[city], $patientInfo[province]<br/>$patientInfo[postal_code]";
                                                                 ?>
                                                             </p>
                                                         </div>
@@ -1357,11 +1377,42 @@ $studentHealthHistory = mysqli_fetch_assoc($studentHealthHistory);
                                             <label>gtts</label>
                                         </div>
                                         <div class="col-md-3">
-                                            <input id="txtGtts" type="text" class="form-control">
+                                            <input id="txtGtts" type="text" onfocus="setCurentTime('txtInternalNow');" data-toggle="modal" data-target="#gttsList" class="form-control">
                                         </div>
-                                        <div class="col-md-2">
-                                            <button type="button" class="btn btn-sm btn-default">Add new gtts</button><!--todo add popup window for ading new gtts-->
+
+                                        <!--gtts list module-->
+                                        <div class="modal fade" id="gttsList" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                                        <h4 class="modal-title" id="myModalLabel">Gtts manager</h4>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <div class="form-group">
+                                                            <label>Select from the list</label>
+                                                            <select id="selectGtts" multiple="" class="form-control">
+                                                                <?php
+                                                                   while($listGtts = mysqli_fetch_array($gtts)){
+                                                                       echo "<option value='$listGtts[gtts_name]'>$listGtts[gtts_name]</option>";
+                                                                   }
+                                                                ?>
+                                                            </select><br/>
+                                                            <button type="button" id="btnSelectGtts" onclick="fillTxtGtts('Select')"  data-dismiss="modal" class="btn btn-success form-control">Select</button></br>
+                                                            <label>Add new to list</label>
+                                                            <input type="text" id="txtNewGtts" class="form-control"><br/>
+                                                        </div>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-primary" onclick="fillTxtGtts('Add')" data-dismiss="modal">Add new to list</button>
+                                                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                                    </div>
+                                                </div>
+                                                <!-- /.modal-content -->
+                                            </div>
+                                            <!-- /.modal-dialog -->
                                         </div>
+                                        <!--Time Now-->
                                         <div class="col-md-2">
                                             <input id="txtInternalNow" type="time" class="form-control mediumText" onfocus="setCurentTime('txtInternalNow')">
                                         </div>
@@ -1808,11 +1859,6 @@ $studentHealthHistory = mysqli_fetch_assoc($studentHealthHistory);
                                         </div>
                                     </div>
                                 </div>
-                                <!--Billing info tab7-->
-                                <div class="tab-pane fade" id="tab7">
-                                    <h4>Billing Info.</h4>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                                </div>
                             </div>
 
                         </div><!--/.Panel Body -->
@@ -1820,19 +1866,19 @@ $studentHealthHistory = mysqli_fetch_assoc($studentHealthHistory);
                             <div class="row">
                                 <div class="col-md-4">
                                     <label>Location Name:</label>
-                                    <i><?php echo "$patientInfo[name]";?></i>
+                                    <i><?php echo $patientInfo['name']?></i>
                                 </div>
                                 <div class="col-md-2">
                                     <label>Patient ID:</label>
-                                    <i><?php echo "$patientInfo[patient_id]";?></i>
+                                    <i><?php echo $_SESSION['patientID_eyeExam']?></i>
                                 </div>
                                 <div class="col-md-2">
                                     <label>Exam ID:</label>
-                                    <i><?php echo $_SESSION['examID_eyeExam'];?></i>
+                                    <i><?php echo $_SESSION['examID_eyeExam']?></i>
                                 </div>
                                 <div class="col-md-4">
                                     <label>Doctor ID</label>
-                                    <i><?php echo $_SESSION['loginUserId'];?></i>
+                                    <i><?php echo $_SESSION['loginUserId']?></i>
                                 </div>
                             </div>
                         </div>
@@ -1868,51 +1914,56 @@ $studentHealthHistory = mysqli_fetch_assoc($studentHealthHistory);
     </div></form></body>
 
 <script>
+    //Assign Names to form elements when thay load
+    var searchText = document.getElementById('frm').getElementsByTagName('input');
+    var searchSelect = document.getElementById('frm').getElementsByTagName('select');
+    //loop through inputs
+    for(var i = 0; i < searchText.length; i++){
+        searchText[i].setAttribute('name',searchText[i].tagName+'_'+i);
+        console.log(searchText[i].name);
+    }
+    //loop through selects
+    for(var j = 0; j < searchSelect.length; j++) {
+        searchSelect[j].setAttribute('name',searchSelect[j].tagName + '_' + j);
+        console.log(searchSelect[j].name);
+    }
 
   /*  //replace text area with ckedit
     CKEDITOR.replace( 'txtPatientInfoNotes' );*/
 
+    //fill txtGtts
+   function fillTxtGtts(option){
+       var drpSelect = document.getElementById('selectGtts');
+       var text = document.getElementById('txtGtts');
+       var newGttsText = document.getElementById('txtNewGtts');
+       if(option == 'Select'){
+           text.value = drpSelect.value;
+       }
+       else if(option == 'Add'){
+           text.value = newGttsText.value
+       }
+
+
+   }
     //submit data via ajax
     var saveForm = function(){
         var data = $('#frm').serialize();
         console.log(data);
         $.post('eyeExam.php', data);
     };
+  /*Set curent time function*/
+  function setCurentTime(txtID){
+      var txtNow = document.getElementById(txtID);
+      var now = new Date();
+      var min = ("0"+ now.getMinutes()).slice(-2);
+      var hr = ("0"+ now.getHours()).slice(-2);
+      txtNow.value = hr +":"+ min;
+  }
 
-    //Assign name attribute to elements in each tab todo filter testing strings
-    function setElementName(id,pnlName){
 
-        if(id == 'tab6'){
-            document.getElementById('btnSave').style.display = 'block';
-        }
-        var searchText = document.getElementById(id).getElementsByTagName('input');
-        var searchSelect = document.getElementById(id).getElementsByTagName('select');
-        //loop through inputs
-        for(var i = 0; i < searchText.length; i++){
-            searchText[i].setAttribute('name',pnlName+'_'+searchText[i].tagName+'_'+i);
-            document.getElementById('temp').innerHTML +=(searchText[i].name)+'<br/>';
-        }
-        //loop through selects
-        for(var j = 0; j < searchSelect.length; j++){
-            searchSelect[j].setAttribute('name',pnlName+'_'+searchSelect[j].tagName+'_'+j);
-            document.getElementById('temp').innerHTML +=(searchSelect[j].name)+'<br/>';
-
-        }
-    }
-
-  // setInterval(saveForm, 15000);
+   //setInterval(saveForm, 15000);
 </script>
 <script>
-
-    /*add gtts in gttsList.xml file*/
-    /*Set curent time function*/
-    function setCurentTime(txtID){
-        var txtNow = document.getElementById(txtID);
-        var now = new Date();
-        var min = ("0"+ now.getMinutes()).slice(-2);
-        var hr = ("0"+ now.getHours()).slice(-2);
-        txtNow.value = hr +":"+ min;
-    }
     /*Generate rx from retinoscopy to Diagnosis and summary displaying prescription*/
 //    var btnRx = document.getElementById("btnRx");
 //    btnRx.onclick = function(){

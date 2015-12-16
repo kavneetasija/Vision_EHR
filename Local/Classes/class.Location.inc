@@ -182,7 +182,8 @@ private $locationAddress;
 
     //Get all assigned location to a doctor for session Date
     function getLocationForDoctorDashboard($doctorID){
-        $sqlSelectLocation = "SELECT tbl_locations.*,tbl_sessions.date,tbl_sessions.session_id,(select count(*) from tbl_appointments where tbl_appointments.session_id = tbl_sessions.session_id) as appointments
+        $sqlSelectLocation = "SELECT tbl_locations.*,tbl_sessions.date,tbl_sessions.session_id,(select count(*) from tbl_appointments where tbl_appointments.session_id = tbl_sessions.session_id and tbl_appointments.patient_id NOT IN
+                              (select patient_id from tbl_exam)) as appointments
                               FROM tbl_locations
                               RIGHT JOIN tbl_sessions ON tbl_locations.location_id = tbl_sessions.location_id
                               WHERE tbl_locations.assigned_doctor = '$doctorID' ORDER BY tbl_sessions.date";
@@ -195,7 +196,8 @@ private $locationAddress;
         $sqlSelectAppointments = "SELECT tbl_patients.*, tbl_sessions.date,tbl_appointments.time FROM tbl_appointments
                                   LEFT JOIN tbl_patients ON tbl_appointments.patient_id = tbl_patients.patient_id
                                   RIGHT JOIN tbl_sessions ON tbl_appointments.session_id = tbl_sessions.session_id
-                                  WHERE tbl_sessions.session_id = '$sessionId'";
+                                  WHERE tbl_sessions.session_id = '$sessionId'
+                                  AND tbl_patients.patient_id NOT IN (select patient_id from tbl_exam)";
 
         return $this->queryDatabase($sqlSelectAppointments);
     }
