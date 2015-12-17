@@ -19,6 +19,8 @@ include("sidebar.php");
 require_once('../../Local/Classes/class.Exam.php');
 extract($_POST);
 $exam = new Exam();
+//set exam id for object
+$exam->examId = $_SESSION['examID_eyeExam'];
 //get all patient basic inf
 $patientInfo = $exam->getPatientById($_SESSION['patientID_eyeExam']);
 $patientInfo = mysqli_fetch_assoc($patientInfo);
@@ -27,10 +29,30 @@ $studentHealthHistory = $exam->getHealthHistoryByPatientId($_SESSION['patientID_
 $studentHealthHistory = mysqli_fetch_assoc($studentHealthHistory);
 //get all gtts names and populate select info
 $gtts = $exam->getAllGtts();
+//On save
+if(isset($btnSave)){
+    //Set Acuties pram using exam object.
+    $exam->acuities_INPUT_0 =   $acuities_INPUT_0 ;$exam->acuities_INPUT_1 =   $acuities_INPUT_1 ;$exam->acuities_INPUT_2 =   $acuities_INPUT_2 ;$exam->acuities_INPUT_3 =   $acuities_INPUT_3 ;
+    $exam->acuities_INPUT_4 =   $acuities_INPUT_4 ;$exam->acuities_INPUT_5 =   $acuities_INPUT_5 ;$exam->acuities_INPUT_6 =   $acuities_INPUT_6 ;$exam->acuities_INPUT_7 =   $acuities_INPUT_7 ;
+    $exam->acuities_INPUT_8 =   $acuities_INPUT_8 ;$exam->acuities_INPUT_9 =   $acuities_INPUT_9 ;$exam->acuities_INPUT_10 =  $acuities_INPUT_10 ;$exam->acuities_INPUT_11 =  $acuities_INPUT_11 ;
+    $exam->acuities_INPUT_12 =  $acuities_INPUT_12 ;$exam->acuities_INPUT_13 =  $acuities_INPUT_13 ;$exam->acuities_INPUT_14 =  $acuities_INPUT_14 ;$exam->acuities_INPUT_15 =  $acuities_INPUT_15 ;
+    $exam->acuities_INPUT_16 =  $acuities_INPUT_16 ;$exam->acuities_INPUT_17 =  $acuities_INPUT_17 ;$exam->acuities_INPUT_18 =  $acuities_INPUT_18 ;$exam->acuities_INPUT_19 =  $acuities_INPUT_19 ;
+    $exam->acuities_INPUT_20 =  $acuities_INPUT_20 ;$exam->acuities_INPUT_21 =  $acuities_INPUT_21 ;$exam->acuities_INPUT_22 =  $acuities_INPUT_22 ;$exam->acuities_INPUT_23 =  $acuities_INPUT_23 ;
+    $exam->acuities_INPUT_24 =  $acuities_INPUT_24 ;$exam->acuities_INPUT_25 =  $acuities_INPUT_25 ;$exam->acuities_INPUT_26 =  $acuities_INPUT_26 ;$exam->acuities_INPUT_27 =  $acuities_INPUT_27 ;
+    $exam->acuities_INPUT_28 =  $acuities_INPUT_28 ;$exam->acuities_INPUT_29 =  $acuities_INPUT_29 ;$exam->acuities_INPUT_30 =  $acuities_INPUT_30 ;$exam->acuities_INPUT_31 =  $acuities_INPUT_31 ;
+    $exam->acuities_INPUT_32 =  $acuities_INPUT_32 ;$exam->acuities_INPUT_33 =  $acuities_INPUT_33 ;$exam->acuities_INPUT_34 =  $acuities_INPUT_34 ;$exam->acuities_INPUT_35 =  $acuities_INPUT_35 ;
+    $exam->acuities_INPUT_36 =  $acuities_INPUT_36 ;$exam->acuities_SELECT_0 =  $acuities_SELECT_0 ;$exam->acuities_SELECT_1 =  $acuities_SELECT_1 ;$exam->acuities_SELECT_2 =  $acuities_SELECT_2 ;
+    $exam->acuities_SELECT_3 =  $acuities_SELECT_3 ;$exam->acuities_SELECT_4 =  $acuities_SELECT_4 ;
 
+    
+
+    //Save Acuties
+    $acuitiesResults =  $exam->saveAcuities();
+
+}
 
 ?>
-<form role="form" method="get" id="frm">
+<form role="form" method="post" id="frm">
     <div class="form-group">
         <div id="page-wrapper" style="min-height: 649px;">
             <div class="row">
@@ -296,19 +318,19 @@ $gtts = $exam->getAllGtts();
                                     <div class="panel panel-default">
                                         <div class="panel-heading"><label>Notes...</label></div>
                                         <div class="panel-body">
-                                            <textarea class="form-control" name="txtPatientInfoNotes" data-gramm="true" data-txt_gramm_id="503910ec-e37a-1f13-cabf-609eefabd80e" data-gramm_id="503910ec-e37a-1f13-cabf-609eefabd80e" spellcheck="false" data-gramm_editor="true" style="z-index: auto; position: relative; line-height: 20px; font-size: 14px; transition: none; overflow: auto; background: transparent !important;">
-                                            </textarea><div><div style="z-index: 2; opacity: 1; margin-left: 917px; margin-top: 1073px;" class="gr-textarea-btn " data-grammarly-reactid=".9"><div title="Protected by Grammarly" class="gr-textarea-btn_status" data-grammarly-reactid=".9.0">&nbsp;</div></div></div>
+                                            <textarea class="form-control" name="txtPatientInfoNotes">
+                                            </textarea>
                                         </div>
                                     </div>
                                 </div>
                                 <!--Acuities tab1-->
-                                <div class="tab-pane fade"  id="tab1">
+                                <div class="tab-pane fade" id="tab1">
                                     <h4>Acuities</h4>
                                     <!--row 1 Recorded as-->
                                     <div class="row">
                                         <div class="col-lg-12">
                                             <label>Recorded as:</label>
-                                            <select class="form-control mediumText"><!--todo ask for options to set values type-->
+                                            <select class="form-control mediumText" name="acuities_SELECT_0"><!--todo ask for options to set values type-->
                                                 <option>Select one......</option>
                                                 <option>Snellen</option>
                                                 <!--<option>Letters</option>
@@ -334,27 +356,27 @@ $gtts = $exam->getAllGtts();
                                                 <div class="col-md-3"><!--OD RX txt1,txt2,txt3-->
                                                     <div class="row">
                                                         <div class="col-sm-4">
-                                                            <input type="text" class="form-control smallText">
+                                                            <input type="text" class="form-control smallText" name=" acuities_INPUT_0">
                                                         </div>
                                                         <div class="col-sm-4">
-                                                            <input type="text" class="form-control smallText">
+                                                            <input type="text" class="form-control smallText" name=" acuities_INPUT_1">
                                                         </div>
                                                         <div class="col-sm-4">
-                                                            <input type="text" class="form-control smallText">
+                                                            <input type="text" class="form-control smallText" name=" acuities_INPUT_2">
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-1"><!--OD Add txt-->
-                                                    <input type="text" class="form-control smallText">
+                                                    <input type="text" class="form-control smallText" name=" acuities_INPUT_3">
                                                 </div>
                                                 <div class="col-md-1"><!--OD Prism txt-->
-                                                    <input type="text" class="form-control smallText">
+                                                    <input type="text" class="form-control smallText" name=" acuities_INPUT_4">
                                                 </div>
                                                 <div class="col-md-1"><!--OD PD txt-->
-                                                    <input type="text" class="form-control smallText">
+                                                    <input type="text" class="form-control smallText" name=" acuities_INPUT_5">
                                                 </div>
                                                 <div class="col-md-3"><!--OD B.C txt-->
-                                                    <input type="text" class="form-control smallText">
+                                                    <input type="text" class="form-control smallText" name=" acuities_INPUT_6">
                                                 </div>
                                             </div><br>
                                             <!--OS Row-->
@@ -363,27 +385,27 @@ $gtts = $exam->getAllGtts();
                                                 <div class="col-md-3"><!-- OS RX txt1,txt2,txt3-->
                                                     <div class="row">
                                                         <div class="col-sm-4">
-                                                            <input type="text" class="form-control smallText">
+                                                            <input type="text" class="form-control smallText" name=" acuities_INPUT_7">
                                                         </div>
                                                         <div class="col-sm-4">
-                                                            <input type="text" class="form-control smallText">
+                                                            <input type="text" class="form-control smallText" name=" acuities_INPUT_8">
                                                         </div>
                                                         <div class="col-sm-4">
-                                                            <input type="text" class="form-control smallText">
+                                                            <input type="text" class="form-control smallText" name=" acuities_INPUT_9">
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-1"><!--OS Add txt-->
-                                                    <input type="text" class="form-control smallText">
+                                                    <input type="text" class="form-control smallText" name=" acuities_INPUT_10">
                                                 </div>
                                                 <div class="col-md-1"><!--OS Prism txt-->
-                                                    <input type="text" class="form-control smallText">
+                                                    <input type="text" class="form-control smallText" name=" acuities_INPUT_11">
                                                 </div>
                                                 <div class="col-md-1"><!--OS PD txt-->
-                                                    <input type="text" class="form-control smallText">
+                                                    <input type="text" class="form-control smallText" name=" acuities_INPUT_12">
                                                 </div>
                                                 <div class="col-md-3"><!--OS B.C txt-->
-                                                    <input type="text" class="form-control smallText">
+                                                    <input type="text" class="form-control smallText" name=" acuities_INPUT_13">
                                                 </div>
                                             </div><br>
                                             <!--Year old row-->
@@ -392,7 +414,7 @@ $gtts = $exam->getAllGtts();
                                                     Years old
                                                 </div>
                                                 <div class="col-md-9">
-                                                    <input type="number" min="1" class="form-control smallText">
+                                                    <input type="number" min="1" class="form-control smallText" name=" acuities_INPUT_14">
                                                 </div>
                                             </div>
                                         </div>
@@ -419,10 +441,10 @@ $gtts = $exam->getAllGtts();
                                                             VA &nbsp; OD
                                                         </div>
                                                         <div class="col-md-5">
-                                                            <input type="text" class="form-control mediumText">
+                                                            <input type="text" class="form-control mediumText" name=" acuities_INPUT_15">
                                                         </div>
                                                         <div class="col-md-5">
-                                                            <input type="text" class="form-control mediumText">
+                                                            <input type="text" class="form-control mediumText" name=" acuities_INPUT_16">
                                                         </div>
                                                     </div><br>
                                                     <!--Row 3 OS-->
@@ -431,10 +453,10 @@ $gtts = $exam->getAllGtts();
                                                             OS
                                                         </div>
                                                         <div class="col-md-5">
-                                                            <input type="text" class="form-control mediumText">
+                                                            <input type="text" class="form-control mediumText" name=" acuities_INPUT_17">
                                                         </div>
                                                         <div class="col-md-5">
-                                                            <input type="text" class="form-control mediumText">
+                                                            <input type="text" class="form-control mediumText" name=" acuities_INPUT_18">
                                                         </div>
                                                     </div><br>
                                                     <!--Row 4 OU-->
@@ -443,10 +465,10 @@ $gtts = $exam->getAllGtts();
                                                             OU
                                                         </div>
                                                         <div class="col-md-5">
-                                                            <input type="text" class="form-control mediumText">
+                                                            <input type="text" class="form-control mediumText" name=" acuities_INPUT_19">
                                                         </div>
                                                         <div class="col-md-5">
-                                                            <input type="text" class="form-control mediumText">
+                                                            <input type="text" class="form-control mediumText" name=" acuities_INPUT_20">
                                                         </div>
                                                     </div><br>
                                                 </div>
@@ -472,10 +494,10 @@ $gtts = $exam->getAllGtts();
                                                             VA &nbsp; OD
                                                         </div>
                                                         <div class="col-md-5">
-                                                            <input type="text" class="form-control mediumText">
+                                                            <input type="text" class="form-control mediumText" name=" acuities_INPUT_21">
                                                         </div>
                                                         <div class="col-md-5">
-                                                            <input type="text" class="form-control mediumText">
+                                                            <input type="text" class="form-control mediumText" name=" acuities_INPUT_22">
                                                         </div>
                                                     </div><br>
                                                     <!--Row 3 OS-->
@@ -484,10 +506,10 @@ $gtts = $exam->getAllGtts();
                                                             OS
                                                         </div>
                                                         <div class="col-md-5">
-                                                            <input type="text" class="form-control mediumText">
+                                                            <input type="text" class="form-control mediumText" name=" acuities_INPUT_23">
                                                         </div>
                                                         <div class="col-md-5">
-                                                            <input type="text" class="form-control mediumText">
+                                                            <input type="text" class="form-control mediumText" name=" acuities_INPUT_24">
                                                         </div>
                                                     </div><br>
                                                     <!--Row 4 OU-->
@@ -496,10 +518,10 @@ $gtts = $exam->getAllGtts();
                                                             OU
                                                         </div>
                                                         <div class="col-md-5">
-                                                            <input type="text" class="form-control mediumText">
+                                                            <input type="text" class="form-control mediumText" name=" acuities_INPUT_25">
                                                         </div>
                                                         <div class="col-md-5">
-                                                            <input type="text" class="form-control mediumText">
+                                                            <input type="text" class="form-control mediumText" name=" acuities_INPUT_26">
                                                         </div>
                                                     </div><br>
                                                 </div>
@@ -530,10 +552,10 @@ $gtts = $exam->getAllGtts();
                                                                     Unilateral
                                                                 </div>
                                                                 <div class="col-md-4">
-                                                                    <input type="text" class="form-control mediumText">
+                                                                    <input type="text" class="form-control mediumText" name=" acuities_INPUT_27">
                                                                 </div>
                                                                 <div class="col-md-5">
-                                                                    <input type="text" class="form-control mediumText">
+                                                                    <input type="text" class="form-control mediumText" name=" acuities_INPUT_28">
                                                                 </div>
                                                             </div><br>
                                                             <!--Row 3 Alternating-->
@@ -542,10 +564,10 @@ $gtts = $exam->getAllGtts();
                                                                     Alternating
                                                                 </div>
                                                                 <div class="col-md-4">
-                                                                    <input type="text" class="form-control mediumText">
+                                                                    <input type="text" class="form-control mediumText" name=" acuities_INPUT_29">
                                                                 </div>
                                                                 <div class="col-md-5">
-                                                                    <input type="text" class="form-control mediumText">
+                                                                    <input type="text" class="form-control mediumText" name=" acuities_INPUT_30">
                                                                 </div>
                                                             </div><br>
                                                         </div>
@@ -555,21 +577,21 @@ $gtts = $exam->getAllGtts();
                                                             <div class="row">
                                                                 <div class="col-md-3">Version</div>
                                                                 <div class="col-md-9">
-                                                                    <input type="text" class="form-control fullLengthText">
+                                                                    <input type="text" class="form-control fullLengthText" name=" acuities_INPUT_31">
                                                                 </div>
                                                             </div><br>
                                                             <!--Row 2-->
                                                             <div class="row">
                                                                 <div class="col-md-3">Saccades</div>
                                                                 <div class="col-md-9">
-                                                                    <input type="text" class="form-control fullLengthText">
+                                                                    <input type="text" class="form-control fullLengthText" name=" acuities_INPUT_32">
                                                                 </div>
                                                             </div><br>
                                                             <!--Row 3-->
                                                             <div class="row">
                                                                 <div class="col-md-3">Pursuits</div>
                                                                 <div class="col-md-9">
-                                                                    <input type="text" class="form-control fullLengthText">
+                                                                    <input type="text" class="form-control fullLengthText" name=" acuities_INPUT_33">
                                                                 </div>
                                                             </div><br>
                                                         </div>
@@ -581,15 +603,15 @@ $gtts = $exam->getAllGtts();
                                                             <div class="row">
                                                                 <div class="col-md-2">NPC</div>
                                                                 <div class="col-md-2">
-                                                                    <input type="text" class="form-control smallText">
+                                                                    <input type="text" class="form-control smallText" name=" acuities_INPUT_34">
                                                                 </div>
                                                                 <div class="col-md-3">Maddox: VT</div>
                                                                 <div class="col-md-2">
-                                                                    <input type="text" class="form-control smallText">
+                                                                    <input type="text" class="form-control smallText" name=" acuities_INPUT_35">
                                                                 </div>
                                                                 <div class="col-md-1">HZ</div>
                                                                 <div class="col-md-2">
-                                                                    <input type="text" class="form-control smallText">
+                                                                    <input type="text" class="form-control smallText" name=" acuities_INPUT_36">
                                                                 </div>
                                                             </div><br>
                                                         </div>
@@ -605,7 +627,7 @@ $gtts = $exam->getAllGtts();
                                                             <div class="row">
                                                                 <div class="col-md-2">Type</div>
                                                                 <div class="col-md-4">
-                                                                    <select class="form-control mediumText"><!--todo add options-->
+                                                                    <select class="form-control mediumText" name="acuities_SELECT_1"><!--todo add options-->
                                                                         <option>CV 1</option>
                                                                         <option>CV 2</option>
                                                                         <option>CV 3</option>
@@ -613,7 +635,7 @@ $gtts = $exam->getAllGtts();
                                                                 </div>
                                                                 <div class="col-md-2">Result</div>
                                                                 <div class="col-md-4">
-                                                                    <select class="form-control mediumText"><!--todo add options-->
+                                                                    <select class="form-control mediumText" name="acuities_SELECT_2"><!--todo add options-->
                                                                         <option>Result CV 1</option>
                                                                         <option>Result CV 2</option>
                                                                         <option>Result CV 3</option>
@@ -629,7 +651,7 @@ $gtts = $exam->getAllGtts();
                                                             <div class="row">
                                                                 <div class="col-md-2">Type</div>
                                                                 <div class="col-md-4">
-                                                                    <select class="form-control mediumText"><!--todo add options-->
+                                                                    <select class="form-control mediumText" name="acuities_SELECT_3"><!--todo add options-->
                                                                         <option>SA 1</option>
                                                                         <option>SA 2</option>
                                                                         <option>SA 3</option>
@@ -637,7 +659,7 @@ $gtts = $exam->getAllGtts();
                                                                 </div>
                                                                 <div class="col-md-2">Result</div>
                                                                 <div class="col-md-4">
-                                                                    <select class="form-control mediumText"><!--todo add options-->
+                                                                    <select class="form-control mediumText" name="acuities_SELECT_4"><!--todo add options-->
                                                                         <option>result SA 1</option>
                                                                         <option>result SA 2</option>
                                                                         <option>result SA 3</option>
@@ -654,18 +676,19 @@ $gtts = $exam->getAllGtts();
                                     <div class="panel panel-default">
                                         <div class="panel-heading"><label>Notes...</label></div>
                                         <div class="panel-body">
-                                            <textarea name="textAcuitiesNotes" class="form-control" data-gramm="" data-txt_gramm_id="43d3e0f8-8d38-3bf4-a1b2-36fa27e8a4d0">                                            </textarea>
+                                            <textarea name="textAcuitiesNotes" class="form-control">
+                                            </textarea>
                                         </div>
                                     </div>
                                 </div>
                                 <!--Retinoscopy tab2-->
-                                <div class="tab-pane fade"  id="tab2">
+                                <div class="tab-pane fade" id="tab2">
                                     <h4>Retinoscopy</h4>
                                     <!--1st Panel-->
                                     <div class="panel panel-info">
                                         <div class="panel-heading">
                                             <label>Retinoscopy Type
-                                                <input style="color: black;" type="text" class="form-control largeText">
+                                                <input style="color: black;" type="text" class="form-control largeText" name="retinoscopy_INPUT_0">
                                             </label>
                                         </div>
                                         <div class="panel-body form-group-sm">
@@ -685,29 +708,29 @@ $gtts = $exam->getAllGtts();
                                                             Keratometry
                                                         </div>
                                                         <div class="col-sm-2" style="padding-left: 0px;">
-                                                            <input type="text" class="form-control">
+                                                            <input type="text" class="form-control" name="retinoscopy_INPUT_1">
                                                         </div>
                                                         <div class="col-sm-1" style="padding: 0;text-align: center;">
                                                             at
                                                         </div>
                                                         <div class="col-sm-2" style="padding-left: 0px;">
-                                                            <input type="text" class="form-control">
+                                                            <input type="text" class="form-control" name="retinoscopy_INPUT_2">
                                                         </div>
                                                         <div class="col-sm-1" style="padding: 0; text-align: center;">
                                                             /
                                                         </div>
                                                         <div class="col-sm-2" style="padding-left: 0px;">
-                                                            <input type="text" class="form-control">
+                                                            <input type="text" class="form-control" name="retinoscopy_INPUT_3">
                                                         </div>
                                                         <div class="col-sm-2" style="padding-left: 0px;">
-                                                            <input type="text" class="form-control">
+                                                            <input type="text" class="form-control" name="retinoscopy_INPUT_4">
                                                         </div>
                                                     </div><br>
                                                     <!--Dom OD-->
                                                     <div class="row">
                                                         <div class="col-sm-10 col-sm-offset-2">
                                                             <label class="checkbox-inline">
-                                                                <input type="checkbox">DOM OD
+                                                                <input type="checkbox" name="retinoscopy_INPUT_5">DOM OD
                                                             </label>
                                                         </div>
                                                     </div><br>
@@ -717,19 +740,19 @@ $gtts = $exam->getAllGtts();
                                                             Retinoscopy
                                                         </div>
                                                         <div class="col-sm-2" style="padding-left: 0">
-                                                            <input type="number" step="0.25" class="form-control">
+                                                            <input type="number" step="0.25" class="form-control" name="retinoscopy_INPUT_6">
                                                         </div>
                                                         <div class="col-sm-2" style="padding-left: 0">
-                                                            <input type="number" step="0.25" class="form-control">
+                                                            <input type="number" step="0.25" class="form-control" name="retinoscopy_INPUT_7">
                                                         </div>
                                                         <div class="col-sm-2" style="padding-left: 0">
-                                                            <input type="number" step="1" min="0" class="form-control">
+                                                            <input type="number" step="1" min="0" class="form-control" name="retinoscopy_INPUT_8">
                                                         </div>
                                                         <div class="col-sm-1" style="padding: 0; text-align: center;">
                                                             /
                                                         </div>
                                                         <div class="col-sm-2" style="padding-left: 0">
-                                                            <input type="text" class="form-control">
+                                                            <input type="text" class="form-control" name="retinoscopy_INPUT_9">
                                                         </div>
                                                     </div><br>
                                                     <!--Subjective Rx-->
@@ -738,19 +761,19 @@ $gtts = $exam->getAllGtts();
                                                             Subjective Rx
                                                         </div>
                                                         <div class="col-sm-2" style="padding-left: 0">
-                                                            <input type="number" step="0.25" class="form-control">
+                                                            <input type="number" step="0.25" class="form-control" name="retinoscopy_INPUT_10">
                                                         </div>
                                                         <div class="col-sm-2" style="padding-left: 0">
-                                                            <input type="number" step="0.25" class="form-control">
+                                                            <input type="number" step="0.25" class="form-control" name="retinoscopy_INPUT_11">
                                                         </div>
                                                         <div class="col-sm-2" style="padding-left: 0">
-                                                            <input type="number" step="1" min="0" class="form-control">
+                                                            <input type="number" step="1" min="0" class="form-control" name="retinoscopy_INPUT_12">
                                                         </div>
                                                         <div class="col-sm-1" style="padding: 0; text-align: center;">
                                                             /
                                                         </div>
                                                         <div class="col-sm-2" style="padding-left: 0">
-                                                            <input type="text" class="form-control">
+                                                            <input type="text" class="form-control" name="retinoscopy_INPUT_13">
                                                         </div>
                                                     </div><br>
                                                     <!--Trial Rx-->
@@ -759,19 +782,19 @@ $gtts = $exam->getAllGtts();
                                                             Trial Rx
                                                         </div>
                                                         <div class="col-sm-2" style="padding-left: 0">
-                                                            <input type="number" step="0.25" class="form-control">
+                                                            <input type="number" step="0.25" class="form-control" name="retinoscopy_INPUT_14">
                                                         </div>
                                                         <div class="col-sm-2" style="padding-left: 0">
-                                                            <input type="number" step="0.25" class="form-control">
+                                                            <input type="number" step="0.25" class="form-control" name="retinoscopy_INPUT_15">
                                                         </div>
                                                         <div class="col-sm-2" style="padding-left: 0">
-                                                            <input type="number" step="1" min="0" class="form-control">
+                                                            <input type="number" step="1" min="0" class="form-control" name="retinoscopy_INPUT_16">
                                                         </div>
                                                         <div class="col-sm-1" style="padding: 0; text-align: center;">
                                                             /
                                                         </div>
                                                         <div class="col-sm-2" style="padding-left: 0">
-                                                            <input type="text" class="form-control">
+                                                            <input type="text" class="form-control" name="retinoscopy_INPUT_17">
                                                         </div>
                                                     </div><br>
                                                 </div>
@@ -786,95 +809,95 @@ $gtts = $exam->getAllGtts();
                                                     <!--Keratometry-->
                                                     <div class="row">
                                                         <div class="col-sm-2" style="padding-left: 0px;">
-                                                            <input type="text" class="form-control">
+                                                            <input type="text" class="form-control" name="retinoscopy_INPUT_18">
                                                         </div>
                                                         <div class="col-sm-1" style="padding: 0;text-align: center;">
                                                             at
                                                         </div>
                                                         <div class="col-sm-2" style="padding-left: 0px;">
-                                                            <input type="text" class="form-control">
+                                                            <input type="text" class="form-control" name="retinoscopy_INPUT_19">
                                                         </div>
                                                         <div class="col-sm-1" style="padding: 0; text-align: center;">
                                                             /
                                                         </div>
                                                         <div class="col-sm-2" style="padding-left: 0px;">
-                                                            <input type="text" class="form-control">
+                                                            <input type="text" class="form-control" name="retinoscopy_INPUT_20">
                                                         </div>
                                                         <div class="col-sm-2" style="padding-left: 0px;">
-                                                            <input type="text" class="form-control">
+                                                            <input type="text" class="form-control" name="retinoscopy_INPUT_21">
                                                         </div>
                                                     </div><br>
                                                     <!--Dom OS-->
                                                     <div class="row">
                                                         <div class="col-md-10">
                                                             <label class="checkbox-inline">
-                                                                <input type="checkbox">DOM OS
+                                                                <input type="checkbox" name="retinoscopy_INPUT_22">DOM OS
                                                             </label>
                                                         </div>
                                                     </div><br>
                                                     <!--Retinoscopy-->
                                                     <div class="row">
                                                         <div class="col-sm-2" style="padding-left: 0">
-                                                            <input type="number" step="0.25" class="form-control">
+                                                            <input type="number" step="0.25" class="form-control" name="retinoscopy_INPUT_23">
                                                         </div>
                                                         <div class="col-sm-2" style="padding-left: 0">
-                                                            <input type="number" step="0.25" class="form-control">
+                                                            <input type="number" step="0.25" class="form-control" name="retinoscopy_INPUT_24">
                                                         </div>
                                                         <div class="col-sm-2" style="padding-left: 0">
-                                                            <input type="number" step="1" min="0" class="form-control">
+                                                            <input type="number" step="1" min="0" class="form-control" name="retinoscopy_INPUT_25">
                                                         </div>
                                                         <div class="col-sm-1" style="padding: 0; text-align: center;">
                                                             /
                                                         </div>
                                                         <div class="col-sm-2" style="padding-left: 0">
-                                                            <input type="text" class="form-control">
+                                                            <input type="text" class="form-control" name="retinoscopy_INPUT_26">
                                                         </div>
                                                     </div><br>
                                                     <!--Subjective Rx-->
                                                     <div class="row">
                                                         <div class="col-sm-2" style="padding-left: 0">
-                                                            <input type="number" step="0.25" class="form-control">
+                                                            <input type="number" step="0.25" class="form-control" name="retinoscopy_INPUT_27">
                                                         </div>
                                                         <div class="col-sm-2" style="padding-left: 0">
-                                                            <input type="number" step="0.25" class="form-control">
+                                                            <input type="number" step="0.25" class="form-control" name="retinoscopy_INPUT_28">
                                                         </div>
                                                         <div class="col-sm-2" style="padding-left: 0">
-                                                            <input type="number" step="1" min="0" class="form-control">
+                                                            <input type="number" step="1" min="0" class="form-control" name="retinoscopy_INPUT_29">
                                                         </div>
                                                         <div class="col-sm-1" style="padding: 0; text-align: center;">
                                                             /
                                                         </div>
                                                         <div class="col-sm-2" style="padding-left: 0">
-                                                            <input type="text" class="form-control">
+                                                            <input type="text" class="form-control" name="retinoscopy_INPUT_30">
                                                         </div>
                                                     </div><br>
                                                     <!--Trial Rx-->
                                                     <div class="row">
                                                         <div class="col-sm-2" style="padding-left: 0">
-                                                            <input type="number" step="0.25" class="form-control">
+                                                            <input type="number" step="0.25" class="form-control" name="retinoscopy_INPUT_31">
                                                         </div>
                                                         <div class="col-sm-2" style="padding-left: 0">
-                                                            <input type="number" step="0.25" class="form-control">
+                                                            <input type="number" step="0.25" class="form-control" name="retinoscopy_INPUT_32">
                                                         </div>
                                                         <div class="col-sm-2" style="padding-left: 0">
-                                                            <input type="number" step="1" min="0" class="form-control">
+                                                            <input type="number" step="1" min="0" class="form-control" name="retinoscopy_INPUT_33">
                                                         </div>
                                                         <div class="col-sm-1" style="padding: 0; text-align: center;">
                                                             /
                                                         </div>
                                                         <div class="col-sm-2" style="padding-left: 0">
-                                                            <input type="text" class="form-control">
+                                                            <input type="text" class="form-control" name="retinoscopy_INPUT_34">
                                                         </div>
                                                     </div><br>
                                                 </div>
-                                            </div><br/>
+                                            </div><br>
                                             <!--Rx Notes-->
                                             <div class="row">
                                                 <div class="col-md-1">
                                                     <label>Rx Notes</label>
                                                 </div>
                                                 <div class="col-md-10">
-                                                    <input type="text" class="form-control">
+                                                    <input type="text" class="form-control" name="retinoscopy_INPUT_35">
                                                 </div>
                                             </div><br>
                                             <!--pnl Adds-->
@@ -889,26 +912,26 @@ $gtts = $exam->getAllGtts();
                                                             <div class="row">
                                                                 <div class="col-md-3">Tentative Add</div>
                                                                 <div class="col-md-4">
-                                                                    <input type="text" class="form-control mediumText">
+                                                                    <input type="text" class="form-control mediumText" name="retinoscopy_INPUT_36">
                                                                 </div>
                                                                 <div class="col-md-1" style="padding: 0;text-align: center;">
                                                                     at
                                                                 </div>
                                                                 <div class="col-md-4">
-                                                                    <input type="text" class="form-control mediumText">
+                                                                    <input type="text" class="form-control mediumText" name="retinoscopy_INPUT_37">
                                                                 </div>
                                                             </div><br>
                                                             <!--Refined Add-->
                                                             <div class="row">
                                                                 <div class="col-md-3">Refined Add</div>
                                                                 <div class="col-md-4">
-                                                                    <input type="number" min="0" step="0.25" class="form-control mediumText">
+                                                                    <input type="number" min="0" step="0.25" class="form-control mediumText" name="retinoscopy_INPUT_38">
                                                                 </div>
                                                                 <div class="col-md-1" style="padding: 0;text-align: center;">
                                                                     at
                                                                 </div>
                                                                 <div class="col-md-4">
-                                                                    <input type="text" class="form-control mediumText">
+                                                                    <input type="text" class="form-control mediumText" name="retinoscopy_INPUT_39">
                                                                 </div>
                                                             </div><br>
                                                         </div>
@@ -918,7 +941,7 @@ $gtts = $exam->getAllGtts();
                                                             <div class="row">
                                                                 <div class="col-md-3">BPA/BMA</div>
                                                                 <div class="col-md-9">
-                                                                    <input type="text" class="form-control largeText">
+                                                                    <input type="text" class="form-control largeText" name="retinoscopy_INPUT_40">
                                                                 </div>
                                                             </div><br>
                                                             <!--OD VA, OS VA-->
@@ -927,25 +950,25 @@ $gtts = $exam->getAllGtts();
                                                                     OD
                                                                 </div>
                                                                 <div class="col-md-2" style="padding: 0;">
-                                                                    <input type="number" step="0.25" min="0" class="form-control">
+                                                                    <input type="number" step="0.25" min="0" class="form-control" name="retinoscopy_INPUT_41">
                                                                 </div>
                                                                 <div class="col-md-1">
                                                                     VA
                                                                 </div>
                                                                 <div class="col-md-2" style="padding: 0;">
-                                                                    <input type="text" class="form-control">
+                                                                    <input type="text" class="form-control" name="retinoscopy_INPUT_42">
                                                                 </div>
                                                                 <div class="col-md-1">
                                                                     OS
                                                                 </div>
                                                                 <div class="col-md-2" style="padding: 0;">
-                                                                    <input type="number" step="0.25" min="0" class="form-control">
+                                                                    <input type="number" step="0.25" min="0" class="form-control" name="retinoscopy_INPUT_43">
                                                                 </div>
                                                                 <div class="col-md-1">
                                                                     VA
                                                                 </div>
                                                                 <div class="col-md-2" style="padding: 0;">
-                                                                    <input type="text" class="form-control">
+                                                                    <input type="text" class="form-control" name="retinoscopy_INPUT_44">
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -955,7 +978,7 @@ $gtts = $exam->getAllGtts();
                                             <!--row 2 Genrate rx Button-->
                                             <div class="row">
                                                 <div class="col-md-12">
-                                                    <input type="button" class="btn btn-info btn-sm" id="btnRx" value="Generate Rx">
+                                                    <input type="button" class="btn btn-info btn-sm" id="btnRx" value="Generate Rx" name="retinoscopy_INPUT_45">
                                                 </div>
                                             </div><br>
                                         </div>
@@ -984,17 +1007,18 @@ $gtts = $exam->getAllGtts();
                                     <div class="panel panel-default">
                                         <div class="panel-heading"><label>Notes...</label></div>
                                         <div class="panel-body">
-                                            <textarea class="form-control" data-gramm="" data-txt_gramm_id="273721a4-5742-939d-7377-4fbe576814a0">                                            </textarea>
+                                            <textarea class="form-control">
+                                            </textarea>
                                         </div>
                                     </div>
                                 </div>
                                 <!--External tab3-->
-                                <div class="tab-pane fade"  id="tab3">
+                                <div class="tab-pane fade" id="tab3">
                                     <h4>External</h4>
                                     <div class="row">
                                         <div class="col-md-12">
                                             <label class="checkbox-inline">
-                                                <input type="checkbox"> PERRALA
+                                                <input type="checkbox" name="external_INPUT_0"> PERRALA
                                             </label>
                                         </div>
                                     </div><br>
@@ -1003,10 +1027,10 @@ $gtts = $exam->getAllGtts();
                                             General
                                         </div>
                                         <div class="col-md-5">
-                                            <input type="text" class="form-control">
+                                            <input type="text" class="form-control" name="external_INPUT_1">
                                         </div>
                                         <div class="col-md-5">
-                                            <input type="text" class="form-control">
+                                            <input type="text" class="form-control" name="external_INPUT_2">
                                         </div>
                                     </div><br>
                                     <div class="row">
@@ -1014,10 +1038,10 @@ $gtts = $exam->getAllGtts();
                                             Lids/Margine
                                         </div>
                                         <div class="col-md-5">
-                                            <input type="text" class="form-control">
+                                            <input type="text" class="form-control" name="external_INPUT_3">
                                         </div>
                                         <div class="col-md-5">
-                                            <input type="text" class="form-control">
+                                            <input type="text" class="form-control" name="external_INPUT_4">
                                         </div>
                                     </div><br>
                                     <div class="row">
@@ -1025,10 +1049,10 @@ $gtts = $exam->getAllGtts();
                                             Conjuctiva
                                         </div>
                                         <div class="col-md-5">
-                                            <input type="text" class="form-control">
+                                            <input type="text" class="form-control" name="external_INPUT_5">
                                         </div>
                                         <div class="col-md-5">
-                                            <input type="text" class="form-control">
+                                            <input type="text" class="form-control" name="external_INPUT_6">
                                         </div>
                                     </div><br>
                                     <div class="row">
@@ -1036,10 +1060,10 @@ $gtts = $exam->getAllGtts();
                                             Limbus/Tears
                                         </div>
                                         <div class="col-md-5">
-                                            <input type="text" class="form-control">
+                                            <input type="text" class="form-control" name="external_INPUT_7">
                                         </div>
                                         <div class="col-md-5">
-                                            <input type="text" class="form-control">
+                                            <input type="text" class="form-control" name="external_INPUT_8">
                                         </div>
                                     </div><br>
                                     <div class="row">
@@ -1047,10 +1071,10 @@ $gtts = $exam->getAllGtts();
                                             Cornea
                                         </div>
                                         <div class="col-md-5">
-                                            <input type="text" class="form-control">
+                                            <input type="text" class="form-control" name="external_INPUT_9">
                                         </div>
                                         <div class="col-md-5">
-                                            <input type="text" class="form-control">
+                                            <input type="text" class="form-control" name="external_INPUT_10">
                                         </div>
                                     </div><br>
                                     <div class="row">
@@ -1058,10 +1082,10 @@ $gtts = $exam->getAllGtts();
                                             A-C
                                         </div>
                                         <div class="col-md-5">
-                                            <input type="text" class="form-control">
+                                            <input type="text" class="form-control" name="external_INPUT_11">
                                         </div>
                                         <div class="col-md-5">
-                                            <input type="text" class="form-control">
+                                            <input type="text" class="form-control" name="external_INPUT_12">
                                         </div>
                                     </div><br>
                                     <div class="row">
@@ -1069,10 +1093,10 @@ $gtts = $exam->getAllGtts();
                                             Iris
                                         </div>
                                         <div class="col-md-5">
-                                            <input type="text" class="form-control">
+                                            <input type="text" class="form-control" name="external_INPUT_13">
                                         </div>
                                         <div class="col-md-5">
-                                            <input type="text" class="form-control">
+                                            <input type="text" class="form-control" name="external_INPUT_14">
                                         </div>
                                     </div><br>
                                     <div class="row">
@@ -1080,10 +1104,10 @@ $gtts = $exam->getAllGtts();
                                             Pupil Size
                                         </div>
                                         <div class="col-md-5">
-                                            <input type="text" class="form-control">
+                                            <input type="text" class="form-control" name="external_INPUT_15">
                                         </div>
                                         <div class="col-md-5">
-                                            <input type="text" class="form-control">
+                                            <input type="text" class="form-control" name="external_INPUT_16">
                                         </div>
                                     </div><br>
                                     <div class="row">
@@ -1091,10 +1115,10 @@ $gtts = $exam->getAllGtts();
                                             Direct Reflex
                                         </div>
                                         <div class="col-md-5">
-                                            <input type="text" class="form-control">
+                                            <input type="text" class="form-control" name="external_INPUT_17">
                                         </div>
                                         <div class="col-md-5">
-                                            <input type="text" class="form-control">
+                                            <input type="text" class="form-control" name="external_INPUT_18">
                                         </div>
                                     </div><br>
                                     <div class="row">
@@ -1102,10 +1126,10 @@ $gtts = $exam->getAllGtts();
                                             Consensual
                                         </div>
                                         <div class="col-md-5">
-                                            <input type="text" class="form-control">
+                                            <input type="text" class="form-control" name="external_INPUT_19">
                                         </div>
                                         <div class="col-md-5">
-                                            <input type="text" class="form-control">
+                                            <input type="text" class="form-control" name="external_INPUT_20">
                                         </div>
                                     </div><br>
                                     <div class="row">
@@ -1113,17 +1137,17 @@ $gtts = $exam->getAllGtts();
                                             Near
                                         </div>
                                         <div class="col-md-5">
-                                            <input type="text" class="form-control">
+                                            <input type="text" class="form-control" name="external_INPUT_21">
                                         </div>
                                         <div class="col-md-5">
-                                            <input type="text" class="form-control">
+                                            <input type="text" class="form-control" name="external_INPUT_22">
                                         </div>
                                     </div><br>
                                     <!--Notes-->
                                     <div class="panel panel-default">
                                         <div class="panel-heading"><label>Notes...</label></div>
                                         <div class="panel-body">
-                                            <textarea class="form-control" data-gramm="" data-txt_gramm_id="a543816b-0b71-f429-22c3-84f66f448bcc">
+                                            <textarea class="form-control">
                                             </textarea>
                                         </div>
                                     </div>
@@ -1139,7 +1163,7 @@ $gtts = $exam->getAllGtts();
                                             <div class="row">
                                                 <div class="checkbox">
                                                     <label>
-                                                        <input type="checkbox"> DIR
+                                                        <input type="checkbox" name="internal_INPUT_0"> DIR
                                                     </label>
                                                 </div>
                                             </div>
@@ -1147,7 +1171,7 @@ $gtts = $exam->getAllGtts();
                                             <div class="row">
                                                 <div class="checkbox">
                                                     <label>
-                                                        <input type="checkbox"> MIO
+                                                        <input type="checkbox" name="internal_INPUT_1"> MIO
                                                     </label>
                                                 </div>
                                             </div>
@@ -1155,25 +1179,25 @@ $gtts = $exam->getAllGtts();
                                             <div class="row">
                                                 <div class="checkbox">
                                                     <label>
-                                                        <input type="checkbox"> BIO
+                                                        <input type="checkbox" name="internal_INPUT_2"> BIO
                                                     </label>
                                                 </div>
                                             </div>
                                             <!--BIO Text-->
                                             <div class="row">
-                                                <input type="text" class="form-control">
+                                                <input type="text" class="form-control" name="internal_INPUT_3">
                                             </div>
                                             <!--Volk-->
                                             <div class="row">
                                                 <div class="checkbox">
                                                     <label>
-                                                        <input type="checkbox"> Volk
+                                                        <input type="checkbox" name="internal_INPUT_4"> Volk
                                                     </label>
                                                 </div>
                                             </div>
                                             <!--Volk Text-->
                                             <div class="row">
-                                                <input type="text" class="form-control">
+                                                <input type="text" class="form-control" name="internal_INPUT_5">
                                             </div>
                                         </div>
                                         <!--Col 1 left-->
@@ -1183,10 +1207,10 @@ $gtts = $exam->getAllGtts();
                                                     <label>lens</label>
                                                 </div>
                                                 <div class="col-md-5">
-                                                    <input type="text" class="form-control">
+                                                    <input type="text" class="form-control" name="internal_INPUT_6">
                                                 </div>
                                                 <div class="col-md-5">
-                                                    <input type="text" class="form-control">
+                                                    <input type="text" class="form-control" name="internal_INPUT_7">
 
                                                 </div>
                                             </div><br>
@@ -1195,10 +1219,10 @@ $gtts = $exam->getAllGtts();
                                                     <label>Vitreous</label>
                                                 </div>
                                                 <div class="col-md-5">
-                                                    <input type="text" class="form-control">
+                                                    <input type="text" class="form-control" name="internal_INPUT_8">
                                                 </div>
                                                 <div class="col-md-5">
-                                                    <input type="text" class="form-control">
+                                                    <input type="text" class="form-control" name="internal_INPUT_9">
 
                                                 </div>
                                             </div><br>
@@ -1207,10 +1231,10 @@ $gtts = $exam->getAllGtts();
                                                     <label>Depth/Cup</label>
                                                 </div>
                                                 <div class="col-md-5">
-                                                    <input type="text" class="form-control">
+                                                    <input type="text" class="form-control" name="internal_INPUT_10">
                                                 </div>
                                                 <div class="col-md-5">
-                                                    <input type="text" class="form-control">
+                                                    <input type="text" class="form-control" name="internal_INPUT_11">
 
                                                 </div>
                                             </div><br>
@@ -1219,10 +1243,10 @@ $gtts = $exam->getAllGtts();
                                                     <label>Margin</label>
                                                 </div>
                                                 <div class="col-md-5">
-                                                    <input type="text" class="form-control">
+                                                    <input type="text" class="form-control" name="internal_INPUT_12">
                                                 </div>
                                                 <div class="col-md-5">
-                                                    <input type="text" class="form-control">
+                                                    <input type="text" class="form-control" name="internal_INPUT_13">
 
                                                 </div>
                                             </div><br>
@@ -1231,10 +1255,10 @@ $gtts = $exam->getAllGtts();
                                                     <label>Crescents</label>
                                                 </div>
                                                 <div class="col-md-5">
-                                                    <input type="text" class="form-control">
+                                                    <input type="text" class="form-control" name="internal_INPUT_14">
                                                 </div>
                                                 <div class="col-md-5">
-                                                    <input type="text" class="form-control">
+                                                    <input type="text" class="form-control" name="internal_INPUT_15">
 
                                                 </div>
                                             </div><br>
@@ -1243,10 +1267,10 @@ $gtts = $exam->getAllGtts();
                                                     <label>A/V Crossing</label>
                                                 </div>
                                                 <div class="col-md-5">
-                                                    <input type="text" class="form-control">
+                                                    <input type="text" class="form-control" name="internal_INPUT_16">
                                                 </div>
                                                 <div class="col-md-5">
-                                                    <input type="text" class="form-control">
+                                                    <input type="text" class="form-control" name="internal_INPUT_17">
 
                                                 </div>
                                             </div><br>
@@ -1255,10 +1279,10 @@ $gtts = $exam->getAllGtts();
                                                     <label>Calibre-Ratio</label>
                                                 </div>
                                                 <div class="col-md-5">
-                                                    <input type="text" class="form-control">
+                                                    <input type="text" class="form-control" name="internal_INPUT_18">
                                                 </div>
                                                 <div class="col-md-5">
-                                                    <input type="text" class="form-control">
+                                                    <input type="text" class="form-control" name="internal_INPUT_19">
 
                                                 </div>
                                             </div><br>
@@ -1267,10 +1291,10 @@ $gtts = $exam->getAllGtts();
                                                     <label>Gen/App/Fun</label>
                                                 </div>
                                                 <div class="col-md-5">
-                                                    <input type="text" class="form-control">
+                                                    <input type="text" class="form-control" name="internal_INPUT_20">
                                                 </div>
                                                 <div class="col-md-5">
-                                                    <input type="text" class="form-control">
+                                                    <input type="text" class="form-control" name="internal_INPUT_21">
 
                                                 </div>
                                             </div><br>
@@ -1282,10 +1306,10 @@ $gtts = $exam->getAllGtts();
                                                     <label>ONH Cup</label>
                                                 </div>
                                                 <div class="col-md-5">
-                                                    <input type="text" class="form-control">
+                                                    <input type="text" class="form-control" name="internal_INPUT_22">
                                                 </div>
                                                 <div class="col-md-5">
-                                                    <input type="text" class="form-control">
+                                                    <input type="text" class="form-control" name="internal_INPUT_23">
 
                                                 </div>
                                             </div><br>
@@ -1294,10 +1318,10 @@ $gtts = $exam->getAllGtts();
                                                     <label>Disc Color</label>
                                                 </div>
                                                 <div class="col-md-5">
-                                                    <input type="text" class="form-control">
+                                                    <input type="text" class="form-control" name="internal_INPUT_24">
                                                 </div>
                                                 <div class="col-md-5">
-                                                    <input type="text" class="form-control">
+                                                    <input type="text" class="form-control" name="internal_INPUT_25">
 
                                                 </div>
                                             </div><br>
@@ -1306,10 +1330,10 @@ $gtts = $exam->getAllGtts();
                                                     <label>Lamina Crib.</label>
                                                 </div>
                                                 <div class="col-md-5">
-                                                    <input type="text" class="form-control">
+                                                    <input type="text" class="form-control" name="internal_INPUT_26">
                                                 </div>
                                                 <div class="col-md-5">
-                                                    <input type="text" class="form-control">
+                                                    <input type="text" class="form-control" name="internal_INPUT_27">
 
                                                 </div>
                                             </div><br>
@@ -1318,10 +1342,10 @@ $gtts = $exam->getAllGtts();
                                                     <label>Area/Cup</label>
                                                 </div>
                                                 <div class="col-md-5">
-                                                    <input type="text" class="form-control">
+                                                    <input type="text" class="form-control" name="internal_INPUT_28">
                                                 </div>
                                                 <div class="col-md-5">
-                                                    <input type="text" class="form-control">
+                                                    <input type="text" class="form-control" name="internal_INPUT_29">
 
                                                 </div>
                                             </div><br>
@@ -1330,10 +1354,10 @@ $gtts = $exam->getAllGtts();
                                                     <label>Macula</label>
                                                 </div>
                                                 <div class="col-md-5">
-                                                    <input type="text" class="form-control">
+                                                    <input type="text" class="form-control" name="internal_INPUT_30">
                                                 </div>
                                                 <div class="col-md-5">
-                                                    <input type="text" class="form-control">
+                                                    <input type="text" class="form-control" name="internal_INPUT_31">
 
                                                 </div>
                                             </div><br>
@@ -1342,10 +1366,10 @@ $gtts = $exam->getAllGtts();
                                                     <label>Course</label>
                                                 </div>
                                                 <div class="col-md-5">
-                                                    <input type="text" class="form-control">
+                                                    <input type="text" class="form-control" name="internal_INPUT_32">
                                                 </div>
                                                 <div class="col-md-5">
-                                                    <input type="text" class="form-control">
+                                                    <input type="text" class="form-control" name="internal_INPUT_33">
 
                                                 </div>
                                             </div><br>
@@ -1354,17 +1378,17 @@ $gtts = $exam->getAllGtts();
                                                     <label>Periphery</label>
                                                 </div>
                                                 <div class="col-md-5">
-                                                    <input type="text" class="form-control">
+                                                    <input type="text" class="form-control" name="internal_INPUT_34">
                                                 </div>
                                                 <div class="col-md-5">
-                                                    <input type="text" class="form-control">
+                                                    <input type="text" class="form-control" name="internal_INPUT_35">
 
                                                 </div>
                                             </div><br>
                                             <div class="row">
                                                 <div class="col-md-12" style="padding: 0px;">
                                                     <label class="checkbox-inline">
-                                                        <input type="checkbox">
+                                                        <input type="checkbox" name="internal_INPUT_36">
                                                         Vessels appear within normal limits
                                                     </label>
                                                 </div>
@@ -1377,7 +1401,7 @@ $gtts = $exam->getAllGtts();
                                             <label>gtts</label>
                                         </div>
                                         <div class="col-md-3">
-                                            <input id="txtGtts" type="text" onfocus="setCurentTime('txtInternalNow');" data-toggle="modal" data-target="#gttsList" class="form-control">
+                                            <input id="txtGtts" type="text" onfocus="setCurentTime('txtInternalNow');" data-toggle="modal" data-target="#gttsList" class="form-control" name="internal_INPUT_37">
                                         </div>
 
                                         <!--gtts list module-->
@@ -1391,16 +1415,11 @@ $gtts = $exam->getAllGtts();
                                                     <div class="modal-body">
                                                         <div class="form-group">
                                                             <label>Select from the list</label>
-                                                            <select id="selectGtts" multiple="" class="form-control">
-                                                                <?php
-                                                                   while($listGtts = mysqli_fetch_array($gtts)){
-                                                                       echo "<option value='$listGtts[gtts_name]'>$listGtts[gtts_name]</option>";
-                                                                   }
-                                                                ?>
-                                                            </select><br/>
-                                                            <button type="button" id="btnSelectGtts" onclick="fillTxtGtts('Select')"  data-dismiss="modal" class="btn btn-success form-control">Select</button></br>
+                                                            <select id="selectGtts" multiple="" class="form-control" name="internal_SELECT_0">
+                                                                <option value="Example gtts 1">Example gtts 1</option><option value="Example gtts 2">Example gtts 2</option><option value="Gtts list item">Gtts list item</option>                                                            </select><br>
+                                                            <button type="button" id="btnSelectGtts" onclick="fillTxtGtts('Select')" data-dismiss="modal" class="btn btn-success form-control">Select</button><br>
                                                             <label>Add new to list</label>
-                                                            <input type="text" id="txtNewGtts" class="form-control"><br/>
+                                                            <input type="text" id="txtNewGtts" class="form-control" name="internal_INPUT_38"><br>
                                                         </div>
                                                     </div>
                                                     <div class="modal-footer">
@@ -1414,14 +1433,14 @@ $gtts = $exam->getAllGtts();
                                         </div>
                                         <!--Time Now-->
                                         <div class="col-md-2">
-                                            <input id="txtInternalNow" type="time" class="form-control mediumText" onfocus="setCurentTime('txtInternalNow')">
+                                            <input id="txtInternalNow" type="time" class="form-control mediumText" onfocus="setCurentTime('txtInternalNow')" name="internal_INPUT_39">
                                         </div>
                                     </div><br>
                                     <!--ROw 3 chk-->
                                     <div class="row">
                                         <div class="col-md-12">
                                             <label class="checkbox-inline">
-                                                <input type="checkbox">
+                                                <input type="checkbox" name="internal_INPUT_40">
                                                 Patient counselled about the effect of Mydriatic
                                             </label>
                                         </div>
@@ -1430,7 +1449,7 @@ $gtts = $exam->getAllGtts();
                                     <div class="panel panel-default">
                                         <div class="panel-heading"><label>Notes...</label></div>
                                         <div class="panel-body">
-                                            <textarea class="form-control" data-gramm="" data-txt_gramm_id="810cff98-86d0-13b1-0125-a151771e8f45">
+                                            <textarea class="form-control">
                                             </textarea>
                                         </div>
                                     </div>
@@ -1446,7 +1465,7 @@ $gtts = $exam->getAllGtts();
                                             <div class="row">
                                                 <div class="col-md-3 checkbox">
                                                     <label>
-                                                        <input type="checkbox" value="warning">
+                                                        <input type="checkbox" value="warning" name="tonometry_INPUT_0">
                                                         Warning Given
                                                     </label>
                                                 </div>
@@ -1454,7 +1473,7 @@ $gtts = $exam->getAllGtts();
                                                     Time
                                                 </div>
                                                 <div class="col-md-6">
-                                                    <input type="time" class="form-control mediumText" id="txtTonometryNow" onfocus="setCurentTime('txtTonometryNow')">
+                                                    <input type="time" class="form-control mediumText" id="txtTonometryNow" onfocus="setCurentTime('txtTonometryNow')" name="tonometry_INPUT_1">
                                                 </div>
                                             </div><br>
                                             <!--Tonometry OD-->
@@ -1466,7 +1485,7 @@ $gtts = $exam->getAllGtts();
                                                     <label>OD</label>
                                                 </div>
                                                 <div class="col-md-6">
-                                                    <input type="text" class="form-control mediumText">
+                                                    <input type="text" class="form-control mediumText" name="tonometry_INPUT_2">
                                                 </div>
                                             </div><br>
                                             <!--OS-->
@@ -1475,7 +1494,7 @@ $gtts = $exam->getAllGtts();
                                                     <label>OS</label>
                                                 </div>
                                                 <div class="col-md-6">
-                                                    <input type="text" class="form-control mediumText">
+                                                    <input type="text" class="form-control mediumText" name="tonometry_INPUT_3">
                                                 </div>
                                             </div><br>
                                             <!--Type-->
@@ -1484,7 +1503,7 @@ $gtts = $exam->getAllGtts();
                                                     <label>Type</label>
                                                 </div>
                                                 <div class="col-md-6">
-                                                    <select class="form-control mediumText">
+                                                    <select class="form-control mediumText" name="tonometry_SELECT_0">
                                                         <option>Option 1</option>
                                                         <option>Option 2</option>
                                                         <option>Option 3</option>
@@ -1498,7 +1517,7 @@ $gtts = $exam->getAllGtts();
                                             <div class="row">
                                                 <div class="col-md-12 checkbox">
                                                     <label class="checkbox-inline">
-                                                        <input type="checkbox" value="alcaineGtts">
+                                                        <input type="checkbox" value="alcaineGtts" name="tonometry_INPUT_4">
                                                         Alcaine dtts
                                                     </label>
                                                 </div>
@@ -1509,7 +1528,7 @@ $gtts = $exam->getAllGtts();
                                                     <label>Time</label>
                                                 </div>
                                                 <div class="col-md-9">
-                                                    <input type="time" class="form-control mediumText">
+                                                    <input type="time" class="form-control mediumText" name="tonometry_INPUT_5">
                                                 </div>
                                             </div><br>
                                             <!--Pachymetry-->
@@ -1518,7 +1537,7 @@ $gtts = $exam->getAllGtts();
                                                     <label>Pachymetry</label>
                                                 </div>
                                                 <div class="col-md-9">
-                                                    <input type="text" class="form-control largeText">
+                                                    <input type="text" class="form-control largeText" name="tonometry_INPUT_6">
                                                 </div>
                                             </div><br>
                                             <!--Topography-->
@@ -1527,7 +1546,7 @@ $gtts = $exam->getAllGtts();
                                                     <label>Topography</label>
                                                 </div>
                                                 <div class="col-md-9">
-                                                    <input type="text" class="form-control largeText">
+                                                    <input type="text" class="form-control largeText" name="tonometry_INPUT_7">
                                                 </div>
                                             </div>
                                         </div>
@@ -1539,7 +1558,7 @@ $gtts = $exam->getAllGtts();
                                             <label>Visual Fields</label>
                                         </div>
                                         <div class="col-md-9">
-                                            <input type="text" class="form-control">
+                                            <input type="text" class="form-control" name="tonometry_INPUT_8">
                                         </div>
                                     </div><br>
                                     <!--Confrontation field-->
@@ -1548,7 +1567,7 @@ $gtts = $exam->getAllGtts();
                                             <label>Confrontation fields</label>
                                         </div>
                                         <div class="col-md-9 checkbox">
-                                            <input type="checkbox" value="normalConfrontation">
+                                            <input type="checkbox" value="normalConfrontation" name="tonometry_INPUT_9">
                                             <label class="checkbox-inline">within normal</label>
                                         </div>
                                     </div>
@@ -1562,21 +1581,21 @@ $gtts = $exam->getAllGtts();
                                                     <label>OD Nasal</label>
                                                 </div>
                                                 <div class="col-md-3">
-                                                    <input type="text" class="form-control mediumText">
+                                                    <input type="text" class="form-control mediumText" name="tonometry_INPUT_10">
                                                 </div>
                                                 <!--Temp-->
                                                 <div class="col-md-1">
                                                     <label>Temp</label>
                                                 </div>
                                                 <div class="col-md-3">
-                                                    <input type="text" class="form-control mediumText">
+                                                    <input type="text" class="form-control mediumText" name="tonometry_INPUT_11">
                                                 </div>
                                                 <!--Total-->
                                                 <div class="col-md-1">
                                                     <label>Total</label>
                                                 </div>
                                                 <div class="col-md-3">
-                                                    <input type="text" class="form-control mediumText">
+                                                    <input type="text" class="form-control mediumText" name="tonometry_INPUT_12">
                                                 </div>
                                             </div><br>
                                             <!--OS-->
@@ -1586,21 +1605,21 @@ $gtts = $exam->getAllGtts();
                                                     <label>OS Nasal</label>
                                                 </div>
                                                 <div class="col-md-3">
-                                                    <input type="text" class="form-control mediumText">
+                                                    <input type="text" class="form-control mediumText" name="tonometry_INPUT_13">
                                                 </div>
                                                 <!--Temp-->
                                                 <div class="col-md-1">
                                                     <label>Temp</label>
                                                 </div>
                                                 <div class="col-md-3">
-                                                    <input type="text" class="form-control mediumText">
+                                                    <input type="text" class="form-control mediumText" name="tonometry_INPUT_14">
                                                 </div>
                                                 <!--Total-->
                                                 <div class="col-md-1">
                                                     <label>Total</label>
                                                 </div>
                                                 <div class="col-md-3">
-                                                    <input type="text" class="form-control mediumText">
+                                                    <input type="text" class="form-control mediumText" name="tonometry_INPUT_15">
                                                 </div>
                                             </div><br>
                                             <!--OU, CSF-->
@@ -1609,13 +1628,13 @@ $gtts = $exam->getAllGtts();
                                                     <label>OU Total</label>
                                                 </div>
                                                 <div class="col-md-3">
-                                                    <input type="text" class="form-control mediumText">
+                                                    <input type="text" class="form-control mediumText" name="tonometry_INPUT_16">
                                                 </div>
                                                 <div class="col-md-1 col-md-offset-4">
                                                     <label>CSF</label>
                                                 </div>
                                                 <div class="col-md-3">
-                                                    <input type="text" class="form-control mediumText">
+                                                    <input type="text" class="form-control mediumText" name="tonometry_INPUT_17">
                                                 </div>
                                             </div><br>
                                             <!--Amsler-->
@@ -1628,7 +1647,7 @@ $gtts = $exam->getAllGtts();
                                                     <label>OD</label>
                                                 </div>
                                                 <div class="col-md-3">
-                                                    <input type="text" class="form-control">
+                                                    <input type="text" class="form-control" name="tonometry_INPUT_18">
                                                 </div>
 
                                                 <!--Input OS-->
@@ -1636,7 +1655,7 @@ $gtts = $exam->getAllGtts();
                                                     <label>OS</label>
                                                 </div>
                                                 <div class="col-md-3">
-                                                    <input type="text" class="form-control">
+                                                    <input type="text" class="form-control" name="tonometry_INPUT_19">
                                                 </div>
 
                                             </div>
@@ -1646,7 +1665,8 @@ $gtts = $exam->getAllGtts();
                                     <div class="panel panel-default">
                                         <div class="panel-heading"><label>Notes...</label></div>
                                         <div class="panel-body">
-                                            <textarea class="form-control" data-gramm="" data-txt_gramm_id="0e9231a4-307a-3e14-31ee-9958018c1c58"></textarea>
+                                            <textarea class="form-control">
+                                            </textarea>
                                         </div>
                                     </div>
                                 </div>
@@ -1676,37 +1696,37 @@ $gtts = $exam->getAllGtts();
                                                     <!--OD-->
                                                     <div class="row">
                                                         <div class="col-md-1"><label>OD</label></div>
-                                                        <div class="col-md-1"><input type="number" step="0.25" class="form-control"></div>
-                                                        <div class="col-md-1"><input type="number" step="0.25" class="form-control"></div>
-                                                        <div class="col-md-1"><input type="text" class="form-control"></div>
-                                                        <div class="col-md-1"><input type="number" class="form-control"></div>
-                                                        <div class="col-md-1"><input type="text" class="form-control"></div>
-                                                        <div class="col-md-1"><input type="text" class="form-control"></div>
-                                                        <div class="col-md-1"><input type="text" class="form-control"></div>
-                                                        <div class="col-md-1"><input type="text" class="form-control"></div>
-                                                        <div class="col-md-1"><input type="text" class="form-control"></div>
-                                                        <div class="col-md-1"><input type="text" class="form-control"></div>
+                                                        <div class="col-md-1"><input type="number" step="0.25" class="form-control" name="diagnosis_INPUT_0"></div>
+                                                        <div class="col-md-1"><input type="number" step="0.25" class="form-control" name="diagnosis_INPUT_1"></div>
+                                                        <div class="col-md-1"><input type="text" class="form-control" name="diagnosis_INPUT_2"></div>
+                                                        <div class="col-md-1"><input type="number" class="form-control" name="diagnosis_INPUT_3"></div>
+                                                        <div class="col-md-1"><input type="text" class="form-control" name="diagnosis_INPUT_4"></div>
+                                                        <div class="col-md-1"><input type="text" class="form-control" name="diagnosis_INPUT_5"></div>
+                                                        <div class="col-md-1"><input type="text" class="form-control" name="diagnosis_INPUT_6"></div>
+                                                        <div class="col-md-1"><input type="text" class="form-control" name="diagnosis_INPUT_7"></div>
+                                                        <div class="col-md-1"><input type="text" class="form-control" name="diagnosis_INPUT_8"></div>
+                                                        <div class="col-md-1"><input type="text" class="form-control" name="diagnosis_INPUT_9"></div>
                                                     </div><br>
                                                     <!--OS-->
                                                     <div class="row">
                                                         <div class="col-md-1"><label>OS</label></div>
-                                                        <div class="col-md-1"><input type="number" step="0.25" class="form-control"></div>
-                                                        <div class="col-md-1"><input type="number" step="0.25" class="form-control"></div>
-                                                        <div class="col-md-1"><input type="text" class="form-control"></div>
-                                                        <div class="col-md-1"><input type="number" class="form-control"></div>
-                                                        <div class="col-md-1"><input type="text" class="form-control"></div>
-                                                        <div class="col-md-1"><input type="text" class="form-control"></div>
-                                                        <div class="col-md-1"><input type="text" class="form-control"></div>
-                                                        <div class="col-md-1"><input type="text" class="form-control"></div>
-                                                        <div class="col-md-1"><input type="text" class="form-control"></div>
-                                                        <div class="col-md-1"><input type="text" class="form-control"></div>
+                                                        <div class="col-md-1"><input type="number" step="0.25" class="form-control" name="diagnosis_INPUT_10"></div>
+                                                        <div class="col-md-1"><input type="number" step="0.25" class="form-control" name="diagnosis_INPUT_11"></div>
+                                                        <div class="col-md-1"><input type="text" class="form-control" name="diagnosis_INPUT_12"></div>
+                                                        <div class="col-md-1"><input type="number" class="form-control" name="diagnosis_INPUT_13"></div>
+                                                        <div class="col-md-1"><input type="text" class="form-control" name="diagnosis_INPUT_14"></div>
+                                                        <div class="col-md-1"><input type="text" class="form-control" name="diagnosis_INPUT_15"></div>
+                                                        <div class="col-md-1"><input type="text" class="form-control" name="diagnosis_INPUT_16"></div>
+                                                        <div class="col-md-1"><input type="text" class="form-control" name="diagnosis_INPUT_17"></div>
+                                                        <div class="col-md-1"><input type="text" class="form-control" name="diagnosis_INPUT_18"></div>
+                                                        <div class="col-md-1"><input type="text" class="form-control" name="diagnosis_INPUT_19"></div>
                                                     </div><br>
                                                     <!--Note rx-->
                                                     <!--Note rx-->
                                                     <div class="row">
                                                         <div class="col-md-12">
                                                             <label>Notes</label>
-                                                            <input type="text" class="form-control">
+                                                            <input type="text" class="form-control" name="diagnosis_INPUT_20">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -1735,36 +1755,36 @@ $gtts = $exam->getAllGtts();
                                                     <!--OD-->
                                                     <div class="row">
                                                         <div class="col-md-1"><label>OD</label></div>
-                                                        <div class="col-md-1"><input type="number" step="0.25" class="form-control"></div>
-                                                        <div class="col-md-1"><input type="number" step="0.25" class="form-control"></div>
-                                                        <div class="col-md-1"><input type="text" class="form-control"></div>
-                                                        <div class="col-md-1"><input type="number" class="form-control"></div>
-                                                        <div class="col-md-1"><input type="text" class="form-control"></div>
-                                                        <div class="col-md-1"><input type="text" class="form-control"></div>
-                                                        <div class="col-md-1"><input type="text" class="form-control"></div>
-                                                        <div class="col-md-1"><input type="text" class="form-control"></div>
-                                                        <div class="col-md-1"><input type="text" class="form-control"></div>
-                                                        <div class="col-md-1"><input type="text" class="form-control"></div>
+                                                        <div class="col-md-1"><input type="number" step="0.25" class="form-control" name="diagnosis_INPUT_21"></div>
+                                                        <div class="col-md-1"><input type="number" step="0.25" class="form-control" name="diagnosis_INPUT_22"></div>
+                                                        <div class="col-md-1"><input type="text" class="form-control" name="diagnosis_INPUT_23"></div>
+                                                        <div class="col-md-1"><input type="number" class="form-control" name="diagnosis_INPUT_24"></div>
+                                                        <div class="col-md-1"><input type="text" class="form-control" name="diagnosis_INPUT_25"></div>
+                                                        <div class="col-md-1"><input type="text" class="form-control" name="diagnosis_INPUT_26"></div>
+                                                        <div class="col-md-1"><input type="text" class="form-control" name="diagnosis_INPUT_27"></div>
+                                                        <div class="col-md-1"><input type="text" class="form-control" name="diagnosis_INPUT_28"></div>
+                                                        <div class="col-md-1"><input type="text" class="form-control" name="diagnosis_INPUT_29"></div>
+                                                        <div class="col-md-1"><input type="text" class="form-control" name="diagnosis_INPUT_30"></div>
                                                     </div><br>
                                                     <!--OS-->
                                                     <div class="row">
                                                         <div class="col-md-1"><label>OS</label></div>
-                                                        <div class="col-md-1"><input type="number" step="0.25" class="form-control"></div>
-                                                        <div class="col-md-1"><input type="number" step="0.25" class="form-control"></div>
-                                                        <div class="col-md-1"><input type="text" class="form-control"></div>
-                                                        <div class="col-md-1"><input type="number" class="form-control"></div>
-                                                        <div class="col-md-1"><input type="text" class="form-control"></div>
-                                                        <div class="col-md-1"><input type="text" class="form-control"></div>
-                                                        <div class="col-md-1"><input type="text" class="form-control"></div>
-                                                        <div class="col-md-1"><input type="text" class="form-control"></div>
-                                                        <div class="col-md-1"><input type="text" class="form-control"></div>
-                                                        <div class="col-md-1"><input type="text" class="form-control"></div>
+                                                        <div class="col-md-1"><input type="number" step="0.25" class="form-control" name="diagnosis_INPUT_31"></div>
+                                                        <div class="col-md-1"><input type="number" step="0.25" class="form-control" name="diagnosis_INPUT_32"></div>
+                                                        <div class="col-md-1"><input type="text" class="form-control" name="diagnosis_INPUT_33"></div>
+                                                        <div class="col-md-1"><input type="number" class="form-control" name="diagnosis_INPUT_34"></div>
+                                                        <div class="col-md-1"><input type="text" class="form-control" name="diagnosis_INPUT_35"></div>
+                                                        <div class="col-md-1"><input type="text" class="form-control" name="diagnosis_INPUT_36"></div>
+                                                        <div class="col-md-1"><input type="text" class="form-control" name="diagnosis_INPUT_37"></div>
+                                                        <div class="col-md-1"><input type="text" class="form-control" name="diagnosis_INPUT_38"></div>
+                                                        <div class="col-md-1"><input type="text" class="form-control" name="diagnosis_INPUT_39"></div>
+                                                        <div class="col-md-1"><input type="text" class="form-control" name="diagnosis_INPUT_40"></div>
                                                     </div><br>
                                                     <!--Note rx-->
                                                     <div class="row">
                                                         <div class="col-md-12">
                                                             <label>Notes</label>
-                                                            <input type="text" class="form-control">
+                                                            <input type="text" class="form-control" name="diagnosis_INPUT_41">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -1778,20 +1798,22 @@ $gtts = $exam->getAllGtts();
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     <label>Doctors Note</label>
-                                            <textarea id="txt1" class="form-control" rows="3" data-gramm="true" data-txt_gramm_id="8805ed82-bf47-dbd9-01dd-77727f7fa36e" data-gramm_id="8805ed82-bf47-dbd9-01dd-77727f7fa36e" spellcheck="false" data-gramm_editor="true" style="overflow: auto; z-index: auto; position: relative; line-height: 20px; font-size: 14px; transition: none; background: transparent !important;">
-                                            </textarea><div><div style="z-index: 2; opacity: 1; margin-left: 425px; margin-top: 68px;" class="gr-textarea-btn " data-grammarly-reactid=".3"><div title="Protected by Grammarly" class="gr-textarea-btn_status" data-grammarly-reactid=".3.0">&nbsp;</div></div></div>
+                                                    <textarea id="txt1" class="form-control" rows="3">
+                                                    </textarea>
                                                 </div>
                                             </div>
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     <label>Findings</label>
-                                                    <textarea class="form-control" rows="3" data-gramm="true" data-txt_gramm_id="6e5cd6b9-f7da-56be-7dd4-20f549e42109" data-gramm_id="6e5cd6b9-f7da-56be-7dd4-20f549e42109" spellcheck="false" data-gramm_editor="true" style="overflow: auto; z-index: auto; position: relative; line-height: 20px; font-size: 14px; transition: none; background: transparent !important;"></textarea><div><div style="z-index: 2; opacity: 1; margin-left: 425px; margin-top: 68px;" class="gr-textarea-btn " data-grammarly-reactid=".6"><div title="Protected by Grammarly" class="gr-textarea-btn_status" data-grammarly-reactid=".6.0">&nbsp;</div></div></div>
+                                                    <textarea class="form-control" rows="3" >
+                                                    </textarea>
                                                 </div>
                                             </div>
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     <label>Recommendation</label>
-                                                    <textarea class="form-control" rows="3" data-gramm="true" data-txt_gramm_id="0fbb196b-324e-f882-61b2-eadaa08c84c4" data-gramm_id="0fbb196b-324e-f882-61b2-eadaa08c84c4" spellcheck="false" data-gramm_editor="true" style="z-index: auto; position: relative; line-height: 20px; font-size: 14px; transition: none; overflow: auto; background: transparent !important;"></textarea><div><div style="z-index: 2; opacity: 1; margin-left: 425px; margin-top: 68px;" class="gr-textarea-btn " data-grammarly-reactid=".c"><div title="Protected by Grammarly" class="gr-textarea-btn_status" data-grammarly-reactid=".c.0">&nbsp;</div></div></div>
+                                                    <textarea class="form-control" rows="3">
+                                                    </textarea>
                                                 </div>
                                             </div>
                                         </div>
@@ -1805,7 +1827,7 @@ $gtts = $exam->getAllGtts();
                                             <div class="row">
                                                 <div class="col-md-12 checkbox">
                                                     <label class="checkbox-inline">
-                                                        <input type="checkbox" value="Normal">
+                                                        <input type="checkbox" value="Normal" name="diagnosis_INPUT_42">
                                                         Normal
                                                     </label>
                                                 </div>
@@ -1813,7 +1835,7 @@ $gtts = $exam->getAllGtts();
                                             <div class="row">
                                                 <div class="col-md-12 checkbox">
                                                     <label class="checkbox-inline">
-                                                        <input type="checkbox" value="Followup">
+                                                        <input type="checkbox" value="Followup" name="diagnosis_INPUT_43">
                                                         Follow up
                                                     </label>
                                                 </div>
@@ -1823,13 +1845,13 @@ $gtts = $exam->getAllGtts();
 
                                                     Reason for follow up
 
-                                                    <input type="text" class="form-control">
+                                                    <input type="text" class="form-control" name="diagnosis_INPUT_44">
                                                 </div>
                                             </div>
                                             <div class="row">
                                                 <div class="col-md-12 checkbox">
                                                     <label class="checkbox-inline">
-                                                        <input type="checkbox" value="prescription">
+                                                        <input type="checkbox" value="prescription" name="diagnosis_INPUT_45">
                                                         Prescription given
                                                     </label>
                                                 </div>
@@ -1888,9 +1910,6 @@ $gtts = $exam->getAllGtts();
         </div><!--#Wrapper-->
 
 
-
-
-
         <!-- jQuery -->
         <script src="../../Local/Resources/bower_components/jquery/dist/jquery.min.js"></script>
 
@@ -1914,54 +1933,42 @@ $gtts = $exam->getAllGtts();
     </div></form></body>
 
 <script>
-    //Assign Names to form elements when thay load
-    var searchText = document.getElementById('frm').getElementsByTagName('input');
-    var searchSelect = document.getElementById('frm').getElementsByTagName('select');
-    //loop through inputs
-    for(var i = 0; i < searchText.length; i++){
-        searchText[i].setAttribute('name',searchText[i].tagName+'_'+i);
-        console.log(searchText[i].name);
-    }
-    //loop through selects
-    for(var j = 0; j < searchSelect.length; j++) {
-        searchSelect[j].setAttribute('name',searchSelect[j].tagName + '_' + j);
-        console.log(searchSelect[j].name);
-    }
 
-  /*  //replace text area with ckedit
-    CKEDITOR.replace( 'txtPatientInfoNotes' );*/
+    /*  //replace text area with ckedit
+     CKEDITOR.replace( 'txtPatientInfoNotes' );*/
 
     //fill txtGtts
-   function fillTxtGtts(option){
-       var drpSelect = document.getElementById('selectGtts');
-       var text = document.getElementById('txtGtts');
-       var newGttsText = document.getElementById('txtNewGtts');
-       if(option == 'Select'){
-           text.value = drpSelect.value;
-       }
-       else if(option == 'Add'){
-           text.value = newGttsText.value
-       }
+    function fillTxtGtts(option){
+        var drpSelect = document.getElementById('selectGtts');
+        var text = document.getElementById('txtGtts');
+        var newGttsText = document.getElementById('txtNewGtts');
+        if(option == 'Select'){
+            text.value = drpSelect.value;
+        }
+        else if(option == 'Add'){
+            text.value = newGttsText.value
+        }
 
 
-   }
+    }
     //submit data via ajax
     var saveForm = function(){
         var data = $('#frm').serialize();
         console.log(data);
         $.post('eyeExam.php', data);
     };
-  /*Set curent time function*/
-  function setCurentTime(txtID){
-      var txtNow = document.getElementById(txtID);
-      var now = new Date();
-      var min = ("0"+ now.getMinutes()).slice(-2);
-      var hr = ("0"+ now.getHours()).slice(-2);
-      txtNow.value = hr +":"+ min;
-  }
+    /*Set curent time function*/
+    function setCurentTime(txtID){
+        var txtNow = document.getElementById(txtID);
+        var now = new Date();
+        var min = ("0"+ now.getMinutes()).slice(-2);
+        var hr = ("0"+ now.getHours()).slice(-2);
+        txtNow.value = hr +":"+ min;
+    }
 
 
-   //setInterval(saveForm, 15000);
+    //setInterval(saveForm, 15000);
+
 </script>
 <script>
     /*Generate rx from retinoscopy to Diagnosis and summary displaying prescription*/
