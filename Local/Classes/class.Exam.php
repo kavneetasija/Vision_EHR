@@ -11,48 +11,17 @@ class Exam extends Patient
 {
     public $examId;
     //Acuities parameters
-    public $acuities_INPUT_0;
-    public $acuities_INPUT_1;
-    public $acuities_INPUT_2;
-    public $acuities_INPUT_3;
-    public $acuities_INPUT_4;
-    public $acuities_INPUT_5;
-    public $acuities_INPUT_6;
-    public $acuities_INPUT_7;
-    public $acuities_INPUT_8;
-    public $acuities_INPUT_9;
-    public $acuities_INPUT_10;
-    public $acuities_INPUT_11;
-    public $acuities_INPUT_12;
-    public $acuities_INPUT_13;
-    public $acuities_INPUT_14;
-    public $acuities_INPUT_15;
-    public $acuities_INPUT_16;
-    public $acuities_INPUT_17;
-    public $acuities_INPUT_18;
-    public $acuities_INPUT_19;
-    public $acuities_INPUT_20;
-    public $acuities_INPUT_21;
-    public $acuities_INPUT_22;
-    public $acuities_INPUT_23;
-    public $acuities_INPUT_24;
-    public $acuities_INPUT_25;
-    public $acuities_INPUT_26;
-    public $acuities_INPUT_27;
-    public $acuities_INPUT_28;
-    public $acuities_INPUT_29;
-    public $acuities_INPUT_30;
-    public $acuities_INPUT_31;
-    public $acuities_INPUT_32;
-    public $acuities_INPUT_33;
-    public $acuities_INPUT_34;
-    public $acuities_INPUT_35;
-    public $acuities_INPUT_36;
-    public $acuities_SELECT_0;
-    public $acuities_SELECT_1;
-    public $acuities_SELECT_2;
-    public $acuities_SELECT_3;
-    public $acuities_SELECT_4;
+    public $acuities_INPUT_0; public $acuities_INPUT_1; public $acuities_INPUT_2; public $acuities_INPUT_3;
+    public $acuities_INPUT_4; public $acuities_INPUT_5; public $acuities_INPUT_6; public $acuities_INPUT_7;
+    public $acuities_INPUT_8;public $acuities_INPUT_9;public $acuities_INPUT_10;public $acuities_INPUT_11;
+    public $acuities_INPUT_12;public $acuities_INPUT_13;public $acuities_INPUT_14;public $acuities_INPUT_15;
+    public $acuities_INPUT_16;public $acuities_INPUT_17;public $acuities_INPUT_18;public $acuities_INPUT_19;
+    public $acuities_INPUT_20;public $acuities_INPUT_21;public $acuities_INPUT_22;public $acuities_INPUT_23;
+    public $acuities_INPUT_24;public $acuities_INPUT_25;public $acuities_INPUT_26;public $acuities_INPUT_27;
+    public $acuities_INPUT_28;public $acuities_INPUT_29;public $acuities_INPUT_30;public $acuities_INPUT_31;
+    public $acuities_INPUT_32;public $acuities_INPUT_33;public $acuities_INPUT_34;public $acuities_INPUT_35;
+    public $acuities_INPUT_36;public $acuities_SELECT_0;public $acuities_SELECT_1;public $acuities_SELECT_2;
+    public $acuities_SELECT_3;public $acuities_SELECT_4;
 
     //create new exam
    function createExamByPatientId($patientId,$doctorId){
@@ -73,6 +42,8 @@ class Exam extends Patient
         $sqlSelectGtts = "SELECT gtts_name FROM tbl_gtts";
         return $gtts = $this->queryDatabase($sqlSelectGtts);
     }
+
+    //On staging state prepare all tables to set and update data
 
     //On save insert or update acuities
     function saveAcuities(){
@@ -100,9 +71,7 @@ class Exam extends Patient
                                                               '$this->acuities_INPUT_36','$this->acuities_SELECT_0','$this->acuities_SELECT_1','$this->acuities_SELECT_2',
                                                               '$this->acuities_SELECT_3','$this->acuities_SELECT_4');
                                                               ";
-
         return $this->queryDatabase($sqlInsertAcuities);
-
     }
 
 }

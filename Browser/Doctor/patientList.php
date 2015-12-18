@@ -66,7 +66,7 @@ if(isset($_SESSION['now_exam_Date']) && isset($_SESSION['now_exam_Session'])){
                                                 <td>$appointment[last_name]</td>
                                                 <td>$appointment[OHIP_number]</td>
                                                 <td>$appointment[gender]</td>
-                                                <td><a href='stagingEyeExam.php?PatientID=$appointment[patient_id]&DoctorID=$_SESSION[loginUserId]' class='btn btn-info'><i class='fa fa-user-md fa-2x'></i></a></td>
+                                                <td><a href='stagingEyeExam.php?PatientID=$appointment[patient_id]&DoctorID=$_SESSION[loginUserId]' target='_blank' class='btn btn-info'><i class='fa fa-user-md fa-2x'></i></a></td>
                                              </tr>";
                                     }
                                     ?>

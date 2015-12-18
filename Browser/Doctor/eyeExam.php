@@ -7,7 +7,6 @@
  */
 ?>
 
-
 <?php
 include("header.php");
 //add css
@@ -24,6 +23,17 @@ $exam->examId = $_SESSION['examID_eyeExam'];
 //get all patient basic inf
 $patientInfo = $exam->getPatientById($_SESSION['patientID_eyeExam']);
 $patientInfo = mysqli_fetch_assoc($patientInfo);
+
+//get relational ifo
+if($patientInfo['type'] == "Student"){
+    $patientRelation = $exam->getStudentRelationsByPatientId($patientInfo['patient_id']);
+    $patientRelation = mysqli_fetch_array($patientRelation);
+}
+if($patientInfo['type'] == "Senior"){
+    $patientRelation = $exam->getSeniorRelationsByPatientId($patientInfo['patient_id']);
+    $patientRelation = mysqli_fetch_array($patientRelation);
+}
+
 //get student health info
 $studentHealthHistory = $exam->getHealthHistoryByPatientId($_SESSION['patientID_eyeExam']);
 $studentHealthHistory = mysqli_fetch_assoc($studentHealthHistory);
@@ -32,19 +42,17 @@ $gtts = $exam->getAllGtts();
 //On save
 if(isset($btnSave)){
     //Set Acuties pram using exam object.
-    $exam->acuities_INPUT_0 =   $acuities_INPUT_0 ;$exam->acuities_INPUT_1 =   $acuities_INPUT_1 ;$exam->acuities_INPUT_2 =   $acuities_INPUT_2 ;$exam->acuities_INPUT_3 =   $acuities_INPUT_3 ;
-    $exam->acuities_INPUT_4 =   $acuities_INPUT_4 ;$exam->acuities_INPUT_5 =   $acuities_INPUT_5 ;$exam->acuities_INPUT_6 =   $acuities_INPUT_6 ;$exam->acuities_INPUT_7 =   $acuities_INPUT_7 ;
-    $exam->acuities_INPUT_8 =   $acuities_INPUT_8 ;$exam->acuities_INPUT_9 =   $acuities_INPUT_9 ;$exam->acuities_INPUT_10 =  $acuities_INPUT_10 ;$exam->acuities_INPUT_11 =  $acuities_INPUT_11 ;
-    $exam->acuities_INPUT_12 =  $acuities_INPUT_12 ;$exam->acuities_INPUT_13 =  $acuities_INPUT_13 ;$exam->acuities_INPUT_14 =  $acuities_INPUT_14 ;$exam->acuities_INPUT_15 =  $acuities_INPUT_15 ;
-    $exam->acuities_INPUT_16 =  $acuities_INPUT_16 ;$exam->acuities_INPUT_17 =  $acuities_INPUT_17 ;$exam->acuities_INPUT_18 =  $acuities_INPUT_18 ;$exam->acuities_INPUT_19 =  $acuities_INPUT_19 ;
-    $exam->acuities_INPUT_20 =  $acuities_INPUT_20 ;$exam->acuities_INPUT_21 =  $acuities_INPUT_21 ;$exam->acuities_INPUT_22 =  $acuities_INPUT_22 ;$exam->acuities_INPUT_23 =  $acuities_INPUT_23 ;
-    $exam->acuities_INPUT_24 =  $acuities_INPUT_24 ;$exam->acuities_INPUT_25 =  $acuities_INPUT_25 ;$exam->acuities_INPUT_26 =  $acuities_INPUT_26 ;$exam->acuities_INPUT_27 =  $acuities_INPUT_27 ;
-    $exam->acuities_INPUT_28 =  $acuities_INPUT_28 ;$exam->acuities_INPUT_29 =  $acuities_INPUT_29 ;$exam->acuities_INPUT_30 =  $acuities_INPUT_30 ;$exam->acuities_INPUT_31 =  $acuities_INPUT_31 ;
-    $exam->acuities_INPUT_32 =  $acuities_INPUT_32 ;$exam->acuities_INPUT_33 =  $acuities_INPUT_33 ;$exam->acuities_INPUT_34 =  $acuities_INPUT_34 ;$exam->acuities_INPUT_35 =  $acuities_INPUT_35 ;
-    $exam->acuities_INPUT_36 =  $acuities_INPUT_36 ;$exam->acuities_SELECT_0 =  $acuities_SELECT_0 ;$exam->acuities_SELECT_1 =  $acuities_SELECT_1 ;$exam->acuities_SELECT_2 =  $acuities_SELECT_2 ;
-    $exam->acuities_SELECT_3 =  $acuities_SELECT_3 ;$exam->acuities_SELECT_4 =  $acuities_SELECT_4 ;
-
-    
+    $exam->acuities_INPUT_0 =   $acuities_INPUT_0;  $exam->acuities_INPUT_1 =   $acuities_INPUT_1;  $exam->acuities_INPUT_2 =   $acuities_INPUT_2 ;$exam->acuities_INPUT_3 =   $acuities_INPUT_3 ;
+    $exam->acuities_INPUT_4 =   $acuities_INPUT_4;  $exam->acuities_INPUT_5 =   $acuities_INPUT_5;  $exam->acuities_INPUT_6 =   $acuities_INPUT_6 ;$exam->acuities_INPUT_7 =   $acuities_INPUT_7 ;
+    $exam->acuities_INPUT_8 =   $acuities_INPUT_8;  $exam->acuities_INPUT_9 =   $acuities_INPUT_9;  $exam->acuities_INPUT_10 =  $acuities_INPUT_10 ;$exam->acuities_INPUT_11 =  $acuities_INPUT_11 ;
+    $exam->acuities_INPUT_12 =  $acuities_INPUT_12; $exam->acuities_INPUT_13 =  $acuities_INPUT_13; $exam->acuities_INPUT_14 =  $acuities_INPUT_14 ;$exam->acuities_INPUT_15 =  $acuities_INPUT_15 ;
+    $exam->acuities_INPUT_16 =  $acuities_INPUT_16; $exam->acuities_INPUT_17 =  $acuities_INPUT_17; $exam->acuities_INPUT_18 =  $acuities_INPUT_18 ;$exam->acuities_INPUT_19 =  $acuities_INPUT_19 ;
+    $exam->acuities_INPUT_20 =  $acuities_INPUT_20; $exam->acuities_INPUT_21 =  $acuities_INPUT_21; $exam->acuities_INPUT_22 =  $acuities_INPUT_22 ;$exam->acuities_INPUT_23 =  $acuities_INPUT_23 ;
+    $exam->acuities_INPUT_24 =  $acuities_INPUT_24; $exam->acuities_INPUT_25 =  $acuities_INPUT_25; $exam->acuities_INPUT_26 =  $acuities_INPUT_26 ;$exam->acuities_INPUT_27 =  $acuities_INPUT_27 ;
+    $exam->acuities_INPUT_28 =  $acuities_INPUT_28; $exam->acuities_INPUT_29 =  $acuities_INPUT_29; $exam->acuities_INPUT_30 =  $acuities_INPUT_30 ;$exam->acuities_INPUT_31 =  $acuities_INPUT_31 ;
+    $exam->acuities_INPUT_32 =  $acuities_INPUT_32; $exam->acuities_INPUT_33 =  $acuities_INPUT_33; $exam->acuities_INPUT_34 =  $acuities_INPUT_34 ;$exam->acuities_INPUT_35 =  $acuities_INPUT_35 ;
+    $exam->acuities_INPUT_36 =  $acuities_INPUT_36; $exam->acuities_SELECT_0 =  $acuities_SELECT_0; $exam->acuities_SELECT_1 =  $acuities_SELECT_1 ;$exam->acuities_SELECT_2 =  $acuities_SELECT_2 ;
+    $exam->acuities_SELECT_3 =  $acuities_SELECT_3; $exam->acuities_SELECT_4 =  $acuities_SELECT_4;
 
     //Save Acuties
     $acuitiesResults =  $exam->saveAcuities();
@@ -52,6 +60,8 @@ if(isset($btnSave)){
 }
 
 ?>
+
+
 <form role="form" method="post" id="frm">
     <div class="form-group">
         <div id="page-wrapper" style="min-height: 649px;">
@@ -153,15 +163,15 @@ if(isset($btnSave)){
                                                     <div class="row">
                                                         <div class="col-md-4">
                                                             <label>Phone #</label>
-                                                            <p class="form-control-static">800-849-7376</p>
+                                                            <p class="form-control-static"><?php echo $patientRelation['phone']?></p>
                                                         </div>
                                                         <div class="col-md-4">
                                                             <label>Email</label>
-                                                            <p class="form-control-static">bill@cbc.net</p>
+                                                            <p class="form-control-static"><?php echo $patientRelation['email']?></p>
                                                         </div>
                                                         <div class="col-md-4">
                                                             <label>Other contact</label>
-                                                            <p class="form-control-static">800-849-7376</p>
+                                                            <p class="form-control-static"><?php echo $patientRelation['othet_phone']?></p>
                                                         </div>
                                                     </div>
                                                 </div>
