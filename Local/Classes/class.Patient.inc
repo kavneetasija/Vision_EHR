@@ -44,7 +44,7 @@ class Patient extends MySQLDatabase
         $locationResult = $this->queryDatabase($sqlGetLocation);
         $getLocation = mysqli_fetch_assoc($locationResult);
 
-        //
+        //sql Create patient query
         $sqlCreatePatient = "INSERT INTO tbl_patients(location_id,first_name,last_name,OHIP_number,OHIP_virsion,birth_date,gender,address,city,province,postal_code,type)
                              VALUES('$getLocation[location_id]','$firstName','$lastName','$ohipNumber','$ohipVirsion','$birthDate','$gender','$address','$city','$province','$postalCode','$type')";
         $result = $this->queryDatabase($sqlCreatePatient);
@@ -229,7 +229,7 @@ class Patient extends MySQLDatabase
         $result = $this->queryDatabase($sqlSelectAvailableDates);
         return $result;
     }
-    //Insert Appointment data in tbl_appointments table.
+    //Insert Appointment data in tbl_appointments table.todo add rescheduling logic
     /**
      * @param $sessionId
      * @param $patientId

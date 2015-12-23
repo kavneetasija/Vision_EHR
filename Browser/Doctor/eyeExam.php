@@ -135,6 +135,13 @@ $gtts = $exam->getAllGtts();
             if($result){
                 //Update Internal
                 $result = $exam->updateInternal();
+                if($result){
+                    //Update Tonometry
+                    $result = $exam->updateTonometry();
+                    if($result){
+                        $result = $exam->updateDiagnosis();
+                    }
+                }
             }
         }
     }
@@ -403,14 +410,6 @@ $gtts = $exam->getAllGtts();
                                                     </label>
                                                 </div>
                                             </div>
-                                        </div>
-                                    </div>
-                                    <!--Notes-->
-                                    <div class="panel panel-default">
-                                        <div class="panel-heading"><label>Notes...</label></div>
-                                        <div class="panel-body">
-                                            <textarea class="form-control" name="txtPatientInfoNotes">
-                                            </textarea>
                                         </div>
                                     </div>
                                 </div>
@@ -719,17 +718,26 @@ $gtts = $exam->getAllGtts();
                                                                 <div class="col-md-2">Type</div>
                                                                 <div class="col-md-4">
                                                                     <select class="form-control mediumText" name="acuities_SELECT_1"><!--todo add options-->
-                                                                        <option>CV 1</option>
-                                                                        <option>CV 2</option>
-                                                                        <option>CV 3</option>
+                                                                        <option value="Ishihara">Ishihara</option>
                                                                     </select>
                                                                 </div>
                                                                 <div class="col-md-2">Result</div>
                                                                 <div class="col-md-4">
                                                                     <select class="form-control mediumText" name="acuities_SELECT_2"><!--todo add options-->
-                                                                        <option>Result CV 1</option>
-                                                                        <option>Result CV 2</option>
-                                                                        <option>Result CV 3</option>
+                                                                        <option>Option</option>
+                                                                        <option value="1">1</option>
+                                                                        <option value="2">2</option>
+                                                                        <option value="3">3</option>
+                                                                        <option value="4">4</option>
+                                                                        <option value="5">5</option>
+                                                                        <option value="6">6</option>
+                                                                        <option value="7">7</option>
+                                                                        <option value="8">8</option>
+                                                                        <option value="9">9</option>
+                                                                        <option value="10">10</option>
+                                                                        <option value="11">11</option>
+                                                                        <option value="12">12</option>
+                                                                        <option value="13">13</option>
                                                                     </select>
                                                                 </div>
                                                             </div>
@@ -743,17 +751,21 @@ $gtts = $exam->getAllGtts();
                                                                 <div class="col-md-2">Type</div>
                                                                 <div class="col-md-4">
                                                                     <select class="form-control mediumText" name="acuities_SELECT_3"><!--todo add options-->
-                                                                        <option>SA 1</option>
-                                                                        <option>SA 2</option>
-                                                                        <option>SA 3</option>
+                                                                        <option value="Optical Dtereo">Optical Dtereo</option>
                                                                     </select>
                                                                 </div>
                                                                 <div class="col-md-2">Result</div>
                                                                 <div class="col-md-4">
                                                                     <select class="form-control mediumText" name="acuities_SELECT_4"><!--todo add options-->
-                                                                        <option>result SA 1</option>
-                                                                        <option>result SA 2</option>
-                                                                        <option>result SA 3</option>
+                                                                        <option value="1">1</option>
+                                                                        <option value="2">2</option>
+                                                                        <option value="3">3</option>
+                                                                        <option value="4">4</option>
+                                                                        <option value="5">5</option>
+                                                                        <option value="6">6</option>
+                                                                        <option value="7">7</option>
+                                                                        <option value="8">8</option>
+                                                                        <option value="9">9</option>
                                                                     </select>
                                                                 </div>
                                                             </div>
@@ -831,13 +843,13 @@ $gtts = $exam->getAllGtts();
                                                             Retinoscopy
                                                         </div>
                                                         <div class="col-sm-2" style="padding-left: 0">
-                                                            <input type="number" step="0.25" class="form-control" name="retinoscopy_INPUT_6">
+                                                            <input type="number" step="0.25" class="form-control" name="retinoscopy_INPUT_6" id="txtRetOD_1">
                                                         </div>
                                                         <div class="col-sm-2" style="padding-left: 0">
-                                                            <input type="number" step="0.25" class="form-control" name="retinoscopy_INPUT_7">
+                                                            <input type="number" step="0.25" class="form-control" name="retinoscopy_INPUT_7" id="txtRetOD_2">
                                                         </div>
                                                         <div class="col-sm-2" style="padding-left: 0">
-                                                            <input type="number" step="1" min="0" class="form-control" name="retinoscopy_INPUT_8">
+                                                            <input type="number" step="1" min="0" class="form-control" name="retinoscopy_INPUT_8" id="txtRetOD_3">
                                                         </div>
                                                         <div class="col-sm-1" style="padding: 0; text-align: center;">
                                                             /
@@ -852,13 +864,13 @@ $gtts = $exam->getAllGtts();
                                                             Subjective Rx
                                                         </div>
                                                         <div class="col-sm-2" style="padding-left: 0">
-                                                            <input type="number" step="0.25" class="form-control" name="retinoscopy_INPUT_10">
+                                                            <input type="number" step="0.25" class="form-control" name="retinoscopy_INPUT_10" id="txtSubOD_1">
                                                         </div>
                                                         <div class="col-sm-2" style="padding-left: 0">
-                                                            <input type="number" step="0.25" class="form-control" name="retinoscopy_INPUT_11">
+                                                            <input type="number" step="0.25" class="form-control" name="retinoscopy_INPUT_11" id="txtSubOD_2">
                                                         </div>
                                                         <div class="col-sm-2" style="padding-left: 0">
-                                                            <input type="number" step="1" min="0" class="form-control" name="retinoscopy_INPUT_12">
+                                                            <input type="number" step="1" min="0" class="form-control" name="retinoscopy_INPUT_12" id="txtSubOD_3">
                                                         </div>
                                                         <div class="col-sm-1" style="padding: 0; text-align: center;">
                                                             /
@@ -873,13 +885,13 @@ $gtts = $exam->getAllGtts();
                                                             Trial Rx
                                                         </div>
                                                         <div class="col-sm-2" style="padding-left: 0">
-                                                            <input type="number" step="0.25" class="form-control" name="retinoscopy_INPUT_14">
+                                                            <input type="number" step="0.25" class="form-control" name="retinoscopy_INPUT_14" id="txtTriOD_1">
                                                         </div>
                                                         <div class="col-sm-2" style="padding-left: 0">
-                                                            <input type="number" step="0.25" class="form-control" name="retinoscopy_INPUT_15">
+                                                            <input type="number" step="0.25" class="form-control" name="retinoscopy_INPUT_15" id="txtTriOD_2">
                                                         </div>
                                                         <div class="col-sm-2" style="padding-left: 0">
-                                                            <input type="number" step="1" min="0" class="form-control" name="retinoscopy_INPUT_16">
+                                                            <input type="number" step="1" min="0" class="form-control" name="retinoscopy_INPUT_16" id="txtTriOD_3">
                                                         </div>
                                                         <div class="col-sm-1" style="padding: 0; text-align: center;">
                                                             /
@@ -929,13 +941,13 @@ $gtts = $exam->getAllGtts();
                                                     <!--Retinoscopy-->
                                                     <div class="row">
                                                         <div class="col-sm-2" style="padding-left: 0">
-                                                            <input type="number" step="0.25" class="form-control" name="retinoscopy_INPUT_23">
+                                                            <input type="number" step="0.25" class="form-control" name="retinoscopy_INPUT_23" id="txtRetOS_1">
                                                         </div>
                                                         <div class="col-sm-2" style="padding-left: 0">
-                                                            <input type="number" step="0.25" class="form-control" name="retinoscopy_INPUT_24">
+                                                            <input type="number" step="0.25" class="form-control" name="retinoscopy_INPUT_24" id="txtRetOS_2">
                                                         </div>
                                                         <div class="col-sm-2" style="padding-left: 0">
-                                                            <input type="number" step="1" min="0" class="form-control" name="retinoscopy_INPUT_25">
+                                                            <input type="number" step="1" min="0" class="form-control" name="retinoscopy_INPUT_25" id="txtRetOS_3">
                                                         </div>
                                                         <div class="col-sm-1" style="padding: 0; text-align: center;">
                                                             /
@@ -947,13 +959,13 @@ $gtts = $exam->getAllGtts();
                                                     <!--Subjective Rx-->
                                                     <div class="row">
                                                         <div class="col-sm-2" style="padding-left: 0">
-                                                            <input type="number" step="0.25" class="form-control" name="retinoscopy_INPUT_27">
+                                                            <input type="number" step="0.25" class="form-control" name="retinoscopy_INPUT_27" id="txtSubOS_1">
                                                         </div>
                                                         <div class="col-sm-2" style="padding-left: 0">
-                                                            <input type="number" step="0.25" class="form-control" name="retinoscopy_INPUT_28">
+                                                            <input type="number" step="0.25" class="form-control" name="retinoscopy_INPUT_28" id="txtSubOS_2">
                                                         </div>
                                                         <div class="col-sm-2" style="padding-left: 0">
-                                                            <input type="number" step="1" min="0" class="form-control" name="retinoscopy_INPUT_29">
+                                                            <input type="number" step="1" min="0" class="form-control" name="retinoscopy_INPUT_29" id="txtSubOS_3">
                                                         </div>
                                                         <div class="col-sm-1" style="padding: 0; text-align: center;">
                                                             /
@@ -965,13 +977,13 @@ $gtts = $exam->getAllGtts();
                                                     <!--Trial Rx-->
                                                     <div class="row">
                                                         <div class="col-sm-2" style="padding-left: 0">
-                                                            <input type="number" step="0.25" class="form-control" name="retinoscopy_INPUT_31">
+                                                            <input type="number" step="0.25" class="form-control" name="retinoscopy_INPUT_31" id="txtTriOS_1">
                                                         </div>
                                                         <div class="col-sm-2" style="padding-left: 0">
-                                                            <input type="number" step="0.25" class="form-control" name="retinoscopy_INPUT_32">
+                                                            <input type="number" step="0.25" class="form-control" name="retinoscopy_INPUT_32" id="txtTriOS_2">
                                                         </div>
                                                         <div class="col-sm-2" style="padding-left: 0">
-                                                            <input type="number" step="1" min="0" class="form-control" name="retinoscopy_INPUT_33">
+                                                            <input type="number" step="1" min="0" class="form-control" name="retinoscopy_INPUT_33" id="txtTriOS_3">
                                                         </div>
                                                         <div class="col-sm-1" style="padding: 0; text-align: center;">
                                                             /
@@ -1016,7 +1028,7 @@ $gtts = $exam->getAllGtts();
                                                             <div class="row">
                                                                 <div class="col-md-3">Refined Add</div>
                                                                 <div class="col-md-4">
-                                                                    <input type="number" min="0" step="0.25" class="form-control mediumText" name="retinoscopy_INPUT_38">
+                                                                    <input type="number" min="0" step="0.25" class="form-control mediumText" name="retinoscopy_INPUT_38" id="txtAdd">
                                                                 </div>
                                                                 <div class="col-md-1" style="padding: 0;text-align: center;">
                                                                     at
@@ -1041,7 +1053,7 @@ $gtts = $exam->getAllGtts();
                                                                     OD
                                                                 </div>
                                                                 <div class="col-md-2" style="padding: 0;">
-                                                                    <input type="number" step="0.25" min="0" class="form-control" name="retinoscopy_INPUT_41">
+                                                                    <input type="number" step="0.25" min="0" class="form-control" name="retinoscopy_INPUT_41" id="txtAddOD">
                                                                 </div>
                                                                 <div class="col-md-1">
                                                                     VA
@@ -1053,7 +1065,7 @@ $gtts = $exam->getAllGtts();
                                                                     OS
                                                                 </div>
                                                                 <div class="col-md-2" style="padding: 0;">
-                                                                    <input type="number" step="0.25" min="0" class="form-control" name="retinoscopy_INPUT_43">
+                                                                    <input type="number" step="0.25" min="0" class="form-control" name="retinoscopy_INPUT_43" id="txtAddOS">
                                                                 </div>
                                                                 <div class="col-md-1">
                                                                     VA
@@ -1069,29 +1081,9 @@ $gtts = $exam->getAllGtts();
                                             <!--row 2 Genrate rx Button-->
                                             <div class="row">
                                                 <div class="col-md-12">
-                                                    <input type="button" class="btn btn-info btn-sm" id="btnRx" value="Generate Rx" name="retinoscopy_INPUT_45">
+                                                    <button type="button" class="btn btn-info btn-sm" id="btnRx" onclick="generateRx()" name="retinoscopy_INPUT_45">Generate Rx</button>
                                                 </div>
                                             </div><br>
-                                        </div>
-                                    </div>
-                                    <!--pnl Prescription-->
-                                    <div class="panel panel-info" id="pnlRx" style="display: none;">
-                                        <div class="panel-heading"><label>Prescription Dec 02,2015</label></div>
-                                        <div class="panel-body">
-                                            <!--final Rx-->
-                                            <div class="panel panel-success">
-                                                <div class="panel-heading"><label>Final RX</label></div>
-                                                <div class="panel-body">
-
-                                                </div>
-                                            </div>
-                                            <!--special RX-->
-                                            <div class="panel panel-success">
-                                                <div class="panel-heading"><label>Special RX</label></div>
-                                                <div class="panel-body">
-
-                                                </div>
-                                            </div>
                                         </div>
                                     </div>
                                     <!--Notes-->
@@ -1787,10 +1779,10 @@ $gtts = $exam->getAllGtts();
                                                     <!--OD-->
                                                     <div class="row">
                                                         <div class="col-md-1"><label>OD</label></div>
-                                                        <div class="col-md-1"><input type="number" step="0.25" class="form-control" name="diagnosis_INPUT_0"></div>
-                                                        <div class="col-md-1"><input type="number" step="0.25" class="form-control" name="diagnosis_INPUT_1"></div>
-                                                        <div class="col-md-1"><input type="text" class="form-control" name="diagnosis_INPUT_2"></div>
-                                                        <div class="col-md-1"><input type="number" class="form-control" name="diagnosis_INPUT_3"></div>
+                                                        <div class="col-md-1"><input type="number" step="0.25" class="form-control" name="diagnosis_INPUT_0" id="txtRxOD_1"></div>
+                                                        <div class="col-md-1"><input type="number" step="0.25" class="form-control" name="diagnosis_INPUT_1" id="txtRxOD_2"></div>
+                                                        <div class="col-md-1"><input type="text" class="form-control" name="diagnosis_INPUT_2" id="txtRxOD_3"></div>
+                                                        <div class="col-md-1"><input type="number" class="form-control" name="diagnosis_INPUT_3" id="txtRxODAdd"></div>
                                                         <div class="col-md-1"><input type="text" class="form-control" name="diagnosis_INPUT_4"></div>
                                                         <div class="col-md-1"><input type="text" class="form-control" name="diagnosis_INPUT_5"></div>
                                                         <div class="col-md-1"><input type="text" class="form-control" name="diagnosis_INPUT_6"></div>
@@ -1801,10 +1793,10 @@ $gtts = $exam->getAllGtts();
                                                     <!--OS-->
                                                     <div class="row">
                                                         <div class="col-md-1"><label>OS</label></div>
-                                                        <div class="col-md-1"><input type="number" step="0.25" class="form-control" name="diagnosis_INPUT_10"></div>
-                                                        <div class="col-md-1"><input type="number" step="0.25" class="form-control" name="diagnosis_INPUT_11"></div>
-                                                        <div class="col-md-1"><input type="text" class="form-control" name="diagnosis_INPUT_12"></div>
-                                                        <div class="col-md-1"><input type="number" class="form-control" name="diagnosis_INPUT_13"></div>
+                                                        <div class="col-md-1"><input type="number" step="0.25" class="form-control" name="diagnosis_INPUT_10" id="txtRxOS_1"></div>
+                                                        <div class="col-md-1"><input type="number" step="0.25" class="form-control" name="diagnosis_INPUT_11" id="txtRxOS_2"></div>
+                                                        <div class="col-md-1"><input type="text" class="form-control" name="diagnosis_INPUT_12" id="txtRxOS_3"></div>
+                                                        <div class="col-md-1"><input type="number" class="form-control" name="diagnosis_INPUT_13" id="txtRxOSAdd"></div>
                                                         <div class="col-md-1"><input type="text" class="form-control" name="diagnosis_INPUT_14"></div>
                                                         <div class="col-md-1"><input type="text" class="form-control" name="diagnosis_INPUT_15"></div>
                                                         <div class="col-md-1"><input type="text" class="form-control" name="diagnosis_INPUT_16"></div>
@@ -2039,9 +2031,96 @@ $gtts = $exam->getAllGtts();
         else if(option == 'Add'){
             text.value = newGttsText.value
         }
+    }
+    //generate rx click event
+    function generateRx(){
+        //txt Ret OD
+        var txtRetOD_1 = document.getElementById('txtRetOD_1');
+        var txtRetOD_2 = document.getElementById('txtRetOD_2');
+        var txtRetOD_3 = document.getElementById('txtRetOD_3');
+        //txt Ret OS
+        var txtRetOS_1 = document.getElementById('txtRetOS_1');
+        var txtRetOS_2 = document.getElementById('txtRetOS_2');
+        var txtRetOS_3 = document.getElementById('txtRetOS_3');
+        //txt Sub OD
+        var txtSubOD_1 = document.getElementById('txtSubOD_1');
+        var txtSubOD_2 = document.getElementById('txtSubOD_2');
+        var txtSubOD_3 = document.getElementById('txtSubOD_3');
+        //txt Sub OS
+        var txtSubOS_1 = document.getElementById('txtSubOS_1');
+        var txtSubOS_2 = document.getElementById('txtSubOS_2');
+        var txtSubOS_3 = document.getElementById('txtSubOS_3');
+        //txt Tri OD
+        var txtTriOD_1 = document.getElementById('txtTriOD_1');
+        var txtTriOD_2 = document.getElementById('txtTriOD_2');
+        var txtTriOD_3 = document.getElementById('txtTriOD_3');
+        //txt Tri OS
+        var txtTriOS_1 = document.getElementById('txtTriOS_1');
+        var txtTriOS_2 = document.getElementById('txtTriOS_2');
+        var txtTriOS_3 = document.getElementById('txtTriOS_3');
+        //Adds
+        var txtAdd = document.getElementById('txtAdd');
+        var txtAddOD = document.getElementById('txtAddOD');
+        var txtAddOS = document.getElementById('txtAddOS');
+        //Rx OD
+        var txtRxOD_1 = document.getElementById('txtRxOD_1');
+        var txtRxOD_2 = document.getElementById('txtRxOD_2');
+        var txtRxOD_3 = document.getElementById('txtRxOD_3');
+        //Rx OS
+        var txtRxOS_1 = document.getElementById('txtRxOS_1');
+        var txtRxOS_2 = document.getElementById('txtRxOS_2');
+        var txtRxOS_3 = document.getElementById('txtRxOS_3');
+        //Rx Add
+        var txtRxODAdd = document.getElementById('txtRxODAdd');
+        var txtRxOSAdd = document.getElementById('txtRxOSAdd');
 
+
+        //Set Rx fild
+        //check if trial rx is not empty
+        if((txtTriOD_1.value != '') && (txtTriOS_1.value != '')){
+            //Set OD Values
+            txtRxOD_1.value = txtTriOD_1.value;
+            txtRxOD_2.value = txtTriOD_2.value;
+            txtRxOD_3.value = txtTriOD_3.value;
+            //Set OS Values
+            txtRxOS_1.value = txtTriOS_1.value;
+            txtRxOS_2.value = txtTriOS_2.value;
+            txtRxOS_3.value = txtTriOS_3.value;
+        }
+        //Checke Subjective rx is not empty
+        else if((txtSubOD_1.value != '') && (txtSubOD_1.value != '')){
+            //Set OD Values
+            txtRxOD_1.value = txtSubOD_1.value;
+            txtRxOD_2.value = txtSubOD_2.value;
+            txtRxOD_3.value = txtSubOD_3.value;
+            //Set OS Values
+            txtRxOS_1.value = txtSubOS_1.value;
+            txtRxOS_2.value = txtSubOS_2.value;
+            txtRxOS_3.value = txtSubOS_3.value;
+        }
+        //Check if Retinoscopy Rx isnot empty
+        else if((txtRetOD_1.value != '') && (txtRetOS_1.value != '')){
+            //Set OD Values
+            txtRxOD_1.value = txtRetOD_1.value;
+            txtRxOD_2.value = txtRetOD_2.value;
+            txtRxOD_3.value = txtRetOD_3.value;
+            //Set OS Values
+            txtRxOS_1.value = txtRetOS_1.value;
+            txtRxOS_2.value = txtRetOS_2.value;
+            txtRxOS_3.value = txtRetOS_3.value;
+        }
+
+        //Set Adds
+        if((txtAddOD.value != '') && (txtAddOS.value != '')){
+            txtRxODAdd.value = txtAddOD.value;
+            txtRxOSAdd.value = txtAddOS.value;
+        }
+        else if(txtAdd.value != ''){
+            txtRxODAdd.value = txtRxOSAdd.value = txtAdd.value;
+        }
 
     }
+
     //submit data via ajax
     var saveForm = function(){
         var data = $('#frm').serialize();
@@ -2057,7 +2136,7 @@ $gtts = $exam->getAllGtts();
         txtNow.value = hr +":"+ min;
     }
 
-
+    //send data to update every 10s
     setInterval(saveForm, 10000);
 
 </script>

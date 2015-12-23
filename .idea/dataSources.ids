@@ -1184,7 +1184,7 @@
         <data-type>varchar(15)</data-type>
       </column>
       <column id="362" parent="16" name="retinoscopy_INPUT_35">
-        <data-type>varchar(15)</data-type>
+        <data-type>varchar(150)</data-type>
       </column>
       <column id="363" parent="16" name="retinoscopy_INPUT_36">
         <data-type>varchar(15)</data-type>

@@ -390,6 +390,34 @@ class Exam extends Patient
 
         return $this->queryDatabase($sqlInsertTonometry);
     }
+
+    //on update Tonometery
+    function updateTonometry(){
+        $sqlUpdateTonometry = "UPDATE tbl_tonometry SET `tonometry_INPUT_0` = '$this->tonometry_INPUT_0',
+                                                        `tonometry_INPUT_1` = '$this->tonometry_INPUT_1',
+                                                        `tonometry_INPUT_2` = '$this->tonometry_INPUT_2',
+                                                        `tonometry_INPUT_3` = '$this->tonometry_INPUT_3',
+                                                        `tonometry_INPUT_4` = '$this->tonometry_INPUT_4',
+                                                        `tonometry_INPUT_5` = '$this->tonometry_INPUT_5',
+                                                        `tonometry_INPUT_6` = '$this->tonometry_INPUT_6',
+                                                        `tonometry_INPUT_7` = '$this->tonometry_INPUT_7',
+                                                        `tonometry_INPUT_8` = '$this->tonometry_INPUT_8',
+                                                        `tonometry_INPUT_9` = '$this->tonometry_INPUT_9',
+                                                        `tonometry_INPUT_10` = '$this->tonometry_INPUT_10',
+                                                        `tonometry_INPUT_11` = '$this->tonometry_INPUT_11',
+                                                        `tonometry_INPUT_12` = '$this->tonometry_INPUT_12',
+                                                        `tonometry_INPUT_13` = '$this->tonometry_INPUT_13',
+                                                        `tonometry_INPUT_14` = '$this->tonometry_INPUT_14',
+                                                        `tonometry_INPUT_15` = '$this->tonometry_INPUT_15',
+                                                        `tonometry_INPUT_16` = '$this->tonometry_INPUT_16',
+                                                        `tonometry_INPUT_17` = '$this->tonometry_INPUT_17',
+                                                        `tonometry_INPUT_18` = '$this->tonometry_INPUT_18',
+                                                        `tonometry_INPUT_19` = '$this->tonometry_INPUT_19',
+                                                        `tonometry_SELECT_0` = '$this->tonometry_SELECT_0'
+                                                        WHERE exam_id = '$this->examId'";
+        return $this->queryDatabase($sqlUpdateTonometry);
+    }
+
     //on insert Diagnosis
     function insertDiagnosis(){
         $sqlInsertDiagnosis = "INSERT INTO tbl_diagnosis(exam_id,diagnosis_INPUT_0,diagnosis_INPUT_1,diagnosis_INPUT_2,diagnosis_INPUT_3,diagnosis_INPUT_4,
@@ -416,6 +444,58 @@ class Exam extends Patient
                                       '$this->diagnosis_INPUT_44','$this->diagnosis_INPUT_45')";
 
         return $this->queryDatabase($sqlInsertDiagnosis);
+    }
+
+    //on update Diagnosis
+    function updateDiagnosis(){
+        $sqlUpdateDiagnosis = "Update tbl_diagnosis SET `diagnosis_INPUT_0` = '$this->diagnosis_INPUT_0',
+                                                        `diagnosis_INPUT_1` = '$this->diagnosis_INPUT_1',
+                                                        `diagnosis_INPUT_2` = '$this->diagnosis_INPUT_2',
+                                                        `diagnosis_INPUT_3` = '$this->diagnosis_INPUT_3',
+                                                        `diagnosis_INPUT_4` = '$this->diagnosis_INPUT_4',
+                                                        `diagnosis_INPUT_5` = '$this->diagnosis_INPUT_5',
+                                                        `diagnosis_INPUT_6` = '$this->diagnosis_INPUT_6',
+                                                        `diagnosis_INPUT_7` = '$this->diagnosis_INPUT_7',
+                                                        `diagnosis_INPUT_8` = '$this->diagnosis_INPUT_8',
+                                                        `diagnosis_INPUT_9` = '$this->diagnosis_INPUT_9',
+                                                        `diagnosis_INPUT_10` = '$this->diagnosis_INPUT_10',
+                                                        `diagnosis_INPUT_11` = '$this->diagnosis_INPUT_11',
+                                                        `diagnosis_INPUT_12` = '$this->diagnosis_INPUT_12',
+                                                        `diagnosis_INPUT_13` = '$this->diagnosis_INPUT_13',
+                                                        `diagnosis_INPUT_14` = '$this->diagnosis_INPUT_14',
+                                                        `diagnosis_INPUT_15` = '$this->diagnosis_INPUT_15',
+                                                        `diagnosis_INPUT_16` = '$this->diagnosis_INPUT_16',
+                                                        `diagnosis_INPUT_17` = '$this->diagnosis_INPUT_17',
+                                                        `diagnosis_INPUT_18` = '$this->diagnosis_INPUT_18',
+                                                        `diagnosis_INPUT_19` = '$this->diagnosis_INPUT_19',
+                                                        `diagnosis_INPUT_20` = '$this->diagnosis_INPUT_20',
+                                                        `diagnosis_INPUT_21` = '$this->diagnosis_INPUT_21',
+                                                        `diagnosis_INPUT_22` = '$this->diagnosis_INPUT_22',
+                                                        `diagnosis_INPUT_23` = '$this->diagnosis_INPUT_23',
+                                                        `diagnosis_INPUT_24` = '$this->diagnosis_INPUT_24',
+                                                        `diagnosis_INPUT_25` = '$this->diagnosis_INPUT_25',
+                                                        `diagnosis_INPUT_26` = '$this->diagnosis_INPUT_26',
+                                                        `diagnosis_INPUT_27` = '$this->diagnosis_INPUT_27',
+                                                        `diagnosis_INPUT_28` = '$this->diagnosis_INPUT_28',
+                                                        `diagnosis_INPUT_29` = '$this->diagnosis_INPUT_29',
+                                                        `diagnosis_INPUT_30` = '$this->diagnosis_INPUT_30',
+                                                        `diagnosis_INPUT_31` = '$this->diagnosis_INPUT_31',
+                                                        `diagnosis_INPUT_32` = '$this->diagnosis_INPUT_32',
+                                                        `diagnosis_INPUT_33` = '$this->diagnosis_INPUT_33',
+                                                        `diagnosis_INPUT_34` = '$this->diagnosis_INPUT_34',
+                                                        `diagnosis_INPUT_35` = '$this->diagnosis_INPUT_35',
+                                                        `diagnosis_INPUT_36` = '$this->diagnosis_INPUT_36',
+                                                        `diagnosis_INPUT_37` = '$this->diagnosis_INPUT_37',
+                                                        `diagnosis_INPUT_38` = '$this->diagnosis_INPUT_38',
+                                                        `diagnosis_INPUT_39` = '$this->diagnosis_INPUT_39',
+                                                        `diagnosis_INPUT_40` = '$this->diagnosis_INPUT_40',
+                                                        `diagnosis_INPUT_41` = '$this->diagnosis_INPUT_41',
+                                                        `diagnosis_INPUT_42` = '$this->diagnosis_INPUT_42',
+                                                        `diagnosis_INPUT_43` = '$this->diagnosis_INPUT_43',
+                                                        `diagnosis_INPUT_44` = '$this->diagnosis_INPUT_44',
+                                                        `diagnosis_INPUT_45` = '$this->diagnosis_INPUT_45'
+                                                        WHERE exam_id = '$this->examId'";
+        return $this->queryDatabase($sqlUpdateDiagnosis);
     }
 
 

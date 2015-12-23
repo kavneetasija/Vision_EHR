@@ -191,7 +191,7 @@ private $locationAddress;
         return $this->queryDatabase($sqlSelectLocation);
     }
 
-    //Get all appointments for session
+    //Get all appointments for session todo remove already checked appointments
     function getAppointmentsBySessionId($sessionId){
         $sqlSelectAppointments = "SELECT tbl_patients.*, tbl_sessions.date,tbl_appointments.time FROM tbl_appointments
                                   LEFT JOIN tbl_patients ON tbl_appointments.patient_id = tbl_patients.patient_id
