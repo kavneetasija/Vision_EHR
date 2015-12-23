@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost:3306
--- Generation Time: Dec 22, 2015 at 02:50 PM
+-- Generation Time: Dec 23, 2015 at 03:07 PM
 -- Server version: 5.6.26
 -- PHP Version: 5.5.30
 
@@ -70,7 +70,8 @@ CREATE TABLE IF NOT EXISTS `tbl_acuities` (
   `acuities_SELECT_1` varchar(15) DEFAULT NULL,
   `acuities_SELECT_2` varchar(15) DEFAULT NULL,
   `acuities_SELECT_3` varchar(15) DEFAULT NULL,
-  `acuities_SELECT_4` varchar(15) DEFAULT NULL
+  `acuities_SELECT_4` varchar(15) DEFAULT NULL,
+  `note` text
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -95,53 +96,56 @@ CREATE TABLE IF NOT EXISTS `tbl_appointments` (
 CREATE TABLE IF NOT EXISTS `tbl_diagnosis` (
   `diagnosis_id` int(11) NOT NULL,
   `exam_id` int(11) NOT NULL,
-  `diagnosis_INPUT_0` varchar(15) DEFAULT NULL,
-  `diagnosis_INPUT_1` varchar(15) DEFAULT NULL,
-  `diagnosis_INPUT_2` varchar(15) DEFAULT NULL,
-  `diagnosis_INPUT_3` varchar(15) DEFAULT NULL,
-  `diagnosis_INPUT_4` varchar(15) DEFAULT NULL,
-  `diagnosis_INPUT_5` varchar(15) DEFAULT NULL,
-  `diagnosis_INPUT_6` varchar(15) DEFAULT NULL,
-  `diagnosis_INPUT_7` varchar(15) DEFAULT NULL,
-  `diagnosis_INPUT_8` varchar(15) DEFAULT NULL,
-  `diagnosis_INPUT_9` varchar(15) DEFAULT NULL,
-  `diagnosis_INPUT_10` varchar(15) DEFAULT NULL,
-  `diagnosis_INPUT_11` varchar(15) DEFAULT NULL,
-  `diagnosis_INPUT_12` varchar(15) DEFAULT NULL,
-  `diagnosis_INPUT_13` varchar(15) DEFAULT NULL,
-  `diagnosis_INPUT_14` varchar(15) DEFAULT NULL,
-  `diagnosis_INPUT_15` varchar(15) DEFAULT NULL,
-  `diagnosis_INPUT_16` varchar(15) DEFAULT NULL,
-  `diagnosis_INPUT_17` varchar(15) DEFAULT NULL,
-  `diagnosis_INPUT_18` varchar(15) DEFAULT NULL,
-  `diagnosis_INPUT_19` varchar(15) DEFAULT NULL,
-  `diagnosis_INPUT_20` varchar(15) DEFAULT NULL,
-  `diagnosis_INPUT_21` varchar(15) DEFAULT NULL,
-  `diagnosis_INPUT_22` varchar(15) DEFAULT NULL,
-  `diagnosis_INPUT_23` varchar(15) DEFAULT NULL,
-  `diagnosis_INPUT_24` varchar(15) DEFAULT NULL,
-  `diagnosis_INPUT_25` varchar(15) DEFAULT NULL,
-  `diagnosis_INPUT_26` varchar(15) DEFAULT NULL,
-  `diagnosis_INPUT_27` varchar(15) DEFAULT NULL,
-  `diagnosis_INPUT_28` varchar(15) DEFAULT NULL,
-  `diagnosis_INPUT_29` varchar(15) DEFAULT NULL,
-  `diagnosis_INPUT_30` varchar(15) DEFAULT NULL,
-  `diagnosis_INPUT_31` varchar(15) DEFAULT NULL,
-  `diagnosis_INPUT_32` varchar(15) DEFAULT NULL,
-  `diagnosis_INPUT_33` varchar(15) DEFAULT NULL,
-  `diagnosis_INPUT_34` varchar(15) DEFAULT NULL,
-  `diagnosis_INPUT_35` varchar(15) DEFAULT NULL,
-  `diagnosis_INPUT_36` varchar(15) DEFAULT NULL,
-  `diagnosis_INPUT_37` varchar(15) DEFAULT NULL,
-  `diagnosis_INPUT_38` varchar(15) DEFAULT NULL,
-  `diagnosis_INPUT_39` varchar(15) DEFAULT NULL,
-  `diagnosis_INPUT_40` varchar(15) DEFAULT NULL,
-  `diagnosis_INPUT_41` varchar(15) DEFAULT NULL,
-  `diagnosis_INPUT_42` varchar(15) DEFAULT NULL,
-  `diagnosis_INPUT_43` varchar(15) DEFAULT NULL,
-  `diagnosis_INPUT_44` varchar(15) DEFAULT NULL,
-  `diagnosis_INPUT_45` varchar(15) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `diagnosis_INPUT_0` varchar(15) CHARACTER SET utf8 DEFAULT NULL,
+  `diagnosis_INPUT_1` varchar(15) CHARACTER SET utf8 DEFAULT NULL,
+  `diagnosis_INPUT_2` varchar(15) CHARACTER SET utf8 DEFAULT NULL,
+  `diagnosis_INPUT_3` varchar(15) CHARACTER SET utf8 DEFAULT NULL,
+  `diagnosis_INPUT_4` varchar(15) CHARACTER SET utf8 DEFAULT NULL,
+  `diagnosis_INPUT_5` varchar(15) CHARACTER SET utf8 DEFAULT NULL,
+  `diagnosis_INPUT_6` varchar(15) CHARACTER SET utf8 DEFAULT NULL,
+  `diagnosis_INPUT_7` varchar(15) CHARACTER SET utf8 DEFAULT NULL,
+  `diagnosis_INPUT_8` varchar(15) CHARACTER SET utf8 DEFAULT NULL,
+  `diagnosis_INPUT_9` varchar(15) CHARACTER SET utf8 DEFAULT NULL,
+  `diagnosis_INPUT_10` varchar(15) CHARACTER SET utf8 DEFAULT NULL,
+  `diagnosis_INPUT_11` varchar(15) CHARACTER SET utf8 DEFAULT NULL,
+  `diagnosis_INPUT_12` varchar(15) CHARACTER SET utf8 DEFAULT NULL,
+  `diagnosis_INPUT_13` varchar(15) CHARACTER SET utf8 DEFAULT NULL,
+  `diagnosis_INPUT_14` varchar(15) CHARACTER SET utf8 DEFAULT NULL,
+  `diagnosis_INPUT_15` varchar(15) CHARACTER SET utf8 DEFAULT NULL,
+  `diagnosis_INPUT_16` varchar(15) CHARACTER SET utf8 DEFAULT NULL,
+  `diagnosis_INPUT_17` varchar(15) CHARACTER SET utf8 DEFAULT NULL,
+  `diagnosis_INPUT_18` varchar(15) CHARACTER SET utf8 DEFAULT NULL,
+  `diagnosis_INPUT_19` varchar(15) CHARACTER SET utf8 DEFAULT NULL,
+  `diagnosis_INPUT_20` varchar(15) CHARACTER SET utf8 DEFAULT NULL,
+  `diagnosis_INPUT_21` varchar(15) CHARACTER SET utf8 DEFAULT NULL,
+  `diagnosis_INPUT_22` varchar(15) CHARACTER SET utf8 DEFAULT NULL,
+  `diagnosis_INPUT_23` varchar(15) CHARACTER SET utf8 DEFAULT NULL,
+  `diagnosis_INPUT_24` varchar(15) CHARACTER SET utf8 DEFAULT NULL,
+  `diagnosis_INPUT_25` varchar(15) CHARACTER SET utf8 DEFAULT NULL,
+  `diagnosis_INPUT_26` varchar(15) CHARACTER SET utf8 DEFAULT NULL,
+  `diagnosis_INPUT_27` varchar(15) CHARACTER SET utf8 DEFAULT NULL,
+  `diagnosis_INPUT_28` varchar(15) CHARACTER SET utf8 DEFAULT NULL,
+  `diagnosis_INPUT_29` varchar(15) CHARACTER SET utf8 DEFAULT NULL,
+  `diagnosis_INPUT_30` varchar(15) CHARACTER SET utf8 DEFAULT NULL,
+  `diagnosis_INPUT_31` varchar(15) CHARACTER SET utf8 DEFAULT NULL,
+  `diagnosis_INPUT_32` varchar(15) CHARACTER SET utf8 DEFAULT NULL,
+  `diagnosis_INPUT_33` varchar(15) CHARACTER SET utf8 DEFAULT NULL,
+  `diagnosis_INPUT_34` varchar(15) CHARACTER SET utf8 DEFAULT NULL,
+  `diagnosis_INPUT_35` varchar(15) CHARACTER SET utf8 DEFAULT NULL,
+  `diagnosis_INPUT_36` varchar(15) CHARACTER SET utf8 DEFAULT NULL,
+  `diagnosis_INPUT_37` varchar(15) CHARACTER SET utf8 DEFAULT NULL,
+  `diagnosis_INPUT_38` varchar(15) CHARACTER SET utf8 DEFAULT NULL,
+  `diagnosis_INPUT_39` varchar(15) CHARACTER SET utf8 DEFAULT NULL,
+  `diagnosis_INPUT_40` varchar(15) CHARACTER SET utf8 DEFAULT NULL,
+  `diagnosis_INPUT_41` varchar(15) CHARACTER SET utf8 DEFAULT NULL,
+  `diagnosis_INPUT_42` varchar(15) CHARACTER SET utf8 DEFAULT NULL,
+  `diagnosis_INPUT_43` varchar(15) CHARACTER SET utf8 DEFAULT NULL,
+  `diagnosis_INPUT_44` varchar(15) CHARACTER SET utf8 DEFAULT NULL,
+  `diagnosis_INPUT_45` varchar(15) CHARACTER SET utf8 DEFAULT NULL,
+  `note` text COLLATE utf8_estonian_ci,
+  `findings` text COLLATE utf8_estonian_ci,
+  `recommendation` text COLLATE utf8_estonian_ci
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_estonian_ci;
 
 -- --------------------------------------------------------
 
@@ -188,7 +192,8 @@ CREATE TABLE IF NOT EXISTS `tbl_external` (
   `external_INPUT_19` varchar(15) DEFAULT NULL,
   `external_INPUT_20` varchar(15) DEFAULT NULL,
   `external_INPUT_21` varchar(15) DEFAULT NULL,
-  `external_INPUT_22` varchar(15) DEFAULT NULL
+  `external_INPUT_22` varchar(15) DEFAULT NULL,
+  `note` text
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='																			';
 
 -- --------------------------------------------------------
@@ -252,7 +257,8 @@ CREATE TABLE IF NOT EXISTS `tbl_internal` (
   `internal_INPUT_38` varchar(15) DEFAULT NULL,
   `internal_INPUT_39` varchar(15) DEFAULT NULL,
   `internal_INPUT_40` varchar(15) DEFAULT NULL,
-  `internal_SELECT_0` varchar(15) DEFAULT NULL
+  `internal_SELECT_0` varchar(15) DEFAULT NULL,
+  `note` text
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -351,7 +357,8 @@ CREATE TABLE IF NOT EXISTS `tbl_retinoscopy` (
   `retinoscopy_INPUT_42` varchar(15) DEFAULT NULL,
   `retinoscopy_INPUT_43` varchar(15) DEFAULT NULL,
   `retinoscopy_INPUT_44` varchar(15) DEFAULT NULL,
-  `retinoscopy_INPUT_45` varchar(15) DEFAULT NULL
+  `retinoscopy_INPUT_45` varchar(15) DEFAULT NULL,
+  `note` text
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -456,7 +463,8 @@ CREATE TABLE IF NOT EXISTS `tbl_tonometry` (
   `tonometry_INPUT_17` varchar(15) DEFAULT NULL,
   `tonometry_INPUT_18` varchar(15) DEFAULT NULL,
   `tonometry_INPUT_19` varchar(15) DEFAULT NULL,
-  `tonometry_SELECT_0` varchar(15) DEFAULT NULL
+  `tonometry_SELECT_0` varchar(15) DEFAULT NULL,
+  `note` text
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------

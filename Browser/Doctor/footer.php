@@ -41,6 +41,26 @@
             responsive: true,
             lengthChange: true
         });
+        /*printDatatable*/
+      var printTable = $('#printDataTable').DataTable({
+            responsive: true,
+            lengthChange: false,
+            /*Button style and config*/
+             buttons: [
+                 {
+                 extend: 'pdf',
+                 text: '<i class="fa fa-file-pdf-o"></i>',
+                 className: 'btn btn-circle btn-info'
+                 },
+                 {
+                 extend: 'print',
+                 text: '<i class="fa  fa-print"></i>',
+                 className: 'btn btn-circle btn-info'
+                 }
+             ]
+        });
+        printTable.buttons().container()
+            .appendTo( '#pnlList .col-sm-6:eq(0)' );
     });
 </script>
 </body>

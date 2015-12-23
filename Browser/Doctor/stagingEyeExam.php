@@ -12,7 +12,14 @@ if(isset($PatientID) && isset($DoctorID))
 {
     //create new exam
     $exam = new Exam();
-    $examId = $exam->createExamByPatientId($PatientID,$DoctorID);
+    //if exam id is passed don't create new exam. set sessin variable with it
+    if(!isset($ExamID)){
+        $examId = $exam->createExamByPatientId($PatientID,$DoctorID);
+
+    }
+    else{
+        $examId = $ExamID;
+    }
     //set exam id for exam object
     $exam->examId = $examId;
     //prepare Acuities

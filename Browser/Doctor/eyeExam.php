@@ -40,6 +40,11 @@ $studentHealthHistory = mysqli_fetch_assoc($studentHealthHistory);
 //get all gtts names and populate select info
 $gtts = $exam->getAllGtts();
 
+//get all data from database using exam id and apply to form element
+//select Acuities
+    $accuities = $exam->selectAcuitiesByExamId();
+    $accuities = mysqli_fetch_array($accuities);
+
     //set parameters for acuities
     $exam->acuities_INPUT_0   = $acuities_INPUT_0;  $exam->acuities_INPUT_1 =   $acuities_INPUT_1;  $exam->acuities_INPUT_2 =   $acuities_INPUT_2 ;$exam->acuities_INPUT_3 =   $acuities_INPUT_3 ;
     $exam->acuities_INPUT_4   = $acuities_INPUT_4;  $exam->acuities_INPUT_5 =   $acuities_INPUT_5;  $exam->acuities_INPUT_6 =   $acuities_INPUT_6 ;$exam->acuities_INPUT_7 =   $acuities_INPUT_7 ;
@@ -51,7 +56,7 @@ $gtts = $exam->getAllGtts();
     $exam->acuities_INPUT_28  = $acuities_INPUT_28; $exam->acuities_INPUT_29 =  $acuities_INPUT_29; $exam->acuities_INPUT_30 =  $acuities_INPUT_30 ;$exam->acuities_INPUT_31 =  $acuities_INPUT_31 ;
     $exam->acuities_INPUT_32  = $acuities_INPUT_32; $exam->acuities_INPUT_33 =  $acuities_INPUT_33; $exam->acuities_INPUT_34 =  $acuities_INPUT_34 ;$exam->acuities_INPUT_35 =  $acuities_INPUT_35 ;
     $exam->acuities_INPUT_36  = $acuities_INPUT_36; $exam->acuities_SELECT_0 =  $acuities_SELECT_0; $exam->acuities_SELECT_1 =  $acuities_SELECT_1 ;$exam->acuities_SELECT_2 =  $acuities_SELECT_2 ;
-    $exam->acuities_SELECT_3  = $acuities_SELECT_3; $exam->acuities_SELECT_4 =  $acuities_SELECT_4;
+    $exam->acuities_SELECT_3  = $acuities_SELECT_3; $exam->acuities_SELECT_4 =  $acuities_SELECT_4; $exam->acuities_note = $txtAcutiesNote;
 
     //set parameters for retnoscopy
     $exam->retinoscopy_INPUT_0 = $retinoscopy_INPUT_0;$exam->retinoscopy_INPUT_1 = $retinoscopy_INPUT_1;$exam->retinoscopy_INPUT_2 = $retinoscopy_INPUT_2;
@@ -69,7 +74,7 @@ $gtts = $exam->getAllGtts();
     $exam->retinoscopy_INPUT_36 = $retinoscopy_INPUT_36;$exam->retinoscopy_INPUT_37 = $retinoscopy_INPUT_37;$exam->retinoscopy_INPUT_38 = $retinoscopy_INPUT_38;
     $exam->retinoscopy_INPUT_39 = $retinoscopy_INPUT_39;$exam->retinoscopy_INPUT_40 = $retinoscopy_INPUT_40;$exam->retinoscopy_INPUT_41 = $retinoscopy_INPUT_41;
     $exam->retinoscopy_INPUT_42 = $retinoscopy_INPUT_42;$exam->retinoscopy_INPUT_43 = $retinoscopy_INPUT_43;$exam->retinoscopy_INPUT_44 = $retinoscopy_INPUT_44;
-    $exam->retinoscopy_INPUT_45 = $retinoscopy_INPUT_45;
+    $exam->retinoscopy_INPUT_45 = $retinoscopy_INPUT_45;$exam->retinoscopy_note = $txtRetinosopyNote;
 
     //set parameters for external
     $exam->external_INPUT_0 = $external_INPUT_0; $exam->external_INPUT_1 = $external_INPUT_1; $exam->external_INPUT_2 = $external_INPUT_2;
@@ -79,7 +84,7 @@ $gtts = $exam->getAllGtts();
     $exam->external_INPUT_12 = $external_INPUT_12; $exam->external_INPUT_13 = $external_INPUT_13; $exam->external_INPUT_14 = $external_INPUT_14;
     $exam->external_INPUT_15 = $external_INPUT_15; $exam->external_INPUT_16 = $external_INPUT_16; $exam->external_INPUT_17 = $external_INPUT_17;
     $exam->external_INPUT_18 = $external_INPUT_18; $exam->external_INPUT_19 = $external_INPUT_19; $exam->external_INPUT_20 = $external_INPUT_20;
-    $exam->external_INPUT_21 = $external_INPUT_21; $exam->external_INPUT_22 = $external_INPUT_22;
+    $exam->external_INPUT_21 = $external_INPUT_21; $exam->external_INPUT_22 = $external_INPUT_22; $exam->external_note = $txtExternalNote;
 
     //set parameters for Internal
     $exam->internal_INPUT_0 = $internal_INPUT_0;$exam->internal_INPUT_1 = $internal_INPUT_1;$exam->internal_INPUT_2 = $internal_INPUT_2;
@@ -96,6 +101,7 @@ $gtts = $exam->getAllGtts();
     $exam->internal_INPUT_33 = $internal_INPUT_33;$exam->internal_INPUT_34 = $internal_INPUT_34;$exam->internal_INPUT_35 = $internal_INPUT_35;
     $exam->internal_INPUT_36 = $internal_INPUT_36;$exam->internal_INPUT_37 = $internal_INPUT_37;$exam->internal_INPUT_38 = $internal_INPUT_38;
     $exam->internal_INPUT_39 = $internal_INPUT_39;$exam->internal_INPUT_40 = $internal_INPUT_40;$exam->internal_SELECT_0 = $internal_SELECT_0;
+    $exam->internal_note = $txtInternalNote;
 
     //set parameters for Tonometry
     $exam->tonometry_INPUT_0 = $tonometry_INPUT_0;$exam->tonometry_INPUT_1 = $tonometry_INPUT_1;$exam->tonometry_INPUT_2 = $tonometry_INPUT_2;
@@ -105,6 +111,7 @@ $gtts = $exam->getAllGtts();
     $exam->tonometry_INPUT_12 = $tonometry_INPUT_12;$exam->tonometry_INPUT_13 = $tonometry_INPUT_13;$exam->tonometry_INPUT_14 = $tonometry_INPUT_14;
     $exam->tonometry_INPUT_15 = $tonometry_INPUT_15;$exam->tonometry_INPUT_16 = $tonometry_INPUT_16;$exam->tonometry_INPUT_17 = $tonometry_INPUT_17;
     $exam->tonometry_INPUT_18 = $tonometry_INPUT_18;$exam->tonometry_INPUT_19 = $tonometry_INPUT_19;$exam->tonometry_SELECT_0 = $tonometry_SELECT_0;
+    $exam->tonometry_note = $txtTonometryNote;
 
     //set parameters for Diagnosis
     $exam->diagnosis_INPUT_0 = $diagnosis_INPUT_0;$exam->diagnosis_INPUT_1 = $diagnosis_INPUT_1;$exam->diagnosis_INPUT_2 = $diagnosis_INPUT_2;
@@ -122,7 +129,8 @@ $gtts = $exam->getAllGtts();
     $exam->diagnosis_INPUT_36 = $diagnosis_INPUT_36;$exam->diagnosis_INPUT_37 = $diagnosis_INPUT_37;$exam->diagnosis_INPUT_38 = $diagnosis_INPUT_38;
     $exam->diagnosis_INPUT_39 = $diagnosis_INPUT_39;$exam->diagnosis_INPUT_40 = $diagnosis_INPUT_40;$exam->diagnosis_INPUT_41 = $diagnosis_INPUT_41;
     $exam->diagnosis_INPUT_42 = $diagnosis_INPUT_42;$exam->diagnosis_INPUT_43 = $diagnosis_INPUT_43;$exam->diagnosis_INPUT_44 = $diagnosis_INPUT_44;
-    $exam->diagnosis_INPUT_45 = $diagnosis_INPUT_45;
+    $exam->diagnosis_INPUT_45 = $diagnosis_INPUT_45;$exam->diagnosis_notes = $txtDiagnosisNote; $exam->diagnosis_findings = $txtDiagnosisFindings;
+    $exam->diagnosis_recommendation = $txtDiagnosisRecommendation;
 
     //Update Acuities
     $result = $exam->updateAcuities();
@@ -422,7 +430,7 @@ $gtts = $exam->getAllGtts();
                                             <label>Recorded as:</label>
                                             <select class="form-control mediumText" name="acuities_SELECT_0"><!--todo ask for options to set values type-->
                                                 <option>Select one......</option>
-                                                <option>Snellen</option>
+                                                <option value="Snellen" <?php if($accuities['acuities_SELECT_0']== 'Snellen'){echo 'selected';}?>>Snellen</option>
                                                 <!--<option>Letters</option>
                                                 <option>Option 3</option>-->
                                             </select>
@@ -446,27 +454,27 @@ $gtts = $exam->getAllGtts();
                                                 <div class="col-md-3"><!--OD RX txt1,txt2,txt3-->
                                                     <div class="row">
                                                         <div class="col-sm-4">
-                                                            <input type="text" class="form-control smallText" name=" acuities_INPUT_0">
+                                                            <input type="text" class="form-control smallText" name="acuities_INPUT_0"  value="<?php echo $accuities['acuities_INPUT_0']?>">
                                                         </div>
                                                         <div class="col-sm-4">
-                                                            <input type="text" class="form-control smallText" name=" acuities_INPUT_1">
+                                                            <input type="text" class="form-control smallText" name="acuities_INPUT_1"  value="<?php echo $accuities['acuities_INPUT_1']?>">
                                                         </div>
                                                         <div class="col-sm-4">
-                                                            <input type="text" class="form-control smallText" name=" acuities_INPUT_2">
+                                                            <input type="text" class="form-control smallText" name="acuities_INPUT_2"  value="<?php echo $accuities['acuities_INPUT_2']?>">
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-1"><!--OD Add txt-->
-                                                    <input type="text" class="form-control smallText" name=" acuities_INPUT_3">
+                                                    <input type="text" class="form-control smallText" name="acuities_INPUT_3" value="<?php echo $accuities['acuities_INPUT_3']?>">
                                                 </div>
                                                 <div class="col-md-1"><!--OD Prism txt-->
-                                                    <input type="text" class="form-control smallText" name=" acuities_INPUT_4">
+                                                    <input type="text" class="form-control smallText" name="acuities_INPUT_4"  value="<?php echo $accuities['acuities_INPUT_4']?>">
                                                 </div>
                                                 <div class="col-md-1"><!--OD PD txt-->
-                                                    <input type="text" class="form-control smallText" name=" acuities_INPUT_5">
+                                                    <input type="text" class="form-control smallText" name="acuities_INPUT_5"  value="<?php echo $accuities['acuities_INPUT_5']?>">
                                                 </div>
                                                 <div class="col-md-3"><!--OD B.C txt-->
-                                                    <input type="text" class="form-control smallText" name=" acuities_INPUT_6">
+                                                    <input type="text" class="form-control smallText" name="acuities_INPUT_6"  value="<?php echo $accuities['acuities_INPUT_6']?>">
                                                 </div>
                                             </div><br>
                                             <!--OS Row-->
@@ -475,27 +483,27 @@ $gtts = $exam->getAllGtts();
                                                 <div class="col-md-3"><!-- OS RX txt1,txt2,txt3-->
                                                     <div class="row">
                                                         <div class="col-sm-4">
-                                                            <input type="text" class="form-control smallText" name=" acuities_INPUT_7">
+                                                            <input type="text" class="form-control smallText" name=" acuities_INPUT_7"  value="<?php echo $accuities['acuities_INPUT_7']?>">
                                                         </div>
                                                         <div class="col-sm-4">
-                                                            <input type="text" class="form-control smallText" name=" acuities_INPUT_8">
+                                                            <input type="text" class="form-control smallText" name=" acuities_INPUT_8"  value="<?php echo $accuities['acuities_INPUT_8']?>">
                                                         </div>
                                                         <div class="col-sm-4">
-                                                            <input type="text" class="form-control smallText" name=" acuities_INPUT_9">
+                                                            <input type="text" class="form-control smallText" name=" acuities_INPUT_9"  value="<?php echo $accuities['acuities_INPUT_9']?>">
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-1"><!--OS Add txt-->
-                                                    <input type="text" class="form-control smallText" name=" acuities_INPUT_10">
+                                                    <input type="text" class="form-control smallText" name=" acuities_INPUT_10"  value="<?php echo $accuities['acuities_INPUT_10']?>">
                                                 </div>
                                                 <div class="col-md-1"><!--OS Prism txt-->
-                                                    <input type="text" class="form-control smallText" name=" acuities_INPUT_11">
+                                                    <input type="text" class="form-control smallText" name=" acuities_INPUT_11"  value="<?php echo $accuities['acuities_INPUT_11']?>">
                                                 </div>
                                                 <div class="col-md-1"><!--OS PD txt-->
-                                                    <input type="text" class="form-control smallText" name=" acuities_INPUT_12">
+                                                    <input type="text" class="form-control smallText" name=" acuities_INPUT_12"  value="<?php echo $accuities['acuities_INPUT_12']?>">
                                                 </div>
                                                 <div class="col-md-3"><!--OS B.C txt-->
-                                                    <input type="text" class="form-control smallText" name=" acuities_INPUT_13">
+                                                    <input type="text" class="form-control smallText" name=" acuities_INPUT_13"  value="<?php echo $accuities['acuities_INPUT_13']?>">
                                                 </div>
                                             </div><br>
                                             <!--Year old row-->
@@ -504,7 +512,7 @@ $gtts = $exam->getAllGtts();
                                                     Years old
                                                 </div>
                                                 <div class="col-md-9">
-                                                    <input type="number" min="1" class="form-control smallText" name=" acuities_INPUT_14">
+                                                    <input type="number" min="1" class="form-control smallText" name=" acuities_INPUT_14"  value="<?php echo $accuities['acuities_INPUT_14']?>">
                                                 </div>
                                             </div>
                                         </div>
@@ -531,10 +539,10 @@ $gtts = $exam->getAllGtts();
                                                             VA &nbsp; OD
                                                         </div>
                                                         <div class="col-md-5">
-                                                            <input type="text" class="form-control mediumText" name=" acuities_INPUT_15">
+                                                            <input type="text" class="form-control mediumText" name="acuities_INPUT_15"  value="<?php echo $accuities['acuities_INPUT_15']?>">
                                                         </div>
                                                         <div class="col-md-5">
-                                                            <input type="text" class="form-control mediumText" name=" acuities_INPUT_16">
+                                                            <input type="text" class="form-control mediumText" name="acuities_INPUT_16"  value="<?php echo $accuities['acuities_INPUT_16']?>">
                                                         </div>
                                                     </div><br>
                                                     <!--Row 3 OS-->
@@ -543,10 +551,10 @@ $gtts = $exam->getAllGtts();
                                                             OS
                                                         </div>
                                                         <div class="col-md-5">
-                                                            <input type="text" class="form-control mediumText" name=" acuities_INPUT_17">
+                                                            <input type="text" class="form-control mediumText" name="acuities_INPUT_17"  value="<?php echo $accuities['acuities_INPUT_17']?>">
                                                         </div>
                                                         <div class="col-md-5">
-                                                            <input type="text" class="form-control mediumText" name=" acuities_INPUT_18">
+                                                            <input type="text" class="form-control mediumText" name="acuities_INPUT_18"  value="<?php echo $accuities['acuities_INPUT_18']?>">
                                                         </div>
                                                     </div><br>
                                                     <!--Row 4 OU-->
@@ -555,10 +563,10 @@ $gtts = $exam->getAllGtts();
                                                             OU
                                                         </div>
                                                         <div class="col-md-5">
-                                                            <input type="text" class="form-control mediumText" name=" acuities_INPUT_19">
+                                                            <input type="text" class="form-control mediumText" name="acuities_INPUT_19"  value="<?php echo $accuities['acuities_INPUT_19']?>">
                                                         </div>
                                                         <div class="col-md-5">
-                                                            <input type="text" class="form-control mediumText" name=" acuities_INPUT_20">
+                                                            <input type="text" class="form-control mediumText" name="acuities_INPUT_20"  value="<?php echo $accuities['acuities_INPUT_20']?>">
                                                         </div>
                                                     </div><br>
                                                 </div>
@@ -584,10 +592,10 @@ $gtts = $exam->getAllGtts();
                                                             VA &nbsp; OD
                                                         </div>
                                                         <div class="col-md-5">
-                                                            <input type="text" class="form-control mediumText" name=" acuities_INPUT_21">
+                                                            <input type="text" class="form-control mediumText" name="acuities_INPUT_21"  value="<?php echo $accuities['acuities_INPUT_21']?>">
                                                         </div>
                                                         <div class="col-md-5">
-                                                            <input type="text" class="form-control mediumText" name=" acuities_INPUT_22">
+                                                            <input type="text" class="form-control mediumText" name=" acuities_INPUT_22" value="<?php echo $accuities['acuities_INPUT_21']?>">
                                                         </div>
                                                     </div><br>
                                                     <!--Row 3 OS-->
@@ -596,10 +604,10 @@ $gtts = $exam->getAllGtts();
                                                             OS
                                                         </div>
                                                         <div class="col-md-5">
-                                                            <input type="text" class="form-control mediumText" name=" acuities_INPUT_23">
+                                                            <input type="text" class="form-control mediumText" name=" acuities_INPUT_23" value="<?php echo $accuities['acuities_INPUT_23']?>">
                                                         </div>
                                                         <div class="col-md-5">
-                                                            <input type="text" class="form-control mediumText" name=" acuities_INPUT_24">
+                                                            <input type="text" class="form-control mediumText" name=" acuities_INPUT_24" value="<?php echo $accuities['acuities_INPUT_24']?>">
                                                         </div>
                                                     </div><br>
                                                     <!--Row 4 OU-->
@@ -608,10 +616,10 @@ $gtts = $exam->getAllGtts();
                                                             OU
                                                         </div>
                                                         <div class="col-md-5">
-                                                            <input type="text" class="form-control mediumText" name=" acuities_INPUT_25">
+                                                            <input type="text" class="form-control mediumText" name=" acuities_INPUT_25" value="<?php echo $accuities['acuities_INPUT_25']?>">
                                                         </div>
                                                         <div class="col-md-5">
-                                                            <input type="text" class="form-control mediumText" name=" acuities_INPUT_26">
+                                                            <input type="text" class="form-control mediumText" name=" acuities_INPUT_26" value="<?php echo $accuities['acuities_INPUT_26']?>">
                                                         </div>
                                                     </div><br>
                                                 </div>
@@ -642,10 +650,10 @@ $gtts = $exam->getAllGtts();
                                                                     Unilateral
                                                                 </div>
                                                                 <div class="col-md-4">
-                                                                    <input type="text" class="form-control mediumText" name=" acuities_INPUT_27">
+                                                                    <input type="text" class="form-control mediumText" name=" acuities_INPUT_27" value="<?php echo $accuities['acuities_INPUT_27']?>">
                                                                 </div>
                                                                 <div class="col-md-5">
-                                                                    <input type="text" class="form-control mediumText" name=" acuities_INPUT_28">
+                                                                    <input type="text" class="form-control mediumText" name=" acuities_INPUT_28" value="<?php echo $accuities['acuities_INPUT_28']?>">
                                                                 </div>
                                                             </div><br>
                                                             <!--Row 3 Alternating-->
@@ -654,10 +662,10 @@ $gtts = $exam->getAllGtts();
                                                                     Alternating
                                                                 </div>
                                                                 <div class="col-md-4">
-                                                                    <input type="text" class="form-control mediumText" name=" acuities_INPUT_29">
+                                                                    <input type="text" class="form-control mediumText" name=" acuities_INPUT_29" value="<?php echo $accuities['acuities_INPUT_29']?>">
                                                                 </div>
                                                                 <div class="col-md-5">
-                                                                    <input type="text" class="form-control mediumText" name=" acuities_INPUT_30">
+                                                                    <input type="text" class="form-control mediumText" name=" acuities_INPUT_30" value="<?php echo $accuities['acuities_INPUT_30']?>">
                                                                 </div>
                                                             </div><br>
                                                         </div>
@@ -667,21 +675,21 @@ $gtts = $exam->getAllGtts();
                                                             <div class="row">
                                                                 <div class="col-md-3">Version</div>
                                                                 <div class="col-md-9">
-                                                                    <input type="text" class="form-control fullLengthText" name=" acuities_INPUT_31">
+                                                                    <input type="text" class="form-control fullLengthText" name=" acuities_INPUT_31"  value="<?php echo $accuities['acuities_INPUT_31']?>">
                                                                 </div>
                                                             </div><br>
                                                             <!--Row 2-->
                                                             <div class="row">
                                                                 <div class="col-md-3">Saccades</div>
                                                                 <div class="col-md-9">
-                                                                    <input type="text" class="form-control fullLengthText" name=" acuities_INPUT_32">
+                                                                    <input type="text" class="form-control fullLengthText" name=" acuities_INPUT_32"  value="<?php echo $accuities['acuities_INPUT_32']?>">
                                                                 </div>
                                                             </div><br>
                                                             <!--Row 3-->
                                                             <div class="row">
                                                                 <div class="col-md-3">Pursuits</div>
                                                                 <div class="col-md-9">
-                                                                    <input type="text" class="form-control fullLengthText" name=" acuities_INPUT_33">
+                                                                    <input type="text" class="form-control fullLengthText" name=" acuities_INPUT_33"  value="<?php echo $accuities['acuities_INPUT_33']?>">
                                                                 </div>
                                                             </div><br>
                                                         </div>
@@ -693,15 +701,15 @@ $gtts = $exam->getAllGtts();
                                                             <div class="row">
                                                                 <div class="col-md-2">NPC</div>
                                                                 <div class="col-md-2">
-                                                                    <input type="text" class="form-control smallText" name=" acuities_INPUT_34">
+                                                                    <input type="text" class="form-control smallText" name=" acuities_INPUT_34"  value="<?php echo $accuities['acuities_INPUT_34']?>">
                                                                 </div>
                                                                 <div class="col-md-3">Maddox: VT</div>
                                                                 <div class="col-md-2">
-                                                                    <input type="text" class="form-control smallText" name=" acuities_INPUT_35">
+                                                                    <input type="text" class="form-control smallText" name=" acuities_INPUT_35"  value="<?php echo $accuities['acuities_INPUT_35']?>">
                                                                 </div>
                                                                 <div class="col-md-1">HZ</div>
                                                                 <div class="col-md-2">
-                                                                    <input type="text" class="form-control smallText" name=" acuities_INPUT_36">
+                                                                    <input type="text" class="form-control smallText" name=" acuities_INPUT_36"  value="<?php echo $accuities['acuities_INPUT_36']?>">
                                                                 </div>
                                                             </div><br>
                                                         </div>
@@ -779,8 +787,7 @@ $gtts = $exam->getAllGtts();
                                     <div class="panel panel-default">
                                         <div class="panel-heading"><label>Notes...</label></div>
                                         <div class="panel-body">
-                                            <textarea name="textAcuitiesNotes" class="form-control">
-                                            </textarea>
+                                            <textarea id="txtAcutiesNote" name="txtAcutiesNote" class="form-control"></textarea>
                                         </div>
                                     </div>
                                 </div>
@@ -1090,7 +1097,7 @@ $gtts = $exam->getAllGtts();
                                     <div class="panel panel-default">
                                         <div class="panel-heading"><label>Notes...</label></div>
                                         <div class="panel-body">
-                                            <textarea class="form-control">
+                                            <textarea name="txtRetinosopyNote" class="form-control">
                                             </textarea>
                                         </div>
                                     </div>
@@ -1230,7 +1237,7 @@ $gtts = $exam->getAllGtts();
                                     <div class="panel panel-default">
                                         <div class="panel-heading"><label>Notes...</label></div>
                                         <div class="panel-body">
-                                            <textarea class="form-control">
+                                            <textarea name="txtExternalNote" class="form-control">
                                             </textarea>
                                         </div>
                                     </div>
@@ -1532,7 +1539,7 @@ $gtts = $exam->getAllGtts();
                                     <div class="panel panel-default">
                                         <div class="panel-heading"><label>Notes...</label></div>
                                         <div class="panel-body">
-                                            <textarea class="form-control">
+                                            <textarea name="txtInternalNote" class="form-control">
                                             </textarea>
                                         </div>
                                     </div>
@@ -1748,7 +1755,7 @@ $gtts = $exam->getAllGtts();
                                     <div class="panel panel-default">
                                         <div class="panel-heading"><label>Notes...</label></div>
                                         <div class="panel-body">
-                                            <textarea class="form-control">
+                                            <textarea name="txtTonometryNote" class="form-control">
                                             </textarea>
                                         </div>
                                     </div>
@@ -1881,21 +1888,21 @@ $gtts = $exam->getAllGtts();
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     <label>Doctors Note</label>
-                                                    <textarea id="txt1" class="form-control" rows="3">
+                                                    <textarea id="txt1" name="txtDiagnosisNote" class="form-control" rows="3">
                                                     </textarea>
                                                 </div>
                                             </div>
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     <label>Findings</label>
-                                                    <textarea class="form-control" rows="3" >
+                                                    <textarea class="form-control" name="txtDiagnosisFindings" rows="3" >
                                                     </textarea>
                                                 </div>
                                             </div>
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     <label>Recommendation</label>
-                                                    <textarea class="form-control" rows="3">
+                                                    <textarea class="form-control" name="txtDiagnosisRecommendation" rows="3">
                                                     </textarea>
                                                 </div>
                                             </div>

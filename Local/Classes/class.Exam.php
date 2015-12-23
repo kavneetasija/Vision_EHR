@@ -22,7 +22,7 @@ class Exam extends Patient
     public $acuities_INPUT_28;public $acuities_INPUT_29;public $acuities_INPUT_30;public $acuities_INPUT_31;
     public $acuities_INPUT_32;public $acuities_INPUT_33;public $acuities_INPUT_34;public $acuities_INPUT_35;
     public $acuities_INPUT_36;public $acuities_SELECT_0;public $acuities_SELECT_1;public $acuities_SELECT_2;
-    public $acuities_SELECT_3;public $acuities_SELECT_4;
+    public $acuities_SELECT_3;public $acuities_SELECT_4;public $acuities_note;
 
     //Retinoscopy parameters
     public $retinoscopy_INPUT_0; public $retinoscopy_INPUT_1; public $retinoscopy_INPUT_2; public $retinoscopy_INPUT_3;
@@ -36,7 +36,7 @@ class Exam extends Patient
     public $retinoscopy_INPUT_32;public $retinoscopy_INPUT_33;public $retinoscopy_INPUT_34;public $retinoscopy_INPUT_35;
     public $retinoscopy_INPUT_36;public $retinoscopy_INPUT_37;public $retinoscopy_INPUT_38;public $retinoscopy_INPUT_39;
     public $retinoscopy_INPUT_40;public $retinoscopy_INPUT_41;public $retinoscopy_INPUT_42;public $retinoscopy_INPUT_43;
-    public $retinoscopy_INPUT_44;public $retinoscopy_INPUT_45;
+    public $retinoscopy_INPUT_44;public $retinoscopy_INPUT_45;public $retinoscopy_note;
 
     //External parameters
     public $external_INPUT_0;public $external_INPUT_1;public $external_INPUT_2;
@@ -46,7 +46,7 @@ class Exam extends Patient
     public $external_INPUT_12;public $external_INPUT_13;public $external_INPUT_14;
     public $external_INPUT_15;public $external_INPUT_16;public $external_INPUT_17;
     public $external_INPUT_18;public $external_INPUT_19;public $external_INPUT_20;
-    public $external_INPUT_21;public $external_INPUT_22;
+    public $external_INPUT_21;public $external_INPUT_22;public $external_note;
 
     //Internal parameters
     public $internal_INPUT_0;public $internal_INPUT_1;public $internal_INPUT_2;
@@ -63,6 +63,7 @@ class Exam extends Patient
     public $internal_INPUT_33;public $internal_INPUT_34;public $internal_INPUT_35;
     public $internal_INPUT_36;public $internal_INPUT_37;public $internal_INPUT_38;
     public $internal_INPUT_39;public $internal_INPUT_40;public $internal_SELECT_0;
+    public $internal_note;
 
     //Tonometry parameters
     public $tonometry_INPUT_0;public $tonometry_INPUT_1;public $tonometry_INPUT_2;
@@ -72,6 +73,7 @@ class Exam extends Patient
     public $tonometry_INPUT_12;public $tonometry_INPUT_13;public $tonometry_INPUT_14;
     public $tonometry_INPUT_15;public $tonometry_INPUT_16;public $tonometry_INPUT_17;
     public $tonometry_INPUT_18;public $tonometry_INPUT_19;public $tonometry_SELECT_0;
+    public $tonometry_note;
 
     //Diagnosis
     public $diagnosis_INPUT_0;public $diagnosis_INPUT_1;public $diagnosis_INPUT_2;public $diagnosis_INPUT_3;
@@ -85,7 +87,7 @@ class Exam extends Patient
     public $diagnosis_INPUT_32;public $diagnosis_INPUT_33;public $diagnosis_INPUT_34;public $diagnosis_INPUT_35;
     public $diagnosis_INPUT_36;public $diagnosis_INPUT_37;public $diagnosis_INPUT_38;public $diagnosis_INPUT_39;
     public $diagnosis_INPUT_40;public $diagnosis_INPUT_41;public $diagnosis_INPUT_42;public $diagnosis_INPUT_43;
-    public $diagnosis_INPUT_44;public $diagnosis_INPUT_45;
+    public $diagnosis_INPUT_44;public $diagnosis_INPUT_45;public $diagnosis_notes;public $diagnosis_findings;public $diagnosis_recommendation;
 
     //create new exam
    function createExamByPatientId($patientId,$doctorId){
@@ -101,6 +103,13 @@ class Exam extends Patient
        $this->queryDatabase($sqlInsertExam);
           return $examID =  mysqli_insert_id($this->connection);
    }
+    //Read all exams with location and patient info
+    function selectAllExams(){
+        $sqlSelectExam = "SELECT exam_id,time,tbl_locations.name,tbl_patients.* FROM tbl_exam
+                          LEFT JOIN tbl_locations ON tbl_locations.location_id = tbl_exam.location_id
+                          RIGHT JOIN tbl_patients ON tbl_patients.patient_id = tbl_exam.patient_id WHERE exam_id IN (select exam_id FROM tbl_exam)";
+        return $this->queryDatabase($sqlSelectExam);
+    }
     //select all gtts from table
     function getAllGtts(){
         $sqlSelectGtts = "SELECT gtts_name FROM tbl_gtts";
@@ -122,7 +131,7 @@ class Exam extends Patient
                                                        acuities_INPUT_28,acuities_INPUT_29,acuities_INPUT_30,acuities_INPUT_31,
                                                        acuities_INPUT_32,acuities_INPUT_33,acuities_INPUT_34,acuities_INPUT_35,
                                                        acuities_INPUT_36,acuities_SELECT_0,acuities_SELECT_1,acuities_SELECT_2,
-                                                       acuities_SELECT_3,acuities_SELECT_4)
+                                                       acuities_SELECT_3,acuities_SELECT_4,note)
                                                       VALUES ('$this->examId','$this->acuities_INPUT_0','$this->acuities_INPUT_1','$this->acuities_INPUT_2','$this->acuities_INPUT_3',
                                                               '$this->acuities_INPUT_4','$this->acuities_INPUT_5','$this->acuities_INPUT_6','$this->acuities_INPUT_7',
                                                               '$this->acuities_INPUT_8','$this->acuities_INPUT_9','$this->acuities_INPUT_10','$this->acuities_INPUT_11',
@@ -133,7 +142,7 @@ class Exam extends Patient
                                                               '$this->acuities_INPUT_28','$this->acuities_INPUT_29','$this->acuities_INPUT_30','$this->acuities_INPUT_31',
                                                               '$this->acuities_INPUT_32','$this->acuities_INPUT_33','$this->acuities_INPUT_34','$this->acuities_INPUT_35',
                                                               '$this->acuities_INPUT_36','$this->acuities_SELECT_0','$this->acuities_SELECT_1','$this->acuities_SELECT_2',
-                                                              '$this->acuities_SELECT_3','$this->acuities_SELECT_4');
+                                                              '$this->acuities_SELECT_3','$this->acuities_SELECT_4','$this->acuities_note');
                                                               ";
         return $this->queryDatabase($sqlInsertAcuities);
     }
@@ -160,11 +169,16 @@ class Exam extends Patient
                                                       `acuities_INPUT_35` = '$this->acuities_INPUT_35',`acuities_INPUT_36` = '$this->acuities_INPUT_36',
                                                       `acuities_SELECT_0` = '$this->acuities_SELECT_0',`acuities_SELECT_1` = '$this->acuities_SELECT_1',
                                                       `acuities_SELECT_2` = '$this->acuities_SELECT_2',`acuities_SELECT_3` = '$this->acuities_SELECT_3',
-                                                      `acuities_SELECT_4` = '$this->acuities_SELECT_4'
+                                                      `acuities_SELECT_4` = '$this->acuities_SELECT_4',note = '$this->acuities_note'
                                                       WHERE exam_id = '$this->examId'";
         return $this->queryDatabase($sqlUpdateAcuities);
     }
 
+    //select Acuities by exam id
+    function selectAcuitiesByExamId(){
+        $sqlSelectAcuities = "SELECT * FROM tbl_acuities WHERE exam_id = '$this->examId'";
+        return $this->queryDatabase($sqlSelectAcuities);
+    }
     //On insert Retinoscopy
     function insertRetinoscopy(){
 
@@ -179,7 +193,7 @@ class Exam extends Patient
                                                              retinoscopy_INPUT_32,retinoscopy_INPUT_33,retinoscopy_INPUT_34,retinoscopy_INPUT_35,
                                                              retinoscopy_INPUT_36,retinoscopy_INPUT_37,retinoscopy_INPUT_38,retinoscopy_INPUT_39,
                                                              retinoscopy_INPUT_40,retinoscopy_INPUT_41,retinoscopy_INPUT_42,retinoscopy_INPUT_43,
-                                                             retinoscopy_INPUT_44,retinoscopy_INPUT_45)
+                                                             retinoscopy_INPUT_44,retinoscopy_INPUT_45,note)
                                  VALUES ('$this->examId','$this->retinoscopy_INPUT_0','$this->retinoscopy_INPUT_1','$this->retinoscopy_INPUT_2',
                                          '$this->retinoscopy_INPUT_3','$this->retinoscopy_INPUT_4','$this->retinoscopy_INPUT_5',
                                          '$this->retinoscopy_INPUT_6','$this->retinoscopy_INPUT_7','$this->retinoscopy_INPUT_8',
@@ -195,7 +209,7 @@ class Exam extends Patient
                                          '$this->retinoscopy_INPUT_36','$this->retinoscopy_INPUT_37','$this->retinoscopy_INPUT_38',
                                          '$this->retinoscopy_INPUT_39','$this->retinoscopy_INPUT_40','$this->retinoscopy_INPUT_41',
                                          '$this->retinoscopy_INPUT_42','$this->retinoscopy_INPUT_43','$this->retinoscopy_INPUT_44',
-                                         '$this->retinoscopy_INPUT_45');
+                                         '$this->retinoscopy_INPUT_45','$this->retinoscopy_note');
                                           ";
         return $this->queryDatabase($sqlInsertRetinoscopy);
     }
@@ -247,7 +261,8 @@ class Exam extends Patient
                                                             `retinoscopy_INPUT_42` = '$this->retinoscopy_INPUT_42',
                                                             `retinoscopy_INPUT_43` = '$this->retinoscopy_INPUT_43',
                                                             `retinoscopy_INPUT_44` = '$this->retinoscopy_INPUT_44',
-                                                            `retinoscopy_INPUT_45` = '$this->retinoscopy_INPUT_45'
+                                                            `retinoscopy_INPUT_45` = '$this->retinoscopy_INPUT_45',
+                                                            note = '$this->retinoscopy_note'
                                                             WHERE exam_id = '$this->examId' ";
         return $this->queryDatabase($sqlUpdateRetinoscopy);
     }
@@ -259,13 +274,13 @@ class Exam extends Patient
                                                        external_INPUT_5,external_INPUT_6,external_INPUT_7,external_INPUT_8,external_INPUT_9,external_INPUT_10,
                                                        external_INPUT_11,external_INPUT_12,external_INPUT_13,external_INPUT_14,external_INPUT_15,
                                                        external_INPUT_16,external_INPUT_17,external_INPUT_18,external_INPUT_19,external_INPUT_20,
-                                                       external_INPUT_21,external_INPUT_22)
+                                                       external_INPUT_21,external_INPUT_22,note)
                               VALUES('$this->examId','$this->external_INPUT_0','$this->external_INPUT_1','$this->external_INPUT_2','$this->external_INPUT_3',
                                      '$this->external_INPUT_4','$this->external_INPUT_5','$this->external_INPUT_6','$this->external_INPUT_7',
                                      '$this->external_INPUT_8','$this->external_INPUT_9','$this->external_INPUT_10','$this->external_INPUT_11',
                                      '$this->external_INPUT_12','$this->external_INPUT_13','$this->external_INPUT_14','$this->external_INPUT_15',
                                      '$this->external_INPUT_16','$this->external_INPUT_17','$this->external_INPUT_18','$this->external_INPUT_19',
-                                     '$this->external_INPUT_20','$this->external_INPUT_21','$this->external_INPUT_22')";
+                                     '$this->external_INPUT_20','$this->external_INPUT_21','$this->external_INPUT_22','$this->external_note')";
 
         return $this->queryDatabase($sqlInsertExternal);
     }
@@ -294,7 +309,8 @@ class Exam extends Patient
                                                       `external_INPUT_19` = '$this->external_INPUT_19',
                                                       `external_INPUT_20` = '$this->external_INPUT_20',
                                                       `external_INPUT_21` = '$this->external_INPUT_21',
-                                                      `external_INPUT_22` = '$this->external_INPUT_22' WHERE `exam_id` = '$this->examId'";
+                                                      `external_INPUT_22` = '$this->external_INPUT_22', note = '$this->external_note'
+                                                       WHERE `exam_id` = '$this->examId'";
 
         return $this->queryDatabase($sqlUpdateExternal);
     }
@@ -310,7 +326,7 @@ class Exam extends Patient
                                                        internal_INPUT_25,internal_INPUT_26,internal_INPUT_27,internal_INPUT_28,internal_INPUT_29,
                                                        internal_INPUT_30,internal_INPUT_31,internal_INPUT_32,internal_INPUT_33,internal_INPUT_34,
                                                        internal_INPUT_35,internal_INPUT_36,internal_INPUT_37,internal_INPUT_38,internal_INPUT_39,
-                                                       internal_INPUT_40,internal_SELECT_0)
+                                                       internal_INPUT_40,internal_SELECT_0,note)
                               VALUES('$this->examId','$this->internal_INPUT_0','$this->internal_INPUT_1','$this->internal_INPUT_2','$this->internal_INPUT_3',
                                      '$this->internal_INPUT_4','$this->internal_INPUT_5','$this->internal_INPUT_6','$this->internal_INPUT_7',
                                      '$this->internal_INPUT_8','$this->internal_INPUT_9','$this->internal_INPUT_10','$this->internal_INPUT_11',
@@ -321,7 +337,7 @@ class Exam extends Patient
                                      '$this->internal_INPUT_28','$this->internal_INPUT_29','$this->internal_INPUT_30','$this->internal_INPUT_31',
                                      '$this->internal_INPUT_32','$this->internal_INPUT_33','$this->internal_INPUT_34','$this->internal_INPUT_35',
                                      '$this->internal_INPUT_36','$this->internal_INPUT_37','$this->internal_INPUT_38','$this->internal_INPUT_39',
-                                     '$this->internal_INPUT_40','$this->internal_SELECT_0')";
+                                     '$this->internal_INPUT_40','$this->internal_SELECT_0','$this->internal_note')";
 
         return $this->queryDatabase($sqlInsertInternal);
     }
@@ -369,7 +385,8 @@ class Exam extends Patient
                                                       `internal_INPUT_38` = '$this->internal_INPUT_38',
                                                       `internal_INPUT_39` = '$this->internal_INPUT_39',
                                                       `internal_INPUT_40` = '$this->internal_INPUT_40',
-                                                      `internal_SELECT_0` = '$this->internal_SELECT_0'
+                                                      `internal_SELECT_0` = '$this->internal_SELECT_0',
+                                                      note = '$this->internal_note'
                             WHERE exam_id = '$this->examId'";
 
         return $this->queryDatabase($sqlUpdateInternal);
@@ -381,12 +398,12 @@ class Exam extends Patient
                                                          tonometry_INPUT_5,tonometry_INPUT_6,tonometry_INPUT_7,tonometry_INPUT_8,tonometry_INPUT_9,
                                                          tonometry_INPUT_10,tonometry_INPUT_11,tonometry_INPUT_12,tonometry_INPUT_13,tonometry_INPUT_14,
                                                          tonometry_INPUT_15,tonometry_INPUT_16,tonometry_INPUT_17,tonometry_INPUT_18,tonometry_INPUT_19,
-                                                         tonometry_SELECT_0)
+                                                         tonometry_SELECT_0,note)
                                VALUES('$this->examId','$this->tonometry_INPUT_0','$this->tonometry_INPUT_1','$this->tonometry_INPUT_2','$this->tonometry_INPUT_3','$this->tonometry_INPUT_4',
                                       '$this->tonometry_INPUT_5','$this->tonometry_INPUT_6','$this->tonometry_INPUT_7','$this->tonometry_INPUT_8','$this->tonometry_INPUT_9',
                                       '$this->tonometry_INPUT_10','$this->tonometry_INPUT_11','$this->tonometry_INPUT_12','$this->tonometry_INPUT_13','$this->tonometry_INPUT_14',
                                       '$this->tonometry_INPUT_15','$this->tonometry_INPUT_16','$this->tonometry_INPUT_17','$this->tonometry_INPUT_18','$this->tonometry_INPUT_19',
-                                      '$this->tonometry_SELECT_0')";
+                                      '$this->tonometry_SELECT_0','$this->tonometry_note'";
 
         return $this->queryDatabase($sqlInsertTonometry);
     }
@@ -413,7 +430,8 @@ class Exam extends Patient
                                                         `tonometry_INPUT_17` = '$this->tonometry_INPUT_17',
                                                         `tonometry_INPUT_18` = '$this->tonometry_INPUT_18',
                                                         `tonometry_INPUT_19` = '$this->tonometry_INPUT_19',
-                                                        `tonometry_SELECT_0` = '$this->tonometry_SELECT_0'
+                                                        `tonometry_SELECT_0` = '$this->tonometry_SELECT_0',
+                                                        note = '$this->tonometry_note'
                                                         WHERE exam_id = '$this->examId'";
         return $this->queryDatabase($sqlUpdateTonometry);
     }
@@ -429,7 +447,7 @@ class Exam extends Patient
                                                          diagnosis_INPUT_30,diagnosis_INPUT_31,diagnosis_INPUT_32,diagnosis_INPUT_33,diagnosis_INPUT_34,
                                                          diagnosis_INPUT_35,diagnosis_INPUT_36,diagnosis_INPUT_37,diagnosis_INPUT_38,diagnosis_INPUT_39,
                                                          diagnosis_INPUT_40,diagnosis_INPUT_41,diagnosis_INPUT_42,diagnosis_INPUT_43,diagnosis_INPUT_44,
-                                                         diagnosis_INPUT_45)
+                                                         diagnosis_INPUT_45,note,findings,recommendation)
                                VALUES('$this->examId','$this->diagnosis_INPUT_0','$this->diagnosis_INPUT_1','$this->diagnosis_INPUT_2','$this->diagnosis_INPUT_3',
                                       '$this->diagnosis_INPUT_4','$this->diagnosis_INPUT_5','$this->diagnosis_INPUT_6','$this->diagnosis_INPUT_7',
                                       '$this->diagnosis_INPUT_8','$this->diagnosis_INPUT_9','$this->diagnosis_INPUT_10','$this->diagnosis_INPUT_11',
@@ -441,7 +459,7 @@ class Exam extends Patient
                                       '$this->diagnosis_INPUT_32','$this->diagnosis_INPUT_33','$this->diagnosis_INPUT_34','$this->diagnosis_INPUT_35',
                                       '$this->diagnosis_INPUT_36','$this->diagnosis_INPUT_37','$this->diagnosis_INPUT_38','$this->diagnosis_INPUT_39',
                                       '$this->diagnosis_INPUT_40','$this->diagnosis_INPUT_41','$this->diagnosis_INPUT_42','$this->diagnosis_INPUT_43',
-                                      '$this->diagnosis_INPUT_44','$this->diagnosis_INPUT_45')";
+                                      '$this->diagnosis_INPUT_44','$this->diagnosis_INPUT_45','$this->diagnosis_notes','$this->diagnosis_findings','$this->diagnosis_recommendation')";
 
         return $this->queryDatabase($sqlInsertDiagnosis);
     }
@@ -493,7 +511,10 @@ class Exam extends Patient
                                                         `diagnosis_INPUT_42` = '$this->diagnosis_INPUT_42',
                                                         `diagnosis_INPUT_43` = '$this->diagnosis_INPUT_43',
                                                         `diagnosis_INPUT_44` = '$this->diagnosis_INPUT_44',
-                                                        `diagnosis_INPUT_45` = '$this->diagnosis_INPUT_45'
+                                                        `diagnosis_INPUT_45` = '$this->diagnosis_INPUT_45',
+                                                         note = '$this->diagnosis_notes',
+                                                        findings = '$this->diagnosis_findings',
+                                                        recommendation = '$this->diagnosis_recommendation'
                                                         WHERE exam_id = '$this->examId'";
         return $this->queryDatabase($sqlUpdateDiagnosis);
     }

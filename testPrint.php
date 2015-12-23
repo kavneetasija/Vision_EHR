@@ -50,7 +50,11 @@ function GetPage($URL)
     //Save Acuties
     $acuitiesResults =  $exam->saveAcuities();
 */
-
+/*
+ * SELECT exam_id,time,tbl_locations.name,tbl_patients.* FROM tbl_exam
+LEFT JOIN tbl_locations ON tbl_locations.location_id = tbl_exam.location_id
+RIGHT JOIN tbl_patients ON tbl_patients.patient_id = tbl_exam.patient_id WHERE tbl_exam.exam_id = 60;
+ * */
 
 "CREATE TABLE tbl_exam (
   exam_id INT(11) NOT NULL AUTO_INCREMENT COMMENT '',

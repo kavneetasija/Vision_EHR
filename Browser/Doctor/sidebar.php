@@ -20,43 +20,8 @@
                     <a href="dashboard.php"><i class="fa fa-dashboard fa-fw"></i>Deshboard</a>
                 </li>
                 <li>
-                    <a href="#"><i class="fa  fa-medkit fa-fw"></i>Patient</a>
-                    <ul>
-                        <li>
-                            <a href="#"><i class="fa fa-list-alt fa-fw"></i>Patient list</a>
-                        </li>
-                        <li>
-                            <a href="#"><i class="fa  fa-plus-square fa-fw"></i>Register new patient</a>
-                        </li>
-                    </ul>
+                    <a href="#"><i class="fa  fa-medkit fa-fw"></i>Exams</a>
                 </li>
-                <li>
-                    <a href="#"><i class="fa fa-cubes fa-fw"></i> Sessions</a>
-                    <ul>
-                        <li>
-                            <a href="#"><i class="fa fa-clock-o fa-fw"></i>Schedule appointments</a>
-                        </li>
-                        <li>
-                            <a href="#"><i class="fa  fa-medkit fa-fw"></i> Add new patient</a>
-                        </li>
-                        <li>
-                            <a href="#"><i class="fa fa-list-alt fa-fw"></i> Patient list</a>
-                        </li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="#"><i class="fa fa-user fa-fw"></i>Manage system users</a>
-                    <ul>
-                        <li>
-                            <a href="#"><i class="fa fa-gears fa-fw"></i>User Manager </a>
-                        </li>
-                        <li>
-                            <a href="#"><i class="fa fa-user fa-fw"></i>Add new system user</a>
-                        </li>
-                    </ul>
-                </li>
-
-
             </ul>
         </div>
         <!-- /.sidebar-collapse -->
