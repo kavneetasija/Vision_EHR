@@ -63,7 +63,7 @@ include("sidebar.php");
                                                 <td>$list[first_name] $list[last_name]</td>
                                                 <td>$list[OHIP_number]</td>
                                                 <td>$list[OHIP_virsion]</td>
-                                                <td><a class='btn btn-success btn-circle' href='stagingEyeExam.php?PatientID=$list[patient_id]&DoctorID=$_SESSION[loginUserId]&ExamID=$list[exam_id]' target='_blank''><i class='fa fa-eye'></i></a> </td>
+                                                <td><a class='btn btn-success btn-circle' href='stagingEyeExam.php?PatientID=$list[patient_id]&DoctorID=$_SESSION[loginUserId]&ExamID=$list[exam_id]'><i class='fa fa-eye'></i></a> </td>
                                             </tr>";
                                     }
                                     ?>

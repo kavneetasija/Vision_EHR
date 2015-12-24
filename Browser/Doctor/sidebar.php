@@ -20,7 +20,7 @@
                     <a href="dashboard.php"><i class="fa fa-dashboard fa-fw"></i>Deshboard</a>
                 </li>
                 <li>
-                    <a href="#"><i class="fa  fa-medkit fa-fw"></i>Exams</a>
+                    <a href="exams.php"><i class="fa  fa-medkit fa-fw"></i>Exams</a>
                 </li>
             </ul>
         </div>

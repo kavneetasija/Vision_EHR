@@ -214,6 +214,13 @@ class Exam extends Patient
         return $this->queryDatabase($sqlInsertRetinoscopy);
     }
 
+    //select Retnoscopy
+    function selectRetnoscopyByExamId(){
+
+        $sqlSelectRetnoscopy = "SELECT * FROM tbl_retinoscopy WHERE exam_id='$this->examId'";
+        return $this->queryDatabase($sqlSelectRetnoscopy);
+    }
+
     //on update Retinoscopy
     function updateRetinoscopy(){
         $sqlUpdateRetinoscopy = "UPDATE tbl_retinoscopy SET `retinoscopy_INPUT_0` = '$this->retinoscopy_INPUT_0',

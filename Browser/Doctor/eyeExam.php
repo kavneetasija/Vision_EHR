@@ -44,7 +44,9 @@ $gtts = $exam->getAllGtts();
 //select Acuities
     $accuities = $exam->selectAcuitiesByExamId();
     $accuities = mysqli_fetch_array($accuities);
-
+//select retnoscopy
+    $retinoscopy = $exam->selectRetnoscopyByExamId();
+    $retinoscopy = mysqli_fetch_array($retinoscopy);
     //set parameters for acuities
     $exam->acuities_INPUT_0   = $acuities_INPUT_0;  $exam->acuities_INPUT_1 =   $acuities_INPUT_1;  $exam->acuities_INPUT_2 =   $acuities_INPUT_2 ;$exam->acuities_INPUT_3 =   $acuities_INPUT_3 ;
     $exam->acuities_INPUT_4   = $acuities_INPUT_4;  $exam->acuities_INPUT_5 =   $acuities_INPUT_5;  $exam->acuities_INPUT_6 =   $acuities_INPUT_6 ;$exam->acuities_INPUT_7 =   $acuities_INPUT_7 ;
@@ -132,27 +134,7 @@ $gtts = $exam->getAllGtts();
     $exam->diagnosis_INPUT_45 = $diagnosis_INPUT_45;$exam->diagnosis_notes = $txtDiagnosisNote; $exam->diagnosis_findings = $txtDiagnosisFindings;
     $exam->diagnosis_recommendation = $txtDiagnosisRecommendation;
 
-    //Update Acuities
-    $result = $exam->updateAcuities();
-    if($result){
-        //Update Retinoscopy
-        $result = $exam->updateRetinoscopy();
-        if($result){
-            //Update External
-            $result = $exam->updateExternal();
-            if($result){
-                //Update Internal
-                $result = $exam->updateInternal();
-                if($result){
-                    //Update Tonometry
-                    $result = $exam->updateTonometry();
-                    if($result){
-                        $result = $exam->updateDiagnosis();
-                    }
-                }
-            }
-        }
-    }
+
 
 
 ?>
@@ -726,26 +708,25 @@ $gtts = $exam->getAllGtts();
                                                                 <div class="col-md-2">Type</div>
                                                                 <div class="col-md-4">
                                                                     <select class="form-control mediumText" name="acuities_SELECT_1"><!--todo add options-->
-                                                                        <option value="Ishihara">Ishihara</option>
+                                                                        <option value="Ishihara" <?php if($accuities['acuities_SELECT_1'] == 'Ishihara') {echo 'selected';}?>>Ishihara</option>
                                                                     </select>
                                                                 </div>
                                                                 <div class="col-md-2">Result</div>
                                                                 <div class="col-md-4">
                                                                     <select class="form-control mediumText" name="acuities_SELECT_2"><!--todo add options-->
-                                                                        <option>Option</option>
-                                                                        <option value="1">1</option>
-                                                                        <option value="2">2</option>
-                                                                        <option value="3">3</option>
-                                                                        <option value="4">4</option>
-                                                                        <option value="5">5</option>
-                                                                        <option value="6">6</option>
-                                                                        <option value="7">7</option>
-                                                                        <option value="8">8</option>
-                                                                        <option value="9">9</option>
-                                                                        <option value="10">10</option>
-                                                                        <option value="11">11</option>
-                                                                        <option value="12">12</option>
-                                                                        <option value="13">13</option>
+                                                                        <option <?php if($accuities['acuities_SELECT_2']== 1){echo 'selected';}?>value="1">1</option>
+                                                                        <option <?php if($accuities['acuities_SELECT_2']== 2){echo 'selected';}?>value="2">2</option>
+                                                                        <option <?php if($accuities['acuities_SELECT_2']== 3){echo 'selected';}?>value="3">3</option>
+                                                                        <option <?php if($accuities['acuities_SELECT_2']== 4){echo 'selected';}?>value="4">4</option>
+                                                                        <option <?php if($accuities['acuities_SELECT_2']== 5){echo 'selected';}?>value="5">5</option>
+                                                                        <option <?php if($accuities['acuities_SELECT_2']== 6){echo 'selected';}?>value="6">6</option>
+                                                                        <option <?php if($accuities['acuities_SELECT_2']== 7){echo 'selected';}?>value="7">7</option>
+                                                                        <option <?php if($accuities['acuities_SELECT_2']== 8){echo 'selected';}?>value="8">8</option>
+                                                                        <option <?php if($accuities['acuities_SELECT_2']== 9){echo 'selected';}?>value="9">9</option>
+                                                                        <option <?php if($accuities['acuities_SELECT_2']== 10){echo 'selected';}?>value="10">10</option>
+                                                                        <option <?php if($accuities['acuities_SELECT_2']== 11){echo 'selected';}?>value="11">11</option>
+                                                                        <option <?php if($accuities['acuities_SELECT_2']== 12){echo 'selected';}?>value="12">12</option>
+                                                                        <option <?php if($accuities['acuities_SELECT_2']== 13){echo 'selected';}?>value="13">13</option>
                                                                     </select>
                                                                 </div>
                                                             </div>
@@ -759,21 +740,21 @@ $gtts = $exam->getAllGtts();
                                                                 <div class="col-md-2">Type</div>
                                                                 <div class="col-md-4">
                                                                     <select class="form-control mediumText" name="acuities_SELECT_3"><!--todo add options-->
-                                                                        <option value="Optical Dtereo">Optical Dtereo</option>
+                                                                        <option value="Optical Dtereo"<?php if($accuities['Optical Dtereo']){echo 'select';}?>>Optical Dtereo</option>
                                                                     </select>
                                                                 </div>
                                                                 <div class="col-md-2">Result</div>
                                                                 <div class="col-md-4">
                                                                     <select class="form-control mediumText" name="acuities_SELECT_4"><!--todo add options-->
-                                                                        <option value="1">1</option>
-                                                                        <option value="2">2</option>
-                                                                        <option value="3">3</option>
-                                                                        <option value="4">4</option>
-                                                                        <option value="5">5</option>
-                                                                        <option value="6">6</option>
-                                                                        <option value="7">7</option>
-                                                                        <option value="8">8</option>
-                                                                        <option value="9">9</option>
+                                                                        <option<?php if($accuities['acuities_SELECT_4']==1){echo 'select';}?> value="1">1</option>
+                                                                        <option<?php if($accuities['acuities_SELECT_4']==2){echo 'select';}?> value="2">2</option>
+                                                                        <option<?php if($accuities['acuities_SELECT_4']==3){echo 'select';}?> value="3">3</option>
+                                                                        <option<?php if($accuities['acuities_SELECT_4']==4){echo 'select';}?> value="4">4</option>
+                                                                        <option<?php if($accuities['acuities_SELECT_4']==5){echo 'select';}?> value="5">5</option>
+                                                                        <option<?php if($accuities['acuities_SELECT_4']==6){echo 'select';}?> value="6">6</option>
+                                                                        <option<?php if($accuities['acuities_SELECT_4']==7){echo 'select';}?> value="7">7</option>
+                                                                        <option<?php if($accuities['acuities_SELECT_4']==8){echo 'select';}?> value="8">8</option>
+                                                                        <option<?php if($accuities['acuities_SELECT_4']==9){echo 'select';}?> value="9">9</option>
                                                                     </select>
                                                                 </div>
                                                             </div>
@@ -787,7 +768,7 @@ $gtts = $exam->getAllGtts();
                                     <div class="panel panel-default">
                                         <div class="panel-heading"><label>Notes...</label></div>
                                         <div class="panel-body">
-                                            <textarea id="txtAcutiesNote" name="txtAcutiesNote" class="form-control"></textarea>
+                                            <textarea id="txtAcutiesNote" name="txtAcutiesNote" class="form-control"><?php echo "$accuities[note]";?></textarea>
                                         </div>
                                     </div>
                                 </div>
@@ -1007,7 +988,7 @@ $gtts = $exam->getAllGtts();
                                                     <label>Rx Notes</label>
                                                 </div>
                                                 <div class="col-md-10">
-                                                    <input type="text" class="form-control" name="retinoscopy_INPUT_35">
+                                                    <input type="text" id="txtRxNotes" class="form-control" name="retinoscopy_INPUT_35">
                                                 </div>
                                             </div><br>
                                             <!--pnl Adds-->
@@ -1816,7 +1797,7 @@ $gtts = $exam->getAllGtts();
                                                     <div class="row">
                                                         <div class="col-md-12">
                                                             <label>Notes</label>
-                                                            <input type="text" class="form-control" name="diagnosis_INPUT_20">
+                                                            <input type="text" id="txtRxNotesFinal" class="form-control" name="diagnosis_INPUT_20">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -2080,6 +2061,9 @@ $gtts = $exam->getAllGtts();
         //Rx Add
         var txtRxODAdd = document.getElementById('txtRxODAdd');
         var txtRxOSAdd = document.getElementById('txtRxOSAdd');
+        //notes
+        var txtRxNotes = document.getElementById('txtRxNotes');
+        var txtRxNotesFinal = document.getElementById('txtRxNotesFinal');
 
 
         //Set Rx fild
@@ -2125,6 +2109,8 @@ $gtts = $exam->getAllGtts();
         else if(txtAdd.value != ''){
             txtRxODAdd.value = txtRxOSAdd.value = txtAdd.value;
         }
+        //Set notes
+        txtRxNotes.value = txtRxNotesFinal.value;
 
     }
 
@@ -2156,3 +2142,28 @@ $gtts = $exam->getAllGtts();
 //    };
 
 </script>
+<?php
+
+//update
+//Update Acuities
+    $result = $exam->updateAcuities();
+    if($result){
+        //Update Retinoscopy
+        $result = $exam->updateRetinoscopy();
+        if($result){
+            //Update External
+            $result = $exam->updateExternal();
+            if($result){
+                //Update Internal
+                $result = $exam->updateInternal();
+                if($result){
+                    //Update Tonometry
+                    $result = $exam->updateTonometry();
+                    if($result){
+                        $result = $exam->updateDiagnosis();
+                    }
+                }
+            }
+        }
+    }
+?>
