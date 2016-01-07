@@ -115,6 +115,11 @@ class Exam extends Patient
         $sqlSelectGtts = "SELECT gtts_name FROM tbl_gtts";
         return $gtts = $this->queryDatabase($sqlSelectGtts);
     }
+    //insert new gtts
+    function insertGtts($newGtts){
+            $sqlInsertGtts = "INSERT INTO tbl_gtts(gtts_name) VALUES ('$newGtts')";
+            $this->queryDatabase($sqlInsertGtts);
+    }
 
     //On staging state prepare all tables to set and update data
 
@@ -179,6 +184,7 @@ class Exam extends Patient
         $sqlSelectAcuities = "SELECT * FROM tbl_acuities WHERE exam_id = '$this->examId'";
         return $this->queryDatabase($sqlSelectAcuities);
     }
+
     //On insert Retinoscopy
     function insertRetinoscopy(){
 
@@ -212,13 +218,6 @@ class Exam extends Patient
                                          '$this->retinoscopy_INPUT_45','$this->retinoscopy_note');
                                           ";
         return $this->queryDatabase($sqlInsertRetinoscopy);
-    }
-
-    //select Retnoscopy
-    function selectRetnoscopyByExamId(){
-
-        $sqlSelectRetnoscopy = "SELECT * FROM tbl_retinoscopy WHERE exam_id='$this->examId'";
-        return $this->queryDatabase($sqlSelectRetnoscopy);
     }
 
     //on update Retinoscopy
@@ -274,6 +273,13 @@ class Exam extends Patient
         return $this->queryDatabase($sqlUpdateRetinoscopy);
     }
 
+    //select Retnoscopy
+    function selectRetnoscopyByExamId(){
+
+        $sqlSelectRetnoscopy = "SELECT * FROM tbl_retinoscopy WHERE exam_id='$this->examId'";
+        return $this->queryDatabase($sqlSelectRetnoscopy);
+    }
+
     //On insert external
     function insertExternal(){
 
@@ -320,6 +326,12 @@ class Exam extends Patient
                                                        WHERE `exam_id` = '$this->examId'";
 
         return $this->queryDatabase($sqlUpdateExternal);
+    }
+
+    //select external
+    function selectExternal(){
+        $sqlSelcetExternal = "SELECT * FROM tbl_external WHERE exam_id = '$this->examId'";
+        return $this->queryDatabase($sqlSelcetExternal);
     }
 
     //On insert internal
@@ -397,6 +409,12 @@ class Exam extends Patient
                             WHERE exam_id = '$this->examId'";
 
         return $this->queryDatabase($sqlUpdateInternal);
+    }
+
+    //select internal
+    function selectInternal(){
+        $sqlSelectInternal = "SELECT * FROM tbl_internal WHERE exam_id = '$this->examId'";
+        return $this->queryDatabase($sqlSelectInternal);
     }
 
     //on insert Tonometry

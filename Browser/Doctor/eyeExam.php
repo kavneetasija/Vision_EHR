@@ -39,14 +39,22 @@ $studentHealthHistory = $exam->getHealthHistoryByPatientId($_SESSION['patientID_
 $studentHealthHistory = mysqli_fetch_assoc($studentHealthHistory);
 //get all gtts names and populate select info
 $gtts = $exam->getAllGtts();
-
+//insert gtts
+$exam->insertGtts($internal_INPUT_38);
 //get all data from database using exam id and apply to form element
-//select Acuities
+    //select Acuities
     $accuities = $exam->selectAcuitiesByExamId();
     $accuities = mysqli_fetch_array($accuities);
-//select retnoscopy
+    //select retnoscopy
     $retinoscopy = $exam->selectRetnoscopyByExamId();
     $retinoscopy = mysqli_fetch_array($retinoscopy);
+    //select external
+    $external = $exam->selectExternal();
+    $external = mysqli_fetch_array($external);
+    //selct internal
+    $internal = $exam->selectInternal();
+    $internal = mysqli_fetch_array($internal);
+
     //set parameters for acuities
     $exam->acuities_INPUT_0   = $acuities_INPUT_0;  $exam->acuities_INPUT_1 =   $acuities_INPUT_1;  $exam->acuities_INPUT_2 =   $acuities_INPUT_2 ;$exam->acuities_INPUT_3 =   $acuities_INPUT_3 ;
     $exam->acuities_INPUT_4   = $acuities_INPUT_4;  $exam->acuities_INPUT_5 =   $acuities_INPUT_5;  $exam->acuities_INPUT_6 =   $acuities_INPUT_6 ;$exam->acuities_INPUT_7 =   $acuities_INPUT_7 ;
@@ -58,7 +66,7 @@ $gtts = $exam->getAllGtts();
     $exam->acuities_INPUT_28  = $acuities_INPUT_28; $exam->acuities_INPUT_29 =  $acuities_INPUT_29; $exam->acuities_INPUT_30 =  $acuities_INPUT_30 ;$exam->acuities_INPUT_31 =  $acuities_INPUT_31 ;
     $exam->acuities_INPUT_32  = $acuities_INPUT_32; $exam->acuities_INPUT_33 =  $acuities_INPUT_33; $exam->acuities_INPUT_34 =  $acuities_INPUT_34 ;$exam->acuities_INPUT_35 =  $acuities_INPUT_35 ;
     $exam->acuities_INPUT_36  = $acuities_INPUT_36; $exam->acuities_SELECT_0 =  $acuities_SELECT_0; $exam->acuities_SELECT_1 =  $acuities_SELECT_1 ;$exam->acuities_SELECT_2 =  $acuities_SELECT_2 ;
-    $exam->acuities_SELECT_3  = $acuities_SELECT_3; $exam->acuities_SELECT_4 =  $acuities_SELECT_4; $exam->acuities_note = $txtAcutiesNote;
+    $exam->acuities_SELECT_3  = $acuities_SELECT_3; $exam->acuities_SELECT_4 =  $acuities_SELECT_4; $exam->acuities_note = trim($txtAcutiesNote);
 
     //set parameters for retnoscopy
     $exam->retinoscopy_INPUT_0 = $retinoscopy_INPUT_0;$exam->retinoscopy_INPUT_1 = $retinoscopy_INPUT_1;$exam->retinoscopy_INPUT_2 = $retinoscopy_INPUT_2;
@@ -76,7 +84,7 @@ $gtts = $exam->getAllGtts();
     $exam->retinoscopy_INPUT_36 = $retinoscopy_INPUT_36;$exam->retinoscopy_INPUT_37 = $retinoscopy_INPUT_37;$exam->retinoscopy_INPUT_38 = $retinoscopy_INPUT_38;
     $exam->retinoscopy_INPUT_39 = $retinoscopy_INPUT_39;$exam->retinoscopy_INPUT_40 = $retinoscopy_INPUT_40;$exam->retinoscopy_INPUT_41 = $retinoscopy_INPUT_41;
     $exam->retinoscopy_INPUT_42 = $retinoscopy_INPUT_42;$exam->retinoscopy_INPUT_43 = $retinoscopy_INPUT_43;$exam->retinoscopy_INPUT_44 = $retinoscopy_INPUT_44;
-    $exam->retinoscopy_INPUT_45 = $retinoscopy_INPUT_45;$exam->retinoscopy_note = $txtRetinosopyNote;
+    $exam->retinoscopy_INPUT_45 = $retinoscopy_INPUT_45;$exam->retinoscopy_note = trim($txtRetinosopyNote);
 
     //set parameters for external
     $exam->external_INPUT_0 = $external_INPUT_0; $exam->external_INPUT_1 = $external_INPUT_1; $exam->external_INPUT_2 = $external_INPUT_2;
@@ -86,7 +94,7 @@ $gtts = $exam->getAllGtts();
     $exam->external_INPUT_12 = $external_INPUT_12; $exam->external_INPUT_13 = $external_INPUT_13; $exam->external_INPUT_14 = $external_INPUT_14;
     $exam->external_INPUT_15 = $external_INPUT_15; $exam->external_INPUT_16 = $external_INPUT_16; $exam->external_INPUT_17 = $external_INPUT_17;
     $exam->external_INPUT_18 = $external_INPUT_18; $exam->external_INPUT_19 = $external_INPUT_19; $exam->external_INPUT_20 = $external_INPUT_20;
-    $exam->external_INPUT_21 = $external_INPUT_21; $exam->external_INPUT_22 = $external_INPUT_22; $exam->external_note = $txtExternalNote;
+    $exam->external_INPUT_21 = $external_INPUT_21; $exam->external_INPUT_22 = $external_INPUT_22; $exam->external_note = trim($txtExternalNote);
 
     //set parameters for Internal
     $exam->internal_INPUT_0 = $internal_INPUT_0;$exam->internal_INPUT_1 = $internal_INPUT_1;$exam->internal_INPUT_2 = $internal_INPUT_2;
@@ -103,7 +111,7 @@ $gtts = $exam->getAllGtts();
     $exam->internal_INPUT_33 = $internal_INPUT_33;$exam->internal_INPUT_34 = $internal_INPUT_34;$exam->internal_INPUT_35 = $internal_INPUT_35;
     $exam->internal_INPUT_36 = $internal_INPUT_36;$exam->internal_INPUT_37 = $internal_INPUT_37;$exam->internal_INPUT_38 = $internal_INPUT_38;
     $exam->internal_INPUT_39 = $internal_INPUT_39;$exam->internal_INPUT_40 = $internal_INPUT_40;$exam->internal_SELECT_0 = $internal_SELECT_0;
-    $exam->internal_note = $txtInternalNote;
+    $exam->internal_note = trim($txtInternalNote);
 
     //set parameters for Tonometry
     $exam->tonometry_INPUT_0 = $tonometry_INPUT_0;$exam->tonometry_INPUT_1 = $tonometry_INPUT_1;$exam->tonometry_INPUT_2 = $tonometry_INPUT_2;
@@ -113,7 +121,7 @@ $gtts = $exam->getAllGtts();
     $exam->tonometry_INPUT_12 = $tonometry_INPUT_12;$exam->tonometry_INPUT_13 = $tonometry_INPUT_13;$exam->tonometry_INPUT_14 = $tonometry_INPUT_14;
     $exam->tonometry_INPUT_15 = $tonometry_INPUT_15;$exam->tonometry_INPUT_16 = $tonometry_INPUT_16;$exam->tonometry_INPUT_17 = $tonometry_INPUT_17;
     $exam->tonometry_INPUT_18 = $tonometry_INPUT_18;$exam->tonometry_INPUT_19 = $tonometry_INPUT_19;$exam->tonometry_SELECT_0 = $tonometry_SELECT_0;
-    $exam->tonometry_note = $txtTonometryNote;
+    $exam->tonometry_note = trim($txtTonometryNote);
 
     //set parameters for Diagnosis
     $exam->diagnosis_INPUT_0 = $diagnosis_INPUT_0;$exam->diagnosis_INPUT_1 = $diagnosis_INPUT_1;$exam->diagnosis_INPUT_2 = $diagnosis_INPUT_2;
@@ -132,7 +140,7 @@ $gtts = $exam->getAllGtts();
     $exam->diagnosis_INPUT_39 = $diagnosis_INPUT_39;$exam->diagnosis_INPUT_40 = $diagnosis_INPUT_40;$exam->diagnosis_INPUT_41 = $diagnosis_INPUT_41;
     $exam->diagnosis_INPUT_42 = $diagnosis_INPUT_42;$exam->diagnosis_INPUT_43 = $diagnosis_INPUT_43;$exam->diagnosis_INPUT_44 = $diagnosis_INPUT_44;
     $exam->diagnosis_INPUT_45 = $diagnosis_INPUT_45;$exam->diagnosis_notes = $txtDiagnosisNote; $exam->diagnosis_findings = $txtDiagnosisFindings;
-    $exam->diagnosis_recommendation = $txtDiagnosisRecommendation;
+    $exam->diagnosis_recommendation = trim($txtDiagnosisRecommendation);
 
 
 
@@ -140,7 +148,7 @@ $gtts = $exam->getAllGtts();
 ?>
 
 
-<form role="form" method="post" id="frm">
+<form role="form" method="post" id="frm" onunload="saveForm()" onclose="saveForm()" onbeforeunload="saveForm()">
     <div class="form-group">
         <div id="page-wrapper" style="min-height: 649px;">
             <div class="row">
@@ -160,7 +168,7 @@ $gtts = $exam->getAllGtts();
                                 <div class="col-md-8">
                                     <label><?php echo $patientInfo['first_name']." ".$patientInfo['last_name']?></label>
                                 </div>
-                                <div id="saveInfo" style="display: none;color:black;">
+                                <div id="saveInfo" style="color:black;">
                                     <div class="col-md-3">
                                         <select class="form-control">
                                             <option value="404">404 - Full service(Child)</option>
@@ -779,7 +787,7 @@ $gtts = $exam->getAllGtts();
                                     <div class="panel panel-info">
                                         <div class="panel-heading">
                                             <label>Retinoscopy Type
-                                                <input style="color: black;" type="text" class="form-control largeText" name="retinoscopy_INPUT_0">
+                                                <input style="color: black;" type="text" class="form-control largeText" name="retinoscopy_INPUT_0" value="<?php echo $retinoscopy['retinoscopy_INPUT_0'];?>">
                                             </label>
                                         </div>
                                         <div class="panel-body form-group-sm">
@@ -799,29 +807,29 @@ $gtts = $exam->getAllGtts();
                                                             Keratometry
                                                         </div>
                                                         <div class="col-sm-2" style="padding-left: 0px;">
-                                                            <input type="text" class="form-control" name="retinoscopy_INPUT_1">
+                                                            <input type="text" class="form-control" name="retinoscopy_INPUT_1" value="<?php echo $retinoscopy['retinoscopy_INPUT_1'];?>" >
                                                         </div>
                                                         <div class="col-sm-1" style="padding: 0;text-align: center;">
                                                             at
                                                         </div>
                                                         <div class="col-sm-2" style="padding-left: 0px;">
-                                                            <input type="text" class="form-control" name="retinoscopy_INPUT_2">
+                                                            <input type="text" class="form-control" name="retinoscopy_INPUT_2" value="<?php echo $retinoscopy['retinoscopy_INPUT_2'];?>">
                                                         </div>
                                                         <div class="col-sm-1" style="padding: 0; text-align: center;">
                                                             /
                                                         </div>
                                                         <div class="col-sm-2" style="padding-left: 0px;">
-                                                            <input type="text" class="form-control" name="retinoscopy_INPUT_3">
+                                                            <input type="text" class="form-control" name="retinoscopy_INPUT_3" value="<?php echo $retinoscopy['retinoscopy_INPUT_3'];?>">
                                                         </div>
                                                         <div class="col-sm-2" style="padding-left: 0px;">
-                                                            <input type="text" class="form-control" name="retinoscopy_INPUT_4">
+                                                            <input type="text" class="form-control" name="retinoscopy_INPUT_4" value="<?php echo $retinoscopy['retinoscopy_INPUT_4'];?>">
                                                         </div>
                                                     </div><br>
                                                     <!--Dom OD-->
                                                     <div class="row">
                                                         <div class="col-sm-10 col-sm-offset-2">
                                                             <label class="checkbox-inline">
-                                                                <input type="checkbox" name="retinoscopy_INPUT_5">DOM OD
+                                                                <input type="checkbox" name="retinoscopy_INPUT_5" value="true" <?php if($retinoscopy['retinoscopy_INPUT_5'] == 'true'){echo 'checked';}?>>DOM OD
                                                             </label>
                                                         </div>
                                                     </div><br>
@@ -831,19 +839,19 @@ $gtts = $exam->getAllGtts();
                                                             Retinoscopy
                                                         </div>
                                                         <div class="col-sm-2" style="padding-left: 0">
-                                                            <input type="number" step="0.25" class="form-control" name="retinoscopy_INPUT_6" id="txtRetOD_1">
+                                                            <input type="number" step="0.25" class="form-control" name="retinoscopy_INPUT_6" id="txtRetOD_1" value="<?php echo $retinoscopy['retinoscopy_INPUT_6'];?>">
                                                         </div>
                                                         <div class="col-sm-2" style="padding-left: 0">
-                                                            <input type="number" step="0.25" class="form-control" name="retinoscopy_INPUT_7" id="txtRetOD_2">
+                                                            <input type="number" step="0.25" class="form-control" name="retinoscopy_INPUT_7" id="txtRetOD_2" value="<?php echo $retinoscopy['retinoscopy_INPUT_7'];?>">
                                                         </div>
                                                         <div class="col-sm-2" style="padding-left: 0">
-                                                            <input type="number" step="1" min="0" class="form-control" name="retinoscopy_INPUT_8" id="txtRetOD_3">
+                                                            <input type="number" step="1" min="0" class="form-control" name="retinoscopy_INPUT_8" id="txtRetOD_3" value="<?php echo $retinoscopy['retinoscopy_INPUT_8'];?>">
                                                         </div>
                                                         <div class="col-sm-1" style="padding: 0; text-align: center;">
                                                             /
                                                         </div>
                                                         <div class="col-sm-2" style="padding-left: 0">
-                                                            <input type="text" class="form-control" name="retinoscopy_INPUT_9">
+                                                            <input type="text" class="form-control" name="retinoscopy_INPUT_9" value="<?php echo $retinoscopy['retinoscopy_INPUT_9'];?>">
                                                         </div>
                                                     </div><br>
                                                     <!--Subjective Rx-->
@@ -852,19 +860,19 @@ $gtts = $exam->getAllGtts();
                                                             Subjective Rx
                                                         </div>
                                                         <div class="col-sm-2" style="padding-left: 0">
-                                                            <input type="number" step="0.25" class="form-control" name="retinoscopy_INPUT_10" id="txtSubOD_1">
+                                                            <input type="number" step="0.25" class="form-control" name="retinoscopy_INPUT_10" id="txtSubOD_1" value="<?php echo $retinoscopy['retinoscopy_INPUT_10'];?>">
                                                         </div>
                                                         <div class="col-sm-2" style="padding-left: 0">
-                                                            <input type="number" step="0.25" class="form-control" name="retinoscopy_INPUT_11" id="txtSubOD_2">
+                                                            <input type="number" step="0.25" class="form-control" name="retinoscopy_INPUT_11" id="txtSubOD_2" value="<?php echo $retinoscopy['retinoscopy_INPUT_11'];?>">
                                                         </div>
                                                         <div class="col-sm-2" style="padding-left: 0">
-                                                            <input type="number" step="1" min="0" class="form-control" name="retinoscopy_INPUT_12" id="txtSubOD_3">
+                                                            <input type="number" step="1" min="0" class="form-control" name="retinoscopy_INPUT_12" id="txtSubOD_3" value="<?php echo $retinoscopy['retinoscopy_INPUT_12'];?>">
                                                         </div>
                                                         <div class="col-sm-1" style="padding: 0; text-align: center;">
                                                             /
                                                         </div>
                                                         <div class="col-sm-2" style="padding-left: 0">
-                                                            <input type="text" class="form-control" name="retinoscopy_INPUT_13">
+                                                            <input type="text" class="form-control" name="retinoscopy_INPUT_13" value="<?php echo $retinoscopy['retinoscopy_INPUT_13'];?>">
                                                         </div>
                                                     </div><br>
                                                     <!--Trial Rx-->
@@ -873,19 +881,19 @@ $gtts = $exam->getAllGtts();
                                                             Trial Rx
                                                         </div>
                                                         <div class="col-sm-2" style="padding-left: 0">
-                                                            <input type="number" step="0.25" class="form-control" name="retinoscopy_INPUT_14" id="txtTriOD_1">
+                                                            <input type="number" step="0.25" class="form-control" name="retinoscopy_INPUT_14" id="txtTriOD_1" value="<?php echo $retinoscopy['retinoscopy_INPUT_14'];?>">
                                                         </div>
                                                         <div class="col-sm-2" style="padding-left: 0">
-                                                            <input type="number" step="0.25" class="form-control" name="retinoscopy_INPUT_15" id="txtTriOD_2">
+                                                            <input type="number" step="0.25" class="form-control" name="retinoscopy_INPUT_15" id="txtTriOD_2" value="<?php echo $retinoscopy['retinoscopy_INPUT_15'];?>">
                                                         </div>
                                                         <div class="col-sm-2" style="padding-left: 0">
-                                                            <input type="number" step="1" min="0" class="form-control" name="retinoscopy_INPUT_16" id="txtTriOD_3">
+                                                            <input type="number" step="1" min="0" class="form-control" name="retinoscopy_INPUT_16" id="txtTriOD_3" value="<?php echo $retinoscopy['retinoscopy_INPUT_16'];?>">
                                                         </div>
                                                         <div class="col-sm-1" style="padding: 0; text-align: center;">
                                                             /
                                                         </div>
                                                         <div class="col-sm-2" style="padding-left: 0">
-                                                            <input type="text" class="form-control" name="retinoscopy_INPUT_17">
+                                                            <input type="text" class="form-control" name="retinoscopy_INPUT_17" value="<?php echo $retinoscopy['retinoscopy_INPUT_17'];?>">
                                                         </div>
                                                     </div><br>
                                                 </div>
@@ -900,84 +908,84 @@ $gtts = $exam->getAllGtts();
                                                     <!--Keratometry-->
                                                     <div class="row">
                                                         <div class="col-sm-2" style="padding-left: 0px;">
-                                                            <input type="text" class="form-control" name="retinoscopy_INPUT_18">
+                                                            <input type="text" class="form-control" name="retinoscopy_INPUT_18" value="<?php echo $retinoscopy['retinoscopy_INPUT_18'];?>">
                                                         </div>
                                                         <div class="col-sm-1" style="padding: 0;text-align: center;">
                                                             at
                                                         </div>
                                                         <div class="col-sm-2" style="padding-left: 0px;">
-                                                            <input type="text" class="form-control" name="retinoscopy_INPUT_19">
+                                                            <input type="text" class="form-control" name="retinoscopy_INPUT_19" value="<?php echo $retinoscopy['retinoscopy_INPUT_19'];?>">
                                                         </div>
                                                         <div class="col-sm-1" style="padding: 0; text-align: center;">
                                                             /
                                                         </div>
                                                         <div class="col-sm-2" style="padding-left: 0px;">
-                                                            <input type="text" class="form-control" name="retinoscopy_INPUT_20">
+                                                            <input type="text" class="form-control" name="retinoscopy_INPUT_20" value="<?php echo $retinoscopy['retinoscopy_INPUT_20'];?>">
                                                         </div>
                                                         <div class="col-sm-2" style="padding-left: 0px;">
-                                                            <input type="text" class="form-control" name="retinoscopy_INPUT_21">
+                                                            <input type="text" class="form-control" name="retinoscopy_INPUT_21" value="<?php echo $retinoscopy['retinoscopy_INPUT_21'];?>">
                                                         </div>
                                                     </div><br>
                                                     <!--Dom OS-->
                                                     <div class="row">
                                                         <div class="col-md-10">
                                                             <label class="checkbox-inline">
-                                                                <input type="checkbox" name="retinoscopy_INPUT_22">DOM OS
+                                                                <input type="checkbox" name="retinoscopy_INPUT_22" value="true" <?php if($retinoscopy['retinoscopy_INPUT_22'] == 'true'){echo 'checked';}?>>DOM OS
                                                             </label>
                                                         </div>
                                                     </div><br>
                                                     <!--Retinoscopy-->
                                                     <div class="row">
                                                         <div class="col-sm-2" style="padding-left: 0">
-                                                            <input type="number" step="0.25" class="form-control" name="retinoscopy_INPUT_23" id="txtRetOS_1">
+                                                            <input type="number" step="0.25" class="form-control" name="retinoscopy_INPUT_23" id="txtRetOS_1" value="<?php echo $retinoscopy['retinoscopy_INPUT_23'];?>">
                                                         </div>
                                                         <div class="col-sm-2" style="padding-left: 0">
-                                                            <input type="number" step="0.25" class="form-control" name="retinoscopy_INPUT_24" id="txtRetOS_2">
+                                                            <input type="number" step="0.25" class="form-control" name="retinoscopy_INPUT_24" id="txtRetOS_2" value="<?php echo $retinoscopy['retinoscopy_INPUT_24'];?>">
                                                         </div>
                                                         <div class="col-sm-2" style="padding-left: 0">
-                                                            <input type="number" step="1" min="0" class="form-control" name="retinoscopy_INPUT_25" id="txtRetOS_3">
+                                                            <input type="number" step="1" min="0" class="form-control" name="retinoscopy_INPUT_25" id="txtRetOS_3" value="<?php echo $retinoscopy['retinoscopy_INPUT_25'];?>">
                                                         </div>
                                                         <div class="col-sm-1" style="padding: 0; text-align: center;">
                                                             /
                                                         </div>
                                                         <div class="col-sm-2" style="padding-left: 0">
-                                                            <input type="text" class="form-control" name="retinoscopy_INPUT_26">
+                                                            <input type="text" class="form-control" name="retinoscopy_INPUT_26" value="<?php echo $retinoscopy['retinoscopy_INPUT_26'];?>">
                                                         </div>
                                                     </div><br>
                                                     <!--Subjective Rx-->
                                                     <div class="row">
                                                         <div class="col-sm-2" style="padding-left: 0">
-                                                            <input type="number" step="0.25" class="form-control" name="retinoscopy_INPUT_27" id="txtSubOS_1">
+                                                            <input type="number" step="0.25" class="form-control" name="retinoscopy_INPUT_27" id="txtSubOS_1" value="<?php echo $retinoscopy['retinoscopy_INPUT_27'];?>">
                                                         </div>
                                                         <div class="col-sm-2" style="padding-left: 0">
-                                                            <input type="number" step="0.25" class="form-control" name="retinoscopy_INPUT_28" id="txtSubOS_2">
+                                                            <input type="number" step="0.25" class="form-control" name="retinoscopy_INPUT_28" id="txtSubOS_2" value="<?php echo $retinoscopy['retinoscopy_INPUT_28'];?>">
                                                         </div>
                                                         <div class="col-sm-2" style="padding-left: 0">
-                                                            <input type="number" step="1" min="0" class="form-control" name="retinoscopy_INPUT_29" id="txtSubOS_3">
+                                                            <input type="number" step="1" min="0" class="form-control" name="retinoscopy_INPUT_29" id="txtSubOS_3" value="<?php echo $retinoscopy['retinoscopy_INPUT_29'];?>">
                                                         </div>
                                                         <div class="col-sm-1" style="padding: 0; text-align: center;">
                                                             /
                                                         </div>
                                                         <div class="col-sm-2" style="padding-left: 0">
-                                                            <input type="text" class="form-control" name="retinoscopy_INPUT_30">
+                                                            <input type="text" class="form-control" name="retinoscopy_INPUT_30" value="<?php echo $retinoscopy['retinoscopy_INPUT_30'];?>">
                                                         </div>
                                                     </div><br>
                                                     <!--Trial Rx-->
                                                     <div class="row">
                                                         <div class="col-sm-2" style="padding-left: 0">
-                                                            <input type="number" step="0.25" class="form-control" name="retinoscopy_INPUT_31" id="txtTriOS_1">
+                                                            <input type="number" step="0.25" class="form-control" name="retinoscopy_INPUT_31" id="txtTriOS_1" value="<?php echo $retinoscopy['retinoscopy_INPUT_31'];?>">
                                                         </div>
                                                         <div class="col-sm-2" style="padding-left: 0">
-                                                            <input type="number" step="0.25" class="form-control" name="retinoscopy_INPUT_32" id="txtTriOS_2">
+                                                            <input type="number" step="0.25" class="form-control" name="retinoscopy_INPUT_32" id="txtTriOS_2" value="<?php echo $retinoscopy['retinoscopy_INPUT_32'];?>">
                                                         </div>
                                                         <div class="col-sm-2" style="padding-left: 0">
-                                                            <input type="number" step="1" min="0" class="form-control" name="retinoscopy_INPUT_33" id="txtTriOS_3">
+                                                            <input type="number" step="1" min="0" class="form-control" name="retinoscopy_INPUT_33" id="txtTriOS_3" value="<?php echo $retinoscopy['retinoscopy_INPUT_33'];?>">
                                                         </div>
                                                         <div class="col-sm-1" style="padding: 0; text-align: center;">
                                                             /
                                                         </div>
                                                         <div class="col-sm-2" style="padding-left: 0">
-                                                            <input type="text" class="form-control" name="retinoscopy_INPUT_34">
+                                                            <input type="text" class="form-control" name="retinoscopy_INPUT_34" value="<?php echo $retinoscopy['retinoscopy_INPUT_34'];?>">
                                                         </div>
                                                     </div><br>
                                                 </div>
@@ -988,7 +996,7 @@ $gtts = $exam->getAllGtts();
                                                     <label>Rx Notes</label>
                                                 </div>
                                                 <div class="col-md-10">
-                                                    <input type="text" id="txtRxNotes" class="form-control" name="retinoscopy_INPUT_35">
+                                                    <input type="text" id="txtRxNotes" class="form-control" name="retinoscopy_INPUT_35" value="<?php echo $retinoscopy['retinoscopy_INPUT_35'];?>">
                                                 </div>
                                             </div><br>
                                             <!--pnl Adds-->
@@ -1003,26 +1011,26 @@ $gtts = $exam->getAllGtts();
                                                             <div class="row">
                                                                 <div class="col-md-3">Tentative Add</div>
                                                                 <div class="col-md-4">
-                                                                    <input type="text" class="form-control mediumText" name="retinoscopy_INPUT_36">
+                                                                    <input type="text" class="form-control mediumText" name="retinoscopy_INPUT_36" value="<?php echo $retinoscopy['retinoscopy_INPUT_36'];?>">
                                                                 </div>
                                                                 <div class="col-md-1" style="padding: 0;text-align: center;">
                                                                     at
                                                                 </div>
                                                                 <div class="col-md-4">
-                                                                    <input type="text" class="form-control mediumText" name="retinoscopy_INPUT_37">
+                                                                    <input type="text" class="form-control mediumText" name="retinoscopy_INPUT_37" value="<?php echo $retinoscopy['retinoscopy_INPUT_37'];?>">
                                                                 </div>
                                                             </div><br>
                                                             <!--Refined Add-->
                                                             <div class="row">
                                                                 <div class="col-md-3">Refined Add</div>
                                                                 <div class="col-md-4">
-                                                                    <input type="number" min="0" step="0.25" class="form-control mediumText" name="retinoscopy_INPUT_38" id="txtAdd">
+                                                                    <input type="number" min="0" step="0.25" class="form-control mediumText" name="retinoscopy_INPUT_38" id="txtAdd" value="<?php echo $retinoscopy['retinoscopy_INPUT_38'];?>">
                                                                 </div>
                                                                 <div class="col-md-1" style="padding: 0;text-align: center;">
                                                                     at
                                                                 </div>
                                                                 <div class="col-md-4">
-                                                                    <input type="text" class="form-control mediumText" name="retinoscopy_INPUT_39">
+                                                                    <input type="text" class="form-control mediumText" name="retinoscopy_INPUT_39" value="<?php echo $retinoscopy['retinoscopy_INPUT_39'];?>">
                                                                 </div>
                                                             </div><br>
                                                         </div>
@@ -1032,7 +1040,7 @@ $gtts = $exam->getAllGtts();
                                                             <div class="row">
                                                                 <div class="col-md-3">BPA/BMA</div>
                                                                 <div class="col-md-9">
-                                                                    <input type="text" class="form-control largeText" name="retinoscopy_INPUT_40">
+                                                                    <input type="text" class="form-control largeText" name="retinoscopy_INPUT_40" value="<?php echo $retinoscopy['retinoscopy_INPUT_40'];?>">
                                                                 </div>
                                                             </div><br>
                                                             <!--OD VA, OS VA-->
@@ -1041,25 +1049,25 @@ $gtts = $exam->getAllGtts();
                                                                     OD
                                                                 </div>
                                                                 <div class="col-md-2" style="padding: 0;">
-                                                                    <input type="number" step="0.25" min="0" class="form-control" name="retinoscopy_INPUT_41" id="txtAddOD">
+                                                                    <input type="number" step="0.25" min="0" class="form-control" name="retinoscopy_INPUT_41" id="txtAddOD" value="<?php echo $retinoscopy['retinoscopy_INPUT_41'];?>">
                                                                 </div>
                                                                 <div class="col-md-1">
                                                                     VA
                                                                 </div>
                                                                 <div class="col-md-2" style="padding: 0;">
-                                                                    <input type="text" class="form-control" name="retinoscopy_INPUT_42">
+                                                                    <input type="text" class="form-control" name="retinoscopy_INPUT_42" value="<?php echo $retinoscopy['retinoscopy_INPUT_42'];?>">
                                                                 </div>
                                                                 <div class="col-md-1">
                                                                     OS
                                                                 </div>
                                                                 <div class="col-md-2" style="padding: 0;">
-                                                                    <input type="number" step="0.25" min="0" class="form-control" name="retinoscopy_INPUT_43" id="txtAddOS">
+                                                                    <input type="number" step="0.25" min="0" class="form-control" name="retinoscopy_INPUT_43" id="txtAddOS" value="<?php echo $retinoscopy['retinoscopy_INPUT_43'];?>">
                                                                 </div>
                                                                 <div class="col-md-1">
                                                                     VA
                                                                 </div>
                                                                 <div class="col-md-2" style="padding: 0;">
-                                                                    <input type="text" class="form-control" name="retinoscopy_INPUT_44">
+                                                                    <input type="text" class="form-control" name="retinoscopy_INPUT_44" value="<?php echo $retinoscopy['retinoscopy_INPUT_44'];?>">
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -1079,6 +1087,7 @@ $gtts = $exam->getAllGtts();
                                         <div class="panel-heading"><label>Notes...</label></div>
                                         <div class="panel-body">
                                             <textarea name="txtRetinosopyNote" class="form-control">
+                                                <?php echo $retinoscopy['note'];?>
                                             </textarea>
                                         </div>
                                     </div>
@@ -1089,7 +1098,7 @@ $gtts = $exam->getAllGtts();
                                     <div class="row">
                                         <div class="col-md-12">
                                             <label class="checkbox-inline">
-                                                <input type="checkbox" name="external_INPUT_0"> PERRALA
+                                                <input type="checkbox" name="external_INPUT_0" value="true" <?php if($external['external_INPUT_0'] == 'true'){echo 'checked';}?>> PERRALA
                                             </label>
                                         </div>
                                     </div><br>
@@ -1098,10 +1107,10 @@ $gtts = $exam->getAllGtts();
                                             General
                                         </div>
                                         <div class="col-md-5">
-                                            <input type="text" class="form-control" name="external_INPUT_1">
+                                            <input type="text" class="form-control" name="external_INPUT_1" value="<?php echo $external['external_INPUT_1']?>">
                                         </div>
                                         <div class="col-md-5">
-                                            <input type="text" class="form-control" name="external_INPUT_2">
+                                            <input type="text" class="form-control" name="external_INPUT_2"  value="<?php echo $external['external_INPUT_2']?>">
                                         </div>
                                     </div><br>
                                     <div class="row">
@@ -1109,10 +1118,10 @@ $gtts = $exam->getAllGtts();
                                             Lids/Margine
                                         </div>
                                         <div class="col-md-5">
-                                            <input type="text" class="form-control" name="external_INPUT_3">
+                                            <input type="text" class="form-control" name="external_INPUT_3"  value="<?php echo $external['external_INPUT_3']?>">
                                         </div>
                                         <div class="col-md-5">
-                                            <input type="text" class="form-control" name="external_INPUT_4">
+                                            <input type="text" class="form-control" name="external_INPUT_4"  value="<?php echo $external['external_INPUT_4']?>">
                                         </div>
                                     </div><br>
                                     <div class="row">
@@ -1120,10 +1129,10 @@ $gtts = $exam->getAllGtts();
                                             Conjuctiva
                                         </div>
                                         <div class="col-md-5">
-                                            <input type="text" class="form-control" name="external_INPUT_5">
+                                            <input type="text" class="form-control" name="external_INPUT_5"  value="<?php echo $external['external_INPUT_5']?>">
                                         </div>
                                         <div class="col-md-5">
-                                            <input type="text" class="form-control" name="external_INPUT_6">
+                                            <input type="text" class="form-control" name="external_INPUT_6"  value="<?php echo $external['external_INPUT_6']?>">
                                         </div>
                                     </div><br>
                                     <div class="row">
@@ -1131,10 +1140,10 @@ $gtts = $exam->getAllGtts();
                                             Limbus/Tears
                                         </div>
                                         <div class="col-md-5">
-                                            <input type="text" class="form-control" name="external_INPUT_7">
+                                            <input type="text" class="form-control" name="external_INPUT_7"  value="<?php echo $external['external_INPUT_7']?>">
                                         </div>
                                         <div class="col-md-5">
-                                            <input type="text" class="form-control" name="external_INPUT_8">
+                                            <input type="text" class="form-control" name="external_INPUT_8"  value="<?php echo $external['external_INPUT_8']?>">
                                         </div>
                                     </div><br>
                                     <div class="row">
@@ -1142,10 +1151,10 @@ $gtts = $exam->getAllGtts();
                                             Cornea
                                         </div>
                                         <div class="col-md-5">
-                                            <input type="text" class="form-control" name="external_INPUT_9">
+                                            <input type="text" class="form-control" name="external_INPUT_9"  value="<?php echo $external['external_INPUT_9']?>">
                                         </div>
                                         <div class="col-md-5">
-                                            <input type="text" class="form-control" name="external_INPUT_10">
+                                            <input type="text" class="form-control" name="external_INPUT_10"  value="<?php echo $external['external_INPUT_10']?>">
                                         </div>
                                     </div><br>
                                     <div class="row">
@@ -1153,10 +1162,10 @@ $gtts = $exam->getAllGtts();
                                             A-C
                                         </div>
                                         <div class="col-md-5">
-                                            <input type="text" class="form-control" name="external_INPUT_11">
+                                            <input type="text" class="form-control" name="external_INPUT_11"  value="<?php echo $external['external_INPUT_11']?>">
                                         </div>
                                         <div class="col-md-5">
-                                            <input type="text" class="form-control" name="external_INPUT_12">
+                                            <input type="text" class="form-control" name="external_INPUT_12"  value="<?php echo $external['external_INPUT_12']?>">
                                         </div>
                                     </div><br>
                                     <div class="row">
@@ -1164,10 +1173,10 @@ $gtts = $exam->getAllGtts();
                                             Iris
                                         </div>
                                         <div class="col-md-5">
-                                            <input type="text" class="form-control" name="external_INPUT_13">
+                                            <input type="text" class="form-control" name="external_INPUT_13"  value="<?php echo $external['external_INPUT_13']?>">
                                         </div>
                                         <div class="col-md-5">
-                                            <input type="text" class="form-control" name="external_INPUT_14">
+                                            <input type="text" class="form-control" name="external_INPUT_14"  value="<?php echo $external['external_INPUT_14']?>">
                                         </div>
                                     </div><br>
                                     <div class="row">
@@ -1175,10 +1184,10 @@ $gtts = $exam->getAllGtts();
                                             Pupil Size
                                         </div>
                                         <div class="col-md-5">
-                                            <input type="text" class="form-control" name="external_INPUT_15">
+                                            <input type="text" class="form-control" name="external_INPUT_15"  value="<?php echo $external['external_INPUT_15']?>">
                                         </div>
                                         <div class="col-md-5">
-                                            <input type="text" class="form-control" name="external_INPUT_16">
+                                            <input type="text" class="form-control" name="external_INPUT_16"  value="<?php echo $external['external_INPUT_16']?>">
                                         </div>
                                     </div><br>
                                     <div class="row">
@@ -1186,10 +1195,10 @@ $gtts = $exam->getAllGtts();
                                             Direct Reflex
                                         </div>
                                         <div class="col-md-5">
-                                            <input type="text" class="form-control" name="external_INPUT_17">
+                                            <input type="text" class="form-control" name="external_INPUT_17"  value="<?php echo $external['external_INPUT_17']?>">
                                         </div>
                                         <div class="col-md-5">
-                                            <input type="text" class="form-control" name="external_INPUT_18">
+                                            <input type="text" class="form-control" name="external_INPUT_18"  value="<?php echo $external['external_INPUT_18']?>">
                                         </div>
                                     </div><br>
                                     <div class="row">
@@ -1197,10 +1206,10 @@ $gtts = $exam->getAllGtts();
                                             Consensual
                                         </div>
                                         <div class="col-md-5">
-                                            <input type="text" class="form-control" name="external_INPUT_19">
+                                            <input type="text" class="form-control" name="external_INPUT_19"  value="<?php echo $external['external_INPUT_19']?>">
                                         </div>
                                         <div class="col-md-5">
-                                            <input type="text" class="form-control" name="external_INPUT_20">
+                                            <input type="text" class="form-control" name="external_INPUT_20"  value="<?php echo $external['external_INPUT_20']?>">
                                         </div>
                                     </div><br>
                                     <div class="row">
@@ -1208,10 +1217,10 @@ $gtts = $exam->getAllGtts();
                                             Near
                                         </div>
                                         <div class="col-md-5">
-                                            <input type="text" class="form-control" name="external_INPUT_21">
+                                            <input type="text" class="form-control" name="external_INPUT_21"  value="<?php echo $external['external_INPUT_21']?>">
                                         </div>
                                         <div class="col-md-5">
-                                            <input type="text" class="form-control" name="external_INPUT_22">
+                                            <input type="text" class="form-control" name="external_INPUT_22"  value="<?php echo $external['external_INPUT_22']?>">
                                         </div>
                                     </div><br>
                                     <!--Notes-->
@@ -1219,6 +1228,7 @@ $gtts = $exam->getAllGtts();
                                         <div class="panel-heading"><label>Notes...</label></div>
                                         <div class="panel-body">
                                             <textarea name="txtExternalNote" class="form-control">
+                                                <?php echo trim($external['note']);?>
                                             </textarea>
                                         </div>
                                     </div>
@@ -1234,7 +1244,7 @@ $gtts = $exam->getAllGtts();
                                             <div class="row">
                                                 <div class="checkbox">
                                                     <label>
-                                                        <input type="checkbox" name="internal_INPUT_0"> DIR
+                                                        <input type="checkbox" name="internal_INPUT_0" value="true" <?php if($internal['internal_INPUT_0'] == 'true'){echo 'checked';}?>> DIR
                                                     </label>
                                                 </div>
                                             </div>
@@ -1242,7 +1252,7 @@ $gtts = $exam->getAllGtts();
                                             <div class="row">
                                                 <div class="checkbox">
                                                     <label>
-                                                        <input type="checkbox" name="internal_INPUT_1"> MIO
+                                                        <input type="checkbox" name="internal_INPUT_1" value="true" <?php if($internal['internal_INPUT_1'] == 'true'){echo 'checked';}?>> MIO
                                                     </label>
                                                 </div>
                                             </div>
@@ -1250,25 +1260,25 @@ $gtts = $exam->getAllGtts();
                                             <div class="row">
                                                 <div class="checkbox">
                                                     <label>
-                                                        <input type="checkbox" name="internal_INPUT_2"> BIO
+                                                        <input type="checkbox" name="internal_INPUT_2" value="true" <?php if($internal['internal_INPUT_2'] == 'true'){echo 'checked';}?>> BIO
                                                     </label>
                                                 </div>
                                             </div>
                                             <!--BIO Text-->
                                             <div class="row">
-                                                <input type="text" class="form-control" name="internal_INPUT_3">
+                                                <input type="text" class="form-control" name="internal_INPUT_3" value="<?php echo $internal['internal_INPUT_3'];?>">
                                             </div>
                                             <!--Volk-->
                                             <div class="row">
                                                 <div class="checkbox">
                                                     <label>
-                                                        <input type="checkbox" name="internal_INPUT_4"> Volk
+                                                        <input type="checkbox" name="internal_INPUT_4" value="true" <?php if($internal['internal_INPUT_4'] == 'true'){echo 'checked';}?>> Volk
                                                     </label>
                                                 </div>
                                             </div>
                                             <!--Volk Text-->
                                             <div class="row">
-                                                <input type="text" class="form-control" name="internal_INPUT_5">
+                                                <input type="text" class="form-control" name="internal_INPUT_5" value="<?php echo $internal['internal_INPUT_5'];?>">
                                             </div>
                                         </div>
                                         <!--Col 1 left-->
@@ -1278,10 +1288,10 @@ $gtts = $exam->getAllGtts();
                                                     <label>lens</label>
                                                 </div>
                                                 <div class="col-md-5">
-                                                    <input type="text" class="form-control" name="internal_INPUT_6">
+                                                    <input type="text" class="form-control" name="internal_INPUT_6" value="<?php echo $internal['internal_INPUT_6'];?>">
                                                 </div>
                                                 <div class="col-md-5">
-                                                    <input type="text" class="form-control" name="internal_INPUT_7">
+                                                    <input type="text" class="form-control" name="internal_INPUT_7" value="<?php echo $internal['internal_INPUT_7'];?>">
 
                                                 </div>
                                             </div><br>
@@ -1290,10 +1300,10 @@ $gtts = $exam->getAllGtts();
                                                     <label>Vitreous</label>
                                                 </div>
                                                 <div class="col-md-5">
-                                                    <input type="text" class="form-control" name="internal_INPUT_8">
+                                                    <input type="text" class="form-control" name="internal_INPUT_8" value="<?php echo $internal['internal_INPUT_8'];?>">
                                                 </div>
                                                 <div class="col-md-5">
-                                                    <input type="text" class="form-control" name="internal_INPUT_9">
+                                                    <input type="text" class="form-control" name="internal_INPUT_9" value="<?php echo $internal['internal_INPUT_9'];?>">
 
                                                 </div>
                                             </div><br>
@@ -1302,10 +1312,10 @@ $gtts = $exam->getAllGtts();
                                                     <label>Depth/Cup</label>
                                                 </div>
                                                 <div class="col-md-5">
-                                                    <input type="text" class="form-control" name="internal_INPUT_10">
+                                                    <input type="text" class="form-control" name="internal_INPUT_10" value="<?php echo $internal['internal_INPUT_10'];?>">
                                                 </div>
                                                 <div class="col-md-5">
-                                                    <input type="text" class="form-control" name="internal_INPUT_11">
+                                                    <input type="text" class="form-control" name="internal_INPUT_11" value="<?php echo $internal['internal_INPUT_11'];?>">
 
                                                 </div>
                                             </div><br>
@@ -1314,10 +1324,10 @@ $gtts = $exam->getAllGtts();
                                                     <label>Margin</label>
                                                 </div>
                                                 <div class="col-md-5">
-                                                    <input type="text" class="form-control" name="internal_INPUT_12">
+                                                    <input type="text" class="form-control" name="internal_INPUT_12" value="<?php echo $internal['internal_INPUT_12'];?>">
                                                 </div>
                                                 <div class="col-md-5">
-                                                    <input type="text" class="form-control" name="internal_INPUT_13">
+                                                    <input type="text" class="form-control" name="internal_INPUT_13" value="<?php echo $internal['internal_INPUT_13'];?>">
 
                                                 </div>
                                             </div><br>
@@ -1326,11 +1336,10 @@ $gtts = $exam->getAllGtts();
                                                     <label>Crescents</label>
                                                 </div>
                                                 <div class="col-md-5">
-                                                    <input type="text" class="form-control" name="internal_INPUT_14">
+                                                    <input type="text" class="form-control" name="internal_INPUT_14" value="<?php echo $internal['internal_INPUT_14'];?>">
                                                 </div>
                                                 <div class="col-md-5">
-                                                    <input type="text" class="form-control" name="internal_INPUT_15">
-
+                                                    <input type="text" class="form-control" name="internal_INPUT_15" value="<?php echo $internal['internal_INPUT_15'];?>">
                                                 </div>
                                             </div><br>
                                             <div class="row">
@@ -1338,11 +1347,10 @@ $gtts = $exam->getAllGtts();
                                                     <label>A/V Crossing</label>
                                                 </div>
                                                 <div class="col-md-5">
-                                                    <input type="text" class="form-control" name="internal_INPUT_16">
+                                                    <input type="text" class="form-control" name="internal_INPUT_16" value="<?php echo $internal['internal_INPUT_16'];?>">
                                                 </div>
                                                 <div class="col-md-5">
-                                                    <input type="text" class="form-control" name="internal_INPUT_17">
-
+                                                    <input type="text" class="form-control" name="internal_INPUT_17" value="<?php echo $internal['internal_INPUT_17'];?>">
                                                 </div>
                                             </div><br>
                                             <div class="row">
@@ -1350,10 +1358,10 @@ $gtts = $exam->getAllGtts();
                                                     <label>Calibre-Ratio</label>
                                                 </div>
                                                 <div class="col-md-5">
-                                                    <input type="text" class="form-control" name="internal_INPUT_18">
+                                                    <input type="text" class="form-control" name="internal_INPUT_18" value="<?php echo $internal['internal_INPUT_18'];?>">
                                                 </div>
                                                 <div class="col-md-5">
-                                                    <input type="text" class="form-control" name="internal_INPUT_19">
+                                                    <input type="text" class="form-control" name="internal_INPUT_19" value="<?php echo $internal['internal_INPUT_19'];?>">
 
                                                 </div>
                                             </div><br>
@@ -1362,10 +1370,10 @@ $gtts = $exam->getAllGtts();
                                                     <label>Gen/App/Fun</label>
                                                 </div>
                                                 <div class="col-md-5">
-                                                    <input type="text" class="form-control" name="internal_INPUT_20">
+                                                    <input type="text" class="form-control" name="internal_INPUT_20" value="<?php echo $internal['internal_INPUT_20'];?>">
                                                 </div>
                                                 <div class="col-md-5">
-                                                    <input type="text" class="form-control" name="internal_INPUT_21">
+                                                    <input type="text" class="form-control" name="internal_INPUT_21" value="<?php echo $internal['internal_INPUT_21'];?>">
 
                                                 </div>
                                             </div><br>
@@ -1377,10 +1385,10 @@ $gtts = $exam->getAllGtts();
                                                     <label>ONH Cup</label>
                                                 </div>
                                                 <div class="col-md-5">
-                                                    <input type="text" class="form-control" name="internal_INPUT_22">
+                                                    <input type="text" class="form-control" name="internal_INPUT_22" value="<?php echo $internal['internal_INPUT_22'];?>">
                                                 </div>
                                                 <div class="col-md-5">
-                                                    <input type="text" class="form-control" name="internal_INPUT_23">
+                                                    <input type="text" class="form-control" name="internal_INPUT_23" value="<?php echo $internal['internal_INPUT_23'];?>">
 
                                                 </div>
                                             </div><br>
@@ -1389,10 +1397,10 @@ $gtts = $exam->getAllGtts();
                                                     <label>Disc Color</label>
                                                 </div>
                                                 <div class="col-md-5">
-                                                    <input type="text" class="form-control" name="internal_INPUT_24">
+                                                    <input type="text" class="form-control" name="internal_INPUT_24" value="<?php echo $internal['internal_INPUT_24'];?>">
                                                 </div>
                                                 <div class="col-md-5">
-                                                    <input type="text" class="form-control" name="internal_INPUT_25">
+                                                    <input type="text" class="form-control" name="internal_INPUT_25" value="<?php echo $internal['internal_INPUT_25'];?>">
 
                                                 </div>
                                             </div><br>
@@ -1401,10 +1409,10 @@ $gtts = $exam->getAllGtts();
                                                     <label>Lamina Crib.</label>
                                                 </div>
                                                 <div class="col-md-5">
-                                                    <input type="text" class="form-control" name="internal_INPUT_26">
+                                                    <input type="text" class="form-control" name="internal_INPUT_26" value="<?php echo $internal['internal_INPUT_26'];?>">
                                                 </div>
                                                 <div class="col-md-5">
-                                                    <input type="text" class="form-control" name="internal_INPUT_27">
+                                                    <input type="text" class="form-control" name="internal_INPUT_27" value="<?php echo $internal['internal_INPUT_27'];?>">
 
                                                 </div>
                                             </div><br>
@@ -1413,10 +1421,10 @@ $gtts = $exam->getAllGtts();
                                                     <label>Area/Cup</label>
                                                 </div>
                                                 <div class="col-md-5">
-                                                    <input type="text" class="form-control" name="internal_INPUT_28">
+                                                    <input type="text" class="form-control" name="internal_INPUT_28" value="<?php echo $internal['internal_INPUT_28'];?>">
                                                 </div>
                                                 <div class="col-md-5">
-                                                    <input type="text" class="form-control" name="internal_INPUT_29">
+                                                    <input type="text" class="form-control" name="internal_INPUT_29" value="<?php echo $internal['internal_INPUT_29'];?>">
 
                                                 </div>
                                             </div><br>
@@ -1425,10 +1433,10 @@ $gtts = $exam->getAllGtts();
                                                     <label>Macula</label>
                                                 </div>
                                                 <div class="col-md-5">
-                                                    <input type="text" class="form-control" name="internal_INPUT_30">
+                                                    <input type="text" class="form-control" name="internal_INPUT_30" value="<?php echo $internal['internal_INPUT_30'];?>">
                                                 </div>
                                                 <div class="col-md-5">
-                                                    <input type="text" class="form-control" name="internal_INPUT_31">
+                                                    <input type="text" class="form-control" name="internal_INPUT_31" value="<?php echo $internal['internal_INPUT_31'];?>">
 
                                                 </div>
                                             </div><br>
@@ -1437,10 +1445,10 @@ $gtts = $exam->getAllGtts();
                                                     <label>Course</label>
                                                 </div>
                                                 <div class="col-md-5">
-                                                    <input type="text" class="form-control" name="internal_INPUT_32">
+                                                    <input type="text" class="form-control" name="internal_INPUT_32" value="<?php echo $internal['internal_INPUT_32'];?>">
                                                 </div>
                                                 <div class="col-md-5">
-                                                    <input type="text" class="form-control" name="internal_INPUT_33">
+                                                    <input type="text" class="form-control" name="internal_INPUT_33" value="<?php echo $internal['internal_INPUT_33'];?>">
 
                                                 </div>
                                             </div><br>
@@ -1449,17 +1457,16 @@ $gtts = $exam->getAllGtts();
                                                     <label>Periphery</label>
                                                 </div>
                                                 <div class="col-md-5">
-                                                    <input type="text" class="form-control" name="internal_INPUT_34">
+                                                    <input type="text" class="form-control" name="internal_INPUT_34" value="<?php echo $internal['internal_INPUT_34'];?>">
                                                 </div>
                                                 <div class="col-md-5">
-                                                    <input type="text" class="form-control" name="internal_INPUT_35">
-
+                                                    <input type="text" class="form-control" name="internal_INPUT_35" value="<?php echo $internal['internal_INPUT_35'];?>">
                                                 </div>
                                             </div><br>
                                             <div class="row">
                                                 <div class="col-md-12" style="padding: 0px;">
                                                     <label class="checkbox-inline">
-                                                        <input type="checkbox" name="internal_INPUT_36">
+                                                        <input type="checkbox" name="internal_INPUT_36" value="<?php echo $internal['internal_INPUT_36'];?>">
                                                         Vessels appear within normal limits
                                                     </label>
                                                 </div>
@@ -1472,7 +1479,7 @@ $gtts = $exam->getAllGtts();
                                             <label>gtts</label>
                                         </div>
                                         <div class="col-md-3">
-                                            <input id="txtGtts" type="text" onfocus="setCurentTime('txtInternalNow');" data-toggle="modal" data-target="#gttsList" class="form-control" name="internal_INPUT_37">
+                                            <input id="txtGtts" type="text" onfocus="setCurentTime('txtInternalNow');" data-toggle="modal" data-target="#gttsList" class="form-control" name="internal_INPUT_37" value="<?php echo $internal['internal_INPUT_37'];?>">
                                         </div>
 
                                         <!--gtts list module-->
@@ -1487,7 +1494,12 @@ $gtts = $exam->getAllGtts();
                                                         <div class="form-group">
                                                             <label>Select from the list</label>
                                                             <select id="selectGtts" multiple="" class="form-control" name="internal_SELECT_0">
-                                                                <option value="Example gtts 1">Example gtts 1</option><option value="Example gtts 2">Example gtts 2</option><option value="Gtts list item">Gtts list item</option>                                                            </select><br>
+                                                                <?php
+                                                                    while($list = mysqli_fetch_array($gtts)){
+                                                                        echo "<option>$list[gtts_name]</option>";
+                                                                    }
+                                                                 ?>
+                                                              </select><br>
                                                             <button type="button" id="btnSelectGtts" onclick="fillTxtGtts('Select')" data-dismiss="modal" class="btn btn-success form-control">Select</button><br>
                                                             <label>Add new to list</label>
                                                             <input type="text" id="txtNewGtts" class="form-control" name="internal_INPUT_38"><br>
@@ -1504,14 +1516,14 @@ $gtts = $exam->getAllGtts();
                                         </div>
                                         <!--Time Now-->
                                         <div class="col-md-2">
-                                            <input id="txtInternalNow" type="time" class="form-control mediumText" onfocus="setCurentTime('txtInternalNow')" name="internal_INPUT_39">
+                                            <input id="txtInternalNow" type="time" class="form-control mediumText" onfocus="setCurentTime('txtInternalNow')" name="internal_INPUT_39" value="<?php echo $internal['internal_INPUT_39']?>">
                                         </div>
                                     </div><br>
                                     <!--ROw 3 chk-->
                                     <div class="row">
                                         <div class="col-md-12">
                                             <label class="checkbox-inline">
-                                                <input type="checkbox" name="internal_INPUT_40">
+                                                <input type="checkbox" name="internal_INPUT_40" value="true" <?php if($internal['internal_INPUT_40'] == 'true'){echo 'checked';}?>>
                                                 Patient counselled about the effect of Mydriatic
                                             </label>
                                         </div>
@@ -1521,6 +1533,7 @@ $gtts = $exam->getAllGtts();
                                         <div class="panel-heading"><label>Notes...</label></div>
                                         <div class="panel-body">
                                             <textarea name="txtInternalNote" class="form-control">
+                                                <?php $internal['note']?>
                                             </textarea>
                                         </div>
                                     </div>
@@ -2008,6 +2021,7 @@ $gtts = $exam->getAllGtts();
     /*  //replace text area with ckedit
      CKEDITOR.replace( 'txtPatientInfoNotes' );*/
 
+
     //fill txtGtts
     function fillTxtGtts(option){
         var drpSelect = document.getElementById('selectGtts');
@@ -2120,6 +2134,7 @@ $gtts = $exam->getAllGtts();
         console.log(data);
         $.post('eyeExam.php', data);
     };
+    //save new gtts
     /*Set curent time function*/
     function setCurentTime(txtID){
         var txtNow = document.getElementById(txtID);
@@ -2130,16 +2145,16 @@ $gtts = $exam->getAllGtts();
     }
 
     //send data to update every 10s
-    setInterval(saveForm, 10000);
+    setInterval(saveForm, 60000);
 
 </script>
 <script>
-    /*Generate rx from retinoscopy to Diagnosis and summary displaying prescription*/
-//    var btnRx = document.getElementById("btnRx");
-//    btnRx.onclick = function(){
-//        var pnlRx = document.getElementById("pnlRx");
-//            pnlRx.style.display = 'block';
-//    };
+//on window unload
+$(window).bind('unload', function() {
+   saveForm();
+});
+//disable elements
+$('#tab0').find('input, textarea, button, select').attr('disabled','disabled');
 
 </script>
 <?php
