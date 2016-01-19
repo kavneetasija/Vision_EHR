@@ -428,7 +428,7 @@ class Exam extends Patient
                                       '$this->tonometry_INPUT_5','$this->tonometry_INPUT_6','$this->tonometry_INPUT_7','$this->tonometry_INPUT_8','$this->tonometry_INPUT_9',
                                       '$this->tonometry_INPUT_10','$this->tonometry_INPUT_11','$this->tonometry_INPUT_12','$this->tonometry_INPUT_13','$this->tonometry_INPUT_14',
                                       '$this->tonometry_INPUT_15','$this->tonometry_INPUT_16','$this->tonometry_INPUT_17','$this->tonometry_INPUT_18','$this->tonometry_INPUT_19',
-                                      '$this->tonometry_SELECT_0','$this->tonometry_note'";
+                                      '$this->tonometry_SELECT_0','$this->tonometry_note')";
 
         return $this->queryDatabase($sqlInsertTonometry);
     }
@@ -459,6 +459,12 @@ class Exam extends Patient
                                                         note = '$this->tonometry_note'
                                                         WHERE exam_id = '$this->examId'";
         return $this->queryDatabase($sqlUpdateTonometry);
+    }
+
+    //select Tonometry
+    function selectTonometry(){
+        $sqlSelectTonometry = "SELECT * FROM tbl_tonometry WHERE exam_id = '$this->examId'";
+        return $this->queryDatabase($sqlSelectTonometry);
     }
 
     //on insert Diagnosis
@@ -542,6 +548,12 @@ class Exam extends Patient
                                                         recommendation = '$this->diagnosis_recommendation'
                                                         WHERE exam_id = '$this->examId'";
         return $this->queryDatabase($sqlUpdateDiagnosis);
+    }
+
+    //select Diagnosis{
+    function selectDiagnosis(){
+        $sqlSelectDiagnosis = "SELECT * FROM tbl_diagnosis WHERE exam_id = '$this->examId'";
+        return $this->queryDatabase($sqlSelectDiagnosis);
     }
 
 

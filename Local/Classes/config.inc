@@ -8,8 +8,8 @@
 ?>
 <?php
 //Software details
-define('VERSION') ? null : define("VERSION","(v.1.1.0)");
-define('NAME') ? null : define("NAME","Vision EHR");
+defined('VERSION') ? null : define("VERSION","(v.1.1.0)");
+defined('NAME') ? null : define("NAME","Vision EHR");
 
 // Database connection parameters
 //Hosting server name or IP Address

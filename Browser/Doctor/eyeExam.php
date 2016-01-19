@@ -54,6 +54,12 @@ $exam->insertGtts($internal_INPUT_38);
     //selct internal
     $internal = $exam->selectInternal();
     $internal = mysqli_fetch_array($internal);
+    //select Tonometry
+    $tonometry = $exam->selectTonometry();
+    $tonometry = mysqli_fetch_array($tonometry);
+    //select Diagnosis
+    $diagnosis = $exam->selectDiagnosis();
+    $diagnosis = mysqli_fetch_array($diagnosis);
 
     //set parameters for acuities
     $exam->acuities_INPUT_0   = $acuities_INPUT_0;  $exam->acuities_INPUT_1 =   $acuities_INPUT_1;  $exam->acuities_INPUT_2 =   $acuities_INPUT_2 ;$exam->acuities_INPUT_3 =   $acuities_INPUT_3 ;
@@ -165,7 +171,7 @@ $exam->insertGtts($internal_INPUT_38);
                     <div class="panel panel-primary">
                         <div class="panel-heading">
                             <div class="row">
-                                <div class="col-md-8">
+                                <div class="col-md-7">
                                     <label><?php echo $patientInfo['first_name']." ".$patientInfo['last_name']?></label>
                                 </div>
                                 <div id="saveInfo" style="color:black;">
@@ -178,6 +184,9 @@ $exam->insertGtts($internal_INPUT_38);
                                     </div>
                                     <div class="col-md-1">
                                         <button class="btn btn-success" id="btnSave" name="btnSave" type="button" onclick="saveForm()" value="updateExam">Save</button>
+                                    </div>
+                                    <div class="col-md-1">
+                                        <button class="btn btn-danger" id="btnEdit" name="btnSave" type="button" onclick="enableEdit()" value="EditExam">Edit</button>
                                     </div>
                                 </div>
                             </div>
@@ -1549,7 +1558,7 @@ $exam->insertGtts($internal_INPUT_38);
                                             <div class="row">
                                                 <div class="col-md-3 checkbox">
                                                     <label>
-                                                        <input type="checkbox" value="warning" name="tonometry_INPUT_0">
+                                                        <input type="checkbox" value="warning" name="tonometry_INPUT_0" <?php if($tonometry['tonometry_INPUT_0'] == 'warning'){echo 'checked';}?>>
                                                         Warning Given
                                                     </label>
                                                 </div>
@@ -1557,7 +1566,7 @@ $exam->insertGtts($internal_INPUT_38);
                                                     Time
                                                 </div>
                                                 <div class="col-md-6">
-                                                    <input type="time" class="form-control mediumText" id="txtTonometryNow" onfocus="setCurentTime('txtTonometryNow')" name="tonometry_INPUT_1">
+                                                    <input type="time" class="form-control mediumText" id="txtTonometryNow" onfocus="setCurentTime('txtTonometryNow')" name="tonometry_INPUT_1" value="<?php echo $tonometry['tonometry_INPUT_1'];?>">
                                                 </div>
                                             </div><br>
                                             <!--Tonometry OD-->
@@ -1569,7 +1578,7 @@ $exam->insertGtts($internal_INPUT_38);
                                                     <label>OD</label>
                                                 </div>
                                                 <div class="col-md-6">
-                                                    <input type="text" class="form-control mediumText" name="tonometry_INPUT_2">
+                                                    <input type="text" class="form-control mediumText" name="tonometry_INPUT_2" value="<?php echo $tonometry['tonometry_INPUT_2'];?>">
                                                 </div>
                                             </div><br>
                                             <!--OS-->
@@ -1578,7 +1587,7 @@ $exam->insertGtts($internal_INPUT_38);
                                                     <label>OS</label>
                                                 </div>
                                                 <div class="col-md-6">
-                                                    <input type="text" class="form-control mediumText" name="tonometry_INPUT_3">
+                                                    <input type="text" class="form-control mediumText" name="tonometry_INPUT_3" value="<?php echo $tonometry['tonometry_INPUT_3'];?>">
                                                 </div>
                                             </div><br>
                                             <!--Type-->
@@ -1588,9 +1597,9 @@ $exam->insertGtts($internal_INPUT_38);
                                                 </div>
                                                 <div class="col-md-6">
                                                     <select class="form-control mediumText" name="tonometry_SELECT_0">
-                                                        <option>Option 1</option>
-                                                        <option>Option 2</option>
-                                                        <option>Option 3</option>
+                                                        <option value="1" <?php if($tonometry['tonometry_SELECT_0'] == '1'){echo 'selected';}?>>Option 1</option>
+                                                        <option value="2" <?php if($tonometry['tonometry_SELECT_0'] == '2'){echo 'selected';}?>>Option 2</option>
+                                                        <option value="3" <?php if($tonometry['tonometry_SELECT_0'] == '3'){echo 'selected';}?>>Option 3</option>
                                                     </select>
                                                 </div>
                                             </div><br>
@@ -1601,7 +1610,7 @@ $exam->insertGtts($internal_INPUT_38);
                                             <div class="row">
                                                 <div class="col-md-12 checkbox">
                                                     <label class="checkbox-inline">
-                                                        <input type="checkbox" value="alcaineGtts" name="tonometry_INPUT_4">
+                                                        <input type="checkbox" value="alcaineGtts" name="tonometry_INPUT_4"  <?php if($tonometry['tonometry_INPUT_4'] == 'alcaineGtts'){echo 'checked';}?>>
                                                         Alcaine dtts
                                                     </label>
                                                 </div>
@@ -1612,7 +1621,7 @@ $exam->insertGtts($internal_INPUT_38);
                                                     <label>Time</label>
                                                 </div>
                                                 <div class="col-md-9">
-                                                    <input type="time" class="form-control mediumText" name="tonometry_INPUT_5">
+                                                    <input type="time" class="form-control mediumText" name="tonometry_INPUT_5" value="<?php echo $tonometry['tonometry_INPUT_5'];?>">
                                                 </div>
                                             </div><br>
                                             <!--Pachymetry-->
@@ -1621,7 +1630,7 @@ $exam->insertGtts($internal_INPUT_38);
                                                     <label>Pachymetry</label>
                                                 </div>
                                                 <div class="col-md-9">
-                                                    <input type="text" class="form-control largeText" name="tonometry_INPUT_6">
+                                                    <input type="text" class="form-control largeText" name="tonometry_INPUT_6" value="<?php echo $tonometry['tonometry_INPUT_6'];?>">
                                                 </div>
                                             </div><br>
                                             <!--Topography-->
@@ -1630,7 +1639,7 @@ $exam->insertGtts($internal_INPUT_38);
                                                     <label>Topography</label>
                                                 </div>
                                                 <div class="col-md-9">
-                                                    <input type="text" class="form-control largeText" name="tonometry_INPUT_7">
+                                                    <input type="text" class="form-control largeText" name="tonometry_INPUT_7" value="<?php echo $tonometry['tonometry_INPUT_7'];?>">
                                                 </div>
                                             </div>
                                         </div>
@@ -1642,7 +1651,7 @@ $exam->insertGtts($internal_INPUT_38);
                                             <label>Visual Fields</label>
                                         </div>
                                         <div class="col-md-9">
-                                            <input type="text" class="form-control" name="tonometry_INPUT_8">
+                                            <input type="text" class="form-control" name="tonometry_INPUT_8" value="<?php echo $tonometry['tonometry_INPUT_8'];?>">
                                         </div>
                                     </div><br>
                                     <!--Confrontation field-->
@@ -1651,7 +1660,7 @@ $exam->insertGtts($internal_INPUT_38);
                                             <label>Confrontation fields</label>
                                         </div>
                                         <div class="col-md-9 checkbox">
-                                            <input type="checkbox" value="normalConfrontation" name="tonometry_INPUT_9">
+                                            <input type="checkbox" value="normalConfrontation" name="tonometry_INPUT_9" <?php if($tonometry['tonometry_INPUT_4'] == 'normalConfrontation'){echo 'checked';}?>>
                                             <label class="checkbox-inline">within normal</label>
                                         </div>
                                     </div>
@@ -1665,21 +1674,21 @@ $exam->insertGtts($internal_INPUT_38);
                                                     <label>OD Nasal</label>
                                                 </div>
                                                 <div class="col-md-3">
-                                                    <input type="text" class="form-control mediumText" name="tonometry_INPUT_10">
+                                                    <input type="text" class="form-control mediumText" name="tonometry_INPUT_10" value="<?php echo $tonometry['tonometry_INPUT_10'];?>">
                                                 </div>
                                                 <!--Temp-->
                                                 <div class="col-md-1">
                                                     <label>Temp</label>
                                                 </div>
                                                 <div class="col-md-3">
-                                                    <input type="text" class="form-control mediumText" name="tonometry_INPUT_11">
+                                                    <input type="text" class="form-control mediumText" name="tonometry_INPUT_11" value="<?php echo $tonometry['tonometry_INPUT_11'];?>">
                                                 </div>
                                                 <!--Total-->
                                                 <div class="col-md-1">
                                                     <label>Total</label>
                                                 </div>
                                                 <div class="col-md-3">
-                                                    <input type="text" class="form-control mediumText" name="tonometry_INPUT_12">
+                                                    <input type="text" class="form-control mediumText" name="tonometry_INPUT_12" value="<?php echo $tonometry['tonometry_INPUT_12'];?>">
                                                 </div>
                                             </div><br>
                                             <!--OS-->
@@ -1689,21 +1698,21 @@ $exam->insertGtts($internal_INPUT_38);
                                                     <label>OS Nasal</label>
                                                 </div>
                                                 <div class="col-md-3">
-                                                    <input type="text" class="form-control mediumText" name="tonometry_INPUT_13">
+                                                    <input type="text" class="form-control mediumText" name="tonometry_INPUT_13" value="<?php echo $tonometry['tonometry_INPUT_13'];?>">
                                                 </div>
                                                 <!--Temp-->
                                                 <div class="col-md-1">
                                                     <label>Temp</label>
                                                 </div>
                                                 <div class="col-md-3">
-                                                    <input type="text" class="form-control mediumText" name="tonometry_INPUT_14">
+                                                    <input type="text" class="form-control mediumText" name="tonometry_INPUT_14" value="<?php echo $tonometry['tonometry_INPUT_14'];?>">
                                                 </div>
                                                 <!--Total-->
                                                 <div class="col-md-1">
                                                     <label>Total</label>
                                                 </div>
                                                 <div class="col-md-3">
-                                                    <input type="text" class="form-control mediumText" name="tonometry_INPUT_15">
+                                                    <input type="text" class="form-control mediumText" name="tonometry_INPUT_15" value="<?php echo $tonometry['tonometry_INPUT_15'];?>">
                                                 </div>
                                             </div><br>
                                             <!--OU, CSF-->
@@ -1712,13 +1721,13 @@ $exam->insertGtts($internal_INPUT_38);
                                                     <label>OU Total</label>
                                                 </div>
                                                 <div class="col-md-3">
-                                                    <input type="text" class="form-control mediumText" name="tonometry_INPUT_16">
+                                                    <input type="text" class="form-control mediumText" name="tonometry_INPUT_16" value="<?php echo $tonometry['tonometry_INPUT_16'];?>">
                                                 </div>
                                                 <div class="col-md-1 col-md-offset-4">
                                                     <label>CSF</label>
                                                 </div>
                                                 <div class="col-md-3">
-                                                    <input type="text" class="form-control mediumText" name="tonometry_INPUT_17">
+                                                    <input type="text" class="form-control mediumText" name="tonometry_INPUT_17" value="<?php echo $tonometry['tonometry_INPUT_17'];?>">
                                                 </div>
                                             </div><br>
                                             <!--Amsler-->
@@ -1731,7 +1740,7 @@ $exam->insertGtts($internal_INPUT_38);
                                                     <label>OD</label>
                                                 </div>
                                                 <div class="col-md-3">
-                                                    <input type="text" class="form-control" name="tonometry_INPUT_18">
+                                                    <input type="text" class="form-control" name="tonometry_INPUT_18" value="<?php echo $tonometry['tonometry_INPUT_18'];?>">
                                                 </div>
 
                                                 <!--Input OS-->
@@ -1739,7 +1748,7 @@ $exam->insertGtts($internal_INPUT_38);
                                                     <label>OS</label>
                                                 </div>
                                                 <div class="col-md-3">
-                                                    <input type="text" class="form-control" name="tonometry_INPUT_19">
+                                                    <input type="text" class="form-control" name="tonometry_INPUT_19" value="<?php echo $tonometry['tonometry_INPUT_19'];?>">
                                                 </div>
 
                                             </div>
@@ -1750,6 +1759,9 @@ $exam->insertGtts($internal_INPUT_38);
                                         <div class="panel-heading"><label>Notes...</label></div>
                                         <div class="panel-body">
                                             <textarea name="txtTonometryNote" class="form-control">
+                                                <?php
+                                                    echo $tonometry['note'];
+                                                ?>
                                             </textarea>
                                         </div>
                                     </div>
@@ -1761,7 +1773,7 @@ $exam->insertGtts($internal_INPUT_38);
                                     <!--Final Rx-->
                                     <div class="panel panel-success">
                                         <div class="panel-heading"><label>Final Rx</label></div>
-                                        <div class="panel-body">
+                                        <div class="panel-body" id="finalRxData">
                                             <div class="row form-group-sm">
                                                 <div class="col-md-12">
                                                     <!--titles-->
@@ -1780,37 +1792,43 @@ $exam->insertGtts($internal_INPUT_38);
                                                     <!--OD-->
                                                     <div class="row">
                                                         <div class="col-md-1"><label>OD</label></div>
-                                                        <div class="col-md-1"><input type="number" step="0.25" class="form-control" name="diagnosis_INPUT_0" id="txtRxOD_1"></div>
-                                                        <div class="col-md-1"><input type="number" step="0.25" class="form-control" name="diagnosis_INPUT_1" id="txtRxOD_2"></div>
-                                                        <div class="col-md-1"><input type="text" class="form-control" name="diagnosis_INPUT_2" id="txtRxOD_3"></div>
-                                                        <div class="col-md-1"><input type="number" class="form-control" name="diagnosis_INPUT_3" id="txtRxODAdd"></div>
-                                                        <div class="col-md-1"><input type="text" class="form-control" name="diagnosis_INPUT_4"></div>
-                                                        <div class="col-md-1"><input type="text" class="form-control" name="diagnosis_INPUT_5"></div>
-                                                        <div class="col-md-1"><input type="text" class="form-control" name="diagnosis_INPUT_6"></div>
-                                                        <div class="col-md-1"><input type="text" class="form-control" name="diagnosis_INPUT_7"></div>
-                                                        <div class="col-md-1"><input type="text" class="form-control" name="diagnosis_INPUT_8"></div>
-                                                        <div class="col-md-1"><input type="text" class="form-control" name="diagnosis_INPUT_9"></div>
+                                                        <div class="col-md-1"><input type="number" step="0.25" class="form-control" name="diagnosis_INPUT_0" id="txtRxOD_1" value="<?php echo"$diagnosis[diagnosis_INPUT_0]";?>"></div>
+                                                        <div class="col-md-1"><input type="number" step="0.25" class="form-control" name="diagnosis_INPUT_1" id="txtRxOD_2" value="<?php echo"$diagnosis[diagnosis_INPUT_1]";?>"></div>
+                                                        <div class="col-md-1"><input type="text" class="form-control" name="diagnosis_INPUT_2" id="txtRxOD_3" value="<?php echo"$diagnosis[diagnosis_INPUT_2]";?>"></div>
+                                                        <div class="col-md-1"><input type="number" class="form-control" name="diagnosis_INPUT_3" id="txtRxODAdd" value="<?php echo"$diagnosis[diagnosis_INPUT_3]";?>"></div>
+                                                        <div class="col-md-1"><input type="text" class="form-control" name="diagnosis_INPUT_4" value="<?php echo"$diagnosis[diagnosis_INPUT_4]";?>"></div>
+                                                        <div class="col-md-1"><input type="text" class="form-control" name="diagnosis_INPUT_5" value="<?php echo"$diagnosis[diagnosis_INPUT_5]";?>"></div>
+                                                        <div class="col-md-1"><input type="text" class="form-control" name="diagnosis_INPUT_6" value="<?php echo"$diagnosis[diagnosis_INPUT_6]";?>"></div>
+                                                        <div class="col-md-1"><input type="text" class="form-control" name="diagnosis_INPUT_7" value="<?php echo"$diagnosis[diagnosis_INPUT_7]";?>"></div>
+                                                        <div class="col-md-1"><input type="text" class="form-control" name="diagnosis_INPUT_8" value="<?php echo"$diagnosis[diagnosis_INPUT_8]";?>"></div>
+                                                        <div class="col-md-1"><input type="text" class="form-control" name="diagnosis_INPUT_9" value="<?php echo"$diagnosis[diagnosis_INPUT_9]";?>"></div>
                                                     </div><br>
                                                     <!--OS-->
                                                     <div class="row">
                                                         <div class="col-md-1"><label>OS</label></div>
-                                                        <div class="col-md-1"><input type="number" step="0.25" class="form-control" name="diagnosis_INPUT_10" id="txtRxOS_1"></div>
-                                                        <div class="col-md-1"><input type="number" step="0.25" class="form-control" name="diagnosis_INPUT_11" id="txtRxOS_2"></div>
-                                                        <div class="col-md-1"><input type="text" class="form-control" name="diagnosis_INPUT_12" id="txtRxOS_3"></div>
-                                                        <div class="col-md-1"><input type="number" class="form-control" name="diagnosis_INPUT_13" id="txtRxOSAdd"></div>
-                                                        <div class="col-md-1"><input type="text" class="form-control" name="diagnosis_INPUT_14"></div>
-                                                        <div class="col-md-1"><input type="text" class="form-control" name="diagnosis_INPUT_15"></div>
-                                                        <div class="col-md-1"><input type="text" class="form-control" name="diagnosis_INPUT_16"></div>
-                                                        <div class="col-md-1"><input type="text" class="form-control" name="diagnosis_INPUT_17"></div>
-                                                        <div class="col-md-1"><input type="text" class="form-control" name="diagnosis_INPUT_18"></div>
-                                                        <div class="col-md-1"><input type="text" class="form-control" name="diagnosis_INPUT_19"></div>
+                                                        <div class="col-md-1"><input type="number" step="0.25" class="form-control" name="diagnosis_INPUT_10" id="txtRxOS_1" value="<?php echo"$diagnosis[diagnosis_INPUT_10]";?>"></div>
+                                                        <div class="col-md-1"><input type="number" step="0.25" class="form-control" name="diagnosis_INPUT_11" id="txtRxOS_2" value="<?php echo"$diagnosis[diagnosis_INPUT_11]";?>"></div>
+                                                        <div class="col-md-1"><input type="text" class="form-control" name="diagnosis_INPUT_12" id="txtRxOS_3" value="<?php echo"$diagnosis[diagnosis_INPUT_12]";?>"></div>
+                                                        <div class="col-md-1"><input type="number" class="form-control" name="diagnosis_INPUT_13" id="txtRxOSAdd" value="<?php echo"$diagnosis[diagnosis_INPUT_13]";?>"></div>
+                                                        <div class="col-md-1"><input type="text" class="form-control" name="diagnosis_INPUT_14" value="<?php echo"$diagnosis[diagnosis_INPUT_14]";?>"></div>
+                                                        <div class="col-md-1"><input type="text" class="form-control" name="diagnosis_INPUT_15" value="<?php echo"$diagnosis[diagnosis_INPUT_15]";?>"></div>
+                                                        <div class="col-md-1"><input type="text" class="form-control" name="diagnosis_INPUT_16" value="<?php echo"$diagnosis[diagnosis_INPUT_16]";?>"></div>
+                                                        <div class="col-md-1"><input type="text" class="form-control" name="diagnosis_INPUT_17" value="<?php echo"$diagnosis[diagnosis_INPUT_17]";?>"></div>
+                                                        <div class="col-md-1"><input type="text" class="form-control" name="diagnosis_INPUT_18" value="<?php echo"$diagnosis[diagnosis_INPUT_18]";?>"></div>
+                                                        <div class="col-md-1"><input type="text" class="form-control" name="diagnosis_INPUT_19" value="<?php echo"$diagnosis[diagnosis_INPUT_19]";?>"></div>
                                                     </div><br>
                                                     <!--Note rx-->
                                                     <!--Note rx-->
                                                     <div class="row">
                                                         <div class="col-md-12">
                                                             <label>Notes</label>
-                                                            <input type="text" id="txtRxNotesFinal" class="form-control" name="diagnosis_INPUT_20">
+                                                            <input type="text" id="txtRxNotesFinal" class="form-control" name="diagnosis_INPUT_20" value="<?php echo"$diagnosis[diagnosis_INPUT_20]";?>">
+                                                        </div>
+                                                    </div><br/>
+                                                    <div class="row">
+                                                        <div class="col-md-10"></div>
+                                                        <div class="col-md-2">
+                                                            <a class="btn btn-default"  href="letter_template/finalPrescription.php?PateintID=<?php echo $_SESSION['patientID_eyeExam'];?>&ExamID=<?php echo $_SESSION['examID_eyeExam'];?>&DoctorID=<?php echo $_SESSION['loginUserId'];?>" target="_blank"><i class="fa fa-print"></i> Print</a>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -1839,36 +1857,36 @@ $exam->insertGtts($internal_INPUT_38);
                                                     <!--OD-->
                                                     <div class="row">
                                                         <div class="col-md-1"><label>OD</label></div>
-                                                        <div class="col-md-1"><input type="number" step="0.25" class="form-control" name="diagnosis_INPUT_21"></div>
-                                                        <div class="col-md-1"><input type="number" step="0.25" class="form-control" name="diagnosis_INPUT_22"></div>
-                                                        <div class="col-md-1"><input type="text" class="form-control" name="diagnosis_INPUT_23"></div>
-                                                        <div class="col-md-1"><input type="number" class="form-control" name="diagnosis_INPUT_24"></div>
-                                                        <div class="col-md-1"><input type="text" class="form-control" name="diagnosis_INPUT_25"></div>
-                                                        <div class="col-md-1"><input type="text" class="form-control" name="diagnosis_INPUT_26"></div>
-                                                        <div class="col-md-1"><input type="text" class="form-control" name="diagnosis_INPUT_27"></div>
-                                                        <div class="col-md-1"><input type="text" class="form-control" name="diagnosis_INPUT_28"></div>
-                                                        <div class="col-md-1"><input type="text" class="form-control" name="diagnosis_INPUT_29"></div>
-                                                        <div class="col-md-1"><input type="text" class="form-control" name="diagnosis_INPUT_30"></div>
+                                                        <div class="col-md-1"><input type="number" step="0.25" class="form-control" name="diagnosis_INPUT_21" value="<?php echo"$diagnosis[diagnosis_INPUT_21]";?>"></div>
+                                                        <div class="col-md-1"><input type="number" step="0.25" class="form-control" name="diagnosis_INPUT_22" value="<?php echo"$diagnosis[diagnosis_INPUT_22]";?>"></div>
+                                                        <div class="col-md-1"><input type="text" class="form-control" name="diagnosis_INPUT_23" value="<?php echo"$diagnosis[diagnosis_INPUT_23]";?>"></div>
+                                                        <div class="col-md-1"><input type="number" class="form-control" name="diagnosis_INPUT_24" value="<?php echo"$diagnosis[diagnosis_INPUT_24]";?>"></div>
+                                                        <div class="col-md-1"><input type="text" class="form-control" name="diagnosis_INPUT_25" value="<?php echo"$diagnosis[diagnosis_INPUT_25]";?>"></div>
+                                                        <div class="col-md-1"><input type="text" class="form-control" name="diagnosis_INPUT_26" value="<?php echo"$diagnosis[diagnosis_INPUT_26]";?>"></div>
+                                                        <div class="col-md-1"><input type="text" class="form-control" name="diagnosis_INPUT_27" value="<?php echo"$diagnosis[diagnosis_INPUT_27]";?>"></div>
+                                                        <div class="col-md-1"><input type="text" class="form-control" name="diagnosis_INPUT_28" value="<?php echo"$diagnosis[diagnosis_INPUT_28]";?>"></div>
+                                                        <div class="col-md-1"><input type="text" class="form-control" name="diagnosis_INPUT_29" value="<?php echo"$diagnosis[diagnosis_INPUT_29]";?>"></div>
+                                                        <div class="col-md-1"><input type="text" class="form-control" name="diagnosis_INPUT_30" value="<?php echo"$diagnosis[diagnosis_INPUT_30]";?>"></div>
                                                     </div><br>
                                                     <!--OS-->
                                                     <div class="row">
                                                         <div class="col-md-1"><label>OS</label></div>
-                                                        <div class="col-md-1"><input type="number" step="0.25" class="form-control" name="diagnosis_INPUT_31"></div>
-                                                        <div class="col-md-1"><input type="number" step="0.25" class="form-control" name="diagnosis_INPUT_32"></div>
-                                                        <div class="col-md-1"><input type="text" class="form-control" name="diagnosis_INPUT_33"></div>
-                                                        <div class="col-md-1"><input type="number" class="form-control" name="diagnosis_INPUT_34"></div>
-                                                        <div class="col-md-1"><input type="text" class="form-control" name="diagnosis_INPUT_35"></div>
-                                                        <div class="col-md-1"><input type="text" class="form-control" name="diagnosis_INPUT_36"></div>
-                                                        <div class="col-md-1"><input type="text" class="form-control" name="diagnosis_INPUT_37"></div>
-                                                        <div class="col-md-1"><input type="text" class="form-control" name="diagnosis_INPUT_38"></div>
-                                                        <div class="col-md-1"><input type="text" class="form-control" name="diagnosis_INPUT_39"></div>
-                                                        <div class="col-md-1"><input type="text" class="form-control" name="diagnosis_INPUT_40"></div>
+                                                        <div class="col-md-1"><input type="number" step="0.25" class="form-control" name="diagnosis_INPUT_31" value="<?php echo"$diagnosis[diagnosis_INPUT_31]";?>"></div>
+                                                        <div class="col-md-1"><input type="number" step="0.25" class="form-control" name="diagnosis_INPUT_32" value="<?php echo"$diagnosis[diagnosis_INPUT_32]";?>"></div>
+                                                        <div class="col-md-1"><input type="text" class="form-control" name="diagnosis_INPUT_33" value="<?php echo"$diagnosis[diagnosis_INPUT_33]";?>"></div>
+                                                        <div class="col-md-1"><input type="number" class="form-control" name="diagnosis_INPUT_34" value="<?php echo"$diagnosis[diagnosis_INPUT_34]";?>"></div>
+                                                        <div class="col-md-1"><input type="text" class="form-control" name="diagnosis_INPUT_35" value="<?php echo"$diagnosis[diagnosis_INPUT_35]";?>"></div>
+                                                        <div class="col-md-1"><input type="text" class="form-control" name="diagnosis_INPUT_36" value="<?php echo"$diagnosis[diagnosis_INPUT_36]";?>"></div>
+                                                        <div class="col-md-1"><input type="text" class="form-control" name="diagnosis_INPUT_37" value="<?php echo"$diagnosis[diagnosis_INPUT_37]";?>"></div>
+                                                        <div class="col-md-1"><input type="text" class="form-control" name="diagnosis_INPUT_38" value="<?php echo"$diagnosis[diagnosis_INPUT_38]";?>"></div>
+                                                        <div class="col-md-1"><input type="text" class="form-control" name="diagnosis_INPUT_39" value="<?php echo"$diagnosis[diagnosis_INPUT_39]";?>"></div>
+                                                        <div class="col-md-1"><input type="text" class="form-control" name="diagnosis_INPUT_40" value="<?php echo"$diagnosis[diagnosis_INPUT_40]";?>"></div>
                                                     </div><br>
                                                     <!--Note rx-->
                                                     <div class="row">
                                                         <div class="col-md-12">
                                                             <label>Notes</label>
-                                                            <input type="text" class="form-control" name="diagnosis_INPUT_41">
+                                                            <input type="text" class="form-control" name="diagnosis_INPUT_41" value="<?php echo"$diagnosis[diagnosis_INPUT_41]";?>">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -1883,6 +1901,7 @@ $exam->insertGtts($internal_INPUT_38);
                                                 <div class="col-md-12">
                                                     <label>Doctors Note</label>
                                                     <textarea id="txt1" name="txtDiagnosisNote" class="form-control" rows="3">
+                                                        <?php echo"$diagnosis[note]";?>
                                                     </textarea>
                                                 </div>
                                             </div>
@@ -1890,6 +1909,7 @@ $exam->insertGtts($internal_INPUT_38);
                                                 <div class="col-md-12">
                                                     <label>Findings</label>
                                                     <textarea class="form-control" name="txtDiagnosisFindings" rows="3" >
+                                                        <?php echo"$diagnosis[findings]";?>
                                                     </textarea>
                                                 </div>
                                             </div>
@@ -1897,6 +1917,7 @@ $exam->insertGtts($internal_INPUT_38);
                                                 <div class="col-md-12">
                                                     <label>Recommendation</label>
                                                     <textarea class="form-control" name="txtDiagnosisRecommendation" rows="3">
+                                                        <?php echo"$diagnosis[recommendation]";?>
                                                     </textarea>
                                                 </div>
                                             </div>
@@ -1911,7 +1932,7 @@ $exam->insertGtts($internal_INPUT_38);
                                             <div class="row">
                                                 <div class="col-md-12 checkbox">
                                                     <label class="checkbox-inline">
-                                                        <input type="checkbox" value="Normal" name="diagnosis_INPUT_42">
+                                                        <input type="checkbox" value="Normal" name="diagnosis_INPUT_42" <?php if($diagnosis['diagnosis_INPUT_42'] == 'Normal'){echo "checked";}?>>
                                                         Normal
                                                     </label>
                                                 </div>
@@ -1919,7 +1940,7 @@ $exam->insertGtts($internal_INPUT_38);
                                             <div class="row">
                                                 <div class="col-md-12 checkbox">
                                                     <label class="checkbox-inline">
-                                                        <input type="checkbox" value="Followup" name="diagnosis_INPUT_43">
+                                                        <input type="checkbox" value="Followup" name="diagnosis_INPUT_43" <?php if($diagnosis['diagnosis_INPUT_43'] == 'Followup'){echo "checked";}?>>
                                                         Follow up
                                                     </label>
                                                 </div>
@@ -1929,13 +1950,13 @@ $exam->insertGtts($internal_INPUT_38);
 
                                                     Reason for follow up
 
-                                                    <input type="text" class="form-control" name="diagnosis_INPUT_44">
+                                                    <input type="text" class="form-control" name="diagnosis_INPUT_44" value="<?php echo"$diagnosis[diagnosis_INPUT_44]";?>">
                                                 </div>
                                             </div>
                                             <div class="row">
                                                 <div class="col-md-12 checkbox">
                                                     <label class="checkbox-inline">
-                                                        <input type="checkbox" value="prescription" name="diagnosis_INPUT_45">
+                                                        <input type="checkbox" value="prescription" name="diagnosis_INPUT_45" <?php if($diagnosis['diagnosis_INPUT_45'] == 'prescription'){echo "checked";}?>>
                                                         Prescription given
                                                     </label>
                                                 </div>
@@ -1949,7 +1970,7 @@ $exam->insertGtts($internal_INPUT_38);
                                             </div>
                                             <div class="row">
                                                 <div class="col-md-6">
-                                                    <button class="btn btn-primary" type="button"><i class="fa fa-print fa-fw"></i> Normal</button>
+                                                    <a href="letter_template/normal.php?PateintID=<?php echo $_SESSION['patientID_eyeExam'];?>&ExamID=<?php echo $_SESSION['examID_eyeExam'];?>&DoctorID=<?php echo $_SESSION['loginUserId'];?>" target="_blank"" class="btn btn-primary" type="button"><i class="fa fa-print fa-fw"></i> Normal</a>
                                                 </div>
                                             </div><br>
                                             <div class="row">
@@ -2124,7 +2145,7 @@ $exam->insertGtts($internal_INPUT_38);
             txtRxODAdd.value = txtRxOSAdd.value = txtAdd.value;
         }
         //Set notes
-        txtRxNotes.value = txtRxNotesFinal.value;
+        txtRxNotesFinal.value = txtRxNotes.value ;
 
     }
 
@@ -2147,6 +2168,7 @@ $exam->insertGtts($internal_INPUT_38);
     //send data to update every 10s
     setInterval(saveForm, 60000);
 
+
 </script>
 <script>
 //on window unload
@@ -2154,7 +2176,13 @@ $(window).bind('unload', function() {
    saveForm();
 });
 //disable elements
-$('#tab0').find('input, textarea, button, select').attr('disabled','disabled');
+$('#frm').find('input, textarea, select').attr('disabled', true);
+function enableEdit(){
+$('#frm').find('input, textarea, select').attr('disabled', false);
+}
+
+</script>
+<script>
 
 </script>
 <?php

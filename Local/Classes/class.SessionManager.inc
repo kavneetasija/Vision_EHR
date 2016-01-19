@@ -46,10 +46,11 @@ class SessionManager
     }
 
     //Create session for patient in eye exam
-    function createPatientSessionInExam($patientId,$examId){
+    function createPatientSessionInExam($patientId,$examId,$action){
         session_start();
         $_SESSION['patientID_eyeExam'] = $patientId;
         $_SESSION['examID_eyeExam'] = $examId;
+        $_SESSION['action'] = $action;
         if(isset($_SESSION['patientID_eyeExam']) && isset($_SESSION['examID_eyeExam'])){
             return true;
         }

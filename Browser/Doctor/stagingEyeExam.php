@@ -15,7 +15,6 @@ if(isset($PatientID) && isset($DoctorID))
     //if exam id is passed don't create new exam. set sessin variable with it
     if(!isset($ExamID)){
         $examId = $exam->createExamByPatientId($PatientID,$DoctorID);
-
     }
     else{
         $examId = $ExamID;
@@ -42,7 +41,7 @@ if(isset($PatientID) && isset($DoctorID))
                         if($result){
                             //set patient session variables
                             $sessionExam = new SessionManager();
-                            $session = $sessionExam->createPatientSessionInExam($PatientID,$examId);
+                            $session = $sessionExam->createPatientSessionInExam($PatientID,$examId,$action);
                             if($session){
                                 header('location: eyeExam.php');
                             }
