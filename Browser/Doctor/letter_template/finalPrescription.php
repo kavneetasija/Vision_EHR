@@ -100,7 +100,7 @@ $rxDetails = mysqli_fetch_array($rxDetails);
         </table>
     </div>
 
-    <p style="text-align:center">&nbsp; Notes: <?php echo "$rxDetails[diagnosis_INPUT_20]"?><br />
+    <p style="text-align:center">&nbsp; Notes: <?php echo "$rxDetails[diagnosis_INPUT_20]"?><br /><BR/>
         -----------------------------------<br />
        <?php echo"$doctorInfo[first_name] $doctorInfo[last_name]"?></p>
     </div>

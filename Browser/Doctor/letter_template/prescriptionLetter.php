@@ -30,20 +30,27 @@ $rxDetails = mysqli_fetch_array($rxDetails);
 <body>
 <form id="frm" method="get">
     <div id="normal" style="height: 80%">
-
-        <p>Dear Parent/Guardian of <?php echo "$patientDetails[first_name] $patientDetails[last_name]";?>,</p>
+        <p>Dear Parent/Guardian of <?php echo "$patientDetails[first_name] $patientDetails[last_name],";?> </p>
 
         <p><?php echo "$patientDetails[first_name]";?> had a full eye exam on <?php echo date('m/d/Y',strtotime($examDetails['time'])) ." at $examLocation[name]";?>.</p>
 
-        <p><strong>All findings were normal and no intervention is required.</strong> &nbsp;</p>
+        <p><strong>At this time it was found that <?php echo "$patientDetails[first_name]";?> has:</strong></p>
 
-        <p>It is, however, recommended that you have your child&#39;s eyes examined again in <strong>1 year</strong> or sooner if needed. &nbsp;As your child grows, his or her vision may change.</p>
+        <p><strong><?php echo "$rxDetails[findings]";?></strong></p>
 
-        <p>Eye exams for children up to 19 years of age are covered annually by OHIP.</p>
+        <p><strong>Recommendation:</strong></p>
+
+        <p><strong><?php echo "$rxDetails[recommendation]";?></strong></p>
+
+        <p>Another eye exam is required in 1 year or sooner if needed. &nbsp;</p>
+
+        <p>Attached you will find a prescription for glasses and some information regarding the relevant conditions.</p>
+
+        <p>Please feel free to contact me if you have any questions or concerns.</p>
 
         <p>Sincerely,</p>
 
-        <p><br />
+        <p><p><br />
             Dr. <?php echo"$doctorInfo[first_name] $doctorInfo[last_name]";?><br />
             Optometrist in collaboration with the Ottawa Carleton District School Board<br />
             <?php
@@ -51,9 +58,7 @@ $rxDetails = mysqli_fetch_array($rxDetails);
             echo "$doctorInfo[city], $doctorInfo[province], $doctorInfo[postal_code]<br/>";
             echo "$doctorInfo[work_phone]";?>
         </p>
-
-
-
+        </p>
     </div>
 
 
