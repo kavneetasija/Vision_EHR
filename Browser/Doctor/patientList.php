@@ -52,6 +52,7 @@ if(isset($_SESSION['now_exam_Date']) && isset($_SESSION['now_exam_Session'])){
                                         <th>First Name</th>
                                         <th>Last Name</th>
                                         <th>OHIP Number</th>
+                                        <th>DOB</th>
                                         <th>Gender</th>
                                         <th class="info">Start Eye Exam</th>
                                     </tr>
@@ -65,6 +66,7 @@ if(isset($_SESSION['now_exam_Date']) && isset($_SESSION['now_exam_Session'])){
                                                 <td>$appointment[first_name]</td>
                                                 <td>$appointment[last_name]</td>
                                                 <td>$appointment[OHIP_number]</td>
+                                                <td>$appointment[birth_date]</td>
                                                 <td>$appointment[gender]</td>
                                                 <td><a href='stagingEyeExam.php?PatientID=$appointment[patient_id]&DoctorID=$_SESSION[loginUserId]&action=new' target='_blank' class='btn btn-info'><i class='fa fa-user-md fa-2x'></i></a></td>
                                              </tr>";

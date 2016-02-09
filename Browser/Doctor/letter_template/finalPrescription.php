@@ -11,6 +11,9 @@ $rxLater = new Letters();
 //get doctor info to print
 $doctorInfo = $rxLater->selectDoctorInfo($DoctorID);
 $doctorInfo = mysqli_fetch_array($doctorInfo);
+//Get patient details
+$patientDetails = $rxLater->selectPatient($PateintID);
+$patientDetails = mysqli_fetch_array($patientDetails);
 //get exam details for print
 $rxDetails = $rxLater->selectDiagnosis($ExamID);
 $rxDetails = mysqli_fetch_array($rxDetails);
@@ -43,7 +46,7 @@ $rxDetails = mysqli_fetch_array($rxDetails);
     </p>
     <div style="display: block;width: inherit; align-content: center;">
         <p style="text-align: center">
-            <strong><?php echo "$doctorInfo[first_name] $doctorInfo[last_name]";?></strong><br />
+            <strong><?php echo "$patientDetails[first_name] $patientDetails[last_name]";?></strong><br />
             Ottawa<br />
         </p>
 

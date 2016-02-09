@@ -2062,9 +2062,9 @@ $exam->insertGtts($internal_INPUT_38);
         var txtRetOD_2 = document.getElementById('txtRetOD_2');
         var txtRetOD_3 = document.getElementById('txtRetOD_3');
         // assign sign and floating points
-        txtRetOD_1 = txtRetOD_1.value.toFixed(2);
-        txtRetOD_2 = txtRetOD_2.value.toFixed(2);
-        txtRetOD_3 = txtRetOD_3.value.toFixed(2);
+        txtRetOD_1 = txtRetOD_1.value;
+        txtRetOD_2 = txtRetOD_2.value;
+        txtRetOD_3 = txtRetOD_3.value;
         //txt Ret OS
         var txtRetOS_1 = document.getElementById('txtRetOS_1');
         var txtRetOS_2 = document.getElementById('txtRetOS_2');
@@ -2093,7 +2093,7 @@ $exam->insertGtts($internal_INPUT_38);
         var txtRxOD_1 = document.getElementById('txtRxOD_1');
         var txtRxOD_2 = document.getElementById('txtRxOD_2');
         var txtRxOD_3 = document.getElementById('txtRxOD_3');
-        txtRxOD_3 = txtRxOD_3.num.toFixed(2);
+        txtRxOD_3 = txtRxOD_3;
         //Rx OS
         var txtRxOS_1 = document.getElementById('txtRxOS_1');
         var txtRxOS_2 = document.getElementById('txtRxOS_2');

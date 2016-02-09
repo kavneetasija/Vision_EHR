@@ -33,7 +33,7 @@ else{
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Vision EHR | CCB | MEC</title>
+    <title>Vision EHR | CCB | MEC |                                 <p><?php echo $Date." ".$_SESSION['loginFirstName']." ".$_SESSION['loginLastName'] ?></p></title>
 
     <!-- Bootstrap Core CSS -->
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">

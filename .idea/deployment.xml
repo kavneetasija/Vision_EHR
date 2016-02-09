@@ -19,7 +19,7 @@
       <paths name="pateldushyant.com">
         <serverdata>
           <mappings>
-            <mapping deploy="/ehr" local="$PROJECT_DIR$" web="/ehr/ehr" />
+            <mapping deploy="/ehr" local="$PROJECT_DIR$" web="/ehr" />
           </mappings>
         </serverdata>
       </paths>

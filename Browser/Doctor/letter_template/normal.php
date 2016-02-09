@@ -30,7 +30,7 @@ $rxDetails = mysqli_fetch_array($rxDetails);
 <body>
 <form id="frm" method="get">
     <div id="normal" style="height: 80%">
-
+        <p><?php echo date('m/d/Y',strtotime($examDetails['time']))?></p>
         <p>Dear Parent/Guardian of <?php echo "$patientDetails[first_name] $patientDetails[last_name]";?>,</p>
 
         <p><?php echo "$patientDetails[first_name]";?> had a full eye exam on <?php echo date('m/d/Y',strtotime($examDetails['time'])) ." at $examLocation[name]";?>.</p>

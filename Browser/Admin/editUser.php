@@ -208,6 +208,20 @@ include("sidebar.php");
                                     </div>
                                 </div>
                             </div><br/>
+                            <div class="row">
+                                <div class="col-md-2">
+                                    <label>Office Name</label>
+                                </div>
+                                <div class="col-md-4">
+                                    <input type="text" class="form-control" name=""><!--todo sql to database-->
+                                </div>
+                                <div class="col-md-2">
+                                    <label>Upload Signature</label>
+                                </div>
+                                <div class="col-md-4">
+                                    <input type="file" class="form-control" name=""><!--todo sql to database-->
+                                </div>
+                            </div><br/>
                             <!--Submit btn-->
                             <div class="row">
                                 <div class="col-md-offset-10 col-md-2">
