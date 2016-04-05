@@ -7,3 +7,6 @@
 .largeText{
     width: 220px;
 }
+body, html{
+    height: 100vh;
+}

@@ -1,4 +1,4 @@
-<?php
+ <?php
 /**
  * Created by PhpStorm.
  * User: Dushyant
@@ -148,13 +148,10 @@ $exam->insertGtts($internal_INPUT_38);
     $exam->diagnosis_INPUT_45 = $diagnosis_INPUT_45;$exam->diagnosis_notes = $txtDiagnosisNote; $exam->diagnosis_findings = $txtDiagnosisFindings;
     $exam->diagnosis_recommendation = trim($txtDiagnosisRecommendation);
 
-
-
-
 ?>
 
 
-<form role="form" method="post" id="frm" onunload="saveForm()" onclose="saveForm()" onbeforeunload="saveForm()">
+<form role="form" method="post" id="frm">
     <div class="form-group">
         <div id="page-wrapper" style="min-height: 649px;">
             <div class="row">
@@ -171,7 +168,7 @@ $exam->insertGtts($internal_INPUT_38);
                     <div class="panel panel-primary">
                         <div class="panel-heading">
                             <div class="row">
-                                <div class="col-md-7">
+                                <div class="col-md-8">
                                     <label><?php echo $patientInfo['first_name']." ".$patientInfo['last_name']?></label>
                                 </div>
                                 <div id="saveInfo" style="color:black;">
@@ -184,9 +181,6 @@ $exam->insertGtts($internal_INPUT_38);
                                     </div>
                                     <div class="col-md-1">
                                         <button class="btn btn-success" id="btnSave" name="btnSave" type="button" onclick="saveForm()" value="updateExam">Save</button>
-                                    </div>
-                                    <div class="col-md-1">
-                                        <button class="btn btn-danger" id="btnEdit" name="btnSave" type="button" onclick="enableEdit()" value="EditExam">Edit</button>
                                     </div>
                                 </div>
                             </div>
@@ -211,7 +205,7 @@ $exam->insertGtts($internal_INPUT_38);
                                     <h4>Patient Info.
                                         <?php
                                         if($studentHealthHistory['share_info']==='No'){
-                                            echo "<span style='color: red'>Don\'t share</span>";
+                                            echo "<span style='color: red'>Don't share</span>";
                                         }
                                         elseif($studentHealthHistory['share_info']==='Yes'){
                                             echo "<span style='color: green'>Can share</span>";
@@ -425,15 +419,38 @@ $exam->insertGtts($internal_INPUT_38);
                                     <h4>Acuities</h4>
                                     <!--row 1 Recorded as-->
                                     <div class="row">
-                                        <div class="col-lg-12">
+                                        <div class="col-md-4">
                                             <label>Recorded as:</label>
-                                            <select class="form-control mediumText" name="acuities_SELECT_0"><!--todo ask for options to set values type-->
-                                                <option>Select one......</option>
-                                                <option value="Snellen" <?php if($accuities['acuities_SELECT_0']== 'Snellen'){echo 'selected';}?>>Snellen</option>
-                                                <!--<option>Letters</option>
-                                                <option>Option 3</option>-->
-                                            </select>
+                                            <input id="txtRecordedas" type="text"  data-toggle="modal" data-target="#recordList" class="form-control" name="acuities_SELECT_0" value="<?php echo $internal['acuities_SELECT_0'];?>">
                                         </div>
+                                        <div class="modal fade" id="recordList"  role="dialog" aria-labelledby="myModalLabel0" aria-hidden="true" style="display: none;">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                                        <h4 class="modal-title" id="myModalLabel0">Recorde type manager</h4>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <div class="form-group">
+                                                            <label>Select from the list</label>
+                                                            <select id="selectType" multiple="" class="form-control">
+
+                                                            </select><br>
+                                                            <button type="button" id="btnSelectType" onclick="" data-dismiss="modal" class="btn btn-success form-control">Select</button><br>
+                                                            <label>Add new to list</label>
+                                                            <input type="text" id="txtNewType" class="form-control" name=""><br>
+                                                        </div>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-primary" onclick="" data-dismiss="modal">Add new to list</button>
+                                                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                                    </div>
+                                                </div>
+                                                <!-- /.modal-content -->
+                                            </div>
+                                            <!-- /.modal-dialog -->
+                                        </div>
+
                                     </div><br>
                                     <!--row 2 lensometer-->
                                     <div class="panel panel-info">
@@ -450,21 +467,21 @@ $exam->insertGtts($internal_INPUT_38);
                                             <!--OD Row-->
                                             <div class="row">
                                                 <div class="col-md-1 col-md-offset-2">OD</div>
-                                                <div class="col-md-3"><!--OD RX txt1,txt2,txt3-->
+                                                <div class="col-md-3"><!--OD RX txt1,txt2,txt3 todo make wattermarkes at fileds-->
                                                     <div class="row">
                                                         <div class="col-sm-4">
-                                                            <input type="text" class="form-control smallText" name="acuities_INPUT_0"  value="<?php echo $accuities['acuities_INPUT_0']?>">
+                                                            <input type="number" step="0.25"  class="form-control " name="acuities_INPUT_0" placeholder="SPH"  value="<?php echo $accuities['acuities_INPUT_0']?>">
                                                         </div>
                                                         <div class="col-sm-4">
-                                                            <input type="text" class="form-control smallText" name="acuities_INPUT_1"  value="<?php echo $accuities['acuities_INPUT_1']?>">
+                                                            <input type="number" step="0.25" class="form-control " name="acuities_INPUT_1" placeholder="CYL"  value="<?php echo $accuities['acuities_INPUT_1']?>">
                                                         </div>
                                                         <div class="col-sm-4">
-                                                            <input type="text" class="form-control smallText" name="acuities_INPUT_2"  value="<?php echo $accuities['acuities_INPUT_2']?>">
+                                                            <input type="number" step="1" min="0" max="180" class="form-control" name="acuities_INPUT_2" placeholder="AXIS"  value="<?php echo $accuities['acuities_INPUT_2']?>">
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-1"><!--OD Add txt-->
-                                                    <input type="text" class="form-control smallText" name="acuities_INPUT_3" value="<?php echo $accuities['acuities_INPUT_3']?>">
+                                                    <input type="text" class="form-control smallText" name="acuities_INPUT_3"  value="<?php echo $accuities['acuities_INPUT_3']?>">
                                                 </div>
                                                 <div class="col-md-1"><!--OD Prism txt-->
                                                     <input type="text" class="form-control smallText" name="acuities_INPUT_4"  value="<?php echo $accuities['acuities_INPUT_4']?>">
@@ -482,13 +499,13 @@ $exam->insertGtts($internal_INPUT_38);
                                                 <div class="col-md-3"><!-- OS RX txt1,txt2,txt3-->
                                                     <div class="row">
                                                         <div class="col-sm-4">
-                                                            <input type="text" class="form-control smallText" name=" acuities_INPUT_7"  value="<?php echo $accuities['acuities_INPUT_7']?>">
+                                                            <input type="text" class="form-control " name=" acuities_INPUT_7" placeholder="SPH"  value="<?php echo $accuities['acuities_INPUT_7']?>">
                                                         </div>
                                                         <div class="col-sm-4">
-                                                            <input type="text" class="form-control smallText" name=" acuities_INPUT_8"  value="<?php echo $accuities['acuities_INPUT_8']?>">
+                                                            <input type="text" class="form-control " name=" acuities_INPUT_8" placeholder="CYL" value="<?php echo $accuities['acuities_INPUT_8']?>">
                                                         </div>
                                                         <div class="col-sm-4">
-                                                            <input type="text" class="form-control smallText" name=" acuities_INPUT_9"  value="<?php echo $accuities['acuities_INPUT_9']?>">
+                                                            <input type="text" class="form-control " name=" acuities_INPUT_9" placeholder="AXIS"  value="<?php echo $accuities['acuities_INPUT_9']?>">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -510,8 +527,14 @@ $exam->insertGtts($internal_INPUT_38);
                                                 <div class="col-md-1 col-md-offset-2">
                                                     Years old
                                                 </div>
-                                                <div class="col-md-9">
+                                                <div class="col-md-1">
                                                     <input type="number" min="1" class="form-control smallText" name=" acuities_INPUT_14"  value="<?php echo $accuities['acuities_INPUT_14']?>">
+                                                </div>
+                                                <div class="col-md-1">
+                                                    Notes
+                                                </div>
+                                                <div class="col-md-5">
+                                                    <input type="text" class="form-control" name=" "><!--todo save to db Added new fild-->
                                                 </div>
                                             </div>
                                         </div>
@@ -538,10 +561,10 @@ $exam->insertGtts($internal_INPUT_38);
                                                             VA &nbsp; OD
                                                         </div>
                                                         <div class="col-md-5">
-                                                            <input type="text" class="form-control mediumText" name="acuities_INPUT_15"  value="<?php echo $accuities['acuities_INPUT_15']?>">
+                                                            <input type="text" tabindex="15" class="form-control mediumText" name="acuities_INPUT_15"  value="<?php echo $accuities['acuities_INPUT_15']?>">
                                                         </div>
                                                         <div class="col-md-5">
-                                                            <input type="text" class="form-control mediumText" name="acuities_INPUT_16"  value="<?php echo $accuities['acuities_INPUT_16']?>">
+                                                            <input type="text" tabindex="18" class="form-control mediumText" name="acuities_INPUT_16"  value="<?php echo $accuities['acuities_INPUT_16']?>">
                                                         </div>
                                                     </div><br>
                                                     <!--Row 3 OS-->
@@ -550,10 +573,10 @@ $exam->insertGtts($internal_INPUT_38);
                                                             OS
                                                         </div>
                                                         <div class="col-md-5">
-                                                            <input type="text" class="form-control mediumText" name="acuities_INPUT_17"  value="<?php echo $accuities['acuities_INPUT_17']?>">
+                                                            <input type="text" tabindex="16" class="form-control mediumText" name="acuities_INPUT_17"  value="<?php echo $accuities['acuities_INPUT_17']?>">
                                                         </div>
                                                         <div class="col-md-5">
-                                                            <input type="text" class="form-control mediumText" name="acuities_INPUT_18"  value="<?php echo $accuities['acuities_INPUT_18']?>">
+                                                            <input type="text" tabindex="19" class="form-control mediumText" name="acuities_INPUT_18"  value="<?php echo $accuities['acuities_INPUT_18']?>">
                                                         </div>
                                                     </div><br>
                                                     <!--Row 4 OU-->
@@ -562,10 +585,10 @@ $exam->insertGtts($internal_INPUT_38);
                                                             OU
                                                         </div>
                                                         <div class="col-md-5">
-                                                            <input type="text" class="form-control mediumText" name="acuities_INPUT_19"  value="<?php echo $accuities['acuities_INPUT_19']?>">
+                                                            <input type="text" tabindex="17" class="form-control mediumText" name="acuities_INPUT_19"  value="<?php echo $accuities['acuities_INPUT_19']?>">
                                                         </div>
                                                         <div class="col-md-5">
-                                                            <input type="text" class="form-control mediumText" name="acuities_INPUT_20"  value="<?php echo $accuities['acuities_INPUT_20']?>">
+                                                            <input type="text" tabindex="20" class="form-control mediumText" name="acuities_INPUT_20"  value="<?php echo $accuities['acuities_INPUT_20']?>">
                                                         </div>
                                                     </div><br>
                                                 </div>
@@ -848,19 +871,19 @@ $exam->insertGtts($internal_INPUT_38);
                                                             Retinoscopy
                                                         </div>
                                                         <div class="col-sm-2" style="padding-left: 0">
-                                                            <input type="number" step="0.25" class="form-control" name="retinoscopy_INPUT_6" id="txtRetOD_1" value="<?php echo $retinoscopy['retinoscopy_INPUT_6'];?>">
+                                                            <input type="number" step="0.25"  placeholder="SPH" class="form-control" name="retinoscopy_INPUT_6" id="txtRetOD_1" value="<?php echo $retinoscopy['retinoscopy_INPUT_6'];?>">
                                                         </div>
                                                         <div class="col-sm-2" style="padding-left: 0">
-                                                            <input type="number" step="0.25" class="form-control" name="retinoscopy_INPUT_7" id="txtRetOD_2" value="<?php echo $retinoscopy['retinoscopy_INPUT_7'];?>">
+                                                            <input type="number" step="0.25"  placeholder="CYL" class="form-control" name="retinoscopy_INPUT_7" id="txtRetOD_2" value="<?php echo $retinoscopy['retinoscopy_INPUT_7'];?>">
                                                         </div>
                                                         <div class="col-sm-2" style="padding-left: 0">
-                                                            <input type="number" step="1" min="0" class="form-control" name="retinoscopy_INPUT_8" id="txtRetOD_3" value="<?php echo $retinoscopy['retinoscopy_INPUT_8'];?>">
+                                                            <input type="number" step="1" min="0" max="180"  placeholder="AXIS" class="form-control" name="retinoscopy_INPUT_8" id="txtRetOD_3" value="<?php echo $retinoscopy['retinoscopy_INPUT_8'];?>">
                                                         </div>
                                                         <div class="col-sm-1" style="padding: 0; text-align: center;">
                                                             /
                                                         </div>
                                                         <div class="col-sm-2" style="padding-left: 0">
-                                                            <input type="text" class="form-control" name="retinoscopy_INPUT_9" value="<?php echo $retinoscopy['retinoscopy_INPUT_9'];?>">
+                                                            <input type="text" class="form-control"  name="retinoscopy_INPUT_9" value="<?php echo $retinoscopy['retinoscopy_INPUT_9'];?>">
                                                         </div>
                                                     </div><br>
                                                     <!--Subjective Rx-->
@@ -869,13 +892,13 @@ $exam->insertGtts($internal_INPUT_38);
                                                             Subjective Rx
                                                         </div>
                                                         <div class="col-sm-2" style="padding-left: 0">
-                                                            <input type="number" step="0.25" class="form-control" name="retinoscopy_INPUT_10" id="txtSubOD_1" value="<?php echo $retinoscopy['retinoscopy_INPUT_10'];?>">
+                                                            <input type="number" step="0.25"  placeholder="SPH" class="form-control" name="retinoscopy_INPUT_10" id="txtSubOD_1" value="<?php echo $retinoscopy['retinoscopy_INPUT_10'];?>">
                                                         </div>
                                                         <div class="col-sm-2" style="padding-left: 0">
-                                                            <input type="number" step="0.25" class="form-control" name="retinoscopy_INPUT_11" id="txtSubOD_2" value="<?php echo $retinoscopy['retinoscopy_INPUT_11'];?>">
+                                                            <input type="number" step="0.25"  placeholder="CYL" class="form-control" name="retinoscopy_INPUT_11" id="txtSubOD_2" value="<?php echo $retinoscopy['retinoscopy_INPUT_11'];?>">
                                                         </div>
                                                         <div class="col-sm-2" style="padding-left: 0">
-                                                            <input type="number" step="1" min="0" class="form-control" name="retinoscopy_INPUT_12" id="txtSubOD_3" value="<?php echo $retinoscopy['retinoscopy_INPUT_12'];?>">
+                                                            <input type="number" step="1" min="0" max="180"  placeholder="AXIS" class="form-control" name="retinoscopy_INPUT_12" id="txtSubOD_3" value="<?php echo $retinoscopy['retinoscopy_INPUT_12'];?>">
                                                         </div>
                                                         <div class="col-sm-1" style="padding: 0; text-align: center;">
                                                             /
@@ -890,13 +913,13 @@ $exam->insertGtts($internal_INPUT_38);
                                                             Trial Rx
                                                         </div>
                                                         <div class="col-sm-2" style="padding-left: 0">
-                                                            <input type="number" step="0.25" class="form-control" name="retinoscopy_INPUT_14" id="txtTriOD_1" value="<?php echo $retinoscopy['retinoscopy_INPUT_14'];?>">
+                                                            <input type="number" step="0.25"  placeholder="SPH" class="form-control" name="retinoscopy_INPUT_14" id="txtTriOD_1" value="<?php echo $retinoscopy['retinoscopy_INPUT_14'];?>">
                                                         </div>
                                                         <div class="col-sm-2" style="padding-left: 0">
-                                                            <input type="number" step="0.25" class="form-control" name="retinoscopy_INPUT_15" id="txtTriOD_2" value="<?php echo $retinoscopy['retinoscopy_INPUT_15'];?>">
+                                                            <input type="number" step="0.25"  placeholder="CYL" class="form-control" name="retinoscopy_INPUT_15" id="txtTriOD_2" value="<?php echo $retinoscopy['retinoscopy_INPUT_15'];?>">
                                                         </div>
                                                         <div class="col-sm-2" style="padding-left: 0">
-                                                            <input type="number" step="1" min="0" class="form-control" name="retinoscopy_INPUT_16" id="txtTriOD_3" value="<?php echo $retinoscopy['retinoscopy_INPUT_16'];?>">
+                                                            <input type="number" step="1" min="0"  placeholder="AXIS" class="form-control" name="retinoscopy_INPUT_16" id="txtTriOD_3" value="<?php echo $retinoscopy['retinoscopy_INPUT_16'];?>">
                                                         </div>
                                                         <div class="col-sm-1" style="padding: 0; text-align: center;">
                                                             /
@@ -946,13 +969,13 @@ $exam->insertGtts($internal_INPUT_38);
                                                     <!--Retinoscopy-->
                                                     <div class="row">
                                                         <div class="col-sm-2" style="padding-left: 0">
-                                                            <input type="number" step="0.25" class="form-control" name="retinoscopy_INPUT_23" id="txtRetOS_1" value="<?php echo $retinoscopy['retinoscopy_INPUT_23'];?>">
+                                                            <input type="number" step="0.25"  placeholder="SPH" class="form-control" name="retinoscopy_INPUT_23" id="txtRetOS_1" value="<?php echo $retinoscopy['retinoscopy_INPUT_23'];?>">
                                                         </div>
                                                         <div class="col-sm-2" style="padding-left: 0">
-                                                            <input type="number" step="0.25" class="form-control" name="retinoscopy_INPUT_24" id="txtRetOS_2" value="<?php echo $retinoscopy['retinoscopy_INPUT_24'];?>">
+                                                            <input type="number" step="0.25"  placeholder="CYL" class="form-control" name="retinoscopy_INPUT_24" id="txtRetOS_2" value="<?php echo $retinoscopy['retinoscopy_INPUT_24'];?>">
                                                         </div>
                                                         <div class="col-sm-2" style="padding-left: 0">
-                                                            <input type="number" step="1" min="0" class="form-control" name="retinoscopy_INPUT_25" id="txtRetOS_3" value="<?php echo $retinoscopy['retinoscopy_INPUT_25'];?>">
+                                                            <input type="number" step="1" min="0" max="180"  placeholder="AXIS" class="form-control" name="retinoscopy_INPUT_25" id="txtRetOS_3" value="<?php echo $retinoscopy['retinoscopy_INPUT_25'];?>">
                                                         </div>
                                                         <div class="col-sm-1" style="padding: 0; text-align: center;">
                                                             /
@@ -964,13 +987,13 @@ $exam->insertGtts($internal_INPUT_38);
                                                     <!--Subjective Rx-->
                                                     <div class="row">
                                                         <div class="col-sm-2" style="padding-left: 0">
-                                                            <input type="number" step="0.25" class="form-control" name="retinoscopy_INPUT_27" id="txtSubOS_1" value="<?php echo $retinoscopy['retinoscopy_INPUT_27'];?>">
+                                                            <input type="number" step="0.25"  placeholder="SPH" class="form-control" name="retinoscopy_INPUT_27" id="txtSubOS_1" value="<?php echo $retinoscopy['retinoscopy_INPUT_27'];?>">
                                                         </div>
                                                         <div class="col-sm-2" style="padding-left: 0">
-                                                            <input type="number" step="0.25" class="form-control" name="retinoscopy_INPUT_28" id="txtSubOS_2" value="<?php echo $retinoscopy['retinoscopy_INPUT_28'];?>">
+                                                            <input type="number" step="0.25"  placeholder="CYL" class="form-control" name="retinoscopy_INPUT_28" id="txtSubOS_2" value="<?php echo $retinoscopy['retinoscopy_INPUT_28'];?>">
                                                         </div>
                                                         <div class="col-sm-2" style="padding-left: 0">
-                                                            <input type="number" step="1" min="0" class="form-control" name="retinoscopy_INPUT_29" id="txtSubOS_3" value="<?php echo $retinoscopy['retinoscopy_INPUT_29'];?>">
+                                                            <input type="number" step="1" min="0" max="180"  placeholder="AXIS" class="form-control" name="retinoscopy_INPUT_29" id="txtSubOS_3" value="<?php echo $retinoscopy['retinoscopy_INPUT_29'];?>">
                                                         </div>
                                                         <div class="col-sm-1" style="padding: 0; text-align: center;">
                                                             /
@@ -982,13 +1005,13 @@ $exam->insertGtts($internal_INPUT_38);
                                                     <!--Trial Rx-->
                                                     <div class="row">
                                                         <div class="col-sm-2" style="padding-left: 0">
-                                                            <input type="number" step="0.25" class="form-control" name="retinoscopy_INPUT_31" id="txtTriOS_1" value="<?php echo $retinoscopy['retinoscopy_INPUT_31'];?>">
+                                                            <input type="number" step="0.25"  placeholder="SPH" class="form-control" name="retinoscopy_INPUT_31" id="txtTriOS_1" value="<?php echo $retinoscopy['retinoscopy_INPUT_31'];?>">
                                                         </div>
                                                         <div class="col-sm-2" style="padding-left: 0">
-                                                            <input type="number" step="0.25" class="form-control" name="retinoscopy_INPUT_32" id="txtTriOS_2" value="<?php echo $retinoscopy['retinoscopy_INPUT_32'];?>">
+                                                            <input type="number" step="0.25"  placeholder="CYL" class="form-control" name="retinoscopy_INPUT_32" id="txtTriOS_2" value="<?php echo $retinoscopy['retinoscopy_INPUT_32'];?>">
                                                         </div>
                                                         <div class="col-sm-2" style="padding-left: 0">
-                                                            <input type="number" step="1" min="0" class="form-control" name="retinoscopy_INPUT_33" id="txtTriOS_3" value="<?php echo $retinoscopy['retinoscopy_INPUT_33'];?>">
+                                                            <input type="number" step="1" min="0" max="180"  placeholder="AXIS" class="form-control" name="retinoscopy_INPUT_33" id="txtTriOS_3" value="<?php echo $retinoscopy['retinoscopy_INPUT_33'];?>">
                                                         </div>
                                                         <div class="col-sm-1" style="padding: 0; text-align: center;">
                                                             /
@@ -1105,10 +1128,16 @@ $exam->insertGtts($internal_INPUT_38);
                                 <div class="tab-pane fade" id="tab3">
                                     <h4>External</h4>
                                     <div class="row">
-                                        <div class="col-md-12">
+                                        <div class="col-md-2">
                                             <label class="checkbox-inline">
-                                                <input type="checkbox" name="external_INPUT_0" value="true" <?php if($external['external_INPUT_0'] == 'true'){echo 'checked';}?>> PERRALA
+                                                <input type="checkbox" name="external_INPUT_0" value="true" <?php if($external['external_INPUT_0'] == 'true'){echo 'checked';}?>> PERRLA
                                             </label>
+                                        </div>
+                                        <div class="col-md-5" style="text-align: center; background-color: #9d9d9d;">
+                                            <label>OD</label>
+                                        </div>
+                                        <div class="col-md-5" style="text-align: center; background-color:#dddddd;">
+                                            <label >OS</label>
                                         </div>
                                     </div><br>
                                     <div class="row">
@@ -1124,7 +1153,7 @@ $exam->insertGtts($internal_INPUT_38);
                                     </div><br>
                                     <div class="row">
                                         <div class="col-md-2">
-                                            Lids/Margine
+                                            Lids/Margin
                                         </div>
                                         <div class="col-md-5">
                                             <input type="text" class="form-control" name="external_INPUT_3"  value="<?php echo $external['external_INPUT_3']?>">
@@ -1135,7 +1164,7 @@ $exam->insertGtts($internal_INPUT_38);
                                     </div><br>
                                     <div class="row">
                                         <div class="col-md-2">
-                                            Conjuctiva
+                                            Conjunctiva
                                         </div>
                                         <div class="col-md-5">
                                             <input type="text" class="form-control" name="external_INPUT_5"  value="<?php echo $external['external_INPUT_5']?>">
@@ -1293,6 +1322,18 @@ $exam->insertGtts($internal_INPUT_38);
                                         <!--Col 1 left-->
                                         <div class="col-md-5 col-md-offset-1">
                                             <div class="row">
+                                                <div class="col-md-2">
+                                                    <label class="checkbox-inline">
+                                                    </label>
+                                                </div>
+                                                <div class="col-md-5" style="text-align: center; background-color: #9d9d9d;">
+                                                    <label>OD</label>
+                                                </div>
+                                                <div class="col-md-5" style="text-align: center; background-color:#dddddd;">
+                                                    <label >OS</label>
+                                                </div>
+                                            </div><br>
+                                            <div class="row">
                                                 <div class="col-md-2" style="padding: 0px;">
                                                     <label>lens</label>
                                                 </div>
@@ -1389,6 +1430,18 @@ $exam->insertGtts($internal_INPUT_38);
                                         </div>
                                         <!--Col 2 right-->
                                         <div class="col-md-5">
+                                            <div class="row">
+                                                <div class="col-md-2">
+                                                    <label class="checkbox-inline">
+                                                    </label>
+                                                </div>
+                                                <div class="col-md-5" style="text-align: center; background-color: #9d9d9d;">
+                                                    <label>OD</label>
+                                                </div>
+                                                <div class="col-md-5" style="text-align: center; background-color:#dddddd;">
+                                                    <label >OS</label>
+                                                </div>
+                                            </div><br>
                                             <div class="row">
                                                 <div class="col-md-2" style="padding: 0px;">
                                                     <label>ONH Cup</label>
@@ -1611,19 +1664,12 @@ $exam->insertGtts($internal_INPUT_38);
                                                 <div class="col-md-12 checkbox">
                                                     <label class="checkbox-inline">
                                                         <input type="checkbox" value="alcaineGtts" name="tonometry_INPUT_4"  <?php if($tonometry['tonometry_INPUT_4'] == 'alcaineGtts'){echo 'checked';}?>>
-                                                        Alcaine dtts
+                                                        Alcaine gtts
                                                     </label>
                                                 </div>
                                             </div><br>
-                                            <!--Time-->
-                                            <div class="row">
-                                                <div class="col-md-3">
-                                                    <label>Time</label>
-                                                </div>
-                                                <div class="col-md-9">
-                                                    <input type="time" class="form-control mediumText" name="tonometry_INPUT_5" value="<?php echo $tonometry['tonometry_INPUT_5'];?>">
-                                                </div>
-                                            </div><br>
+                                            <!--Time todo remove from db-->
+
                                             <!--Pachymetry-->
                                             <div class="row">
                                                 <div class="col-md-3">
@@ -1736,19 +1782,18 @@ $exam->insertGtts($internal_INPUT_38);
                                                     <label>Amsler Grid</label>
                                                 </div>
                                                 <!--Input OD-->
-                                                <div class="col-md-1">
+                                                <div class="col-md-5">
                                                     <label>OD</label>
-                                                </div>
-                                                <div class="col-md-3">
                                                     <input type="text" class="form-control" name="tonometry_INPUT_18" value="<?php echo $tonometry['tonometry_INPUT_18'];?>">
+
                                                 </div>
 
                                                 <!--Input OS-->
-                                                <div class="col-md-1 col-md-offset-2">
-                                                    <label>OS</label>
-                                                </div>
-                                                <div class="col-md-3">
+
+                                                <div class="col-md-5">
+                                                    <label>OS </label>
                                                     <input type="text" class="form-control" name="tonometry_INPUT_19" value="<?php echo $tonometry['tonometry_INPUT_19'];?>">
+
                                                 </div>
 
                                             </div>
@@ -2038,11 +2083,6 @@ $exam->insertGtts($internal_INPUT_38);
     </div></form></body>
 
 <script>
-
-    /*  //replace text area with ckedit
-     CKEDITOR.replace( 'txtPatientInfoNotes' );*/
-
-
     //fill txtGtts
     function fillTxtGtts(option){
         var drpSelect = document.getElementById('selectGtts');
@@ -2055,6 +2095,9 @@ $exam->insertGtts($internal_INPUT_38);
             text.value = newGttsText.value
         }
     }
+    //Fill text Recorded As in Acuities
+
+
     //generate rx click event
     function generateRx(){
         //txt Ret OD
@@ -2093,7 +2136,7 @@ $exam->insertGtts($internal_INPUT_38);
         var txtRxOD_1 = document.getElementById('txtRxOD_1');
         var txtRxOD_2 = document.getElementById('txtRxOD_2');
         var txtRxOD_3 = document.getElementById('txtRxOD_3');
-        txtRxOD_3 = txtRxOD_3;
+
         //Rx OS
         var txtRxOS_1 = document.getElementById('txtRxOS_1');
         var txtRxOS_2 = document.getElementById('txtRxOS_2');
@@ -2153,13 +2196,6 @@ $exam->insertGtts($internal_INPUT_38);
         txtRxNotesFinal.value = txtRxNotes.value ;
 
     }
-
-    //submit data via ajax
-    var saveForm = function(){
-        var data = $('#frm').serialize();
-        console.log(data);
-        $.post('eyeExam.php', data);
-    };
     //save new gtts
     /*Set curent time function*/
     function setCurentTime(txtID){
@@ -2169,29 +2205,18 @@ $exam->insertGtts($internal_INPUT_38);
         var hr = ("0"+ now.getHours()).slice(-2);
         txtNow.value = hr +":"+ min;
     }
-
-    //send data to update every 10s
+    //Save Exam data
+    //submit data via ajax
+    var saveForm = function(){
+        var data = $('#frm').serialize();
+        console.log(data);
+        $.post('eyeExam.php', data);
+    };
+    //send data to update every 6s
     setInterval(saveForm, 60000);
-
-
-</script>
-<script>
-//on window unload
-$(window).bind('unload', function() {
-   saveForm();
-});
-//disable elements
-$('#frm').find('input, textarea, select').attr('disabled', true);
-function enableEdit(){
-$('#frm').find('input, textarea, select').attr('disabled', false);
-}
-
-</script>
-<script>
 
 </script>
 <?php
-
 //update
 //Update Acuities
     $result = $exam->updateAcuities();

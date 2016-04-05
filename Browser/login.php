@@ -39,10 +39,7 @@ if(isset($btnSubmit)){
     else{
         $errors['authentication']= $loginUser;
     }
-
-
 }
-
 ?>
 
 <!DOCTYPE html>
