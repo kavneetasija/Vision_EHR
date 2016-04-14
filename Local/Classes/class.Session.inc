@@ -38,7 +38,15 @@ class Session extends Location
 
     //delete session by session id
     function deleteSessionBySessionId($sessionId){
-        $sqlDeleteSession = "DELETE FROM tbl_sessions WHERE tbl_sessions.session_id = '$sessionId'";
+        // todo Retrieve date for session id and check if it i overdue
+        $sqlSelectDate="SELECT FROM tbl_session WHERE tbl_session.session_id = '$sessionId'";
+        if($sqlSelectDate > Date()){
+            $sqlDeleteSession = "DELETE FROM tbl_sessions WHERE tbl_sessions.session_id = '$sessionId'";
+        }
+        else{
+            return "You can not delete this session";
+        }
+
         return ($this->queryDatabase($sqlDeleteSession));
     }
     //Update session by session id

@@ -208,7 +208,23 @@ include("sidebar.php");
                                             <div class="row">
                                                 <div class="col-md-4"><label>Grade</label></div>
                                                 <div class="col-md-8">
-                                                    <input type="text" name="txtStdGrade">
+                                                    <select name="txtStdGrade">
+                                                        <optio>SK</optio>
+                                                        <optio>JK</optio>
+                                                        <optio>1</optio>
+                                                        <optio>2</optio>
+                                                        <optio>3</optio>
+                                                        <optio>4</optio>
+                                                        <optio>5</optio>
+                                                        <optio>6</optio>
+                                                        <optio>7</optio>
+                                                        <optio>8</optio>
+                                                        <optio>9</optio>
+                                                        <optio>10</optio>
+                                                        <optio>11</optio>
+                                                        <optio>12</optio>
+                                                    </select>
+                                                   <!-- <input type="text" name="txtStdGrade">-->
                                                 </div>
                                             </div><br>
                                             <div class="row">
